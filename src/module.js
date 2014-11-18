@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 
  Declare the module with dependencies, and nothing more.
