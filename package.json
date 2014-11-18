@@ -1,0 +1,28 @@
+{
+  "name": "moondash",
+  "description": "Generic admin frontend for REST projects",
+  "version": "0.0.1",
+  "author": "Moonshot Project",
+  "license": "MIT",
+  "engines": [
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MoonshotProject/moondash.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "lodash": "*",
+    "protractor": "*",
+    "karma": ">=0.11.14",
+    "karma-jasmine": "*",
+    "karma-chrome-launcher": "~0.1.2",
+    "phantomjs": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-coverage": "*",
+    "karma-junit-reporter": "*",
+    "chromedriver": "*"
+  }
+}
