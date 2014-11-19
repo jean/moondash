@@ -4,10 +4,10 @@
     <title>Your awesome title</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://moonshotproject.github.io/</link>
-    <atom:link href="http://moonshotproject.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Nov 2014 00:00:17 +0100</pubDate>
-    <lastBuildDate>Thu, 20 Nov 2014 00:00:17 +0100</lastBuildDate>
+    <link>http://moonshotproject.github.io/moondash/</link>
+    <atom:link href="http://moonshotproject.github.io/moondash/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 20 Nov 2014 00:07:39 +0100</pubDate>
+    <lastBuildDate>Thu, 20 Nov 2014 00:07:39 +0100</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Tue, 18 Nov 2014 02:09:02 +0100</pubDate>
-        <link>http://moonshotproject.github.io/jekyll/update/2014/11/18/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://moonshotproject.github.io/jekyll/update/2014/11/18/welcome-to-jekyll.html</guid>
+        <link>http://moonshotproject.github.io/moondash/jekyll/update/2014/11/18/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://moonshotproject.github.io/moondash/jekyll/update/2014/11/18/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
