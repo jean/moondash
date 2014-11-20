@@ -8,13 +8,15 @@
 
  */
 
+require('angular');
+
 var dependencies = [
-  'ngAnimate', 'ngMessages'
+    'ngAnimate', 'ngMessages'
 ];
 
 if (document.URL.indexOf(':9000') != -1) {
-  dependencies.push('ngMockE2E');
-  dependencies.push('moondashMock');
+    dependencies.push('ngMockE2E');
+    dependencies.push('moondashMock');
 }
 angular.module('moondash', dependencies)
-  .value('mockRest', {});
+.value('mockRest', {});

@@ -4,12 +4,9 @@ HTML5-based generic admin for REST applications.
 
 ## Setup
 
-Developer setup presumes a NodeJS environment containing
-``npm``, ``bower``, and ``gulp``.
+Developer setup presumes a NodeJS environment containing ``npm``.
 
-1. npm install
+1. npm install --dev
 
-1. bower install
-
-1. gulp
+2. gulp
 
