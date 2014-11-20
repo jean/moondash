@@ -31,7 +31,9 @@ gulp.task('browserify', function(callback) {
       debug: config.debug
     });
     if(bundleConfig.externals) {
-        bundler.external(bundleConfig.externals);
+        bundler
+            .require(bundleConfig.externals, { expose: 'angular' })
+            .external(bundleConfig.externals);
     }
 
     var bundle = function() {
@@ -51,7 +53,7 @@ gulp.task('browserify', function(callback) {
         .on('end', reportFinished);
     };
 
-    if(global.isWatching) {
+    if(global.isWatching && bundleConfig.externals) {
       // Wrap with watchify and rebundle on changes
       bundler = watchify(bundler);
       // Rebundle on update
