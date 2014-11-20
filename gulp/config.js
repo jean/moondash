@@ -27,11 +27,12 @@ module.exports = {
     bundleConfigs: [{
       entries: src + '/module.js',
       dest: dest,
-      outputName: 'app.js'
-    }/*, {
-      entries: src + '/javascript/head.coffee',
+      outputName: 'app.js',
+      externals: ['./node_modules/angular/angular.min.js']
+    }, {
+      entries: './node_modules/angular/angular.min.js',
       dest: dest,
-      outputName: 'head.js'
-    }*/]
+      outputName: 'libs.js'
+    }]
   }
 };

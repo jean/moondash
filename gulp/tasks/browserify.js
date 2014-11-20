@@ -30,6 +30,9 @@ gulp.task('browserify', function(callback) {
       // Enable source maps!
       debug: config.debug
     });
+    if(bundleConfig.externals) {
+        bundler.external(bundleConfig.externals);
+    }
 
     var bundle = function() {
       // Log when bundling starts
