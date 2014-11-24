@@ -19,21 +19,22 @@ module.exports = {
     src: demoSrc + "/html/**",
     dest: dest
   },
+  vendors: {
+    src: [
+      "./node_modules/angular/angular.min.js"
+    ],
+    outputName: 'vendors.js',
+    dest: dest
+  },
   browserify: {
     // Enable source maps
     debug: true,
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: 'angular',
-      dest: dest,
-      outputName: 'libs.js'
-    }, 
-    {
       entries: src + '/module.js',
       dest: dest,
-      outputName: 'app.js',
-      externals: ['angular']
+      outputName: 'app.js'
     }]
   }
 };

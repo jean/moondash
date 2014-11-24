@@ -8,10 +8,5 @@
 
  */
 
-var dependencies = [
-  'angular'
-];
-
+var angular = require('angular');
 angular.module('moondash', []);
-
-module.exports = require(dependencies);

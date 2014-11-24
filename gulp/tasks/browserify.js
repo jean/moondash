@@ -30,11 +30,6 @@ gulp.task('browserify', function(callback) {
       // Enable source maps!
       debug: config.debug
     });
-    if(bundleConfig.externals) {
-        bundler
-            .require(bundleConfig.externals, { expose: 'angular' })
-            .external(bundleConfig.externals);
-    }
 
     var bundle = function() {
       // Log when bundling starts
@@ -53,7 +48,7 @@ gulp.task('browserify', function(callback) {
         .on('end', reportFinished);
     };
 
-    if(global.isWatching && bundleConfig.externals) {
+    if(global.isWatching) {
       // Wrap with watchify and rebundle on changes
       bundler = watchify(bundler);
       // Rebundle on update
