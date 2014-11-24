@@ -20,9 +20,6 @@ module.exports = {
     dest: dest
   },
   vendors: {
-    src: [
-      "./node_modules/angular/angular.min.js"
-    ],
     outputName: 'vendors.js',
     dest: dest
   },
