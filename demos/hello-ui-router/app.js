@@ -1,11 +1,6 @@
 function ModuleInit($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/state1");
   $stateProvider
-    .state("site", {
-             url: '/',
-             abstract: true,
-             templateUrl: 'index.partial.html'
-           })
     .state("site.state1", {
              url: 'state1',
              templateUrl: 'state1.partial.html'
