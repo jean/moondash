@@ -1,13 +1,18 @@
-<div class="container mn-layout">
-  <h1>Hello ui-router</h1>
-
-  <div ui-view></div>
-  <div>
-    <a href="#/">Root</a>
-
-    <span ng-repeat="section in ctrl.sections">
-      | <a ui-sref="{{ section.state}}"
-           ui-sref-active="active">{{ section.title}}</a>
-    </span>
+<div class="container">
+  <div class="navbar navbar-inverse navbar-fixed-top"
+       role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="site.state1">Hello ui-router</a>
+    </div>
+    <ul id="sections" class="nav navbar-nav">
+      <li ng-repeat="section in ctrl.sections"
+          ui-sref-active="active">
+        <a ui-sref="{{ section.state}}">{{ section.title }}</a>
+      </li>
+    </ul>
   </div>
+</div>
+
+<div id="mn-content" class="container">
+  <div ui-view></div>
 </div>
