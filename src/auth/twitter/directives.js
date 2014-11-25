@@ -1,7 +1,6 @@
-var angular = require('angular');
+var moondash = require('angular').module('moondash');
 
-angular.module('moondash')
-  .directive(
+moondash.directive(
   'hello',
   function () {
     return {

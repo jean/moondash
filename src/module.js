@@ -9,9 +9,9 @@
  */
 
 var angular = require('angular');
+angular.module('moondash', []);
 
 var auth = require('./auth');
 console.log(auth);
 auth.twitter.login();
 
-angular.module('moondash', []);
