@@ -16,7 +16,7 @@
     "bootstrap-sass": "^3.3.1"
   },
   "browser": {
-    "angular": "./node_modules/angular/angular.min.js"
+    "angular": "./node_modules/angular/angular.js"
   },
   "browserify": {
     "transform": [

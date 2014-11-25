@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 gulp.task('partials', function() {
   return gulp
     .src(config.src)
-    .pipe(templateCache('moonshot-templates.js',
-                        {module: 'moonshot', root:'/'}))
+    .pipe(templateCache('moondash-templates.js',
+                        {module: 'moondash', root:'/'}))
     .pipe(gulp.dest(config.dest));
 });

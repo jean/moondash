@@ -14,12 +14,4 @@ var auth = require('./auth');
 console.log(auth);
 auth.twitter.login();
 
-var moondash = angular.module('moondash', []);
-moondash.directive(
-  'hello',
-  function () {
-    return {
-      templateUrl: 'auth/twitter/login.partial.html'
-    }
-  }
-);
+angular.module('moondash', []);
