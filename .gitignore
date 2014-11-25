@@ -3,3 +3,6 @@ coverage
 bower_components
 build
 npm-debug.log
+
+# Editors
+.idea
