@@ -20,7 +20,11 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              section: {
                'title': 'State Three'
              },
-             templateUrl: 'state3.partial.html'
+             views: {
+               '@': {
+                 template: '<h1>state3 hijacked the Moondash layout</h1>'
+               }
+             }
            });
 }
 
