@@ -4,5 +4,6 @@ gulp.task('build', [
     'browserify',
     'markup',
     'sass',
+    'partials',
     'vendors'
 ]);

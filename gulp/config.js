@@ -28,6 +28,12 @@ module.exports = {
     outputName: 'moondash.css',
     dest: dest
   },
+  partials: {
+    src: [
+      src + '/**/*.partial.html'
+    ],
+    dest: dest
+  },
   vendors: {
     outputName: 'moondash-vendors.js',
     dest: dest
