@@ -3,8 +3,11 @@
 
   <div ui-view></div>
   <div>
-    <a href="#/">Root</a> |
-    <a ui-sref="site.state1">State 1</a> |
-    <a ui-sref="site.state2">State 2</a>
+    <a href="#/">Root</a>
+
+    <span ng-repeat="section in ctrl.sections">
+      | <a ui-sref="{{ section.state}}"
+           ui-sref-active="active">{{ section.title}}</a>
+    </span>
   </div>
 </div>
