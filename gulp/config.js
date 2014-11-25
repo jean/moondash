@@ -23,7 +23,6 @@ module.exports = {
   },
   sass: {
     src: [
-      "./node_modules/bootstrap-sass/assets/stylesheets/*.scss",
       src + "/**/*.scss"
     ],
     outputName: 'moondash.css',
