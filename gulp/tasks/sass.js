@@ -6,7 +6,9 @@ var config = require('../config').sass;
 
 gulp.task('sass', function() {
     gulp.src(config.src)
-        .pipe(sass({onError: handleErrors}))
+        .pipe(sass()
+            .on('error', handleErrors)
+        )
         .pipe(concat(config.outputName))
         .pipe(gulp.dest(config.dest));
 });
