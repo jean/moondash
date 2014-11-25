@@ -1,7 +1,6 @@
 'use strict';
 
 function ModuleInit($stateProvider) {
-  console.debug('in layout');
   $stateProvider
     .state("site", {
              url: '/',
