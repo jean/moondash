@@ -8,10 +8,11 @@
 
  */
 
+// List some dependencies
+require('angular-ui-router');
+
 var angular = require('angular');
-angular.module('moondash', []);
+angular.module('moondash', ['ui.router']);
 
 var auth = require('./auth');
-console.log(auth);
-auth.twitter.login();
 
