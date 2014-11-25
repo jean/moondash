@@ -21,6 +21,12 @@ module.exports = {
     ],
     dest: dest
   },
+  sass: {
+    src: [
+      src + "/**/*.scss"
+    ],
+    dest: dest
+  },
   vendors: {
     outputName: 'moondash-vendors.js',
     dest: dest
