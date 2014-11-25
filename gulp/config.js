@@ -16,11 +16,14 @@ module.exports = {
     ]
   },
   markup: {
-    src: demoSrc + "/html/**",
+    src: [
+      demoSrc + "/html/**",
+      "src/**/*.partial.html"
+    ],
     dest: dest
   },
   vendors: {
-    outputName: 'vendors.js',
+    outputName: 'moondash-vendors.js',
     dest: dest
   },
   browserify: {
@@ -31,7 +34,7 @@ module.exports = {
     bundleConfigs: [{
       entries: src + '/module.js',
       dest: dest,
-      outputName: 'app.js'
+      outputName: 'moondash.js'
     }]
   }
 };
