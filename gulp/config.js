@@ -17,8 +17,7 @@ module.exports = {
   },
   markup: {
     src: [
-      demoSrc + "/html/**",
-      "src/**/*.partial.html"
+      demoSrc + "/html/**"
     ],
     dest: dest
   },
