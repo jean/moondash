@@ -1,8 +1,9 @@
 'use strict';
 
-var login = function() {
-    console.log("Please login using Twitter");
-}
+var hello = require('./directives');
+var login = function () {
+  console.log("Please login using Twitter");
+};
 module.exports = {
-    login: login
-}
+  login: login
+};
