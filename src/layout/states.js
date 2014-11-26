@@ -2,7 +2,7 @@ function ModuleInit($stateProvider) {
   $stateProvider
     .state('site', {
              abstract: true,
-             templateUrl: '/layout/mn-layout.partial.html',
+             templateUrl: '/layout/md-layout.partial.html',
              controller: 'LayoutCtrl as ctrl'
            });
 }
