@@ -28,7 +28,11 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              section: {
                'title': 'State Three'
              },
-             templateUrl: 'state3.partial.html'
+             views: {
+               '@': {
+                 templateUrl: 'state3.partial.html'
+               }
+             }
            });
 }
 
