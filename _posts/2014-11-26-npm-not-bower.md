@@ -1,11 +1,13 @@
 ---
 layout: post
 title:  "NPM, not Bower"
+date:   2014-11-26 00:38:02
 categories: building packaging
 ---
 
 As we build Moondash, we'll document some of our decisions in posts 
 filed with the ``building`` category. First up: how we package things.
+
 
 We've decided to eschew Bower in favor of pure NPM packaging. That 
 means our dependencies, such as AngularJS, are stated in the 
