@@ -2,7 +2,7 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/state1');
   $stateProvider
     .state('site', {
-             parent: 'layout'
+             parent: 'root'
            })
     .state('site.state1', {
              url: '/state1',
@@ -10,7 +10,7 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
                'title': 'State One'
              },
              views: {
-               'content@layout': {
+               'md-content@root': {
                  templateUrl: 'state1.partial.html'
                }
              }
