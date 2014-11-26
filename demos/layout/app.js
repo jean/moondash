@@ -1,7 +1,10 @@
 function ModuleInit($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/state1");
+  $urlRouterProvider.otherwise('/state1');
   $stateProvider
-    .state("root.state1", {
+    .state('site', {
+             parent: 'root'
+           })
+    .state('site.state1', {
              url: '/state1',
              section: {
                'title': 'State One'
@@ -12,7 +15,7 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
                }
              }
            })
-    .state("root.state2", {
+    .state('site.state2', {
              url: '/state2',
              section: {
                'title': 'State Two'
@@ -23,13 +26,13 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
                }
              }
            })
-    .state("root.state3", {
+    .state('site.state3', {
              url: '/state3',
              section: {
                'title': 'State Three'
              },
              views: {
-               '@': {
+               'md-content@root': {
                  templateUrl: 'state3.partial.html'
                }
              }
