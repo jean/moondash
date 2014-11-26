@@ -1,26 +1,38 @@
 function ModuleInit($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/state1");
   $stateProvider
-    .state("site.state1", {
+    .state("root.state1", {
              url: '/state1',
              section: {
                'title': 'State One'
              },
-             templateUrl: 'state1.partial.html'
+             views: {
+               'md-content@root': {
+                 templateUrl: 'state1.partial.html'
+               }
+             }
            })
-    .state("site.state2", {
+    .state("root.state2", {
              url: '/state2',
              section: {
                'title': 'State Two'
              },
-             templateUrl: 'state2.partial.html'
+             views: {
+               'md-content@root': {
+                 templateUrl: 'state2.partial.html'
+               }
+             }
            })
-    .state("site.state3", {
+    .state("root.state3", {
              url: '/state3',
              section: {
                'title': 'State Three'
              },
-             templateUrl: 'state3.partial.html'
+             views: {
+               '@': {
+                 templateUrl: 'state3.partial.html'
+               }
+             }
            });
 }
 
