@@ -8,10 +8,13 @@
 
  */
 
-var angular = require('angular');
-angular.module('moondash', []);
+// List some dependencies
+require('angular-ui-router');
 
-var auth = require('./auth');
-console.log(auth);
-auth.twitter.login();
+var angular = require('angular');
+angular.module('moondash', ['ui.router']);
+
+// Now the Moondash components
+require('./auth');
+require('./layout');
 
