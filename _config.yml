@@ -1,13 +1,11 @@
 # Site settings
 title: Moondash
-email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   The Moondash (a Moonshot project).
-  HTML5-based REST-driven admin user interface for hierarchical, noserver web 
+  HTML5-based REST-driven admin user interface for web
   applications.
 baseurl: "/moondash" # the subpath of your site, e.g. /blog/
 url: "http://moonshotproject.github.io" # the base hostname & protocol for your site
-twitter_username: jekyllrb
 github_username:  MoonshotProject
 
 # Build settings

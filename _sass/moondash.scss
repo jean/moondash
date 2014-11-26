@@ -1,0 +1,27 @@
+.home {
+  .page-heading {
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .slug-outer {
+    width: 100%;
+
+    .slug-inner {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+
+  table {
+    margin-top: 3em;
+
+    h2 {
+      text-align: center;
+    }
+
+    td {
+      vertical-align: top;
+    }
+  }
+}

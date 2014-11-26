@@ -4,20 +4,81 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Welcome to Moondash</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <div class="slug-outer">
+    <p class="slug-inner">
+      Ever wanted a generic admin UI for REST endpoints, with the
+      frontend moved out of the backend? Moonshot is a high-quality
+      open source project with a ready-to-go application for managing
+      information in your REST backends.
+    </p>
+  </div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+    <tr>
+      <td width="50%">
+        <h2>Simple</h2>
+
+        <p>Just include our bundled JS and CSS into your page and
+        configure Moondash to point at a compliant endpoint.</p>
+      </td>
+      <td width="50%">
+        <h2>Sexy</h2>
+
+        <p>Attractive, responsive theme and UX from the
+        <a href="../moonbeam">Moonbeam</a>.</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h2>Modern</h2>
+
+        <p>Built as an AngularJS single-page application with best
+        practices.</p>
+
+      </td>
+      <td>
+        <h2>Generic</h2>
+
+        <p>Works with any server framework behind a REST endpoint.</p>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <h2>Configurable</h2>
+
+        <p>Easily adjust predefined settings such as the logo without
+          changing Moondash code.</p>
+      </td>
+      <td>
+        <h2>Extensible</h2>
+
+        <p>Register new sections and views into the UX without
+        touching Moondash code.</p>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h2>Quality</h2>
+
+        <p>High-performance, testing, and documentation in our code
+          means far less for you to sign up for.</p>
+
+      </td>
+      <td>
+        <h2>Open</h2>
+
+        <p>Fully open source project, in license, development, and
+          attitude.</p>
+
+      </td>
+    </tr>
+  </table>
 
 </div>
