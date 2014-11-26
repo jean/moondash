@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-function LayoutCtrl($state) {
+function HeaderCtrl($state) {
   this.sections = _($state.get())
     .filter(function (state) {
               return _.has(state, "section");
@@ -16,4 +16,4 @@ function LayoutCtrl($state) {
     .value();
 }
 angular.module('moondash')
-  .controller('LayoutCtrl', LayoutCtrl);
+  .controller('HeaderCtrl', HeaderCtrl);

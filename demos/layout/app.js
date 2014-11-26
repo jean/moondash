@@ -14,21 +14,28 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
                  templateUrl: 'state1.partial.html'
                }
              }
-
            })
     .state('site.state2', {
              url: '/state2',
              section: {
                'title': 'State Two'
              },
-             templateUrl: 'state2.partial.html'
+             views: {
+               'md-content@root': {
+                 templateUrl: 'state2.partial.html'
+               }
+             }
            })
     .state('site.state3', {
              url: '/state3',
              section: {
                'title': 'State Three'
              },
-             templateUrl: 'state3.partial.html'
+             views: {
+               'md-content@root': {
+                 templateUrl: 'state3.partial.html'
+               }
+             }
            });
 }
 
