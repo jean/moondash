@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="hello">
+<head>
+  <meta charset="utf-8">
+  <title>My Site</title>
+  <link type="text/css" rel="stylesheet" href="../moondash.css">
+</head>
+<body ng-controller="HelloCtrl as ctrl">
+
+<div class="container">
+  <h1 ng-bind="ctrl.title">Hello Default</h1>
+
+  <p>Simplest possible demo. Has an <code>app.js</code> which
+    initializes a module that depends on <code>moondash</code>.</p>
+</div>
+
+<script src="../moondash-vendors.js"></script>
+<script src="../moondash.js"></script>
+<script src="../moondash-templates.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

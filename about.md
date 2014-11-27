@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-order: 3
+order: 9
 ---
 
 Moondash is a MoonshotProject initiative.
