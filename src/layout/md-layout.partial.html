@@ -1,18 +1,10 @@
-<div id="md-header" class="container">
-  <div class="navbar navbar-inverse navbar-fixed-top"
-       role="navigation">
-    <div class="navbar-header">
-      <a class="navbar-brand" ui-sref="site.state1">Hello ui-router</a>
-    </div>
-    <ul id="sections" class="nav navbar-nav">
-      <li ng-repeat="section in ctrl.sections"
-          ui-sref-active="active">
-        <a ui-sref="{{ section.state}}">{{ section.title }}</a>
-      </li>
-    </ul>
+<div id="md-header" ui-view="md-header"></div>
+<div id="md-main" class="container">
+  <div class="row">
+    <div id="md-leftbar" class="col-sm-3 col-md-2"
+         ui-view="md-leftbar"></div>
+    <div id="md-content" class="col-sm-9 col-md-10"
+         ui-view="md-content"></div>
   </div>
 </div>
-
-<div id="md-content" class="container">
-  <div ui-view></div>
-</div>
+<div id="md-footer" ui-view="md-footer"></div>

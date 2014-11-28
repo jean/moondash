@@ -19,6 +19,7 @@
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js",
+    "angular-ui-router": "./node_modules/angular-ui-router/release/angular-ui-router.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {
@@ -28,7 +29,7 @@
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "lodash": "global:lodash"
+    "lodash": "global:_"
   },
   "devDependencies": {
     "browser-sync": "^1.7.0",

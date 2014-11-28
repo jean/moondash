@@ -8,9 +8,6 @@
 
  */
 
-// List some dependencies
-require('angular-ui-router');
-
 var angular = require('angular');
 angular.module('moondash', ['ui.router']);
 
