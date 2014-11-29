@@ -1,5 +1,9 @@
 var _ = require('lodash');
 
+function LayoutCtrl($rootScope, MdLayout) {
+  $rootScope.layout = MdLayout;
+}
+
 function HeaderCtrl($state) {
   this.sections = _($state.get())
     .filter(function (state) {
@@ -16,4 +20,5 @@ function HeaderCtrl($state) {
     .value();
 }
 angular.module('moondash')
+  .controller('LayoutCtrl', LayoutCtrl)
   .controller('HeaderCtrl', HeaderCtrl);

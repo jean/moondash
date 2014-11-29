@@ -1,9 +1,18 @@
 #md-main {
-  margin-top: 70px;
-  font-size: 1.2em;
+  margin-top: 50px;
 }
 
 #md-footer {
   margin-top: 5em;
   text-align: center;
+}
+
+#md-sectionsmenu {
+  background-color: lightgray;
+  padding-left: 2.5em;
+  padding-top: 1em;
+
+  .list-group-item {
+    font-size: 0.9em;
+  }
 }

@@ -2,7 +2,8 @@ function ModuleInit($stateProvider) {
   $stateProvider
     .state('layout', {
              abstract: true,
-             templateUrl: '/layout/md-layout.partial.html'
+             templateUrl: '/layout/md-layout.partial.html',
+               controller: "LayoutCtrl"
            })
     .state('root', {
              parent: 'layout',
@@ -11,8 +12,8 @@ function ModuleInit($stateProvider) {
                  templateUrl: '/layout/md-header.partial.html',
                  controller: 'HeaderCtrl as ctrl'
                },
-               'md-leftbar': {
-                 templateUrl: '/layout/md-leftbar.partial.html'
+               'md-sectionsmenu': {
+                 templateUrl: '/layout/md-sectionsmenu.partial.html'
                },
                'md-content': {
                    template: '<div ui-view="md-content"></div>'
