@@ -4,6 +4,10 @@ function LayoutCtrl($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
+function SectionsCtrl(MdSections) {
+  this.sections = MdSections.sections;
+}
+
 function HeaderCtrl($state) {
   this.sections = _($state.get())
     .filter(function (state) {
@@ -21,4 +25,5 @@ function HeaderCtrl($state) {
 }
 angular.module('moondash')
   .controller('LayoutCtrl', LayoutCtrl)
-  .controller('HeaderCtrl', HeaderCtrl);
+  .controller('HeaderCtrl', HeaderCtrl)
+  .controller('SectionsCtrl', SectionsCtrl);

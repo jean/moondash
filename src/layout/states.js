@@ -13,7 +13,8 @@ function ModuleInit($stateProvider) {
                  controller: 'HeaderCtrl as ctrl'
                },
                'md-sectionsmenu': {
-                 templateUrl: '/layout/md-sectionsmenu.partial.html'
+                 templateUrl: '/layout/md-sectionsmenu.partial.html',
+                 controller: 'SectionsCtrl as ctrl'
                },
                'md-content': {
                    template: '<div ui-view="md-content"></div>'

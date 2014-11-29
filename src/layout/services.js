@@ -1,4 +1,7 @@
 function MdLayoutService() {
+
+}
+function MdSectionsService() {
   this.sections = [
     {
       label: false,
@@ -24,5 +27,7 @@ function MdLayoutService() {
     }
   ]
 }
+
 angular.module('moondash')
-  .service('MdLayout', MdLayoutService);
+  .service('MdLayout', MdLayoutService)
+  .service('MdSections', MdSectionsService);
