@@ -14,5 +14,8 @@
 
   .list-group-item {
     font-size: 0.9em;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

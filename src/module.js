@@ -12,6 +12,6 @@ var angular = require('angular');
 angular.module('moondash', ['ui.router']);
 
 // Now the Moondash components
-require('./auth');
 require('./layout');
-
+require('./globalsection');
+require('./auth');
