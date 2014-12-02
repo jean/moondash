@@ -1,5 +1,5 @@
-function State2Ctrl($http) {
-  this.items = $http.get('/api/users');
+function State2Ctrl(items) {
+  this.items = items.data.data;
 }
 
 function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
@@ -27,7 +27,12 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
              views: {
                'md-content@root': {
                  templateUrl: 'state2.partial.html',
-                 controller: 'State2Ctrl as ctrl'
+                 controller: 'State2Ctrl as ctrl',
+                 resolve: {
+                   items: function ($http) {
+                     return $http.get('/api/users');
+                   }
+                 }
                }
              }
            })
@@ -56,12 +61,13 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
   moondashMockRestProvider.addMock(
     'users',
     [
-      [
-        'GET',
-        /api\/users$/,
-        function () {
+      {
+        method: 'GET',
+        pattern: /api\/users$/,
+        responder: function () {
           return [200, usersData];
-        }]
+        }
+      }
     ]);
 }
 

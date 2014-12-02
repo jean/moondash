@@ -9,26 +9,15 @@
 
 require('./providers');
 
-(function (ng, mod, _, undefined) {
+// TODO Not sure if there is a way, now that we are using CommonJS, to
+// eliminate this little IIFE.
+
+(function (mod) {
   'use strict';
 
   mod.run(function ($httpBackend, moondashMockRest) {
 
-    var mocks = moondashMockRest.getMocks();
-
-    // Iterate over all the registered mocks and register them
-    _.map(mocks, function (moduleMocks) {
-      // All the mocks registered for this module
-      _(moduleMocks).forEach(function (mock) {
-        var method = mock[0];
-        var match = mock[1],
-          responder = mock[2];
-        $httpBackend.when(
-          method,
-          match)
-          .respond(responder);
-      });
-    });
+    moondashMockRest.registerMocks($httpBackend);
 
     // pass through everything else
     $httpBackend.whenGET(/\/*/).passThrough();
@@ -37,4 +26,4 @@ require('./providers');
 
   });
 
-}(angular, angular.module('moondashMock', ['moondash', 'ngMockE2E']), _));
+}(angular.module('moondashMock', ['moondash', 'ngMockE2E'])));
