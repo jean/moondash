@@ -30,7 +30,9 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
     .state("root.state3", {
              url: '/state3',
              section: {
-               'title': 'State Three'
+               group: 'root',
+               id: 'state3',
+               label: 'State Three'
              },
              views: {
                '@': {
