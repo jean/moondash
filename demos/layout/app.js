@@ -1,5 +1,5 @@
-function PeopleCtrl(items) {
-  this.items = items.data;
+function PeopleCtrl(res) {
+  this.items = res.data;
 }
 
 function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
@@ -21,6 +21,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
            })
     .state('site.people', {
              url: '/people',
+             title: 'People',
              section: {
                'title': 'People'
              },
@@ -29,7 +30,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
                  templateUrl: 'people.partial.html',
                  controller: 'PeopleCtrl as ctrl',
                  resolve: {
-                   items: function (Restangular) {
+                   res: function (Restangular) {
                      return Restangular.one('people').get();
                    }
                  }
@@ -39,7 +40,10 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
 
   // TODO move this around later
   var peopleData = {
-    data: [
+    resource: {
+      id: 99, title: 'People'
+    },
+    items: [
       {'id': 1, 'title': 'Ada Lovelace'},
       {'id': 2, 'title': 'Grace Hopper'}
     ]
