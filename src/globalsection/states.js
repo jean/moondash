@@ -9,7 +9,7 @@ function ModuleInit($stateProvider) {
              }
            })
     .state('root.settings', {
-             url: '/settiings',
+             url: '/settings',
              views: {
                'md-content@root': {
                  template: '<h2>Settings</h2>'
