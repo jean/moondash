@@ -8,7 +8,6 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
     .state('site', {
              parent: 'root',
              sectionGroup: {
-               id: 'demo',
                label: 'Demo',
                priority: 2
              }
@@ -16,8 +15,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
     .state('site.state1', {
              url: '/state1',
              section: {
-               group: 'demo',
-               id: 'state1',
+               group: 'site',
                label: 'State One',
                priority: 3
              },
@@ -31,8 +29,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
              url: '/people',
              title: 'People',
              section: {
-               group: 'demo',
-               id: 'people',
+               group: 'site',
                label: 'People',
                priority: 4
              },

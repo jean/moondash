@@ -33,9 +33,10 @@ function MdSectionsService() {
       .filter('sectionGroup')
       .forEach(
       function (state) {
-        var sg = state.sectionGroup;
-        sectionGroups[sg.id] = _(sg)
-          .pick(['id', 'label', 'priority']).value();
+        var sg = _(state.sectionGroup)
+          .pick(['label', 'priority']).value();
+        sg.state = state.name;
+        sectionGroups[sg.state] = sg;
       });
 
     // Now get the sections
@@ -43,10 +44,10 @@ function MdSectionsService() {
       .forEach(
       function (state) {
         var section = state.section;
-        var s = _(section).pick(['group', 'id', 'label', 'priority'])
+        var s = _(section).pick(['group', 'label', 'priority'])
           .value();
         s.state = state.name;
-        sections[s.id] = s;
+        sections[s.state] = s;
       });
 
     // And any subsections
@@ -62,7 +63,7 @@ function MdSectionsService() {
         }
 
         // Add this subsection
-        var ss = _(subsection).pick(['priority', 'id', 'label'])
+        var ss = _(subsection).pick(['priority', 'label'])
           .value();
         ss.state = state.name;
         section.subsections.push(ss);
@@ -74,7 +75,7 @@ function MdSectionsService() {
       function (sg) {
         // Get all the sections for this section group
         sg.sections = _(sections)
-          .filter({group: sg.id})
+          .filter({group: sg.state})
           .map(
           function (s) {
             if (s.subsections) {

@@ -4,7 +4,6 @@ function ModuleInit($stateProvider) {
              url: '/dashboard',
              section: {
                group: 'root',
-               id: 'dashboard',
                label: 'Dashboard',
                priority: 1
              },
@@ -17,8 +16,7 @@ function ModuleInit($stateProvider) {
     .state('root.dashboard.all', {
              url: '/all',
              subsection: {
-               section: 'dashboard',
-               id: 'dashboard-all',
+               section: 'root.dashboard',
                label: 'All',
                priority: 0
              },
@@ -31,9 +29,8 @@ function ModuleInit($stateProvider) {
     .state('root.dashboard.some', {
              url: '/some',
              subsection: {
-               section: 'dashboard',
+               section: 'root.dashboard',
                group: 'dashboard',
-               id: 'dashboard-some',
                label: 'Some'
              },
              views: {
@@ -46,7 +43,6 @@ function ModuleInit($stateProvider) {
              url: '/settings',
              section: {
                group: 'root',
-               id: 'settings',
                label: 'Settings',
                priority: 2
              },

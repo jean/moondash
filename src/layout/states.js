@@ -8,7 +8,6 @@ function ModuleInit($stateProvider) {
     .state('root', {
              parent: 'layout',
              sectionGroup: {
-               id: 'root',
                label: false,
                priority: 0
              },

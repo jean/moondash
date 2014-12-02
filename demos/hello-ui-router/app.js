@@ -5,7 +5,6 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              url: '/state1',
              section: {
                group: 'root',
-               id: 'state1',
                label: 'State One'
              },
              views: {
@@ -18,7 +17,6 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              url: '/state2',
              section: {
                group: 'root',
-               id: 'state2',
                label: 'State Two'
              },
              views: {
@@ -31,7 +29,6 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              url: '/state3',
              section: {
                group: 'root',
-               id: 'state3',
                label: 'State Three'
              },
              views: {
