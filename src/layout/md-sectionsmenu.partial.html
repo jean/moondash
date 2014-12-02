@@ -1,10 +1,10 @@
-<div ng-repeat="sg in ctrl.sectionGroups">
+<div ng-repeat="sg in ::ctrl.sectionGroups">
   <h5 class="text-muted"
       ng-if="sg.label" ng-bind="sg.label">Sections Menu</h5>
 
   <ul class="list-group">
     <li class="list-group-item"
-        ng-repeat="section in sg.sections">
+        ng-repeat="section in ::sg.sections">
       <a
           ng-if="!section.subsections"
           ng-bind="section.label"
@@ -14,7 +14,7 @@
         <span class="list-group-item-heading"
               ng-bind="section.label">Section Heading</span>
         <p class="list-group-item-text">
-      <div ng-repeat="ss in section.subsections">
+      <div ng-repeat="ss in ::section.subsections">
         <a
             ng-bind="ss.label"
             ui-sref="{{ ss.state }}">
