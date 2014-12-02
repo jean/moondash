@@ -4,7 +4,8 @@ function LayoutCtrl($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
-function HeaderCtrl($state, MdConfig) {
+function HeaderCtrl($state, MdConfig, $auth) {
+  this.$auth = $auth;
   this.siteName = MdConfig.siteName;
 }
 
