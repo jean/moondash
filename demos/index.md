@@ -168,3 +168,7 @@ state:
 These states in your application, as "sections", can have nested child 
 states and grandchildren, providing a powerful way to organize state, 
 logic, UX, and configuration up and down a sitemap.
+
+## Layout
+
+[demo](/moondash/demos/build/layout)

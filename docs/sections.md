@@ -79,7 +79,7 @@ section group:
          url: '/receivables',
          section: {
            group: 'reports',
-           label: 'Receivales',
+           label: 'Receivables',
            priority: 3
          },
          views: {
