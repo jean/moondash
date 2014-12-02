@@ -18,3 +18,8 @@ Developer setup presumes a NodeJS environment containing ``npm``.
 
 2. gulp
 
+## Tests
+
+How to run tests:
+
+1. gulp test
