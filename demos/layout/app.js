@@ -1,4 +1,8 @@
-function ModuleInit($stateProvider, $urlRouterProvider) {
+function State2Ctrl($http) {
+  this.items = $http.get('/api/users');
+}
+
+function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
   $urlRouterProvider.otherwise('/state1');
   $stateProvider
     .state('site', {
@@ -22,7 +26,8 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'state2.partial.html'
+                 templateUrl: 'state2.partial.html',
+                 controller: 'State2Ctrl as ctrl'
                }
              }
            })
@@ -37,7 +42,29 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
                }
              }
            });
+
+  // TODO move this around later
+  var usersData = {
+    data: [
+      {
+        'id': 'bob',
+        'title': 'Bob Jones'
+      }
+    ]
+  };
+
+  moondashMockRestProvider.addMock(
+    'users',
+    [
+      [
+        'GET',
+        /api\/users$/,
+        function () {
+          return [200, usersData];
+        }]
+    ]);
 }
 
 angular.module('hello-ui-router', ['moondash'])
-  .config(ModuleInit);
+  .config(ModuleInit)
+  .controller('State2Ctrl', State2Ctrl);
