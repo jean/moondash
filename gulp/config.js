@@ -3,6 +3,9 @@ var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
+  test: {
+    karmaConfSrc: 'karma.conf.js',
+  },
   browserSync: {
     server: {
       // We're serving the src folder as well
