@@ -5,7 +5,7 @@ function LayoutCtrl($rootScope, MdLayout) {
 }
 
 function SectionsCtrl(MdSections) {
-  this.sections = MdSections.sections;
+  this.sectionGroups = MdSections.sectionGroups;
 }
 
 function HeaderCtrl($state, MdConfig) {

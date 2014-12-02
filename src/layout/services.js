@@ -18,36 +18,23 @@ function MdLayoutService($rootScope, MdConfig) {
   $rootScope.$on('$stateChangeSuccess', changeTitle);
 }
 
-function MdSectionsService($state) {
-  this.sections = [
-    {
-      label: false,
-      items: [
-        {
-          label: "Dashboard", state: "root.dashboard"
-        },
-        {
-          label: "Settings", state: "root.settings"
-        }
-      ]
-    },
-    {
-      label: "Types",
-      items: [
-        {
-          label: "Users", state: "root.types.users"
-        },
-        {
-          label: "Invoices", state: "root.types.invoices"
-        }
-      ]
-    }
-  ]
+function MdSectionsService() {
+  this.sectionGroups = [];
+
+  this.addSectionGroup = function (sg) {
+    this.sectionGroups.push(sg);
+  };
+
+  this.addSection = function (groupId, section) {
+    // Allow sitedev app to extend the root section group
+  };
+}
+
+function ModuleRun($rootScope, MdLayout) {
+  $rootScope.layout = MdLayout;
 }
 
 angular.module('moondash')
   .service('MdLayout', MdLayoutService)
   .service('MdSections', MdSectionsService)
-  .run(function ($rootScope, MdLayout, $state) {
-         $rootScope.layout = MdLayout;
-       });
+  .run(ModuleRun);

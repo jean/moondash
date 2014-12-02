@@ -42,5 +42,37 @@ function ModuleInit($stateProvider) {
            });
 }
 
+function ModuleRun(MdSections) {
+  MdSections.addSectionGroup(
+    {
+      id: 'root',
+      label: false,
+      sections: [
+        {
+          label: "Dashboard", state: "root.dashboard"
+        },
+        {
+          label: "Settings", state: "root.settings"
+        }
+      ]
+    }
+  );
+  MdSections.addSectionGroup(
+    {
+      id: 'types',
+      label: "Types",
+      sections: [
+        {
+          label: "Users", state: "root.types.users"
+        },
+        {
+          label: "Invoices", state: "root.types.invoices"
+        }
+      ]
+    }
+  );
+}
+
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleInit)
+  .run(ModuleRun);
