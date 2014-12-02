@@ -9,7 +9,7 @@ function ModuleInit($stateProvider) {
              parent: 'layout',
              sectionGroup: {
                id: 'root',
-               label: 'Root',
+               label: false,
                priority: 0
              },
              views: {

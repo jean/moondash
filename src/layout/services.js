@@ -18,13 +18,7 @@ function MdLayoutService($rootScope, MdConfig) {
   $rootScope.$on('$stateChangeSuccess', changeTitle);
 }
 
-function MdSectionsService($injector) {
-  this.sectionGroups = [];
-
-  this.addSectionGroup = function (sg) {
-    this.sectionGroups.push(sg);
-  };
-
+function MdSectionsService() {
   this.addSection = function (groupId, section) {
     // Allow sitedev app to extend the root section group
   };
@@ -51,7 +45,7 @@ function MdSectionsService($injector) {
         var section = state.section;
         var s = _(section).pick(['group', 'id', 'label', 'priority'])
           .value();
-        s.name = state.name;
+        s.state = state.name;
         sections[s.id] = s;
       });
 
@@ -66,14 +60,11 @@ function MdSectionsService($injector) {
         if (!section.subsections) {
           section.subsections = [];
         }
-        // Blow away the section's state, as it is just a holder for
-        // subsections.
-        delete section.state;
 
         // Add this subsection
         var ss = _(subsection).pick(['priority', 'id', 'label'])
           .value();
-        ss.name = state.name;
+        ss.state = state.name;
         section.subsections.push(ss);
       });
 
@@ -86,10 +77,12 @@ function MdSectionsService($injector) {
           .filter({group: sg.id})
           .map(
           function (s) {
-            var newSubsections = _(s.subsections)
-              .sortBy('priority')
-              .value();
-            s.subsections = newSubsections;
+            if (s.subsections) {
+              var newSubsections = _(s.subsections)
+                .sortBy('priority')
+                .value();
+              s.subsections = newSubsections;
+            }
             return s;
           })
           .sortBy('priority')
@@ -98,24 +91,6 @@ function MdSectionsService($injector) {
       })
       .sortBy('priority')
       .value();
-
-
-
-    // Called by the sections control
-    //var sections = _($state.get())
-    //  .filter(function (state) {
-    //            return _.has(state, "section");
-    //          })
-    //  .map(function (state) {
-    //         var s = state.section;
-    //         return {
-    //           title: s.title,
-    //           state: state.name
-    //         };
-    //       })
-    //  //.sortBy("priority")
-    //  .value();
-
   }
 }
 

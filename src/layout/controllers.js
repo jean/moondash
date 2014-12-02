@@ -10,7 +10,6 @@ function HeaderCtrl($state, MdConfig) {
 
 function SectionsCtrl(MdSections, $state) {
   this.sectionGroups = MdSections.getSectionGroups($state);
-  console.debug('sectionGroups332', this.sectionGroups);
 }
 
 angular.module('moondash')
