@@ -1,4 +1,4 @@
-function State2Ctrl(items) {
+function PeopleCtrl(items) {
   this.items = items.data.data;
 }
 
@@ -19,58 +19,48 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
                }
              }
            })
-    .state('site.state2', {
-             url: '/state2',
+    .state('site.people', {
+             url: '/people',
              section: {
-               'title': 'State Two'
+               'title': 'People'
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'state2.partial.html',
-                 controller: 'State2Ctrl as ctrl',
+                 templateUrl: 'people.partial.html',
+                 controller: 'PeopleCtrl as ctrl',
                  resolve: {
                    items: function ($http) {
-                     return $http.get('/api/users');
+                     return $http.get('/api/people');
                    }
                  }
-               }
-             }
-           })
-    .state('site.state3', {
-             url: '/state3',
-             section: {
-               'title': 'State Three'
-             },
-             views: {
-               'md-content@root': {
-                 templateUrl: 'state3.partial.html'
                }
              }
            });
 
   // TODO move this around later
-  var usersData = {
+  var peopleData = {
     data: [
-      {
-        'id': 'bob',
-        'title': 'Bob Jones'
-      }
+      {'id': 1, 'title': 'Ada Lovelace'},
+      {'id': 2, 'title': 'Grace Hopper'}
     ]
   };
 
-  moondashMockRestProvider.addMock(
-    'users',
+  moondashMockRestProvider.addMocks(
+    'people',
     [
       {
-        method: 'GET',
-        pattern: /api\/users$/,
-        responder: function () {
-          return [200, usersData];
-        }
+        pattern: /api\/people$/, responseData: peopleData
       }
+      //{
+      //  method: 'GET',
+      //  pattern: /api\/people$/,
+      //  responder: function () {
+      //    return [200, peopleData];
+      //  }
+      //}
     ]);
 }
 
-angular.module('hello-ui-router', ['moondash'])
+angular.module('layout', ['moondash'])
   .config(ModuleInit)
-  .controller('State2Ctrl', State2Ctrl);
+  .controller('PeopleCtrl', PeopleCtrl);

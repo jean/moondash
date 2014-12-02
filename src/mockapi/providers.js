@@ -11,27 +11,27 @@ function MoondashMocks() {
       registerMocks: function ($httpBackend) {
         // Iterate over all the registered mocks and register them
         _.map(mocks, function (moduleMocks) {
-          // All the mocks registered for this module
           _(moduleMocks).forEach(function (mock) {
-            $httpBackend.when(
-              mock.method,
-              mock.pattern)
-              .respond(mock.responder);
+            // Make method and responder optional
+            var method = mock.method ? mock.method : 'GET',
+              genericResponder = function () {
+                return [200, mock.responseData];
+              };
+            var responder = mock.responder ? mock.responder : genericResponder;
+
+            $httpBackend.when(method, mock.pattern)
+              .respond(responder);
           });
         });
       }
     };
   };
 
-  this.addMock = function (k, v) {
+  this.addMocks = function (k, v) {
     this.mocks[k] = v;
   };
 }
 
-function ModuleInit() {
-  /* Empty for now */
-}
 
 angular.module("moondash")
-  .provider('moondashMockRest', MoondashMocks)
-  .config(ModuleInit);
+  .provider('moondashMockRest', MoondashMocks);
