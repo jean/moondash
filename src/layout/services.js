@@ -1,7 +1,7 @@
-function MdLayoutService() {
+function MdLayoutService () {
 
 }
-function MdSectionsService() {
+function MdSectionsService ($state) {
   this.sections = [
     {
       label: false,
@@ -18,7 +18,7 @@ function MdSectionsService() {
       label: "Types",
       items: [
         {
-          label: "People", state: "root.types.people"
+          label: "Users", state: "root.types.users"
         },
         {
           label: "Invoices", state: "root.types.invoices"

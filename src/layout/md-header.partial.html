@@ -2,7 +2,9 @@
   <div class="navbar navbar-inverse navbar-fixed-top"
        role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" ui-sref="site.state1">Hello ui-router</a>
+      <a class="navbar-brand"
+         href="#/"
+         ng-bind="ctrl.siteName">Site Name</a>
     </div>
     <ul id="sections" class="nav navbar-nav">
       <li ng-repeat="section in ctrl.sections"

@@ -8,7 +8,8 @@ function SectionsCtrl(MdSections) {
   this.sections = MdSections.sections;
 }
 
-function HeaderCtrl($state) {
+function HeaderCtrl($state, MdConfig) {
+  this.siteName = MdConfig.siteName;
   this.sections = _($state.get())
     .filter(function (state) {
               return _.has(state, "section");

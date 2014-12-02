@@ -24,11 +24,11 @@ function ModuleInit($stateProvider) {
                }
              }
            })
-    .state('root.types.people', {
+    .state('root.types.users', {
              url: '/types',
              views: {
                'md-content@root': {
-                 template: '<h2>People</h2>'
+                 template: '<h2>Users</h2>'
                }
              }
            })

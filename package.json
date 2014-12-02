@@ -16,12 +16,14 @@
     "angular-mocks": "~1.3.0",
     "angular-ui-router": "git://github.com/angular-ui/ui-router",
     "bootstrap-sass": "^3.3.1",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "restangular": "^1.4.0"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js",
     "angular-mocks": "./node_modules/angular-mocks/angular-mocks.js",
     "angular-ui-router": "./node_modules/angular-ui-router/release/angular-ui-router.js",
+    "restangular": "./node_modules/restangular/dist/restangular.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {
