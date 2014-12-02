@@ -1,5 +1,5 @@
 function PeopleCtrl(items) {
-  this.items = items.data.data;
+  this.items = items.data;
 }
 
 function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
@@ -29,8 +29,8 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
                  templateUrl: 'people.partial.html',
                  controller: 'PeopleCtrl as ctrl',
                  resolve: {
-                   items: function ($http) {
-                     return $http.get('/api/people');
+                   items: function (Restangular) {
+                     return Restangular.one('people').get();
                    }
                  }
                }
