@@ -1,13 +1,28 @@
-<div ng-repeat="section in ctrl.sections">
+<div ng-repeat="sg in ctrl.sectionGroups">
   <h5 class="text-muted"
-      ng-if="section.label" ng-bind="section.label">Sections Menu</h5>
+      ng-if="sg.label" ng-bind="sg.label">Sections Menu</h5>
 
-  <div class="list-group">
-    <a class="list-group-item"
-       ng-repeat="si in section.items"
-       ng-bind="si.label"
-       ui-sref="{{ si.state }}" ui-sref-active="active">
-      Section Item
-    </a>
-  </div>
+  <ul class="list-group">
+    <li class="list-group-item"
+        ng-repeat="section in sg.sections">
+      <a
+          ng-if="!section.subsections"
+          ng-bind="section.label"
+          ui-sref="{{ section.state }}">
+        Section</a>
+      <span ng-if="section.subsections">
+        <span class="list-group-item-heading"
+              ng-bind="section.label">Section Heading</span>
+        <p class="list-group-item-text">
+      <div ng-repeat="ss in section.subsections">
+        <a
+            ng-bind="ss.label"
+            ui-sref="{{ ss.state }}">
+          Sub Section</a>
+      </div>
+
+        </p>
+      </span>
+    </li>
+  </ul>
 </div>
