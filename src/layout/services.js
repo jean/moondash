@@ -1,7 +1,7 @@
-function MdLayoutService () {
-
+function MdLayoutService() {
+  this.pageTitle = 'Moondash';
 }
-function MdSectionsService ($state) {
+function MdSectionsService($state) {
   this.sections = [
     {
       label: false,
@@ -30,4 +30,7 @@ function MdSectionsService ($state) {
 
 angular.module('moondash')
   .service('MdLayout', MdLayoutService)
-  .service('MdSections', MdSectionsService);
+  .service('MdSections', MdSectionsService)
+  .run(function ($rootScope, MdLayout, $state) {
+         $rootScope.layout = MdLayout;
+       });
