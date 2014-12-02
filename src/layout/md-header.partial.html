@@ -6,11 +6,5 @@
          href="#/"
          ng-bind="ctrl.siteName">Site Name</a>
     </div>
-    <ul id="sections" class="nav navbar-nav">
-      <li ng-repeat="section in ctrl.sections"
-          ui-sref-active="active">
-        <a ui-sref="{{ section.state}}">{{ section.title }}</a>
-      </li>
-    </ul>
   </div>
 </div>

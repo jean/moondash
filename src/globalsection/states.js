@@ -2,6 +2,40 @@ function ModuleInit($stateProvider) {
   $stateProvider
     .state('root.dashboard', {
              url: '/dashboard',
+             section: {
+               group: 'root',
+               id: 'dashboard',
+               label: 'Dashboard',
+               priority: 1
+             },
+             views: {
+               'md-content@root': {
+                 template: '<h2>Dashboard</h2>'
+               }
+             }
+           })
+    .state('root.dashboard.all', {
+             url: '/all',
+             subsection: {
+               section: 'dashboard',
+               id: 'dashboard-all',
+               label: 'All',
+               priority: 0
+             },
+             views: {
+               'md-content@root': {
+                 template: '<h2>Dashboard</h2>'
+               }
+             }
+           })
+    .state('root.dashboard.some', {
+             url: '/some',
+             subsection: {
+               section: 'dashboard',
+               group: 'dashboard',
+               id: 'dashboard-some',
+               label: 'Some'
+             },
              views: {
                'md-content@root': {
                  template: '<h2>Dashboard</h2>'
@@ -10,6 +44,12 @@ function ModuleInit($stateProvider) {
            })
     .state('root.settings', {
              url: '/settings',
+             section: {
+               group: 'root',
+               id: 'settings',
+               label: 'Settings',
+               priority: 2
+             },
              views: {
                'md-content@root': {
                  template: '<h2>Settings</h2>'
@@ -25,7 +65,7 @@ function ModuleInit($stateProvider) {
              }
            })
     .state('root.types.users', {
-             url: '/types',
+             url: '/users',
              views: {
                'md-content@root': {
                  template: '<h2>Users</h2>'
@@ -42,37 +82,6 @@ function ModuleInit($stateProvider) {
            });
 }
 
-function ModuleRun(MdSections) {
-  MdSections.addSectionGroup(
-    {
-      id: 'root',
-      label: false,
-      sections: [
-        {
-          label: "Dashboard", state: "root.dashboard"
-        },
-        {
-          label: "Settings", state: "root.settings"
-        }
-      ]
-    }
-  );
-  MdSections.addSectionGroup(
-    {
-      id: 'types',
-      label: "Types",
-      sections: [
-        {
-          label: "Users", state: "root.types.users"
-        },
-        {
-          label: "Invoices", state: "root.types.invoices"
-        }
-      ]
-    }
-  );
-}
 
 angular.module('moondash')
-  .config(ModuleInit)
-  .run(ModuleRun);
+  .config(ModuleInit);
