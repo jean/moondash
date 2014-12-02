@@ -4,7 +4,9 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
     .state("root.state1", {
              url: '/state1',
              section: {
-               'title': 'State One'
+               group: 'root',
+               id: 'state1',
+               label: 'State One'
              },
              views: {
                'md-content@root': {
@@ -15,7 +17,9 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
     .state("root.state2", {
              url: '/state2',
              section: {
-               'title': 'State Two'
+               group: 'root',
+               id: 'state2',
+               label: 'State Two'
              },
              views: {
                'md-content@root': {
