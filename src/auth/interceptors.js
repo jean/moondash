@@ -13,13 +13,12 @@ function AuthzResponseRedirect($q, $injector) {
       if (rejection.status == 403 || rejection.status == 401) {
         // Redirect to the login form
         $state.go('auth.login');
-        var msg = 'Login required for: ' + url;
-        $notice(msg);
+        var msg = 'Login required for data at: ' + url;
+        $notice.show(msg);
       }
       return $q.reject(rejection);
     }
   };
-
 }
 
 function ModuleConfig($httpProvider, $authProvider) {

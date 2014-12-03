@@ -12,15 +12,43 @@ function MoondashMocks() {
         // Iterate over all the registered mocks and register them
         _.map(mocks, function (moduleMocks) {
           _(moduleMocks).forEach(function (mock) {
-            // Make method and responder optional
-            var method = mock.method ? mock.method : 'GET',
-              genericResponder = function () {
-                return [200, mock.responseData];
-              };
-            var responder = mock.responder ? mock.responder : genericResponder;
+            // Get the data from the mock
+            var method = mock.method,
+              responder = mock.responder;
+
+            // If there is no method listed, default to GET
+            if (!method) {
+              method = 'GET';
+              // If there is no responder listed, provide a sample
+              if (!responder) {
+                responder = function (method, url, data, headers) {
+                  console.debug('headers', _(headers).has('Authorization'));
+                  return [200, mock.responseData];
+                }
+              }
+            }
+
+            // Handle mocks with authenticate:true. Do so by wrapping the
+            // actual responder with one that first checks for the header.
+            var wrappedResponder = responder;
+            if (mock.authenticate) {
+              wrappedResponder = function (method, url, data, headers) {
+                if (_(headers).has('Authorization')) {
+                  // We are authenticated, return original responder
+                  return responder(method, url, data, headers);
+                } else {
+                  // Return a generic challenge
+                  return [401, {"message": "Login required"}];
+                }
+              }
+            }
+
+            // Forbidden errors can't be mocked, as we don't have,
+            // in-browser, an easy way to unpack the JWT and validate
+            // the user.
 
             $httpBackend.when(method, mock.pattern)
-              .respond(responder);
+              .respond(wrappedResponder);
           });
         });
       }
