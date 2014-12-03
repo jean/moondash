@@ -1,4 +1,4 @@
-function LoginCtrl($auth, notice) {
+function LoginCtrl($auth, $notice) {
   var _this = this;
   this.errorMessage = false;
 
@@ -6,7 +6,7 @@ function LoginCtrl($auth, notice) {
     $auth.login({username: username, password: password})
       .then(function () {
               _this.errorMessage = false;
-              notice.show('You have successfully logged in');
+              $notice.show('You have successfully logged in');
             })
       .catch(function (response) {
                _this.errorMessage = response.data.message;
@@ -14,10 +14,15 @@ function LoginCtrl($auth, notice) {
   }
 }
 
-function LogoutCtrl() {
+function LogoutCtrl($auth, $notice) {
+  $auth.logout()
+    .then(function () {
+            $notice.show('You have been logged out');
+          });
 }
 
-function ProfileCtrl() {
+function ProfileCtrl(profile) {
+  this.profile = profile;
 }
 
 angular.module('moondash')

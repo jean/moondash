@@ -20,4 +20,4 @@ function NoticeService($modal) {
 }
 
 angular.module('moondash')
-  .service('notice', NoticeService);
+  .service('$notice', NoticeService);

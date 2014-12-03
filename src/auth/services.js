@@ -1,13 +1,7 @@
-function Profile($http) {
+function Profile(Restangular) {
   return {
     getProfile: function () {
-      return $http.get('/api/me');
-    },
-    updateProfile: function (profileData) {
-      return $http.put('/api/me', profileData);
-    },
-    getUsers: function () {
-      return $http.get('/api/users');
+      return Restangular.one('/api/auth/me').get();
     }
   };
 }

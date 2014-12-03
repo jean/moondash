@@ -12,7 +12,7 @@ function ModuleInit(moondashMockRestProvider) {
     'auth',
     [
       {
-        pattern: /api\/me/, responseData: user
+        pattern: /api\/auth\/me/, responseData: user
       },
       {
         method: 'POST',

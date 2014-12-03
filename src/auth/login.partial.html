@@ -4,6 +4,9 @@
       <h2 class="text-center">Local Login</h2>
 
       <form method="post"
+
+            ng-init="username='admin';password='1'"
+
             ng-submit="ctrl.login(loginForm.$valid, username, password)"
             name="loginForm">
         <div class="alert alert-danger" role="alert"
