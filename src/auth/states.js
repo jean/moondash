@@ -1,6 +1,10 @@
 function ModuleConfig($stateProvider) {
   $stateProvider
-    .state('root.login', {
+    .state('auth', {
+             url: '/auth',
+             parent: 'root'
+           })
+    .state('auth.login', {
              url: '/login',
              views: {
                'md-content@root': {
@@ -9,7 +13,7 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
-    .state('root.logout', {
+    .state('auth.logout', {
              url: '/logout',
              views: {
                'md-content@root': {
@@ -18,7 +22,7 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
-    .state('root.profile', {
+    .state('auth.profile', {
              url: '/profile',
              //authenticate: true,
              views: {

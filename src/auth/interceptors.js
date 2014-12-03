@@ -12,7 +12,7 @@ function AuthzResponseRedirect($q, $injector) {
       var url = rejection.config.url;
       if (rejection.status == 403 || rejection.status == 401) {
         // Redirect to the login form
-        $state.go('siteroot.login');
+        $state.go('auth.login');
         var msg = 'Login required for: ' + url;
         $notice(msg);
       }
@@ -43,7 +43,7 @@ function ModuleRun($rootScope, $state, $auth, $notice) {
         var t = toState.title || toState.name;
         var msg = 'The page ' + t + ' requires a login';
         $notice.show(msg)
-        $state.transitionTo("root.login");
+        $state.transitionTo("auth.login");
         event.preventDefault();
       }
     });
