@@ -11,13 +11,13 @@
 <!--TODO XXX Hack to get angular-bootstrap templates loaded-->
 <script type="text/ng-template" id="template/modal/backdrop.html">
   <div class="modal-backdrop fade {{ backdropClass }}"
-       ng-class="{in: animate}"
+       ng-class="{in: animate, out: animate}"
        ng-style="{'z-index': 1040 + (index && 1 || 0) + index*10}"
       ></div>
 </script>
 <script type="text/ng-template" id="template/modal/window.html">
   <div tabindex="-1" role="dialog" class="modal fade"
-       ng-class="{in: animate}"
+       ng-class="{in: animate, out: animate}"
        ng-style="{'z-index': 1050 + index*10, display: 'block'}"
        ng-click="close($event)">
     <div class="modal-dialog"

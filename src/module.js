@@ -40,3 +40,4 @@ require('./globalsection');
 require('./configurator');
 require('./mockapi');
 require('./auth');
+require('./notice');

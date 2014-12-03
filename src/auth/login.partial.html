@@ -3,24 +3,10 @@
     <div class="panel-body">
       <h2 class="text-center">Local Login</h2>
 
-
-      <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-          <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" ng-click="ok()">OK</button>
-          <button class="btn btn-warning" ng-click="cancel()">Cancel
-          </button>
-        </div>
-      </script>
-      <button class="btn btn-default" ng-click="ctrl.open()">Open me!
-      </button>
-
-
       <form method="post"
+
+            ng-init="username='y'; password='y'"
+
             ng-submit="ctrl.login(loginForm.$valid, username, password)"
             name="loginForm">
         <div class="form-group">
@@ -45,3 +31,8 @@
     </div>
   </div>
 </div>
+<script type="text/ng-template" id="noticeModal.html">
+  <div class="modal-body" ng-bind="ctrl.message">
+    The message
+  </div>
+</script>
