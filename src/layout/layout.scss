@@ -19,3 +19,8 @@
     }
   }
 }
+
+.notice.fade:not(.in).right .modal-dialog {
+	-webkit-transform: translate3d(125%, 0, 0);
+	transform: translate3d(125%, 0, 0);
+}

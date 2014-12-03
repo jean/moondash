@@ -1,6 +1,7 @@
 function LoginCtrl($auth, notice) {
   var _this = this;
 
+  notice.show('starting')
   this.login = function ($valid, username, password) {
     $auth.login({username: username, password: password})
       .then(function () {

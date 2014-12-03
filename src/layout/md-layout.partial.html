@@ -16,7 +16,7 @@
       ></div>
 </script>
 <script type="text/ng-template" id="template/modal/window.html">
-  <div tabindex="-1" role="dialog" class="modal fade"
+  <div tabindex="-1" role="dialog" class="modal fade right notice"
        ng-class="{in: animate, out: animate}"
        ng-style="{'z-index': 1050 + index*10, display: 'block'}"
        ng-click="close($event)">
@@ -24,5 +24,10 @@
          ng-class="{'modal-sm': size == 'sm', 'modal-lg': size == 'lg'}">
       <div class="modal-content" modal-transclude></div>
     </div>
+  </div>
+</script>
+<script type="text/ng-template" id="noticeModal.html">
+  <div class="modal-body" ng-bind="ctrl.message">
+    The message
   </div>
 </script>
