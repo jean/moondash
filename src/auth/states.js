@@ -32,7 +32,7 @@ function ModuleConfig($stateProvider) {
                }
              },
              resolve: {
-               profile: function (MdProfile, $notice) {
+               profile: function (MdProfile) {
                  return MdProfile.getProfile();
                }
              }

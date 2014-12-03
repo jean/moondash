@@ -21,8 +21,7 @@ function MoondashMocks() {
               method = 'GET';
               // If there is no responder listed, provide a sample
               if (!responder) {
-                responder = function (method, url, data, headers) {
-                  console.debug('headers', _(headers).has('Authorization'));
+                responder = function () {
                   return [200, mock.responseData];
                 }
               }

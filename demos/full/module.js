@@ -1,6 +1,10 @@
+(function () {
 
-function ModuleConfig() {
-}
+  function ModuleConfig() {
 
-angular.module('full', ['moondash'])
-  .config(ModuleConfig);
+  }
+
+  angular.module('full', ['moondash'])
+    .config(ModuleConfig);
+
+})();

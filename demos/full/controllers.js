@@ -1,6 +1,9 @@
-function PeopleCtrl(resource) {
-  this.items = resource.items;
-}
+(function () {
+  function FeaturesCtrl(resource) {
+    this.features = resource.items;
+  }
 
-angular.module('full', ['moondash'])
-  .controller('PeopleCtrl', PeopleCtrl);
+  angular.module('full')
+    .controller('FeaturesCtrl', FeaturesCtrl);
+
+})();

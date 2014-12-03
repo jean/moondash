@@ -1,24 +1,28 @@
-function ModuleConfig(moondashMockRestProvider) {
+(function () {
+  function ModuleConfig(moondashMockRestProvider) {
 
-  // TODO move this around later
-  var peopleData = {
-    resource: {
-      id: 99, title: 'People'
-    },
-    items: [
-      {'id': 1, 'title': 'Ada Lovelace'},
-      {'id': 2, 'title': 'Grace Hopper'}
-    ]
-  };
+    // TODO move this around later
+    var features = {
+      resource: {
+        id: 99, title: 'Features'
+      },
+      items: [
+        'Split into better file structure (module.js, states.js, etc.)',
+        'This feature list is done with a mock API calls'
+      ]
+    };
 
-  moondashMockRestProvider.addMocks(
-    'people',
-    [
-      {
-        pattern: /api\/people$/, responseData: peopleData, authenticate: true
-      }
-    ]);
-}
+    moondashMockRestProvider.addMocks(
+      'features',
+      [
+        {
+          pattern: /api\/features$/,
+          responseData: features
+        }
+      ]);
+  }
 
-angular.module('moondash')
-  .config(ModuleConfig);
+  angular.module('full')
+    .config(ModuleConfig);
+
+})();

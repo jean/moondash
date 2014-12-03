@@ -1,47 +1,51 @@
-function ModuleConfig($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('site', {
-             parent: 'root',
-             sectionGroup: {
-               label: 'Demo',
-               priority: 2
-             }
-           })
-    .state('site.state1', {
-             url: '/state1',
-             section: {
-               group: 'site',
-               label: 'State One',
-               priority: 3
-             },
-             views: {
-               'md-content@root': {
-                 templateUrl: 'state1.partial.html'
+(function () {
+  function ModuleConfig($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider
+      .state('site', {
+               parent: 'root',
+               sectionGroup: {
+                 label: 'Demo',
+                 priority: 2
                }
-             }
-           })
-    .state('site.people', {
-             url: '/people',
-             title: 'People',
-             section: {
-               group: 'site',
-               label: 'People',
-               priority: 4
-             },
-             views: {
-               'md-content@root': {
-                 templateUrl: 'people.partial.html',
-                 controller: 'PeopleCtrl as ctrl',
-                 resolve: {
-                   resource: function (Restangular) {
-                     return Restangular.one('people').get();
+             })
+      .state('site.home', {
+               url: '/home',
+               title: 'Home',
+               section: {
+                 group: 'site',
+                 label: 'Home',
+                 priority: 3
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'home.partial.html'
+                 }
+               }
+             })
+      .state('site.features', {
+               url: '/features',
+               title: 'Features',
+               section: {
+                 group: 'site',
+                 label: 'Features',
+                 priority: 4
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'features.partial.html',
+                   controller: 'FeaturesCtrl as ctrl',
+                   resolve: {
+                     resource: function (Restangular) {
+                       return Restangular.one('features').get();
+                     }
                    }
                  }
                }
-             }
-           });
-  $urlRouterProvider.otherwise('/state1');
-}
+             });
+  }
 
-angular.module('full')
-  .config(ModuleConfig);
+  angular.module('full')
+    .config(ModuleConfig);
+
+})();

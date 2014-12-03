@@ -2,7 +2,7 @@ function PeopleCtrl(resource) {
   this.items = resource.items;
 }
 
-function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
+function ModuleConfig($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
   $urlRouterProvider.otherwise('/state1');
   $stateProvider
     .state('site', {
@@ -74,5 +74,5 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
 }
 
 angular.module('layout', ['moondash'])
-  .config(ModuleInit)
+  .config(ModuleConfig)
   .controller('PeopleCtrl', PeopleCtrl);
