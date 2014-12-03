@@ -13,40 +13,34 @@ function MoondashMocks() {
         _.map(mocks, function (moduleMocks) {
           _(moduleMocks).forEach(function (mock) {
             // Get the data from the mock
-            var method = mock.method,
-              responder = mock.responder;
+            var method = mock.method || 'GET',
+              pattern = mock.pattern,
+              responder = mock.responder,
+              responseData = mock.responseData;
 
-            // If there is no method listed, default to GET
-            if (!method) {
-              method = 'GET';
-              // If there is no responder listed, provide a sample
-              if (!responder) {
-                responder = function () {
-                  return [200, mock.responseData];
-                }
-              }
-            }
+            var wrappedResponder = function (method, url, data, headers) {
 
-            // Handle mocks with authenticate:true. Do so by wrapping the
-            // actual responder with one that first checks for the header.
-            var wrappedResponder = responder;
-            if (mock.authenticate) {
-              wrappedResponder = function (method, url, data, headers) {
-                if (_(headers).has('Authorization')) {
-                  // We are authenticated, return original responder
-                  return responder(method, url, data, headers);
-                } else {
-                  // Return a generic challenge
+              // If the mock says to authenticate and we don't have
+              // an Authorization header, return 401.
+              if (mock.authenticate) {
+                var authz = headers['Authorization'];
+                if (!authz) {
                   return [401, {"message": "Login required"}];
                 }
               }
-            }
 
-            // Forbidden errors can't be mocked, as we don't have,
-            // in-browser, an easy way to unpack the JWT and validate
-            // the user.
+              // A generic responder for handling the case where the
+              // mock just wanted the basics and supplied responseData
+              if (!responder) {
+                return [200, responseData]
+              }
 
-            $httpBackend.when(method, mock.pattern)
+              // Got here, so let's go ahead and call the
+              // registered responder
+              return responder(method, url, data, headers)
+            };
+
+            $httpBackend.when(method, pattern)
               .respond(wrappedResponder);
           });
         });

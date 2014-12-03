@@ -18,6 +18,11 @@
         {
           pattern: /api\/features$/,
           responseData: features
+        },
+        {
+          pattern: /api\/security\/backend/,
+          authenticate: true,
+          responseData: []
         }
       ]);
   }

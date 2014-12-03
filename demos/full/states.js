@@ -81,6 +81,7 @@
       .state('security.frontend', {
                url: '/frontend',
                title: 'Frontend Marker',
+               authenticate: true,
                section: {
                  group: 'security',
                  label: 'Frontend Marker',
@@ -102,7 +103,12 @@
                },
                views: {
                  'md-content@root': {
-                   template: '<h1>Backend Security</h1>'
+                   template: '<h1>Backend Security</h1>',
+                   resolve: {
+                     resource: function (Restangular) {
+                       return Restangular.one('security/backend').get();
+                     }
+                   }
                  }
                }
              })
