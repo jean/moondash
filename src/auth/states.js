@@ -1,4 +1,4 @@
-function ModuleInit($stateProvider) {
+function ModuleConfig($stateProvider) {
   $stateProvider
     .state('root.login', {
              url: '/login',
@@ -36,4 +36,4 @@ function ModuleInit($stateProvider) {
 }
 
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleConfig);

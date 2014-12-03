@@ -1,4 +1,4 @@
-function ModuleInit(moondashMockRestProvider) {
+function ModuleConfig(moondashMockRestProvider) {
 
   var user = {
     id: 'admin',
@@ -36,4 +36,4 @@ function ModuleInit(moondashMockRestProvider) {
 }
 
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleConfig);

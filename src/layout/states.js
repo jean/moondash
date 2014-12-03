@@ -1,4 +1,4 @@
-function ModuleInit($stateProvider) {
+function ModuleConfig($stateProvider) {
   $stateProvider
     .state('layout', {
              abstract: true,
@@ -31,4 +31,4 @@ function ModuleInit($stateProvider) {
 }
 
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleConfig);

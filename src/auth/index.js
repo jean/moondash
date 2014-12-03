@@ -3,6 +3,7 @@
 require('./states');
 require('./controllers');
 require('./services');
+require('./interceptors')
 require('./mocks');
 
 // Module level __init__

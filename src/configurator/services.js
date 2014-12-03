@@ -1,6 +1,6 @@
 'use strict';
 
-function ModuleInit(RestangularProvider) {
+function ModuleConfig(RestangularProvider) {
   RestangularProvider.setBaseUrl('/api');
 }
 
@@ -10,5 +10,5 @@ function MdConfig() {
 
 
 angular.module("moondash")
-  .config(ModuleInit)
+  .config(ModuleConfig)
   .service('MdConfig', MdConfig);
