@@ -1,4 +1,4 @@
-function ModuleInit($stateProvider, $urlRouterProvider) {
+function ModuleConfig($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/state1");
   $stateProvider
     .state("root.state1", {
@@ -40,4 +40,4 @@ function ModuleInit($stateProvider, $urlRouterProvider) {
 }
 
 angular.module('hello-ui-router', ['moondash'])
-  .config(ModuleInit);
+  .config(ModuleConfig);

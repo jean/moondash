@@ -1,8 +1,8 @@
 function PeopleCtrl(resource) {
-  this.items = resource.resource;
+  this.items = resource.items;
 }
 
-function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
+function ModuleConfig($stateProvider, $urlRouterProvider, moondashMockRestProvider) {
   $urlRouterProvider.otherwise('/state1');
   $stateProvider
     .state('site', {
@@ -61,7 +61,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
     'people',
     [
       {
-        pattern: /api\/people$/, responseData: peopleData
+        pattern: /api\/people$/, responseData: peopleData, authenticate: true
       }
       //{
       //  method: 'GET',
@@ -74,5 +74,5 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
 }
 
 angular.module('layout', ['moondash'])
-  .config(ModuleInit)
+  .config(ModuleConfig)
   .controller('PeopleCtrl', PeopleCtrl);

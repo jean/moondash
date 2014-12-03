@@ -6,6 +6,7 @@ gulp.task('partials', function () {
   return gulp
     .src(config.src)
     .pipe(templateCache(config.outputName,
-                        {module: config.moduleName, root: '/'}))
+                        {module: config.moduleName,
+                        root: config.root}))
     .pipe(gulp.dest(config.dest));
 });

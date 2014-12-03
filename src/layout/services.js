@@ -35,6 +35,8 @@ function MdSectionsService() {
       function (state) {
         var sg = _(state.sectionGroup)
           .pick(['label', 'priority']).value();
+        // If no label, try a title on the state
+        if (!sg.label) sg.label = state.title;
         sg.state = state.name;
         sectionGroups[sg.state] = sg;
       });
@@ -46,6 +48,8 @@ function MdSectionsService() {
         var section = state.section;
         var s = _(section).pick(['group', 'label', 'priority'])
           .value();
+        // If no label, try a title on the state
+        if (!s.label) s.label = state.title;
         s.state = state.name;
         sections[s.state] = s;
       });
@@ -65,6 +69,8 @@ function MdSectionsService() {
         // Add this subsection
         var ss = _(subsection).pick(['priority', 'label'])
           .value();
+        // If no label, try a title on the state
+        if (!ss.label) ss.label = state.title;
         ss.state = state.name;
         section.subsections.push(ss);
       });

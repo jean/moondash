@@ -1,4 +1,4 @@
-function ModuleInit($stateProvider) {
+function ModuleConfig($stateProvider) {
   $stateProvider
     .state('root.dashboard', {
              url: '/dashboard',
@@ -80,4 +80,4 @@ function ModuleInit($stateProvider) {
 
 
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleConfig);

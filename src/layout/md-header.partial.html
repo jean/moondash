@@ -6,5 +6,19 @@
          href="#/"
          ng-bind="ctrl.siteName">Site Name</a>
     </div>
+    
+        <ul ng-if="!ctrl.$auth.isAuthenticated()"
+        class="nav navbar-nav pull-right">
+      <li ui-sref-active="active">
+        <a ui-sref="auth.login">Login</a></li>
+    </ul>
+    <ul ng-if="ctrl.$auth.isAuthenticated()"
+        class="nav navbar-nav pull-right">
+      <li ui-sref-active="active">
+        <a ui-sref="auth.profile">Profile</a>
+      </li>
+      <li><a ui-sref="auth.logout">Logout</a></li>
+    </ul>
+
   </div>
 </div>
