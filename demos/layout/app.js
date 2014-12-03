@@ -28,6 +28,7 @@ function ModuleInit($stateProvider, $urlRouterProvider, moondashMockRestProvider
     .state('site.people', {
              url: '/people',
              title: 'People',
+             authenticate: true,
              section: {
                group: 'site',
                label: 'People',
