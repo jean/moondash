@@ -1,0 +1,54 @@
+<div>
+  <h1>Security Demonstrations</h1>
+
+  <p>Some of these links will succeed, some won't (by design.)</p>
+
+  <h2>No Security</h2>
+
+  <p>This state (<code>security.overview</code>) is a good example
+  of a state the requires no credentials.</p>
+
+
+  <h2>Frontend Security</h2>
+
+  <div>
+    <a ui-sref="security.frontend">demo link</a>
+  </div>
+  <p>A state had the <code>authenticated:true</code> property,
+    indicating
+    that credentials of some kind were needed before making the state
+    change.</p>
+
+  <h2>Backend Security</h2>
+
+  <div>
+    <a ui-sref="security.backend">demo link</a>
+  </div>
+  <p>One of the REST requests to the REST API expected credentials
+    and didn't receive them, returning a <code>401</code>.</p>
+
+  <h2>Forbidden</h2>
+
+  <div>
+    <a ui-sref="security.forbidden">demo link</a>
+  </div>
+  <p>A REST endpoint was given credentials, but the user with those
+    credentials is not permitted to perform the operation, resulting
+    in a <code>403</code>.</p>
+
+  <h2>Not Found</h2>
+
+  <div>
+    <a href="/nowhere">demo link</a>
+  </div>
+  <p>An <code>href</code> that goes nowhere.</p>
+
+  <h2>Error</h2>
+
+  <div>
+    <a ui-sref="security.error">demo link</a>
+  </div>
+  <p>Something in the state change generated an error.</p>
+
+
+</div>
