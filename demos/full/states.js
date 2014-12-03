@@ -14,7 +14,6 @@
                title: 'Home',
                section: {
                  group: 'site',
-                 label: 'Home',
                  priority: 3
                },
                views: {
@@ -28,7 +27,6 @@
                title: 'Features',
                section: {
                  group: 'site',
-                 label: 'Features',
                  priority: 4
                },
                views: {
@@ -55,7 +53,6 @@
                title: 'Overview',
                section: {
                  group: 'security',
-                 label: 'Overview',
                  priority: 0
                },
                views: {
@@ -69,7 +66,6 @@
                title: 'No Security',
                section: {
                  group: 'security',
-                 label: 'No Security',
                  priority: 1
                },
                views: {
@@ -84,7 +80,6 @@
                authenticate: true,
                section: {
                  group: 'security',
-                 label: 'Frontend Marker',
                  priority: 2
                },
                views: {
@@ -98,7 +93,6 @@
                title: 'Backend Marker',
                section: {
                  group: 'security',
-                 label: 'Backend Marker',
                  priority: 3
                },
                views: {
@@ -117,7 +111,6 @@
                title: 'Forbidden',
                section: {
                  group: 'security',
-                 label: 'Forbidden',
                  priority: 4
                },
                views: {
@@ -132,7 +125,6 @@
                title: 'Error',
                section: {
                  group: 'security',
-                 label: 'Error',
                  priority: 5
                },
                views: {
