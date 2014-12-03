@@ -6,18 +6,19 @@
       <form method="post"
             ng-submit="ctrl.login(loginForm.$valid, username, password)"
             name="loginForm">
+        <div class="alert alert-danger" role="alert"
+            ng-if="ctrl.errorMessage"
+            ng-bind="ctrl.errorMessage">Error message</div>
         <div class="form-group">
           <input class="form-control input-lg" type="text" name="username"
                  ng-model="username" placeholder="Username" required
                  autofocus>
-          <span class="ion-at form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
           <input class="form-control input-lg" type="password"
                  name="password" ng-model="password"
                  placeholder="Password" required>
-          <span class="ion-key form-control-feedback"></span>
         </div>
 
         <button type="submit" ng-disabled="loginForm.$invalid"

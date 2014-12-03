@@ -1,14 +1,15 @@
 function LoginCtrl($auth, notice) {
   var _this = this;
+  this.errorMessage = false;
 
-  notice.show('starting')
   this.login = function ($valid, username, password) {
     $auth.login({username: username, password: password})
       .then(function () {
+              _this.errorMessage = false;
               notice.show('You have successfully logged in');
             })
       .catch(function (response) {
-               notice.show(response.data.message);
+               _this.errorMessage = response.data.message;
              });
   }
 }
