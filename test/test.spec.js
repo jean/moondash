@@ -1,6 +1,6 @@
-var module = require('../src/module.js');
+var hellotesting = require('../src/hellotesting');
 describe('tests', function() {
     it('dummy test', function() {
-        expect(module.dependencies).toBe(['ui-router']);
+        expect(hellotesting).toBe('Hello world!');
     });
 });

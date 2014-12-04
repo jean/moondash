@@ -28,3 +28,4 @@ require('./layout');
 require('./globalsection');
 require('./mockapi');
 require('./auth');
+require('./hellotesting');
