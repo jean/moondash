@@ -11,6 +11,8 @@ function HeaderCtrl($state, MdConfig, $auth) {
 
 function SectionsCtrl(MdSections, $state) {
   this.sectionGroups = MdSections.getSectionGroups($state);
+
+  this.subsections = [1,2,3];
 }
 
 angular.module('moondash')

@@ -1,14 +1,18 @@
 <div id="md-header" ui-view="md-header"></div>
 <div id="md-main">
   <div class="row">
-    <div id="md-sectionsmenu" class="col-sm-3 col-md-2"
+    <div id="md-sectionsmenu" class="col-sm-4 col-md-3"
          ui-view="md-sectionsmenu"></div>
-    <div id="md-content" class="col-sm-9 col-md-10"
+    <div id="md-content" class="col-sm-8 col-md-9"
          ui-view="md-content"></div>
   </div>
 </div>
 <div id="md-footer" ui-view="md-footer"></div>
-<!--TODO XXX Hack to get angular-bootstrap templates loaded-->
+<!--
+
+TODO XXX Hack to get angular-bootstrap templates loaded
+
+-->
 <script type="text/ng-template" id="template/modal/backdrop.html">
   <div class="modal-backdrop fade {{ backdropClass }}"
        ng-class="{in: animate, out: animate}"

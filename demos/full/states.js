@@ -41,6 +41,19 @@
                  }
                }
              })
+      .state('site.collapse', {
+               url: '/collapse',
+               title: 'Collapse',
+               section: {
+                 group: 'site'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'collapse.partial.html',
+                   controller: 'CollapseCtrl as ctrl'
+                 }
+               }
+             })
       .state('security', {
                parent: 'site',
                sectionGroup: {

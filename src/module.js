@@ -9,7 +9,7 @@
  */
 
 var dependencies = ['ui.router', 'restangular', 'satellizer',
-  'ui.bootstrap.modal'];
+  'ui.bootstrap.modal', 'ui.bootstrap.collapse'];
 
 // If ngMock is loaded, it takes over the backend. We should only add
 // it to the list of module dependencies if we are in "frontend mock"
