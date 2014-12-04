@@ -10,19 +10,8 @@
           ng-bind="section.label"
           ui-sref="{{ section.state }}">
         Section</a>
-      <span ng-if="section.subsections">
-        <span class="list-group-item-heading"
-              ng-bind="section.label">Section Heading</span>
-        <p class="list-group-item-text">
-      <div ng-repeat="ss in ::section.subsections">
-        <a
-            ng-bind="ss.label"
-            ui-sref="{{ ss.state }}">
-          Sub Section</a>
-      </div>
-
-        </p>
-      </span>
+      <md-nested-section ng-model="section"
+                         ng-if="section.subsections"></md-nested-section>
     </li>
   </ul>
 </div>

@@ -17,9 +17,10 @@ instead of moondash.js. But it's complicated:
  */
 require('angular-bootstrap/src/transition/transition');
 require('angular-bootstrap/src/modal/modal');
+require('angular-bootstrap/src/collapse/collapse');
 
 var dependencies = ['ui.router', 'restangular', 'satellizer',
-  'ui.bootstrap.modal'];
+  'ui.bootstrap.modal', 'ui.bootstrap.collapse'];
 
 // If ngMock is loaded, it takes over the backend. We should only add
 // it to the list of module dependencies if we are in "frontend mock"
