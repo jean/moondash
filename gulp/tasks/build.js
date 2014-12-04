@@ -5,5 +5,6 @@ gulp.task('build', [
     'markup',
     'sass',
     'partials',
-    'vendors'
+    'vendors',
+    'test'
 ]);
