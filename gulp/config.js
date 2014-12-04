@@ -1,8 +1,12 @@
-var dest = "./build";
+var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
+var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
+  buildMode: {
+    dist: distMode
+  },
   browserSync: {
     server: {
       // We're serving the src folder as well
@@ -52,5 +56,10 @@ module.exports = {
       dest: dest,
       outputName: 'moondash.js'
     }]
+  },
+  dist: {
+    pruneVendors: [
+      "angular-mocks"
+    ]
   }
 };

@@ -2,12 +2,16 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var config = require('../config').vendors
+var config = require('../config').vendors;
+var buildMode = require('../config').buildMode;
+var dist = require('../config').dist;
 var PACKAGE = require('../../package.json');
 
 var src = [];
 for(var key in PACKAGE.browser) {
-    src.push(PACKAGE.browser[key]);
+    if(!buildMode.dist || dist.pruneVendors.indexOf(key) < 0) {
+        src.push(PACKAGE.browser[key]);
+    }
 }
 
 gulp.task('vendors', function() {
