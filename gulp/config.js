@@ -22,10 +22,10 @@ module.exports = {
   },
   icons: {
     src: [
-      //'./node_modules/font-awesome/fonts/*',
-      './node_modules/bootstrap/fonts/*'
+      './node_modules/font-awesome/fonts/*',
+      './/node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],
-    dest: dest + '/fonts/bootstrap'
+    dest: dest + '/fonts'
   },
   markup: {
     src: [
