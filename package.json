@@ -26,6 +26,7 @@
     "angular-mocks": "./node_modules/angular-mocks/angular-mocks.js",
     "angular-ui-router": "./node_modules/angular-ui-router/release/angular-ui-router.js",
     "restangular": "./node_modules/restangular/dist/restangular.js",
+    "angular-bootstrap": "./node_modules/angular-bootstrap/src/*/*.js",
     "satellizer": "./node_modules/satellizer/satellizer.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
