@@ -16,6 +16,13 @@ module.exports = {
       "!" + dest + "/**.map"
     ]
   },
+  icons: {
+    src: [
+      //'./node_modules/font-awesome/fonts/*',
+      './node_modules/bootstrap/fonts/*'
+    ],
+    dest: dest + '/fonts/bootstrap'
+  },
   markup: {
     src: [
       demoSrc + "/*/*"

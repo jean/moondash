@@ -17,6 +17,7 @@ instead of moondash.js. But it's complicated:
  */
 require('angular-bootstrap/src/transition/transition');
 require('angular-bootstrap/src/modal/modal');
+require('angular-bootstrap/src/collapse/collapse');
 
 var dependencies = ['ui.router', 'restangular', 'satellizer',
   'ui.bootstrap.modal'];
