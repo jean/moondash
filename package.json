@@ -15,12 +15,16 @@
     "angular": "~1.3.0",
     "angular-bootstrap": "^0.13.0-SNAPSHOT",
     "angular-mocks": "~1.3.0",
+    "angular-schema-form": "git://github.com/Textalk/angular-schema-form",
     "angular-ui-router": "git://github.com/angular-ui/ui-router",
     "bootstrap-sass": "^3.3.1",
     "font-awesome": "^4.2.0",
+    "gulp-angular-templatecache": "^1.4.2",
     "lodash": "^2.4.1",
+    "objectpath": "~1.0.4",
     "restangular": "^1.4.0",
-    "satellizer": "^0.8.7"
+    "satellizer": "^0.8.7",
+    "tv4": "^1.1.5"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js",
@@ -29,6 +33,10 @@
     "restangular": "./node_modules/restangular/dist/restangular.js",
     "angular-bootstrap": "./node_modules/angular-bootstrap/src/*/*.js",
     "satellizer": "./node_modules/satellizer/satellizer.js",
+    "angular-schema-form": "./node_modules/angular-schema-form/dist/schema-form.js",
+    "angular-schema-form-decorator": "./node_modules/angular-schema-form/dist/bootstrap-decorator.min.js",
+    "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
+    "tv4": "./node_modules/tv4/tv4.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {

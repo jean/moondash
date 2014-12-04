@@ -54,6 +54,19 @@
                  }
                }
              })
+      .state('site.form', {
+               url: '/form',
+               title: 'Form',
+               section: {
+                 group: 'site'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'form.partial.html',
+                   controller: 'FormCtrl as ctrl'
+                 }
+               }
+             })
       .state('security', {
                parent: 'site',
                sectionGroup: {
