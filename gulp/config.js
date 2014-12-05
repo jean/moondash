@@ -1,10 +1,14 @@
-var dest = "./build";
+var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
+var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
   test: {
-    karma: '../../test/karma.conf.js',
+    karma: '../../test/karma.conf.js'
+  },
+  buildMode: {
+    dist: distMode
   },
   browserSync: {
     server: {
@@ -18,6 +22,13 @@ module.exports = {
       // Exclude Map files
       "!" + dest + "/**.map"
     ]
+  },
+  icons: {
+    src: [
+      //'./node_modules/font-awesome/fonts/*',
+      './node_modules/bootstrap/fonts/*'
+    ],
+    dest: dest + '/fonts/bootstrap'
   },
   markup: {
     src: [
@@ -55,5 +66,10 @@ module.exports = {
       dest: dest,
       outputName: 'moondash.js'
     }]
+  },
+  dist: {
+    pruneVendors: [
+      "angular-mocks"
+    ]
   }
 };

@@ -1,12 +1,16 @@
-function ModuleInit($stateProvider) {
+function ModuleConfig($stateProvider) {
   $stateProvider
     .state('layout', {
              abstract: true,
              templateUrl: '/layout/md-layout.partial.html',
-               controller: "LayoutCtrl"
+             controller: "LayoutCtrl"
            })
     .state('root', {
              parent: 'layout',
+             sectionGroup: {
+               label: false,
+               priority: 0
+             },
              views: {
                'md-header': {
                  templateUrl: '/layout/md-header.partial.html',
@@ -17,7 +21,7 @@ function ModuleInit($stateProvider) {
                  controller: 'SectionsCtrl as ctrl'
                },
                'md-content': {
-                   template: '<div ui-view="md-content"></div>'
+                 template: '<div ui-view="md-content"></div>'
                },
                'md-footer': {
                  templateUrl: '/layout/md-footer.partial.html'
@@ -27,4 +31,4 @@ function ModuleInit($stateProvider) {
 }
 
 angular.module('moondash')
-  .config(ModuleInit);
+  .config(ModuleConfig);

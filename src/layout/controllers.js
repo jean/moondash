@@ -4,25 +4,17 @@ function LayoutCtrl($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
-function SectionsCtrl(MdSections) {
-  this.sections = MdSections.sections;
+function HeaderCtrl($state, MdConfig, $auth) {
+  this.$auth = $auth;
+  this.siteName = MdConfig.siteName;
 }
 
-function HeaderCtrl($state) {
-  this.sections = _($state.get())
-    .filter(function (state) {
-              return _.has(state, "section");
-            })
-    .map(function (state) {
-           var s = state.section;
-           return {
-             title: s.title,
-             state: state.name
-           };
-         })
-    //.sortBy("priority")
-    .value();
+function SectionsCtrl(MdSections, $state) {
+  this.sectionGroups = MdSections.getSectionGroups($state);
+
+  this.subsections = [1,2,3];
 }
+
 angular.module('moondash')
   .controller('LayoutCtrl', LayoutCtrl)
   .controller('HeaderCtrl', HeaderCtrl)
