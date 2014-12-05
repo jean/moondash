@@ -8,19 +8,8 @@
 
  */
 
-/*
-TODO This needs to be put in browserify to get into moondash-vendors
-instead of moondash.js. But it's complicated:
-- angular-bootstrap provides an npm package
-- But that packaging does not include concatenated version of submodules
-- I can't figure out the right namespaces to put into the browser field
- */
-require('angular-bootstrap/src/transition/transition');
-require('angular-bootstrap/src/modal/modal');
-require('angular-bootstrap/src/collapse/collapse');
-
 var dependencies = ['ui.router', 'restangular', 'satellizer',
-  'ui.bootstrap.modal', 'ui.bootstrap.collapse'];
+  'ui.bootstrap.modal', 'ui.bootstrap.collapse', 'schemaForm'];
 
 // If ngMock is loaded, it takes over the backend. We should only add
 // it to the list of module dependencies if we are in "frontend mock"
