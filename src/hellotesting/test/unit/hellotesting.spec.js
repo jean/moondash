@@ -1,6 +1,6 @@
 'use strict';
 
-var hellotesting = require('../../../hellotesting');
+var hellotesting = require('../../');
 
 describe('tests', function() {
     it('dummy test', function() {
