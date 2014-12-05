@@ -4,7 +4,7 @@ var demoSrc = './demos';
 
 module.exports = {
   test: {
-    karma: 'karma.conf.js',
+    karma: '../../test/karma.conf.js',
   },
   browserSync: {
     server: {
