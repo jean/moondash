@@ -8,7 +8,7 @@
 
  */
 
-var dependencies = ['ui.router', 'restangular', 'satellizer',
+var dependencies = ['ngSanitize', 'ui.router', 'restangular', 'satellizer',
   'ui.bootstrap.modal', 'ui.bootstrap.collapse', 'schemaForm'];
 
 // If ngMock is loaded, it takes over the backend. We should only add
