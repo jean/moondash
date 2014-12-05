@@ -4,7 +4,7 @@ var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
-  test: {
+  unit: {
     karma: '../../test/karma.conf.js'
   },
   buildMode: {
