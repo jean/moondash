@@ -60,9 +60,6 @@ module.exports = {
   },
   vendors: {
     outputName: 'moondash-vendors.js',
-    templates: [
-      './node_modules/angular-bootstrap/template/*/*.html'
-    ],
     dest: dest
   },
   browserify: {
@@ -75,13 +72,6 @@ module.exports = {
       dest: dest,
       outputName: 'moondash.js'
     }]
-  },
-  templates: {
-    src: [
-      './node_modules/angular-bootstrap/template/*/*.html'
-    ],
-    dest: dest,
-    outputName: 'moondash-vendors-templates.js'
   },
   dist: {
     pruneVendors: [
