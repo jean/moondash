@@ -26,7 +26,7 @@ module.exports = {
   icons: {
     src: [
       './node_modules/font-awesome/fonts/*',
-      './/node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
+      './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],
     dest: dest + '/fonts'
   },
@@ -48,12 +48,21 @@ module.exports = {
     src: [
       src + '/**/*.partial.html'
     ],
+    vendors: {
+      src: [
+        './node_modules/angular-bootstrap/template/*/*.html'
+      ],
+      root: 'template',
+    },
     outputName: 'moondash-templates.js',
     moduleName: 'moondash',
     dest: dest
   },
   vendors: {
     outputName: 'moondash-vendors.js',
+    templates: [
+      './node_modules/angular-bootstrap/template/*/*.html'
+    ],
     dest: dest
   },
   browserify: {
@@ -66,6 +75,13 @@ module.exports = {
       dest: dest,
       outputName: 'moondash.js'
     }]
+  },
+  templates: {
+    src: [
+      './node_modules/angular-bootstrap/template/*/*.html'
+    ],
+    dest: dest,
+    outputName: 'moondash-vendors-templates.js'
   },
   dist: {
     pruneVendors: [

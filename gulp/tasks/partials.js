@@ -1,12 +1,20 @@
 var gulp = require('gulp'),
-  config = require('../config').partials,
-  templateCache = require('gulp-angular-templatecache');
+    concat = require('gulp-concat'),
+    streamqueue = require('streamqueue'),
+    config = require('../config').partials,
+    templateCache = require('gulp-angular-templatecache');
 
 gulp.task('partials', function () {
-  return gulp
-    .src(config.src)
-    .pipe(templateCache(config.outputName,
-                        {module: config.moduleName,
-                        root: config.root}))
-    .pipe(gulp.dest(config.dest));
+    var stream = streamqueue({objectMode: true});
+    stream.queue(gulp.src(config.src)
+        .pipe(templateCache({module: config.moduleName,
+                            root: config.root}))
+    );
+    stream.queue(gulp.src(config.vendors.src)
+        .pipe(templateCache({module: config.moduleName,
+                            root: config.vendors.root}))
+    );
+    stream.done()
+        .pipe(concat(config.outputName))
+        .pipe(gulp.dest(config.dest));
 });
