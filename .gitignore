@@ -6,4 +6,5 @@ phantomjsdriver.log
 
 # Editors
 .idea
+*.swp
 
