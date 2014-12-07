@@ -26,7 +26,7 @@ module.exports = {
   icons: {
     src: [
       './node_modules/font-awesome/fonts/*',
-      './/node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
+      './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],
     dest: dest + '/fonts'
   },
@@ -48,6 +48,12 @@ module.exports = {
     src: [
       src + '/**/*.partial.html'
     ],
+    vendors: {
+      src: [
+        './node_modules/angular-bootstrap/template/*/*.html'
+      ],
+      root: 'template',
+    },
     outputName: 'moondash-templates.js',
     moduleName: 'moondash',
     dest: dest
