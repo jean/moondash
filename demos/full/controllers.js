@@ -1,7 +1,7 @@
 (function () {
 
   function FeaturesCtrl(resource) {
-    //this.features = resource.items;
+    this.features = resource.items;
   }
 
   function CollapseCtrl($scope) {
