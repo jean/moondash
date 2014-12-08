@@ -9,7 +9,7 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'state1.partial.html'
+                 templateUrl: 'templates/state1.html'
                }
              }
            })
@@ -21,7 +21,7 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'state2.partial.html'
+                 templateUrl: 'templates/state2.html'
                }
              }
            })
@@ -33,7 +33,7 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
              },
              views: {
                '@': {
-                 templateUrl: 'state3.partial.html'
+                 templateUrl: 'templates/state3.html'
                }
              }
            });

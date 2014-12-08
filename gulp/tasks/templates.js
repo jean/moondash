@@ -1,10 +1,10 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     streamqueue = require('streamqueue'),
-    config = require('../config').partials,
+    config = require('../config').templates,
     templateCache = require('gulp-angular-templatecache');
 
-gulp.task('partials', function () {
+gulp.task('templates', function () {
     var stream = streamqueue({objectMode: true});
     stream.queue(gulp.src(config.src)
         .pipe(templateCache({module: config.moduleName,

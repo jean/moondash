@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Change from .partial.html to templates/.html
+
 ## 0.0.2-alpha (2014-12-08)
 
 - Fix packaging of ui.bootstrap including templates

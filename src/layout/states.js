@@ -2,7 +2,7 @@ function ModuleConfig($stateProvider) {
   $stateProvider
     .state('layout', {
              abstract: true,
-             templateUrl: '/layout/md-layout.partial.html',
+             templateUrl: '/layout/templates/md-layout.html',
              controller: "LayoutCtrl"
            })
     .state('root', {
@@ -13,18 +13,18 @@ function ModuleConfig($stateProvider) {
              },
              views: {
                'md-header': {
-                 templateUrl: '/layout/md-header.partial.html',
+                 templateUrl: '/layout/templates/md-header.html',
                  controller: 'HeaderCtrl as ctrl'
                },
                'md-sectionsmenu': {
-                 templateUrl: '/layout/md-sectionsmenu.partial.html',
+                 templateUrl: '/layout/templates/md-sectionsmenu.html',
                  controller: 'SectionsCtrl as ctrl'
                },
                'md-content': {
                  template: '<div ui-view="md-content"></div>'
                },
                'md-footer': {
-                 templateUrl: '/layout/md-footer.partial.html'
+                 templateUrl: '/layout/templates/md-footer.html'
                }
              }
            });

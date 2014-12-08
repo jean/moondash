@@ -21,7 +21,7 @@ function ModuleConfig($stateProvider, $urlRouterProvider, moondashMockRestProvid
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'state1.partial.html'
+                 templateUrl: 'templates/state1.html'
                }
              }
            })
@@ -35,7 +35,7 @@ function ModuleConfig($stateProvider, $urlRouterProvider, moondashMockRestProvid
              },
              views: {
                'md-content@root': {
-                 templateUrl: 'people.partial.html',
+                 templateUrl: 'templates/people.html',
                  controller: 'PeopleCtrl as ctrl',
                  resolve: {
                    resource: function (Restangular) {
