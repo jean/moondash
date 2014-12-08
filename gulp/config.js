@@ -44,9 +44,9 @@ module.exports = {
     outputName: 'moondash.css',
     dest: dest
   },
-  partials: {
+  templates: {
     src: [
-      src + '/**/*.partial.html'
+      src + '/**/templates/*.html'
     ],
     vendors: {
       src: [

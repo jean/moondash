@@ -7,7 +7,7 @@ function NestedSectionCtrl($scope){
 function NestedSection() {
   return {
     restrict: "E",
-    templateUrl: "/layout/nested-section.partial.html",
+    templateUrl: "/layout/templates/nested-section.html",
     require: '^ngModel',
     scope: {
       ngModel: '=ngModel'
