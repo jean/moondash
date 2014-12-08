@@ -32,7 +32,7 @@ module.exports = {
   },
   markup: {
     src: [
-      demoSrc + "/*/*"
+      demoSrc + "/**/*"
     ],
     base: './demos',
     dest: dest

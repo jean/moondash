@@ -18,7 +18,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'home.partial.html'
+                   templateUrl: 'templates/home.html'
                  }
                }
              })
@@ -31,7 +31,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'features.partial.html',
+                   templateUrl: 'templates/features.html',
                    controller: 'FeaturesCtrl as ctrl',
                    resolve: {
                      resource: function (Restangular) {
@@ -49,7 +49,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'collapse.partial.html',
+                   templateUrl: 'templates/collapse.html',
                    controller: 'CollapseCtrl as ctrl'
                  }
                }
@@ -62,7 +62,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'form.partial.html',
+                   templateUrl: 'templates/form.html',
                    controller: 'FormCtrl as ctrl'
                  }
                }
@@ -83,7 +83,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'security.overview.partial.html'
+                   templateUrl: 'templates/security.overview.html'
                  }
                }
              })
