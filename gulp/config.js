@@ -6,7 +6,7 @@ var demoSrc = './demos';
 module.exports = {
   e2e: {
     protractor: '../../test/protractor.conf.js',
-    specs: ['../../src/**/e2e/*.spec.js']
+    specs: ['../src/**/e2e/*.spec.js']
   },
   unit: {
     karma: '../../test/karma.conf.js'
