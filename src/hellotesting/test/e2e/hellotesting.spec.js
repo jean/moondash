@@ -1,8 +1,10 @@
-describe('angularjs homepage', function() {
-  it('should greet the named user', function() {
-    browser.get('http://www.angularjs.org');
+describe('Hello teest', function() {
+  it('Hello moondash!', function() {
+    browser.get('src/hellotesting/test/e2e/hello/index.html');
 
-    expect('1').toEqual('1');
+    var hello = element(by.css('h1'));
+
+    expect(hello.getText()).toEqual('Hello Moondash');
   });
 
 });

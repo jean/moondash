@@ -15,17 +15,33 @@ module.exports = {
     dist: distMode
   },
   browserSync: {
-    server: {
-      // We're serving the src folder as well
-      // for sass sourcemap linking
-      baseDir: [dest, src],
-      directory: true
+    dist: {
+      server: {
+        // We're serving the src folder as well
+        // for sass sourcemap linking
+        baseDir: [dest, src],
+        directory: true
+      },
+      files: [
+        dest + "/**",
+        // Exclude Map files
+        "!" + dest + "/**.map"
+      ]
     },
-    files: [
-      dest + "/**",
-      // Exclude Map files
-      "!" + dest + "/**.map"
-    ]
+    e2e: {
+      server: {
+        // We're serving the src folder as well
+        // for sass sourcemap linking
+        baseDir: ['.'],
+        directory: true
+      },
+      open: false,
+      files: [
+        src + "/**",
+        // Exclude Map files
+        "!" + dest + "/**.map"
+      ]
+    }
   },
   icons: {
     src: [

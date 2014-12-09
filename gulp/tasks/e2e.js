@@ -1,16 +1,16 @@
 'use strict';
 
-// TODO: setup browserSync (specific for e2e) for real e2e tests
 var gulp = require('gulp');
+
 var protractor = require('gulp-protractor').protractor;
+
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
-//var browserSync = require('browser-sync');
+var browserSync = require('browser-sync');
 var config = require('../config');
 
 gulp.task('webdriver-update', webdriverUpdate);
 
-//gulp.task('e2e', ['webdriver-update', 'browserSync'], function(done) {
-gulp.task('e2e', ['webdriver-update'], function(done) {
+gulp.task('e2e', ['webdriver-update', 'browserSync:e2e'], function() {
 
   return gulp.src(config.e2e.specs)
     .pipe(protractor({

@@ -8,6 +8,8 @@ exports.config = {
   // protractor is called.
   specs: config.e2e.specs,
 
+  baseUrl: 'http://localhost:3000/',
+
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
     showColors: true,
