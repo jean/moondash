@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var protractor = require('gulp-protractor').protractor;
 
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
-var browserSync = require('browser-sync');
+//var browserSync = require('browser-sync');
 var config = require('../config');
 
 gulp.task('webdriver-update', webdriverUpdate);
