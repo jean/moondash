@@ -2,7 +2,7 @@
 config = require('../gulp/config');
 
 exports.config = {
-  chromeDriver: '../node_modules/protractor/selenium/chromedriver',
+  seleniumAddress: 'http://0.0.0.0:4444/wd/hub',
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
