@@ -2,7 +2,7 @@
 config = require('../gulp/config');
 
 exports.config = {
-  seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+  seleniumServerJar: '../node_modules/protractor/selenium/selenium-server-standalone-2.44.0.jar',
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
