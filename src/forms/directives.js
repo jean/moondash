@@ -1,5 +1,5 @@
-function FormCtrl($scope) {
-  $scope.schema = {
+function FormCtrl() {
+  this.schema = {
     type: "object",
     properties: {
       name: {
@@ -15,7 +15,7 @@ function FormCtrl($scope) {
     }
   };
 
-  $scope.form = [
+  this.form = [
     "*",
     {
       type: "submit",
@@ -23,7 +23,7 @@ function FormCtrl($scope) {
     }
   ];
 
-  $scope.model = {};
+  this.model = {};
 
 }
 
