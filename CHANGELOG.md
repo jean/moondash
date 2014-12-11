@@ -1,6 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.0.3-alpha (2014-12-11)
+
+- Add angular-schema form and start an md-form directive with a demo
+
+- Have dist also generate files that support mocks
+
+- Add fonts to dist
 
 - Change from .partial.html to templates/.html
 
