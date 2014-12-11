@@ -8,7 +8,12 @@
 
  */
 
-var dependencies = ['ngSanitize', 'ui.router', 'restangular', 'satellizer',
+var dependencies = [
+  // Our submodules
+  'moondash.forms',
+
+  // External stuff
+  'ngSanitize', 'ui.router', 'restangular', 'satellizer',
   'ui.bootstrap.modal', 'ui.bootstrap.collapse', 'schemaForm'];
 
 // If ngMock is loaded, it takes over the backend. We should only add
@@ -24,7 +29,7 @@ if (mockApi) {
 var angular = require('angular');
 angular.module('moondash', dependencies);
 
-// Now the Moondash components
+// Require the Moondash components
 require('./layout');
 require('./globalsection');
 require('./configurator');
@@ -32,3 +37,5 @@ require('./mockapi');
 require('./auth');
 require('./hellotesting');
 require('./notice');
+require('./forms');
+
