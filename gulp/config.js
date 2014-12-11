@@ -53,8 +53,9 @@ module.exports = {
       src: [
         './node_modules/angular-bootstrap/template/*/*.html'
       ],
-      root: 'template',
+      root: 'template'
     },
+    root: '/',
     outputName: 'moondash-templates.js',
     moduleName: 'moondash',
     dest: dest

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.4-alpha (2014-12-11)
+
+- Get ``moondash-templates.js`` to put in a leading slash. I keep 
+fixing it but my commits aren't sticking.
+
 ## 0.0.3-alpha (2014-12-11)
 
 - Add angular-schema form and start an md-form directive with a demo
