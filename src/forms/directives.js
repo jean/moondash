@@ -23,8 +23,6 @@ function FormCtrl() {
     }
   ];
 
-  this.model = {};
-
 }
 
 
@@ -32,12 +30,15 @@ function Form() {
   return {
     restrict: "E",
     templateUrl: "/forms/templates/form.html",
-    //require: '^ngModel',
+    scope: {
+      model: '='
+    },
     //scope: {
     //  ngModel: '=ngModel'
     //},
     controller: FormCtrl,
-    controllerAs: 'ctrl'
+    controllerAs: 'ctrl',
+    bindToController: true // Note: causes testing problems
   }
 }
 
