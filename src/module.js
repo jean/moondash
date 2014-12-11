@@ -32,3 +32,4 @@ require('./mockapi');
 require('./auth');
 require('./hellotesting');
 require('./notice');
+require('./form');

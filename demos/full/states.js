@@ -59,12 +59,6 @@
                title: 'Form',
                section: {
                  group: 'site'
-               },
-               views: {
-                 'md-content@root': {
-                   templateUrl: 'templates/form.html',
-                   controller: 'FormCtrl as ctrl'
-                 }
                }
              })
       .state('security', {
