@@ -2,9 +2,13 @@
 
 // Define a submodule
 var angular = require('angular');
-angular.module('moondash.forms', []);
+
+var dependencies = [
+  'ui.router'
+];
+angular.module('moondash.forms', dependencies);
 
 
 require('./directives');
 require('./services');
-
+require('./states');
