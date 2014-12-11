@@ -11,8 +11,8 @@ function Form() {
     templateUrl: "/forms/templates/form.html",
     scope: {
       mdModel: '=mdModel',
-      mdSchema: '=mdSchema',
-      mdForm: '=mdForm'
+      mdSchema: '@mdSchema',
+      mdForm: '@mdForm'
     },
     controller: FormCtrl,
     controllerAs: 'ctrl',
