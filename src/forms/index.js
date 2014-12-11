@@ -6,5 +6,5 @@ angular.module('moondash.forms', []);
 
 
 require('./directives');
-
+require('./services');
 

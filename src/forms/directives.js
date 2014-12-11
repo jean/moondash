@@ -1,45 +1,24 @@
-function FormCtrl() {
-  this.schema = {
-    type: "object",
-    properties: {
-      name: {
-        type: "string",
-        minLength: 2,
-        title: "Name",
-        description: "Name or alias"
-      },
-      title: {
-        type: "string",
-        enum: ['dr', 'jr', 'sir', 'mrs', 'mr', 'NaN', 'dj']
-      }
-    }
-  };
-
-  this.form = [
-    "*",
-    {
-      type: "submit",
-      title: "Save"
-    }
-  ];
-
+function FormCtrl(MdSchemas, MdForms) {
+  this.model = this.mdModel;
+  this.schema = MdSchemas.get(this.mdSchema);
+  this.form = MdForms.get(this.mdForm);
 }
 
 
 function Form() {
-  return {
+  var directive = {
     restrict: "E",
     templateUrl: "/forms/templates/form.html",
     scope: {
-      model: '='
+      mdModel: '=mdModel',
+      mdSchema: '=mdSchema',
+      mdForm: '=mdForm'
     },
-    //scope: {
-    //  ngModel: '=ngModel'
-    //},
     controller: FormCtrl,
     controllerAs: 'ctrl',
     bindToController: true // Note: causes testing problems
-  }
+  };
+  return directive;
 }
 
 angular.module("moondash.forms")
