@@ -1,4 +1,5 @@
 var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
+var distWithMock = (process.argv.slice(2).indexOf('--mock')>=0);
 var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
@@ -59,7 +60,8 @@ module.exports = {
     dest: dest
   },
   vendors: {
-    outputName: 'moondash-vendors.js',
+    outputName: distWithMock ?
+      'moondash-vendors-with-mock.js' : 'moondash-vendors.js',
     dest: dest
   },
   browserify: {
@@ -74,7 +76,7 @@ module.exports = {
     }]
   },
   dist: {
-    pruneVendors: [
+    pruneVendors: distWithMock ? [] : [
       "angular-mocks"
     ]
   }
