@@ -22,6 +22,19 @@
                  }
                }
              })
+      .state('types.book', {
+               url: '/book',
+               title: 'Book',
+               section: {
+                 group: 'types',
+                 priority: 1
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/book.html'
+                 }
+               }
+             })
       .state('site.features', {
                url: '/features',
                title: 'Features',

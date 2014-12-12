@@ -21,5 +21,30 @@ function Form() {
   return directive;
 }
 
+
+function ResourceTypeCtrl(Restangular) {
+  var self = this;
+  Restangular.one(this.mdResource).get().then(function(resource) {
+    self.resource = resource;
+  });
+}
+
+
+function ResourceType() {
+  var directive = {
+    restrict: "E",
+    templateUrl: "/forms/templates/resource.html",
+    scope: {
+      mdResource: '@mdResource'
+    },
+    controller: ResourceTypeCtrl,
+    controllerAs: 'ctrl',
+    bindToController: true
+  };
+  return directive;
+}
+
+
 angular.module("moondash.forms")
-  .directive("mdForm", Form);
+  .directive("mdForm", Form)
+  .directive("mdResourceType", ResourceType);

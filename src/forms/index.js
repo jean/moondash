@@ -4,7 +4,8 @@
 var angular = require('angular');
 
 var dependencies = [
-  'ui.router'
+  'ui.router',
+  'restangular'
 ];
 angular.module('moondash.forms', dependencies);
 
