@@ -10,7 +10,7 @@ var config = require('../config');
 
 gulp.task('webdriver-update', webdriverUpdate);
 
-gulp.task('protractor', ['webdriver-update', 'browserSync:e2e'], function () {
+gulp.task('e2e', ['webdriver-update', 'browserSync:e2e'], function () {
 
   return gulp.src(config.e2e.specs)
     .pipe(protractor({
@@ -19,9 +19,10 @@ gulp.task('protractor', ['webdriver-update', 'browserSync:e2e'], function () {
     .on('error', function(err) {
       // Make sure failed tests cause gulp to exit non-zero
       throw err;
+    })
+    .on('end', function() {
+      setTimeout(function() {
+        browserSync.exit();
+      }, 1000);
     });
-});
-
-gulp.task('e2e', ['protractor'], function () {
-  browserSync.exit();
 });
