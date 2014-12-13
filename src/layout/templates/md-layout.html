@@ -1,0 +1,16 @@
+<div id="md-header" ui-view="md-header"></div>
+<div id="md-main">
+  <div class="row">
+    <div id="md-sectionsmenu" class="col-sm-4 col-md-3"
+         ui-view="md-sectionsmenu"></div>
+    <div id="md-content" class="col-sm-8 col-md-9"
+         ui-view="md-content"></div>
+  </div>
+</div>
+<div id="md-footer" ui-view="md-footer"></div>
+
+<script type="text/ng-template" id="noticeModal.html">
+  <div class="modal-body" ng-bind="ctrl.message">
+    The message
+  </div>
+</script>

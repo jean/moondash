@@ -1,4 +1,5 @@
 var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
+var distWithMock = (process.argv.slice(2).indexOf('--mock')>=0);
 var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
@@ -46,13 +47,13 @@ module.exports = {
   icons: {
     src: [
       './node_modules/font-awesome/fonts/*',
-      './/node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
+      './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],
     dest: dest + '/fonts'
   },
   markup: {
     src: [
-      demoSrc + "/*/*"
+      demoSrc + "/**/*"
     ],
     base: './demos',
     dest: dest
@@ -64,16 +65,24 @@ module.exports = {
     outputName: 'moondash.css',
     dest: dest
   },
-  partials: {
+  templates: {
     src: [
-      src + '/**/*.partial.html'
+      src + '/**/templates/*.html'
     ],
+    vendors: {
+      src: [
+        './node_modules/angular-bootstrap/template/*/*.html'
+      ],
+      root: 'template'
+    },
+    root: '/',
     outputName: 'moondash-templates.js',
     moduleName: 'moondash',
     dest: dest
   },
   vendors: {
-    outputName: 'moondash-vendors.js',
+    outputName: distWithMock ?
+      'moondash-vendors-with-mock.js' : 'moondash-vendors.js',
     dest: dest
   },
   browserify: {
@@ -88,7 +97,7 @@ module.exports = {
     }]
   },
   dist: {
-    pruneVendors: [
+    pruneVendors: distWithMock ? [] : [
       "angular-mocks"
     ]
   }
