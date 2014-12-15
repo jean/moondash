@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- No longer set the Restangular base prefix, as this affects sitedev 
+Restangular usage.
+
 - Better setup for unit and e2e tests.
 
 ## 0.0.4-alpha (2014-12-11)
