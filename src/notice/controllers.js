@@ -10,7 +10,7 @@ function NoticeCtrl($scope, $modalInstance, $timeout, message) {
     'destroy',
     function () {
       $timeout.cancel(timer);
-    })
+    });
 }
 
 angular.module('moondash')
