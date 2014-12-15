@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Better setup for unit and e2e tests.
+
 ## 0.0.4-alpha (2014-12-11)
 
 - Get ``moondash-templates.js`` to put in a leading slash. I keep 
