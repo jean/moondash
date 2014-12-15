@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Change the footer to use the siteName.
+
 - No longer set the Restangular base prefix, as this affects sitedev 
 Restangular usage.
 

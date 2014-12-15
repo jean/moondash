@@ -24,7 +24,8 @@ function ModuleConfig($stateProvider) {
                  template: '<div ui-view="md-content"></div>'
                },
                'md-footer': {
-                 templateUrl: '/layout/templates/md-footer.html'
+                 templateUrl: '/layout/templates/md-footer.html',
+                 controller: 'FooterCtrl as ctrl'
                }
              }
            });
