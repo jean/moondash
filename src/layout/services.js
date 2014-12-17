@@ -1,6 +1,8 @@
 function MdLayoutService($rootScope, MdConfig) {
-  var _this = this;
-  this.pageTitle = MdConfig.siteName;
+  var _this, siteName;
+  _this = this;
+  siteName = MdConfig.siteName;
+  this.pageTitle = siteName;
 
   // Whenever the state changes, update the pageTitle
   function changeTitle(evt, toState) {
@@ -8,10 +10,10 @@ function MdLayoutService($rootScope, MdConfig) {
       // Sure would like to automatically put in resource.title but
       // unfortunately ui-router doesn't give me access to the resolve
       // from this event.
-      _this.pageTitle = MdConfig.siteName + ' - ' + toState.title;
+      _this.pageTitle = siteName + ' - ' + toState.title;
     } else {
       // Reset to default
-      _this.pageTitle = MdConfig.siteName;
+      _this.pageTitle = siteName;
     }
   }
 

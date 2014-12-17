@@ -6,11 +6,11 @@ function LayoutCtrl($rootScope, MdLayout) {
 
 function HeaderCtrl(MdConfig, $auth) {
   this.$auth = $auth;
-  this.siteName = MdConfig.siteName;
+  this.siteName = MdConfig.site.name;
 }
 
 function FooterCtrl(MdConfig) {
-  this.siteName = MdConfig.siteName;
+  this.siteName = MdConfig.site.name;
 }
 
 function SectionsCtrl(MdSections, $state) {
