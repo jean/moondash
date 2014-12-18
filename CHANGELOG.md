@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Change from "section group menu" to "nav panel". Refactor all of that
+ into new, run-time (vs. config-time) approach in src/nav.
+
 - Change the footer to use the siteName.
 
 - No longer set the Restangular base prefix, as this affects sitedev 

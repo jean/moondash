@@ -17,8 +17,8 @@ function ModuleConfig($stateProvider) {
                  controller: 'HeaderCtrl as ctrl'
                },
                'md-sectionsmenu': {
-                 templateUrl: '/layout/templates/md-sectionsmenu.html',
-                 controller: 'SectionsCtrl as ctrl'
+                 templateUrl: '/layout/templates/md-nav.html',
+                 controller: 'NavCtrl as ctrl'
                },
                'md-content': {
                  template: '<div ui-view="md-content"></div>'
