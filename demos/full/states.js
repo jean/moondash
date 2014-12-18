@@ -118,38 +118,24 @@
           {label: 'Home', state: 'site.home'},
           {label: 'Features', state: 'site.features'},
           {label: 'Collapse', state: 'site.collapse'},
-          {label: 'Form', state: 'site.form'}
+          {label: 'Form', state: 'site.form'},
+          {label: 'Invoices', items: [
+              {label: 'All', state: 'site.features', priority: 3},
+              {label: 'Some', state: 'site.features', priority: 1},
+              {label: 'One', state: 'site.features', priority: 2}
+          ]}
         ]
       },
       security: {
         label: 'Security and Errors', items: [
-          {label: 'No Security', state: 'security.none'},
-          {label: 'Frontend Marker', state: 'security.frontend'},
-          {label: 'Backend Marker', state: 'security.backend'},
-          {label: 'Forbidden', state: 'security.forbidden'},
-          {label: 'Error', state: 'security.error'}
-        ]
-      },
-      types: {
-        label: 'Types', priority: 3, items: [
-          {
-            label: 'Invoices', priority: 2, state: 'site.features',
-            items: [
-              {label: 'All', state: 'site.features', priority: 2},
-              {label: 'Some', state: 'site.features', priority: 2},
-              {label: 'One', state: 'site.features', priority: 2},
-            ]
-          },
-          {label: 'Reports', priority: 3, state: 'site.features'}
-        ]
-      },
-      reports: {
-        label: 'Reports', priority: 4, items: [
-          {label: 'First Report', state: 'site.features'}
+          {label: 'No Security', state: 'security.none', priority: 6},
+          {label: 'Frontend Marker', state: 'security.frontend', priority: 44},
+          {label: 'Backend Marker', state: 'security.backend', priority: 99},
+          {label: 'Forbidden', state: 'security.forbidden', priority: 3},
+          {label: 'Error', state: 'security.error', priority: 1}
         ]
       }
-    }
-    ;
+    };
     config = {site: site, navMenus: navMenus};
     MdConfig.init(config);
   }

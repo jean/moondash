@@ -4,12 +4,12 @@
       ng-bind="ctrl.menuitem.label">Menu Title</h5>
   <ul class="list-group">
     <li class="list-group-item"
-        ng-repeat="menuitem in ::ctrl.menuitem.items">
+        ng-repeat="menuitem in ::ctrl.menuitem.items | mdOrderObjectBy: 'priority'">
       <a
-          ng-if="!menuitem.subsections"
+          ng-if="!menuitem.items"
           ng-bind="menuitem.label"
           ui-sref="{{ menuitem.state }}">
-        Section </a>
+        Menu Item </a>
       <md-navsubmenu ng-model="menuitem"
                      ng-if="menuitem.items"></md-navsubmenu>
     </li>
