@@ -13,9 +13,8 @@ function FooterCtrl(MdConfig) {
   this.siteName = MdConfig.site.name;
 }
 
-function NavCtrl(MdConfig, MdSections, $state) {
+function NavCtrl(MdConfig) {
   this.navMenus = MdConfig.navMenus;
-  this.sectionGroups = MdSections.getSectionGroups($state);
 }
 
 angular.module('moondash')
