@@ -7,10 +7,6 @@ function ModuleConfig($stateProvider) {
            })
     .state('root', {
              parent: 'layout',
-             sectionGroup: {
-               label: false,
-               priority: 0
-             },
              views: {
                'md-header': {
                  templateUrl: '/layout/templates/md-header.html',
@@ -30,6 +26,7 @@ function ModuleConfig($stateProvider) {
              }
            });
 }
+
 
 angular.module('moondash')
   .config(ModuleConfig);
