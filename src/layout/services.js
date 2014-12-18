@@ -1,7 +1,7 @@
 function MdLayoutService($rootScope, MdConfig) {
   var _this, siteName;
   _this = this;
-  siteName = MdConfig.siteName;
+  siteName = MdConfig.site.name;
   this.pageTitle = siteName;
 
   // Whenever the state changes, update the pageTitle
