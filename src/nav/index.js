@@ -4,5 +4,5 @@
 var angular = require('angular');
 angular.module('md.nav', []);
 
-require('./services');
+
 require('./directives');

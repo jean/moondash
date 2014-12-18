@@ -1,6 +1,6 @@
 'use strict';
 
-function MdConfig($rootScope) {
+function MdConfig() {
   var _this = this;
 
   this.site = {name: 'Moondash'};

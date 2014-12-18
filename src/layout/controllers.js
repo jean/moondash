@@ -13,7 +13,8 @@ function FooterCtrl(MdConfig) {
   this.siteName = MdConfig.site.name;
 }
 
-function SectionsCtrl(MdSections, $state) {
+function SectionsCtrl(MdConfig, MdSections, $state) {
+  this.navMenus = MdConfig.navMenus;
   this.sectionGroups = MdSections.getSectionGroups($state);
 }
 

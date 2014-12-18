@@ -17,5 +17,5 @@ function NestedSection() {
   }
 }
 
-angular.module("moondash")
-  .directive("mdNestedSection", NestedSection);
+//angular.module("moondash")
+//  .directive("mdNestedSection", NestedSection);
