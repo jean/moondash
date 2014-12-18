@@ -7,7 +7,7 @@ function MdConfig() {
 
   // By default we have a 'root' navMenu
   this.navMenus = {
-    root: {label: 'Root', priority: -1}
+    root: {label: false, priority: -1, items: []}
   };
 
   // Given some JSON data, call each part of a possible configuration

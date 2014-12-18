@@ -3,10 +3,6 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state("root.state1", {
              url: '/state1',
-             section: {
-               group: 'root',
-               label: 'State One'
-             },
              views: {
                'md-content@root': {
                  templateUrl: 'templates/state1.html'
@@ -15,10 +11,6 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
            })
     .state("root.state2", {
              url: '/state2',
-             section: {
-               group: 'root',
-               label: 'State Two'
-             },
              views: {
                'md-content@root': {
                  templateUrl: 'templates/state2.html'
@@ -27,10 +19,6 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
            })
     .state("root.state3", {
              url: '/state3',
-             section: {
-               group: 'root',
-               label: 'State Three'
-             },
              views: {
                '@': {
                  templateUrl: 'templates/state3.html'
@@ -39,5 +27,15 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
            });
 }
 
+function ModuleRun(MdConfig) {
+    MdConfig.navMenus.root.items
+      .push({label: 'State 1', state: 'root.state1'});
+    MdConfig.navMenus.root.items
+      .push({label: 'State 2', state: 'root.state2'});
+    MdConfig.navMenus.root.items
+      .push({label: 'State 3', state: 'root.state3'});
+}
+
 angular.module('hello-ui-router', ['moondash'])
-  .config(ModuleConfig);
+  .config(ModuleConfig)
+  .run(ModuleRun);
