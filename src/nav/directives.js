@@ -1,13 +1,13 @@
-function NavPanelCtrl(MdConfig) {
-  this.navMenus = MdConfig.navMenus;
-
+function NavPanelCtrl() {
 }
 
 function NavPanel () {
   return {
     restrict: 'E',
     templateUrl: '/nav/templates/navpanel.html',
-    scope: {},
+    scope: {
+      menus: '=ngModel'
+    },
     controller: NavPanelCtrl,
     controllerAs: 'ctrl',
     bindToController: true
