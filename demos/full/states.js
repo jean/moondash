@@ -76,6 +76,31 @@
                  }
                }
              })
+      .state('folder-edit', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'edit',
+                 resourceType: 'Folder'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/folder-edit.html'
+                 }
+               }
+             })
+      .state('invoicefolder-default', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'Folder',
+                 marker: 'invoices'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/invoicefolder-default.html'
+                 }
+               }
+             })
       .state('security', {
                parent: 'site'
              })

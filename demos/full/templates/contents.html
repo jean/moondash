@@ -3,12 +3,14 @@
   <tr>
     <th>Title</th>
     <th>Resource Type</th>
+    <th>Markers</th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="i in dispatcher.context.items">
     <td><a ng-href="#{{i.path}}">{{ i.title }}</a></td>
     <td>{{ i.resourceType }}</td>
+    <td>{{ i.markers }}</td>
   </tr>
   </tbody>
 </table>

@@ -47,10 +47,16 @@
     function resolvePath(method, url, data) {
       /* Given a path, return context, viewName, parents */
 
-      var path = url.substring(4);
+      // Split URL into a path and a viewName. At some point will
+      // need a traversal style walker.
+      var viewName = 'default',
+        path = url.substring(4);
+      if (url.endsWith('/edit')) {
+        viewName = 'edit';
+        path = path.substring(0, path.length - (viewName.length+1));
+      }
 
       var context = _.find(sampleData, {path: path});
-      var viewName = context.viewName;
       var parents = context.parents;
       var responseData = {context: context, viewName: viewName, parents: parents};
 
