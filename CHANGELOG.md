@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Refactor src/mockapi: eliminate IIFE
+- Refactor src/mockapi: eliminate IIFE, don't require the class on 
+<body> to turn on mockApi
 
 - Change from "section group menu" to "nav panel". Refactor all of that
  into new, run-time (vs. config-time) approach in src/nav.
