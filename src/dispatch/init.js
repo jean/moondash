@@ -8,7 +8,7 @@ function ModuleConfig($urlRouterProvider) {
       MdDispatcher = $injector.get('MdDispatcher');
 
 
-    // XXX Can't do this on every request
+    // XXX TODO Can't do this on every request
     // Grab all the registered view_config info from the states. Make
     // a dict with a key of the view name, value all the view_config
     // info.

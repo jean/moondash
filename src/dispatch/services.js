@@ -66,7 +66,7 @@ function Dispatcher($http) {
   };
 
   this.resolvePath = function (path) {
-    return $http.get('/api' + path);
+    return $http.get(path);
   };
 
   this.resolveState = function (context, viewName, parents) {
