@@ -11,10 +11,10 @@ module.exports = function(karma) {
     },
     browsers: ['PhantomJS'],
     reporters: ['dots'],
-    singleRun: true,
-    autoWatch: false,
+    singleRun: false,
+    autoWatch: true,
 
-    logLevel: 'LOG_DEBUG',
+    logLevel: 'LOG_INFO',
 
     browserify: {
       debug: true, // output source maps

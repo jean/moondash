@@ -1,0 +1,3 @@
+<div ng-repeat="(id, menu) in ctrl.menus | mdOrderObjectBy: 'priority'">
+  <md-navmenu id="md-navmenu-{{id}}" ng-model="menu"></md-navmenu>
+</div>

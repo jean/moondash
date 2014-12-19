@@ -3,19 +3,11 @@
     $urlRouterProvider.otherwise('/home');
     $stateProvider
       .state('site', {
-               parent: 'root',
-               sectionGroup: {
-                 label: 'Demo',
-                 priority: 2
-               }
+               parent: 'root'
              })
       .state('site.home', {
                url: '/home',
                title: 'Home',
-               section: {
-                 group: 'site',
-                 priority: 3
-               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/home.html'
@@ -25,10 +17,6 @@
       .state('site.features', {
                url: '/features',
                title: 'Features',
-               section: {
-                 group: 'site',
-                 priority: 4
-               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/features.html',
@@ -44,9 +32,6 @@
       .state('site.collapse', {
                url: '/collapse',
                title: 'Collapse',
-               section: {
-                 group: 'site'
-               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/collapse.html',
@@ -56,25 +41,14 @@
              })
       .state('site.form', {
                url: '/form',
-               title: 'Form',
-               section: {
-                 group: 'site'
-               }
+               title: 'Form'
              })
       .state('security', {
-               parent: 'site',
-               sectionGroup: {
-                 label: 'Security and Errors',
-                 priority: 2
-               }
+               parent: 'site'
              })
       .state('security.overview', {
                url: '/overview',
                title: 'Overview',
-               section: {
-                 group: 'security',
-                 priority: 0
-               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/security.overview.html'
@@ -84,10 +58,6 @@
       .state('security.none', {
                url: '/none',
                title: 'No Security',
-               section: {
-                 group: 'security',
-                 priority: 1
-               },
                views: {
                  'md-content@root': {
                    template: '<h1>No Security Needed</h1>'
@@ -98,10 +68,6 @@
                url: '/frontend',
                title: 'Frontend Marker',
                authenticate: true,
-               section: {
-                 group: 'security',
-                 priority: 2
-               },
                views: {
                  'md-content@root': {
                    template: '<h1>Frontend Security</h1>'
@@ -111,10 +77,6 @@
       .state('security.backend', {
                url: '/backend',
                title: 'Backend Marker',
-               section: {
-                 group: 'security',
-                 priority: 3
-               },
                views: {
                  'md-content@root': {
                    template: '<h1>Backend Security</h1>',
@@ -129,10 +91,6 @@
       .state('security.forbidden', {
                url: '/forbidden',
                title: 'Forbidden',
-               section: {
-                 group: 'security',
-                 priority: 4
-               },
                views: {
                  'md-content@root': {
                    template: '<h1>Forbidden Resource</h1>'
@@ -143,10 +101,6 @@
       .state('security.error', {
                url: '/error',
                title: 'Error',
-               section: {
-                 group: 'security',
-                 priority: 5
-               },
                views: {
                  'md-content@root': {
                    template: '<h1>Some Error Page</h1>'
@@ -155,7 +109,54 @@
              });
   }
 
+  function ModuleRun(MdConfig) {
+    var site, navMenus, config;
+    site = {name: 'Full Demo'};
+    navMenus = {
+      demo: {
+        label: 'Demo', items: [
+          {label: 'Home', state: 'site.home'},
+          {label: 'Features', state: 'site.features'},
+          {label: 'Collapse', state: 'site.collapse'},
+          {label: 'Form', state: 'site.form'},
+          {
+            label: 'Invoices', items: [
+            {label: 'All', state: 'site.features', priority: 3},
+            {label: 'Some', state: 'site.features', priority: 1},
+            {label: 'One', state: 'site.features', priority: 2}
+          ]
+          }
+        ]
+      },
+      security: {
+        label: 'Security and Errors', items: [
+          {label: 'No Security', state: 'security.none', priority: 6},
+          {
+            label: 'Frontend Marker',
+            state: 'security.frontend',
+            priority: 44
+          },
+          {
+            label: 'Backend Marker',
+            state: 'security.backend',
+            priority: 99
+          },
+          {label: 'Forbidden', state: 'security.forbidden', priority: 3},
+          {label: 'Error', state: 'security.error', priority: 1}
+        ]
+      }
+    };
+    config = {site: site, navMenus: navMenus};
+    MdConfig.init(config);
+    MdConfig.navMenus.root.items
+      .push({
+              label: 'Home',
+              state: 'site.home'
+            });
+  }
+
   angular.module('full')
-    .config(ModuleConfig);
+    .config(ModuleConfig)
+    .run(ModuleRun);
 
 })();

@@ -10,7 +10,7 @@
 
 var dependencies = [
   // Our submodules
-  'moondash.forms',
+  'moondash.forms', 'md.nav',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',
@@ -31,11 +31,10 @@ angular.module('moondash', dependencies);
 
 // Require the Moondash components
 require('./layout');
-require('./globalsection');
 require('./configurator');
 require('./mockapi');
 require('./auth');
 require('./hellotesting');
 require('./notice');
 require('./forms');
-
+require('./nav');

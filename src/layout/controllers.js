@@ -4,18 +4,21 @@ function LayoutCtrl($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
-function HeaderCtrl($state, MdConfig, $auth) {
+function HeaderCtrl(MdConfig, $auth) {
   this.$auth = $auth;
-  this.siteName = MdConfig.siteName;
+  this.siteName = MdConfig.site.name;
 }
 
-function SectionsCtrl(MdSections, $state) {
-  this.sectionGroups = MdSections.getSectionGroups($state);
+function FooterCtrl(MdConfig) {
+  this.siteName = MdConfig.site.name;
+}
 
-  this.subsections = [1,2,3];
+function NavCtrl(MdConfig) {
+  this.navMenus = MdConfig.navMenus;
 }
 
 angular.module('moondash')
   .controller('LayoutCtrl', LayoutCtrl)
   .controller('HeaderCtrl', HeaderCtrl)
-  .controller('SectionsCtrl', SectionsCtrl);
+  .controller('FooterCtrl', FooterCtrl)
+  .controller('NavCtrl', NavCtrl);
