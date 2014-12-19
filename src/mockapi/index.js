@@ -15,9 +15,9 @@ require('./providers');
 (function (mod) {
   'use strict';
 
-  mod.run(function ($httpBackend, moondashMockRest) {
+  mod.run(function ($httpBackend, MdMockRest) {
 
-    moondashMockRest.registerMocks($httpBackend);
+    MdMockRest.registerMocks($httpBackend);
 
     // pass through everything else
     $httpBackend.whenGET(/\/*/).passThrough();
@@ -26,4 +26,4 @@ require('./providers');
 
   });
 
-}(angular.module('moondashMock', ['moondash', 'ngMockE2E'])));
+}(angular.module('md.mockapi', [])));

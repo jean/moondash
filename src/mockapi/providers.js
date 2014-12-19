@@ -55,4 +55,4 @@ function MoondashMocks() {
 
 
 angular.module("moondash")
-  .provider('moondashMockRest', MoondashMocks);
+  .provider('MdMockRest', MoondashMocks);

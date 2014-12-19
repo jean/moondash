@@ -23,7 +23,7 @@ var dependencies = [
 var mockApi = document.querySelector('.mockApi');
 if (mockApi) {
   dependencies.push('ngMockE2E');
-  dependencies.push('moondashMock');
+  dependencies.push('md.mockapi');
 }
 
 var angular = require('angular');

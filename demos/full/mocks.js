@@ -1,5 +1,5 @@
 (function () {
-  function ModuleConfig(moondashMockRestProvider) {
+  function ModuleConfig(MdMockRestProvider) {
 
     // TODO move this around later
     var features = {
@@ -12,7 +12,7 @@
       ]
     };
 
-    moondashMockRestProvider.addMocks(
+    MdMockRestProvider.addMocks(
       'features',
       [
         {
