@@ -9,5 +9,5 @@ function ModuleConfig($stateProvider) {
   });
 }
 
-angular.module('moondash.forms')
+angular.module('md.forms')
 .config(ModuleConfig);

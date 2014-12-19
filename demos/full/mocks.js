@@ -104,7 +104,7 @@
       ]
     };
 
-    moondashMockRestProvider.addMocks(
+    MdMockRestProvider.addMocks(
       'books',
       [
       {
