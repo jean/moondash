@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 
-function MoondashMocks() {
+function MockRest() {
   this.mocks = {};
 
   this.$get = function () {
@@ -55,4 +55,4 @@ function MoondashMocks() {
 
 
 angular.module("moondash")
-  .provider('MdMockRest', MoondashMocks);
+  .provider('MdMockRest', MockRest);

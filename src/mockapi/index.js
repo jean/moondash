@@ -9,14 +9,7 @@
 
 require('./providers');
 
-// TODO Not sure if there is a way, now that we are using CommonJS, to
-// eliminate this little IIFE.
-
-(function (mod) {
-  'use strict';
-
-  mod.run(function ($httpBackend, MdMockRest) {
-
+function ModuleRun ($httpBackend, MdMockRest) {
     MdMockRest.registerMocks($httpBackend);
 
     // pass through everything else
@@ -24,6 +17,7 @@ require('./providers');
     $httpBackend.whenPOST(/\/*/).passThrough();
     $httpBackend.whenPUT(/\/*/).passThrough();
 
-  });
+}
 
-}(angular.module('md.mockapi', [])));
+angular.module('md.mockapi', [])
+  .run(ModuleRun);
