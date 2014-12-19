@@ -1,6 +1,6 @@
 (function () {
   function ModuleConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    //$urlRouterProvider.otherwise('/home');
     $stateProvider
       .state('site', {
                parent: 'root'
@@ -46,6 +46,18 @@
       .state('site.dispatch', {
                url: '/dispatch',
                title: 'Dispatch',
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/dispatch.html'
+                 }
+               }
+             })
+      .state('rootfolder-default', {
+               parent: 'siteroot',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'RootFolder'
+               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/dispatch.html'

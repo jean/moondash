@@ -1,8 +1,9 @@
 'use strict';
 
-function ModuleRun () {
 
-}
+angular.module('md.dispatch', ['ui.router']);
 
-angular.module('md.dispatch', [])
-  .run(ModuleRun);
+require('./init');
+require('./services');
+require('./states');
+require('./controllers');

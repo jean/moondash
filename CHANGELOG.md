@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Dispatch
+
+    * NotFound state and view on dispatch
+
+    * Start a plugin
+
 - Refactor src/mockapi: eliminate IIFE, don't require the class on 
 <body> to turn on mockApi
 
