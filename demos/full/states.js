@@ -43,6 +43,15 @@
                url: '/form',
                title: 'Form'
              })
+      .state('site.dispatch', {
+               url: '/dispatch',
+               title: 'Dispatch',
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/dispatch.html'
+                 }
+               }
+             })
       .state('security', {
                parent: 'site'
              })
@@ -114,8 +123,9 @@
     site = {name: 'Full Demo'};
     navMenus = {
       demo: {
-        label: 'Demo', items: [
+        label: 'Demo', priority: 3, items: [
           {label: 'Home', state: 'site.home'},
+          {label: 'Dispatch', state: 'site.dispatch', priority: 1},
           {label: 'Features', state: 'site.features'},
           {label: 'Collapse', state: 'site.collapse'},
           {label: 'Form', state: 'site.form'},
@@ -129,7 +139,7 @@
         ]
       },
       security: {
-        label: 'Security and Errors', items: [
+        label: 'Security and Errors', priority: 4, items: [
           {label: 'No Security', state: 'security.none', priority: 6},
           {
             label: 'Frontend Marker',

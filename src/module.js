@@ -10,7 +10,7 @@
 
 var dependencies = [
   // Our submodules
-  'md.forms', 'md.nav',
+  'md.forms', 'md.nav', 'md.dispatch',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',
@@ -36,3 +36,4 @@ require('./hellotesting');
 require('./notice');
 require('./forms');
 require('./nav');
+require('./dispatch');
