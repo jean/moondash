@@ -41,6 +41,7 @@
     f1a.parents = [rf, f1];
     f1b.parents = [rf, f1];
     f1.parents = [rf];
+    f2.parents = [rf];
     var sampleData = [f1, f2, rf, f1a, f1b];
 
     function resolvePath(method, url, data) {

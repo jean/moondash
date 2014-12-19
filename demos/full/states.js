@@ -64,6 +64,18 @@
                  }
                }
              })
+      .state('folder-default', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'Folder'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/folder-default.html'
+                 }
+               }
+             })
       .state('security', {
                parent: 'site'
              })
