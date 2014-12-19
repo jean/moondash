@@ -1,0 +1,8 @@
+<div ng-include="'templates/fheading.html'"></div>
+
+<p>This is the root folder. It has some special properties and
+  thus is a different type. </p>
+
+<div
+    ng-if="dispatcher.context.items"
+    ng-include="'templates/contents.html'"></div>

@@ -4,6 +4,8 @@
 
 - Dispatch
 
+    * Get into a demos/full
+
     * NotFound state and view on dispatch
 
     * Start a plugin

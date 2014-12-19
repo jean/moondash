@@ -60,7 +60,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'templates/dispatch.html'
+                   templateUrl: 'templates/rootfolder-default.html'
                  }
                }
              })

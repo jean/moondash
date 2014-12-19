@@ -1,15 +1,5 @@
 'use strict';
 
-function ResolvePath(MdDispatcher, $location, $state) {
-  var path = $location.path();
-  return MdDispatcher.resolvePath(path)
-    .catch(function (response) {
-             if (response.status == 404) {
-               $state.go('notfound', {unfoundStateTo: path})
-             }
-           });
-}
-
 function ModuleConfig($stateProvider) {
 
   $stateProvider
@@ -44,7 +34,11 @@ function ModuleConfig($stateProvider) {
                  template: '',
                  controller: 'DispatcherCtrl as DispatcherCtrl',
                  resolve: {
-                   resolvedPath: ResolvePath
+                   resolvedPath: function (Restangular, $location) {
+                     var path = 'api' + $location.path();
+                     return Restangular.one(path).get();
+                   }
+
                  }
                }
              }

@@ -44,6 +44,7 @@ function ModuleRun($rootScope, $state, MdDispatcher) {
       .$on(
       '$stateChangeError',
       function (event, toState, toParams, fromState, fromParams, error) {
+        console.debug('stateChangeError', error);
         event.preventDefault();
         $state.go('error', {toState: toState.name, error: error});
       });

@@ -30,16 +30,15 @@ function DispatcherCtrl($state, resolvedPath, MdDispatcher) {
     $state.go('notfound');
   }
 
-  var data = resolvedPath.data.data;
+  var data = resolvedPath.data;
   MdDispatcher.context = data.context;
   MdDispatcher.viewName = data.viewName;
   MdDispatcher.parents = data.parents;
 
   // Get the next state. Look in all the registered states at
   // view_config information.
-  var matchingView = MdDispatcher.resolveState(
+  var nextState = MdDispatcher.resolveState(
     MdDispatcher.context, MdDispatcher.viewName, MdDispatcher.parents);
-  var nextState = matchingView.stateName;
 
   if (nextState) {
     $state.go(nextState);

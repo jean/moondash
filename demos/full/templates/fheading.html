@@ -1,0 +1,14 @@
+<div
+    ng-if="dispatcher.parents">
+  <ol class="breadcrumb">
+  <li ng-repeat="parent in dispatcher.parents">
+    <a ng-href="#{{parent.path}}">{{ parent.title }}</a>
+  </li>
+</ol>
+</div>
+<div class="pull-right">
+  <button class="btn btn-default btn-sm">
+    <i class="glyphicon glyphicon-plus"></i>
+  </button>
+</div>
+<h3 id="heading" ng-bind="dispatcher.context.title">Regular Folder</h3>
