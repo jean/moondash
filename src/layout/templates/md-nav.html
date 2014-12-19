@@ -1,18 +1,1 @@
 <md-navpanel></md-navpanel>
-<div ng-repeat="sg in ::ctrl.sectionGroups">
-  <h5 class="text-muted"
-      ng-if="sg.label" ng-bind="sg.label">Sections Menu</h5>
-
-  <ul class="list-group">
-    <li class="list-group-item"
-        ng-repeat="section in ::sg.sections">
-      <a
-          ng-if="!section.subsections"
-          ng-bind="section.label"
-          ui-sref="{{ section.state }}">
-        Section</a>
-      <md-nested-section ng-model="section"
-                         ng-if="section.subsections"></md-nested-section>
-    </li>
-  </ul>
-</div>

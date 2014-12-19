@@ -12,7 +12,7 @@ function ModuleConfig($stateProvider) {
                  templateUrl: '/layout/templates/md-header.html',
                  controller: 'HeaderCtrl as ctrl'
                },
-               'md-sectionsmenu': {
+               'md-nav': {
                  templateUrl: '/layout/templates/md-nav.html',
                  controller: 'NavCtrl as ctrl'
                },
