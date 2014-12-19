@@ -1,6 +1,6 @@
 (function () {
   function ModuleConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    //$urlRouterProvider.otherwise('/home');
     $stateProvider
       .state('site', {
                parent: 'root'
@@ -23,7 +23,7 @@
                    controller: 'FeaturesCtrl as ctrl',
                    resolve: {
                      resource: function (Restangular) {
-                       return Restangular.one('features').get();
+                       return Restangular.one('/api/features').get();
                      }
                    }
                  }
@@ -42,6 +42,64 @@
       .state('site.form', {
                url: '/form',
                title: 'Form'
+             })
+      .state('site.dispatch', {
+               url: '/dispatch',
+               title: 'Dispatch',
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/dispatch.html'
+                 }
+               }
+             })
+      .state('rootfolder-default', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'RootFolder'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/rootfolder-default.html'
+                 }
+               }
+             })
+      .state('folder-default', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'Folder'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/folder-default.html'
+                 }
+               }
+             })
+      .state('folder-edit', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'edit',
+                 resourceType: 'Folder'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/folder-edit.html'
+                 }
+               }
+             })
+      .state('invoicefolder-default', {
+               parent: 'site',
+               viewConfig: {
+                 name: 'default',
+                 resourceType: 'Folder',
+                 marker: 'invoices'
+               },
+               views: {
+                 'md-content@root': {
+                   templateUrl: 'templates/invoicefolder-default.html'
+                 }
+               }
              })
       .state('security', {
                parent: 'site'
@@ -114,8 +172,9 @@
     site = {name: 'Full Demo'};
     navMenus = {
       demo: {
-        label: 'Demo', items: [
+        label: 'Demo', priority: 3, items: [
           {label: 'Home', state: 'site.home'},
+          {label: 'Dispatch', state: 'site.dispatch', priority: 1},
           {label: 'Features', state: 'site.features'},
           {label: 'Collapse', state: 'site.collapse'},
           {label: 'Form', state: 'site.form'},
@@ -129,7 +188,7 @@
         ]
       },
       security: {
-        label: 'Security and Errors', items: [
+        label: 'Security and Errors', priority: 4, items: [
           {label: 'No Security', state: 'security.none', priority: 6},
           {
             label: 'Frontend Marker',

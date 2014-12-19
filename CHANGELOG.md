@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+- Dispatch
+
+    * Hack into the mock support for getting an edit viewname and going 
+      to folder-edit state
+
+    * Support a view matching a marker on a resource
+
+    * Demo: default views for two resource types (RootFolder, Folder)
+
+    * Get into a demos/full
+
+    * NotFound state and view on dispatch
+
+    * Start a plugin
+
+- Refactor src/mockapi: eliminate IIFE, don't require the class on 
+<body> to turn on mockApi
+
 - Change from "section group menu" to "nav panel". Refactor all of that
  into new, run-time (vs. config-time) approach in src/nav.
 

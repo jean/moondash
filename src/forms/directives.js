@@ -21,5 +21,5 @@ function Form() {
   return directive;
 }
 
-angular.module("moondash.forms")
+angular.module("md.forms")
   .directive("mdForm", Form);

@@ -2,7 +2,7 @@
 
 // Define a submodule
 var angular = require('angular');
-angular.module('moondash.forms', []);
+angular.module('md.forms', []);
 
 
 require('./directives');

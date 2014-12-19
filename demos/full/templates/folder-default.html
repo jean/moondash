@@ -1,0 +1,10 @@
+<div class="pull-right">
+    <a class="btn btn-primary"
+        ng-href="#{{dispatcher.context.path + '/edit'}}">Edit</a>
+</div>
+<div ng-include="'templates/fheading.html'"></div>
+
+<p>This is a <code>folder-default</code> state handler.</p>
+<div
+    ng-if="dispatcher.context.items"
+    ng-include="'templates/contents.html'"></div>
