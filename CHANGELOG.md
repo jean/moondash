@@ -4,6 +4,13 @@
 
 - Dispatch
 
+    * Hack into the mock support for getting an edit viewname and going 
+      to folder-edit state
+
+    * Support a view matching a marker on a resource
+
+    * Demo: default views for two resource types (RootFolder, Folder)
+
     * Get into a demos/full
 
     * NotFound state and view on dispatch
