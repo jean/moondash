@@ -10,7 +10,7 @@
 
 var dependencies = [
   // Our submodules
-  'moondash.forms', 'md.nav',
+  'md.forms', 'md.nav',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',

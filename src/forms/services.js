@@ -42,6 +42,6 @@ function MdFormsService() {
 
 }
 
-angular.module('moondash.forms')
+angular.module('md.forms')
   .service('MdSchemas', MdSchemasService)
   .service('MdForms', MdFormsService);
