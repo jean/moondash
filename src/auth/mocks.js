@@ -1,4 +1,4 @@
-function ModuleConfig(moondashMockRestProvider) {
+function ModuleConfig(MdMockRestProvider) {
 
   var user = {
     id: 'admin',
@@ -8,7 +8,7 @@ function ModuleConfig(moondashMockRestProvider) {
     twitter: 'admin'
   };
 
-  moondashMockRestProvider.addMocks(
+  MdMockRestProvider.addMocks(
     'auth',
     [
       {

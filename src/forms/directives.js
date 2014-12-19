@@ -45,6 +45,6 @@ function ResourceType() {
 }
 
 
-angular.module("moondash.forms")
+angular.module("md.forms")
   .directive("mdForm", Form)
   .directive("mdResourceType", ResourceType);

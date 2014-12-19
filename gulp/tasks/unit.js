@@ -5,6 +5,6 @@ var testConf = require('../config').unit
 gulp.task('unit', function () {
   return karma.server.start({
     configFile: __dirname + '/' + testConf.karma,
-    singleRun: true
+    singleRun: false
   });
 });

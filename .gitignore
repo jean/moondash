@@ -2,6 +2,9 @@ node_modules
 coverage
 build
 npm-debug.log
+phantomjsdriver.log
 
 # Editors
 .idea
+*.swp
+

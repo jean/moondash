@@ -5,6 +5,10 @@ var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
+  e2e: {
+    protractor: '../../test/protractor.conf.js',
+    specs: ['../src/**/e2e/*.spec.js']
+  },
   unit: {
     karma: '../../test/karma.conf.js'
   },
@@ -12,17 +16,33 @@ module.exports = {
     dist: distMode
   },
   browserSync: {
-    server: {
-      // We're serving the src folder as well
-      // for sass sourcemap linking
-      baseDir: [dest, src],
-      directory: true
+    dist: {
+      server: {
+        // We're serving the src folder as well
+        // for sass sourcemap linking
+        baseDir: [dest, src],
+        directory: true
+      },
+      files: [
+        dest + "/**",
+        // Exclude Map files
+        "!" + dest + "/**.map"
+      ]
     },
-    files: [
-      dest + "/**",
-      // Exclude Map files
-      "!" + dest + "/**.map"
-    ]
+    e2e: {
+      server: {
+        // We're serving the src folder as well
+        // for sass sourcemap linking
+        baseDir: ['.'],
+        directory: true
+      },
+      open: false,
+      files: [
+        src + "/**",
+        // Exclude Map files
+        "!" + dest + "/**.map"
+      ]
+    }
   },
   icons: {
     src: [
@@ -53,8 +73,9 @@ module.exports = {
       src: [
         './node_modules/angular-bootstrap/template/*/*.html'
       ],
-      root: 'template',
+      root: 'template'
     },
+    root: '/',
     outputName: 'moondash-templates.js',
     moduleName: 'moondash',
     dest: dest

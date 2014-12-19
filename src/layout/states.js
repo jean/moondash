@@ -7,28 +7,26 @@ function ModuleConfig($stateProvider) {
            })
     .state('root', {
              parent: 'layout',
-             sectionGroup: {
-               label: false,
-               priority: 0
-             },
              views: {
                'md-header': {
                  templateUrl: '/layout/templates/md-header.html',
                  controller: 'HeaderCtrl as ctrl'
                },
-               'md-sectionsmenu': {
-                 templateUrl: '/layout/templates/md-sectionsmenu.html',
-                 controller: 'SectionsCtrl as ctrl'
+               'md-nav': {
+                 templateUrl: '/layout/templates/md-nav.html',
+                 controller: 'NavCtrl as ctrl'
                },
                'md-content': {
                  template: '<div ui-view="md-content"></div>'
                },
                'md-footer': {
-                 templateUrl: '/layout/templates/md-footer.html'
+                 templateUrl: '/layout/templates/md-footer.html',
+                 controller: 'FooterCtrl as ctrl'
                }
              }
            });
 }
+
 
 angular.module('moondash')
   .config(ModuleConfig);

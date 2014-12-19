@@ -11,3 +11,9 @@ Distribution containing ngMock:
 ```bash
 $ gulp --dist --mock
 ```
+
+## Running tests
+
+```bash
+$ gulp test
+```

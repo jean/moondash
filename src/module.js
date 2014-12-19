@@ -10,32 +10,47 @@
 
 var dependencies = [
   // Our submodules
-  'moondash.forms',
+  'md.forms', 'md.nav', 'md.dispatch',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',
   'ui.bootstrap.modal', 'ui.bootstrap.collapse', 'schemaForm'];
 
-// If ngMock is loaded, it takes over the backend. We should only add
-// it to the list of module dependencies if we are in "frontend mock"
-// mode. Flag this by putting the class .frontendMock on some element
-// in the demo .html page.
-var mockApi = document.querySelector('.mockApi');
-if (mockApi) {
+var angular = require('angular');
+
+// dist/moondash-vendors.js does NOT include ngMockE2E. Only add that
+// dependency and md.mockapi if we have ngMockE2E.
+if (angular.mock) {
   dependencies.push('ngMockE2E');
-  dependencies.push('moondashMock');
+  dependencies.push('md.mockapi');
 }
 
-var angular = require('angular');
 angular.module('moondash', dependencies);
 
 // Require the Moondash components
 require('./layout');
-require('./globalsection');
 require('./configurator');
 require('./mockapi');
 require('./auth');
 require('./hellotesting');
 require('./notice');
 require('./forms');
+require('./nav');
+require('./dispatch');
 
+
+// Jamming this on here. Patching String.prototype to add some
+// utility functions that aren't in lodash (and I don't want to
+// add 7Kb minified to get underscore.string.)
+
+if (typeof String.prototype.startsWith != 'function') {
+  String.prototype.startsWith = function (str) {
+    return this.substring(0, str.length) === str;
+  }
+}
+
+if (typeof String.prototype.endsWith != 'function') {
+  String.prototype.endsWith = function (str) {
+    return this.substring(this.length - str.length, this.length) === str;
+  }
+}

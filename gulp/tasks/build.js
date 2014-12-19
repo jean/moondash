@@ -6,6 +6,5 @@ gulp.task('build', [
     'sass',
     'icons',
     'templates',
-    'vendors',
-    'test'
+    'vendors'
 ]);

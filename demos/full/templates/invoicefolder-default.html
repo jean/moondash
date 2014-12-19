@@ -1,0 +1,8 @@
+<div ng-include="'templates/fheading.html'"></div>
+
+<p>This is a <code>invoicefolder-default</code> state handler.</p>
+
+<h2>Invoices</h2>
+<div
+    ng-if="dispatcher.context.items"
+    ng-include="'templates/contents.html'"></div>

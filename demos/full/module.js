@@ -4,7 +4,11 @@
 
   }
 
+  function ModuleRun(MdConfig) {
+  }
+
   angular.module('full', ['moondash'])
-    .config(ModuleConfig);
+    .config(ModuleConfig)
+    .run(ModuleRun);
 
 })();

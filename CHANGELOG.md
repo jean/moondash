@@ -2,6 +2,47 @@
 
 ## Unreleased
 
+- Dispatch
+
+    * Hack into the mock support for getting an edit viewname and going 
+      to folder-edit state
+
+    * Support a view matching a marker on a resource
+
+    * Demo: default views for two resource types (RootFolder, Folder)
+
+    * Get into a demos/full
+
+    * NotFound state and view on dispatch
+
+    * Start a plugin
+
+- Refactor src/mockapi: eliminate IIFE, don't require the class on 
+<body> to turn on mockApi
+
+- Change from "section group menu" to "nav panel". Refactor all of that
+ into new, run-time (vs. config-time) approach in src/nav.
+
+- Change the footer to use the siteName.
+
+- No longer set the Restangular base prefix, as this affects sitedev 
+Restangular usage.
+
+- Better setup for unit and e2e tests.
+
+## 0.0.4-alpha (2014-12-11)
+
+- Get ``moondash-templates.js`` to put in a leading slash. I keep 
+fixing it but my commits aren't sticking.
+
+## 0.0.3-alpha (2014-12-11)
+
+- Add angular-schema form and start an md-form directive with a demo
+
+- Have dist also generate files that support mocks
+
+- Add fonts to dist
+
 - Change from .partial.html to templates/.html
 
 ## 0.0.2-alpha (2014-12-08)

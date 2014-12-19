@@ -7,8 +7,7 @@ var dependencies = [
   'ui.router',
   'restangular'
 ];
-angular.module('moondash.forms', dependencies);
-
+angular.module('md.forms', dependencies);
 
 require('./directives');
 require('./services');

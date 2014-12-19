@@ -7,6 +7,7 @@ HTML5-based generic admin for REST applications.
 ## Prerequisites
 
 1. npm@1.4.28 or npm@2.0.0
+2. Java JDK required for e2e testing
 
 ## Demos and documentation
 
