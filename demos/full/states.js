@@ -23,7 +23,7 @@
                    controller: 'FeaturesCtrl as ctrl',
                    resolve: {
                      resource: function (Restangular) {
-                       return Restangular.one('features').get();
+                       return Restangular.one('/api/features').get();
                      }
                    }
                  }
