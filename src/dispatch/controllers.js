@@ -1,8 +1,7 @@
 'use strict';
 
-function DispatcherCtrl($state, Dispatcher) {
+function DispatcherCtrl($state, resolvedPath, MdDispatcher) {
 
-  console.debug('called ctrl');
   /*
 
    resolvedPath will return a dictionary such as:
@@ -32,20 +31,20 @@ function DispatcherCtrl($state, Dispatcher) {
   }
 
   var data = resolvedPath.data.data;
-  Dispatcher.context = data.context;
-  Dispatcher.viewName = data.viewName;
-  Dispatcher.parents = data.parents;
+  MdDispatcher.context = data.context;
+  MdDispatcher.viewName = data.viewName;
+  MdDispatcher.parents = data.parents;
 
   // Get the next state. Look in all the registered states at
   // view_config information.
-  var matchingView = Dispatcher.resolveState(
-    Dispatcher.context, Dispatcher.viewName, Dispatcher.parents);
+  var matchingView = MdDispatcher.resolveState(
+    MdDispatcher.context, MdDispatcher.viewName, MdDispatcher.parents);
   var nextState = matchingView.stateName;
 
   if (nextState) {
     $state.go(nextState);
   } else {
-    // Dispatcher failed to find a matching view
+    // MdDispatcher failed to find a matching view
     $state.go('notfound');
   }
 

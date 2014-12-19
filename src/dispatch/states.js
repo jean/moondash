@@ -1,5 +1,15 @@
 'use strict';
 
+function ResolvePath(MdDispatcher, $location, $state) {
+  var path = $location.path();
+  return MdDispatcher.resolvePath(path)
+    .catch(function (response) {
+             if (response.status == 404) {
+               $state.go('notfound', {unfoundStateTo: path})
+             }
+           });
+}
+
 function ModuleConfig($stateProvider) {
 
   $stateProvider
@@ -34,16 +44,7 @@ function ModuleConfig($stateProvider) {
                  template: '',
                  controller: 'DispatcherCtrl as DispatcherCtrl',
                  resolve: {
-                   resolvedPath: function (Dispatcher, $location, $notice) {
-                     return {};
-                     var path = $location.path();
-                     console.debug('resolving path', path);
-                     return Dispatcher.resolvePath(path)
-                       .catch(function (response) {
-                                var msg = 'Dispatcher error: ' + response.data.message;
-                                $notice.show(msg);
-                              });
-                   }
+                   resolvedPath: ResolvePath
                  }
                }
              }

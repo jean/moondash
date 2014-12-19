@@ -53,7 +53,7 @@
                }
              })
       .state('rootfolder-default', {
-               parent: 'siteroot',
+               parent: 'site',
                viewConfig: {
                  name: 'default',
                  resourceType: 'RootFolder'
