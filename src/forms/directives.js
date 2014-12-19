@@ -6,7 +6,7 @@ function FormCtrl(MdSchemas, MdForms) {
 
 
 function Form() {
-  var directive = {
+  return {
     restrict: "E",
     templateUrl: "/forms/templates/form.html",
     scope: {
@@ -18,20 +18,20 @@ function Form() {
     controllerAs: 'ctrl',
     bindToController: true // Note: causes testing problems
   };
-  return directive;
 }
 
 
 function ResourceTypeCtrl(Restangular) {
   var self = this;
-  Restangular.one(this.mdResource).get().then(function(resource) {
+  var url = '/api/' + this.mdResource;
+  Restangular.one(url).get().then(function (resource) {
     self.resource = resource;
   });
 }
 
 
 function ResourceType() {
-  var directive = {
+  return {
     restrict: "E",
     templateUrl: "/forms/templates/resource.html",
     scope: {
@@ -41,7 +41,6 @@ function ResourceType() {
     controllerAs: 'ctrl',
     bindToController: true
   };
-  return directive;
 }
 
 

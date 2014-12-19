@@ -17,10 +17,6 @@
       .state('types.book', {
                url: '/book',
                title: 'Book',
-               section: {
-                 group: 'types',
-                 priority: 1
-               },
                views: {
                  'md-content@root': {
                    templateUrl: 'templates/book.html'
@@ -224,6 +220,11 @@
       .push({
               label: 'Home',
               state: 'site.home'
+            });
+    MdConfig.navMenus.types.items
+      .push({
+              label: 'Books',
+              state: 'types.book'
             });
   }
 

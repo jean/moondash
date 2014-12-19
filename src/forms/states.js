@@ -1,13 +1,16 @@
 function ModuleConfig($stateProvider) {
   $stateProvider
-  .state('types', {
-    parent: 'root',
-    sectionGroup: {
-      label: 'Types',
-      priority: 1
-    }
-  });
+    .state('types', {
+             parent: 'root'
+           });
+}
+
+function ModuleRun(MdConfig) {
+  MdConfig.navMenus.types = {
+    label: 'Types', items: [], priority: 2
+  };
 }
 
 angular.module('md.forms')
-.config(ModuleConfig);
+  .config(ModuleConfig)
+  .run(ModuleRun);
