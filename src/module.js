@@ -31,7 +31,6 @@ angular.module('moondash', dependencies);
 
 // Require the Moondash components
 require('./layout');
-require('./globalsection');
 require('./configurator');
 require('./mockapi');
 require('./auth');
