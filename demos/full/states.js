@@ -176,7 +176,7 @@
              });
   }
 
-  function ModuleRun(MdConfig, MdRTypes) {
+  function ModuleRun(MdConfig) {
     var site, navMenus, config;
     site = {name: 'Full Demo'};
     navMenus = {
@@ -227,10 +227,6 @@
               state: 'types.book'
             });
 
-    // This site has the following resource types
-    MdRTypes.add('invoice', 'Invoice');
-    MdRTypes.add('expense', 'Expenses');
-    MdRTypes.add('payment', 'Payments');
   }
 
   angular.module('full')
