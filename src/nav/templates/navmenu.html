@@ -8,7 +8,7 @@
       <a
           ng-if="!menuitem.items"
           ng-bind="menuitem.label"
-          ui-sref="{{ menuitem.state }}">
+          ui-sref="{{ ctrl.sref(menuitem) }}">
         Menu Item </a>
       <md-navsubmenu ng-model="menuitem"
                      ng-if="menuitem.items"></md-navsubmenu>

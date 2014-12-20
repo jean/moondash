@@ -1,12 +1,13 @@
 function ModuleConfig($stateProvider) {
   $stateProvider
     .state('rtypes', {
-             parent: 'root'
+             parent: 'root',
+             url: '/rtypes'
            })
 
     // Generic list of resources of a resource type
     .state('rtypes.list', {
-             url: '/{rtype}',
+             url: '/{rtype}', // Will need regex that omits "manage"
              title: 'List Resources',
              views: {
                'md-content@root': {
@@ -24,13 +25,15 @@ function ModuleConfig($stateProvider) {
                  controller: 'ManageCtrl as ctrl'
                }
              }
-           })
+           });
 }
 
 function ModuleRun(MdConfig) {
-  console.debug('foo')
   MdConfig.navMenus.rtypes = {
     label: 'Resource Types', priority: 2, items: [
+      {label: 'Invoices', state: 'rtypes.list', params: 'rtype: "invoice"'},
+      {label: 'Expenses', state: 'rtypes.list', params: 'rtype: "expense"'},
+      {label: 'Payments', state: 'rtypes.list', params: 'rtype: "payment"'},
       {label: 'Manage', state: 'rtypes.manage', priority: 99}
     ]
   };

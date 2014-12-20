@@ -15,6 +15,15 @@ function NavPanel () {
 }
 
 function NavMenuCtrl() {
+  this.sref = function (menuitem) {
+    // Generating the ui-sref has some logic. Let's do it here instead
+    // of inline.
+    var uiSref = menuitem.state;
+    if (menuitem.params) {
+      uiSref = uiSref + '({' + menuitem.params + '})';
+    }
+    return uiSref;
+  }
 }
 
 

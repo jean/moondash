@@ -1,7 +1,8 @@
 function ManageCtrl() {
 }
 
-function ListCtrl() {
+function ListCtrl($stateParams) {
+  this.rtype = $stateParams.rtype;
 }
 
 

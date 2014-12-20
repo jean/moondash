@@ -5,6 +5,9 @@
 - Resource types
 
     * Start src/resourcetypes plugin
+    
+    * Nav menu to list the known types, as well as menuitem to manage 
+    them
 
 - Dispatch
 
