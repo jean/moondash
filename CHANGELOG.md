@@ -8,6 +8,11 @@
     
     * Nav menu to list the known types, as well as menuitem to manage 
     them
+    
+    * Start MdRTypes service, add a helper for registering a type and 
+    adding to the navmenu.
+    
+    * Move sample stuff to demos/full
 
 - Dispatch
 

@@ -28,17 +28,5 @@ function ModuleConfig($stateProvider) {
            });
 }
 
-function ModuleRun(MdConfig) {
-  MdConfig.navMenus.rtypes = {
-    label: 'Resource Types', priority: 2, items: [
-      {label: 'Invoices', state: 'rtypes.list', params: 'rtype: "invoice"'},
-      {label: 'Expenses', state: 'rtypes.list', params: 'rtype: "expense"'},
-      {label: 'Payments', state: 'rtypes.list', params: 'rtype: "payment"'},
-      {label: 'Manage', state: 'rtypes.manage', priority: 99}
-    ]
-  };
-}
-
 angular.module('md.resourcetypes')
-  .config(ModuleConfig)
-  .run(ModuleRun);
+  .config(ModuleConfig);
