@@ -14,7 +14,7 @@
                  }
                }
              })
-      .state('types.book', {
+      .state('root.book', {
                url: '/book',
                title: 'Book',
                views: {
@@ -221,7 +221,7 @@
               label: 'Home',
               state: 'site.home'
             });
-    MdConfig.navMenus.types.items
+    MdConfig.navMenus.root.items
       .push({
               label: 'Books',
               state: 'types.book'

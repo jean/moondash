@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Resource types
+
+    * Start src/resourcetypes plugin
+
 - Dispatch
 
     * Hack into the mock support for getting an edit viewname and going 

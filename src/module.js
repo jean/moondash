@@ -1,16 +1,8 @@
 'use strict';
 
-/*
-
- Declare the module with dependencies, and nothing more.
-
- If running in "development mode", inject the mock infrastructure.
-
- */
-
 var dependencies = [
   // Our submodules
-  'md.forms', 'md.nav', 'md.dispatch',
+  'md.forms', 'md.nav', 'md.dispatch', 'md.resourcetypes',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',
@@ -37,6 +29,7 @@ require('./notice');
 require('./forms');
 require('./nav');
 require('./dispatch');
+require('./resourcetypes');
 
 
 // Jamming this on here. Patching String.prototype to add some

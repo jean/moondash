@@ -11,4 +11,3 @@ angular.module('md.forms', dependencies);
 
 require('./directives');
 require('./services');
-require('./states');

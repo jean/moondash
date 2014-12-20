@@ -16,7 +16,7 @@ function Form() {
     },
     controller: FormCtrl,
     controllerAs: 'ctrl',
-    bindToController: true // Note: causes testing problems
+    bindToController: true
   };
 }
 
