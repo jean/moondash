@@ -3,7 +3,7 @@
 function RTypesService(MdConfig) {
 
   // Set the base REST prefix for this site's rtypes entry point
-  this.urlPrefix = '/api/rtypes';
+  this.urlPrefix = 'api/rtypes';
 
   // Initialize the navmenu
   MdConfig.navMenus.rtypes = {
@@ -17,10 +17,11 @@ function RTypesService(MdConfig) {
 
   this.items = {};
 
-  this.add = function (id, label) {
+  this.add = function (id, label, schema) {
     _this.items[id] = {
       id: id,
-      label: label
+      label: label,
+      schema: schema
     };
     // Now register with config.navMenus.rtypes
     // TODO This is awful, had to beat an ng-repeat with items.push

@@ -12,7 +12,14 @@ function ModuleConfig($stateProvider) {
              views: {
                'md-content@root': {
                  templateUrl: '/resourcetypes/templates/list.html',
-                 controller: 'ListCtrl as ctrl'
+                 controller: 'ListCtrl as ctrl',
+                 resolve: {
+                   items: function (Restangular, $stateParams, MdRTypes) {
+                     var rtype = $stateParams.rtype;
+                     var url = MdRTypes.urlPrefix + '/' + rtype + '/items';
+                     return Restangular.all(url).getList();
+                   }
+                 }
                }
              }
            })

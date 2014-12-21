@@ -3,7 +3,7 @@
     "name": "Full Demo"
   },
   "rtypes": {
-    "urlPrefix": "/api/rtypes",
+    "urlPrefix": "api/rtypes",
     "items": [
       {"id": "invoice", "label": "Invoices"},
       {"id": "payment", "label": "Payments"},

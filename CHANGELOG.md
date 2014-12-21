@@ -13,6 +13,12 @@
     adding to the navmenu.
     
     * Move sample stuff to demos/full
+    
+    * Start of declarative siteconfig.json in demo
+    
+    * Put information about rtypes into siteconfig
+    
+    * Browse (mock) data pointed to in siteconfig in rtypes.list
 
 - Dispatch
 
