@@ -13,29 +13,39 @@
 
     /*
 
-    Folders
-    ---------
-    context
-      - id, name, resourceType, markers, _self
-      - items
-    path
-    viewName
-    parents
+     Folders
+     ---------
+     context
+     - id, name, resourceType, markers, _self
+     - items
+     path
+     viewName
+     parents
      */
 
     var
-      f1a = {path: '/root/folder1/foldera', id: 10, resourceType: 'Folder',
+      f1a = {
+        path: '/root/folder1/foldera', id: 10, resourceType: 'Folder',
         title: 'Folder 1A', viewName: 'default', items: [],
-        markers: ['invoices']},
-      f1b = {path: '/root/folder1/folderB', id: 11, resourceType: 'Folder',
-        title: 'Folder 1B', viewName: 'default', items: []},
-      f1 = {path: '/root/folder1', id: 1, resourceType: 'Folder',
+        markers: ['invoices']
+      },
+      f1b = {
+        path: '/root/folder1/folderB', id: 11, resourceType: 'Folder',
+        title: 'Folder 1B', viewName: 'default', items: []
+      },
+      f1 = {
+        path: '/root/folder1', id: 1, resourceType: 'Folder',
         title: 'Folder One', viewName: 'default',
-        items: [f1a, f1b]},
-      f2 = {path: '/root/folder2', id: 2, resourceType: 'Folder',
-        title: 'Another Folder', viewName: 'default', items: []},
-      rf = {path: '/root', id: 0, resourceType: 'RootFolder',
-        title: 'Root Folder', viewName: 'default', items: [f1, f2]};
+        items: [f1a, f1b]
+      },
+      f2 = {
+        path: '/root/folder2', id: 2, resourceType: 'Folder',
+        title: 'Another Folder', viewName: 'default', items: []
+      },
+      rf = {
+        path: '/root', id: 0, resourceType: 'RootFolder',
+        title: 'Root Folder', viewName: 'default', items: [f1, f2]
+      };
 
     // Assemble some parentage
     f1a.parents = [rf, f1];
@@ -53,12 +63,16 @@
         path = url.substring(4);
       if (url.endsWith('/edit')) {
         viewName = 'edit';
-        path = path.substring(0, path.length - (viewName.length+1));
+        path = path.substring(0, path.length - (viewName.length + 1));
       }
 
       var context = _.find(sampleData, {path: path});
       var parents = context.parents;
-      var responseData = {context: context, viewName: viewName, parents: parents};
+      var responseData = {
+        context: context,
+        viewName: viewName,
+        parents: parents
+      };
 
       return [200, {data: responseData}];
     }
@@ -85,9 +99,14 @@
       schema: {
         type: "object",
         properties: {
-          id: { type: "string", minLength: 2, title: "Identifier", description: "Internal id" },
-          title: { type: "string", minLength: 2, title: "Book title" },
-          author: { type: "string", minLength: 2, title: "Book author" }
+          id: {
+            type: "string",
+            minLength: 2,
+            title: "Identifier",
+            description: "Internal id"
+          },
+          title: {type: "string", minLength: 2, title: "Book title"},
+          author: {type: "string", minLength: 2, title: "Book author"}
         }
       },
       items: [
@@ -107,11 +126,25 @@
     MdMockRestProvider.addMocks(
       'books',
       [
-      {
-        pattern: /api\/books$/,
-        responseData: books
-      }
+        {
+          pattern: /api\/books$/,
+          responseData: books
+        }
       ]);
+
+    var invoices = [
+      {id: 1, title: 'First invoice'},
+      {id: 2, title: 'Second invoice'}
+    ];
+    MdMockRestProvider.addMocks(
+      'rtypes',
+      [
+        {
+          pattern: /api\/rtypes\/invoices\/items$/,
+          responseData: invoices
+        }
+      ]);
+
   }
 
   angular.module('full')

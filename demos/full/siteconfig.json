@@ -5,9 +5,9 @@
   "rtypes": {
     "urlPrefix": "api/rtypes",
     "items": [
-      {"id": "invoice", "label": "Invoices"},
-      {"id": "payment", "label": "Payments"},
-      {"id": "expense", "label": "Expenses"}
+      {"id": "invoices", "label": "Invoices"},
+      {"id": "payments", "label": "Payments"},
+      {"id": "expenses", "label": "Expenses"}
     ]
   }
 }

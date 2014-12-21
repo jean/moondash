@@ -6,4 +6,3 @@ angular.module('md.nav', []);
 
 
 require('./directives');
-require('./filters');

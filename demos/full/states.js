@@ -97,7 +97,7 @@
                  }
                }
              })
-      .state('invoicefolder-default', {
+      .state('invoicesfolder-default', {
                parent: 'site',
                viewConfig: {
                  name: 'default',
@@ -106,7 +106,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'templates/invoicefolder-default.html'
+                   templateUrl: 'templates/invoicesfolder-default.html'
                  }
                }
              })
