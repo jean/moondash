@@ -176,7 +176,7 @@
              });
   }
 
-  function ModuleRun(MdConfig) {
+  function ModuleRun(MdConfig, MdNav) {
     var site, navMenus, config;
     site = {name: 'Full Demo'};
     navMenus = {
@@ -214,6 +214,19 @@
         ]
       }
     };
+
+    MdNav.addMenu(
+      {id: 'security', label: 'Security and Errors', priority: 4}
+    );
+    MdNav.addMenuItem('security',
+                      {
+                        label: 'No Security',
+                        state: 'security.none',
+                        priority: 6
+                      }
+    );
+
+
     config = {site: site, navMenus: navMenus};
     MdConfig.init(config);
     MdConfig.navMenus.root.items
