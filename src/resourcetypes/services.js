@@ -1,19 +1,18 @@
 'use strict';
 
-function RTypesService(MdConfig) {
+function RTypesService(MdNav) {
+  var _this = this;
 
   // Set the base REST prefix for this site's rtypes entry point
   this.urlPrefix = 'api/rtypes';
 
   // Initialize the navmenu
-  MdConfig.navMenus.rtypes = {
-    label: 'Resource Types', priority: 2, items: [
-      {label: 'Manage', state: 'rtypes.manage', priority: 99}
-    ]
-  };
-
-  var _this = this,
-    navMenu = MdConfig.navMenus.rtypes;
+  MdNav.addMenu(
+    {id: 'rtypes', label: 'Resource Types', priority: 2}
+  );
+  MdNav.addMenuItem('rtypes', {
+    id: 'manage', label: 'Manage', state: 'rtypes.manage', priority: 99
+  });
 
   this.items = {};
 
@@ -23,18 +22,32 @@ function RTypesService(MdConfig) {
       label: label,
       schema: schema
     };
-    // Now register with config.navMenus.rtypes
-    // TODO This is awful, had to beat an ng-repeat with items.push
-    // digest problem. Guess items needs to be refactored into an object.
-    [].push.apply(
-      navMenu.items,
-      [{
-        label: label,
-        state: 'rtypes.list',
-        params: 'rtype: "' + id + '"',
-        priority: 5
-      }]
+    MdNav.addMenuItem('rtypes', {
+      id: id,
+      label: label,
+      state: 'rtypes.list',
+      params: 'rtype: "' + id + '"',
+      priority: 5
+    });
+  }
+
+  this.init = function (siteconfig) {
+    // Given some JSON, pick out the pieces and do some config. We
+    // are passed in the "rtypes" part of the JSON.
+
+    // Extract relevant stuff from config, perhaps validating
+    var urlPrefix = siteconfig.urlPrefix,
+      items = siteconfig.items;
+
+
+    _(items).forEach(
+      function (rtype) {
+        _this.add(rtype.id, rtype.label);
+
+      }
     );
+    _this.urlPrefix = _this.urlPrefix;
+
   }
 }
 

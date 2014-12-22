@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Stop storing menu data on the configuration. Instead, each plugin 
+ (e.g. src/nav) will have a service that manages its configuration.
+
 - Resource types
 
     * Start src/resourcetypes plugin

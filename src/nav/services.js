@@ -32,6 +32,7 @@ function MdNavService() {
       label = menuItem.label,
       priority = menuItem.priority ? menuItem.priority : 99,
       state = menuItem.state,
+      params = menuItem.params,
       items = menuItem.items,
       parentItems = _this.menus[menuId].items;
 
@@ -42,6 +43,8 @@ function MdNavService() {
       state: state,
       items: items
     }
+
+    if (params) parentItems[id].params = params;
   };
 
 

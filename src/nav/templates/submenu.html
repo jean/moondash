@@ -12,9 +12,9 @@
 <div class="list-group" collapse="ctrl.isCollapsed"
      style="margin-top: 1em; margin-bottom: 0">
   <a class="list-group-item"
-     ng-repeat="ss in ::ctrl.menuitem.items"
-     ui-sref="{{ ss.state }}"
-     ng-bind="ss.label">
+     ng-repeat="(id, menuitem) in ctrl.menuitem.items track by menuitem.id"
+     ui-sref="{{ menuitem.state }}"
+     ng-bind="menuitem.label">
     Navmenu Label
   </a>
 </div>

@@ -4,7 +4,7 @@
       ng-bind="ctrl.menuitem.label">Menu Title</h5>
   <ul class="list-group">
     <li class="list-group-item"
-        ng-repeat="menuitem in ::ctrl.menuitem.items | mdOrderObjectBy: 'priority'">
+        ng-repeat="(id, menuitem) in ctrl.menuitem.items track by menuitem.id | mdOrderObjectBy: 'priority'">
       <a
           ng-if="!menuitem.items"
           ng-bind="menuitem.label"

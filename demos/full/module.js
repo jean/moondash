@@ -12,12 +12,7 @@
         MdConfig.site.name = config.site.name;
 
         // Add resource types
-        _(config.rtypes.items).forEach(
-          function (rtype) {
-            MdRTypes.add(rtype.id, rtype.label);
-          }
-        );
-        MdRTypes.urlPrefix = config.rtypes.urlPrefix;
+        MdRTypes.init(config.rtypes);
       },
       function (failure) {
         var msg = 'Failed to get siteconfig.json';

@@ -4,10 +4,19 @@
   },
   "rtypes": {
     "urlPrefix": "api/rtypes",
-    "items": [
-      {"id": "invoices", "label": "Invoices"},
-      {"id": "payments", "label": "Payments"},
-      {"id": "expenses", "label": "Expenses"}
-    ]
+    "items": {
+      "invoices": {
+        "id": "invoices",
+        "label": "Invoices"
+      },
+      "payments": {
+        "id": "payments",
+        "label": "Payments"
+      },
+      "expenses": {
+        "id": "expenses",
+        "label": "Expenses"
+      }
+    }
   }
 }
