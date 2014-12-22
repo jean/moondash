@@ -37,16 +37,6 @@
                  }
                }
              })
-      .state('site.collapse', {
-               url: '/collapse',
-               title: 'Collapse',
-               views: {
-                 'md-content@root': {
-                   templateUrl: 'templates/collapse.html',
-                   controller: 'CollapseCtrl as ctrl'
-                 }
-               }
-             })
       .state('site.form', {
                url: '/form',
                title: 'Form'

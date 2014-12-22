@@ -54,6 +54,26 @@ function MdNavService() {
     var urlPrefix = siteconfig.urlPrefix,
       items = siteconfig.items;
 
+    // Pluck out the items.root, if it exists, and add any entries to
+    // the centrally-defined "root" menu.
+    if (items.root) {
+      _(items.root).forEach(function (menuItem) {
+        var id = menuItem.id,
+          label = menuItem.label,
+          priority = menuItem.priority,
+          state = menuItem.state,
+          params = menuItem.params,
+          items = menuItem.items;
+        _this.addMenuItem(
+          'root',
+          {
+            id: id, label: label, priority: priority, state: state,
+            params: params, items: items
+          }
+        );
+      });
+      delete items.root;
+    }
 
     // Top-level menus
     _(items).forEach(
@@ -76,8 +96,10 @@ function MdNavService() {
             items = menuItem.items;
           _this.addMenuItem(
             menu.id,
-            {id: id, label: label, priority: priority, state: state,
-            params: params, items: items}
+            {
+              id: id, label: label, priority: priority, state: state,
+              params: params, items: items
+            }
           );
 
         });
@@ -89,21 +111,6 @@ function MdNavService() {
   }
 
 }
-
-/*
-
- MdNav.addMenu(
- {id: 'security', label: 'Security and Errors', priority: 4}
- );
- MdNav.addMenuItem('security',
- {
- label: 'No Security',
- state: 'security.none',
- priority: 6
- }
- );
-
- */
 
 angular.module('md.nav')
   .service('MdNav', MdNavService);

@@ -21,17 +21,19 @@
   },
   "navMenus": {
     "items": {
+      "root": [
+        {
+          "id": "site.home",
+          "label": "Home",
+          "state": "site.home",
+          "priority": 1
+        }
+      ],
       "demo": {
         "id": "demo",
         "label": "Demo",
         "priority": 2,
         "items": {
-          "site.home": {
-            "id": "site.home",
-            "label": "Home",
-            "state": "site.home",
-            "priority": 1
-          },
           "site.dispatch": {
             "id": "site.dispatch",
             "label": "Dispatch",
@@ -42,11 +44,6 @@
             "id": "site.features",
             "label": "Features",
             "state": "site.features"
-          },
-          "site.collapse": {
-            "id": "site.collapse",
-            "label": "Collapse",
-            "state": "site.collapse"
           },
           "site.form": {
             "id": "site.form",

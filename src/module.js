@@ -2,7 +2,8 @@
 
 var dependencies = [
   // Our submodules
-  'md.common', 'md.forms', 'md.nav', 'md.dispatch', 'md.resourcetypes',
+  'md.common', 'md.config',
+  'md.forms', 'md.nav', 'md.dispatch', 'md.resourcetypes',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',

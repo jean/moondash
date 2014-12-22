@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Provide ``md-init`` directive as an attribute that can point to the 
+URL of a JSON file that bootstraps everything.
+
 - Stop storing menu data on the configuration. Instead, each plugin 
  (e.g. src/nav) will have a service that manages its configuration.
 
