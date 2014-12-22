@@ -23,6 +23,27 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
+    .state('rtypes.item', {
+             url: '/{rtype}/{id}',
+             resolve: {
+               item: function (Restangular, $stateParams, MdRTypes) {
+                 var rtype = $stateParams.rtype;
+                 var id = $stateParams.id;
+                 var url = MdRTypes.urlPrefix + '/' + rtype + '/' + id;
+                 return Restangular.one(url).get();
+               }
+             }
+           })
+    .state('rtypes.item.edit', {
+             url: '/edit',
+             title: 'Edit Resource',
+             views: {
+               'md-content@root': {
+                 templateUrl: '/resourcetypes/templates/edit.html',
+                 controller: 'EditCtrl as ctrl'
+               }
+             }
+           })
     .state('rtypes.manage', {
              url: '/manage',
              title: 'Manage',

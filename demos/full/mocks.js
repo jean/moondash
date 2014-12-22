@@ -133,8 +133,8 @@
       ]);
 
     var invoices = [
-      {id: 1, title: 'First invoice'},
-      {id: 2, title: 'Second invoice'}
+      {id: "invoice1", title: 'First invoice'},
+      {id: "invoice2", title: 'Second invoice'}
     ];
     MdMockRestProvider.addMocks(
       'rtypes',
@@ -142,6 +142,14 @@
         {
           pattern: /api\/rtypes\/invoices\/items$/,
           responseData: invoices
+        },
+        {
+          pattern: /api\/rtypes\/invoices\//,
+          responder: function (method, url) {
+            var id = url.split("/")[4];
+            var invoice = _(invoices).first({id: id}).value()[0];
+            return [200, invoice];
+          }
         }
       ]);
 

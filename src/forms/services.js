@@ -3,15 +3,16 @@ function MdSchemasService() {
     schema1: {
       type: "object",
       properties: {
-        name: {
+        id: {
           type: "string",
           minLength: 2,
-          title: "Name",
-          description: "Name or alias"
+          title: "Id",
+          description: "Id or alias"
         },
         title: {
           type: "string",
-          enum: ['dr', 'jr', 'sir', 'mrs', 'mr', 'NaN', 'dj']
+          title: "Title",
+          description: "Longer version"
         }
       }
     }
