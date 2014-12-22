@@ -13,15 +13,6 @@
                  }
                }
              })
-      .state('root.book', {
-               url: '/book',
-               title: 'Book',
-               views: {
-                 'md-content@root': {
-                   templateUrl: 'templates/book.html'
-                 }
-               }
-             })
       .state('site.features', {
                url: '/features',
                title: 'Features',

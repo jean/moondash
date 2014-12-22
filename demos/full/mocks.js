@@ -95,43 +95,6 @@
         }
       ]);
 
-    var books = {
-      schema: {
-        type: "object",
-        properties: {
-          id: {
-            type: "string",
-            minLength: 2,
-            title: "Identifier",
-            description: "Internal id"
-          },
-          title: {type: "string", minLength: 2, title: "Book title"},
-          author: {type: "string", minLength: 2, title: "Book author"}
-        }
-      },
-      items: [
-        {
-          id: 'book1',
-          title: 'The Big Money',
-          author: 'John DosPassos'
-        },
-        {
-          id: 'book2',
-          title: 'Manhattan Transfert',
-          author: 'John DosPassos'
-        }
-      ]
-    };
-
-    MdMockRestProvider.addMocks(
-      'books',
-      [
-        {
-          pattern: /api\/books$/,
-          responseData: books
-        }
-      ]);
-
     var invoices = [
       {id: "invoice1", title: 'First invoice'},
       {id: "invoice2", title: 'Second invoice'}
