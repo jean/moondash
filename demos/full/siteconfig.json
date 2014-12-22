@@ -18,5 +18,104 @@
         "label": "Expenses"
       }
     }
+  },
+  "navMenus": {
+    "items": {
+      "demo": {
+        "id": "demo",
+        "label": "Demo",
+        "priority": 2,
+        "items": {
+          "site.home": {
+            "id": "site.home",
+            "label": "Home",
+            "state": "site.home",
+            "priority": 1
+          },
+          "site.dispatch": {
+            "id": "site.dispatch",
+            "label": "Dispatch",
+            "state": "site.dispatch",
+            "priority": 1
+          },
+          "site.features": {
+            "id": "site.features",
+            "label": "Features",
+            "state": "site.features"
+          },
+          "site.collapse": {
+            "id": "site.collapse",
+            "label": "Collapse",
+            "state": "site.collapse"
+          },
+          "site.form": {
+            "id": "site.form",
+            "label": "Form",
+            "state": "site.form"
+          },
+          "site.invoices": {
+            "id": "site.invoices",
+            "label": "Invoices",
+            "items": {
+              "site.invoices.all": {
+                "id": "site.invoices.all",
+                "label": "All",
+                "state": "site.features",
+                "priority": 3
+              },
+              "site.invoices.some": {
+                "id": "site.invoices.some",
+                "label": "Some",
+                "state": "site.features",
+                "priority": 11
+              },
+              "site.invoices.one": {
+                "id": "site.invoices.one",
+                "label": "One",
+                "state": "site.features",
+                "priority": 2
+              }
+            }
+          }
+        }
+      },
+      "security": {
+        "id": "security",
+        "label": "Security and Errors",
+        "priority": 4,
+        "items": {
+          "security.none": {
+            "id": "security.none",
+            "label": "No Security",
+            "state": "security.none",
+            "priority": 44
+          },
+          "security.frontend": {
+            "id": "security.frontend",
+            "label": "Frontend Marker",
+            "state": "security.frontend",
+            "priority": 44
+          },
+          "security.backend": {
+            "id": "security.backend",
+            "label": "Backend Marker",
+            "state": "security.backend",
+            "priority": 99
+          },
+          "security.forbidden": {
+            "id": "security.forbidden",
+            "label": "Forbidden",
+            "state": "security.forbidden",
+            "priority": 3
+          },
+          "security.error": {
+            "id": "security.error",
+            "label": "Error",
+            "state": "security.error",
+            "priority": 1
+          }
+        }
+      }
+    }
   }
 }

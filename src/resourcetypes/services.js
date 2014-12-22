@@ -29,7 +29,7 @@ function RTypesService(MdNav) {
       params: 'rtype: "' + id + '"',
       priority: 5
     });
-  }
+  };
 
   this.init = function (siteconfig) {
     // Given some JSON, pick out the pieces and do some config. We

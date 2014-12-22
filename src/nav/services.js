@@ -42,13 +42,68 @@ function MdNavService() {
       priority: priority,
       state: state,
       items: items
-    }
+    };
 
     if (params) parentItems[id].params = params;
   };
 
+  this.init = function (siteconfig) {
+    // Given the "nav" key in siteconfig.json, wire things up
+
+    // Extract relevant stuff from config, perhaps validating
+    var urlPrefix = siteconfig.urlPrefix,
+      items = siteconfig.items;
+
+
+    // Top-level menus
+    _(items).forEach(
+      function (menu) {
+        var id = menu.id,
+          label = menu.label,
+          priority = menu.priority,
+          items = menu.items;
+        _this.addMenu(
+          {id: id, label: label, priority: priority}
+        );
+
+        // Now next level menus
+        _(items).forEach(function (menuItem) {
+          var id = menuItem.id,
+            label = menuItem.label,
+            priority = menuItem.priority,
+            state = menuItem.state,
+            params = menuItem.params,
+            items = menuItem.items;
+          _this.addMenuItem(
+            menu.id,
+            {id: id, label: label, priority: priority, state: state,
+            params: params, items: items}
+          );
+
+        });
+
+      }
+    );
+    _this.urlPrefix = _this.urlPrefix;
+
+  }
 
 }
+
+/*
+
+ MdNav.addMenu(
+ {id: 'security', label: 'Security and Errors', priority: 4}
+ );
+ MdNav.addMenuItem('security',
+ {
+ label: 'No Security',
+ state: 'security.none',
+ priority: 6
+ }
+ );
+
+ */
 
 angular.module('md.nav')
   .service('MdNav', MdNavService);
