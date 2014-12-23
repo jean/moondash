@@ -3,5 +3,5 @@
 require('./states');
 require('./controllers');
 require('./services');
-require('./interceptors')
-require('./mocks');
+require('./interceptors');
+
