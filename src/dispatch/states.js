@@ -1,5 +1,7 @@
 'use strict';
 
+var url = require('url');
+
 function ModuleConfig($stateProvider) {
 
   $stateProvider
@@ -34,9 +36,13 @@ function ModuleConfig($stateProvider) {
                  template: '',
                  controller: 'DispatcherCtrl as DispatcherCtrl',
                  resolve: {
-                   resolvedPath: function (Restangular, $location) {
-                     var path = 'api' + $location.path();
-                     return Restangular.one(path).get();
+                   resolvedPath: function ($location, $http) {
+                     var path = $location.path();
+                     return $http.get(path)
+                       .then(
+                       function (success) {
+                         return success.data;
+                       });
                    }
 
                  }
