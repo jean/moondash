@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-
+- Forms and schemas now come from siteconfig.json (server-side)
 
 - Provide ``md-init`` directive as an attribute that can point to the 
 URL of a JSON file that bootstraps everything.
