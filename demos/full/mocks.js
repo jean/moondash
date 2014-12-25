@@ -65,6 +65,9 @@
       }
 
       var context = _.find(sampleData, {path: path});
+      if (!context) {
+        return [404, 'Could not find ' + request.url];
+      }
       var parents = context.parents;
       var responseData = {
         context: context,

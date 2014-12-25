@@ -5,7 +5,7 @@
                parent: 'root'
              })
       .state('site.home', {
-               url: '/home',
+               url: '/',
                title: 'Home',
                views: {
                  'md-content@root': {

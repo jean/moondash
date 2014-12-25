@@ -67,7 +67,6 @@ function MockRest() {
       request.headers = headers;
       request.data = data;
       if (data) request.json_body = JSON.parse(data);
-      console.debug('request93', request);
       response = responder(request);
     }
 
