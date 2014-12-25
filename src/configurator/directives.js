@@ -1,4 +1,4 @@
-function InitCtrl(Restangular, MdConfig, MdNav, MdRTypes) {
+function InitCtrl(Restangular, MdConfig, MdNav, MdRTypes, MdSchemas, MdForms) {
     Restangular.one('full/siteconfig.json').get()
       .then(
       function (siteconfig) {
@@ -9,6 +9,8 @@ function InitCtrl(Restangular, MdConfig, MdNav, MdRTypes) {
         // Add resource types and nav menus
         MdRTypes.init(siteconfig.rtypes);
         MdNav.init(siteconfig.navMenus);
+        MdForms.init(siteconfig.forms);
+        MdSchemas.init(siteconfig.schemas);
       },
       function (failure) {
         var msg = 'Failed to get siteconfig.json';

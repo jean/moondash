@@ -1,48 +1,46 @@
-function MdSchemasService() {
-  this.schemas = {
-    schema1: {
-      type: "object",
-      properties: {
-        id: {
-          type: "string",
-          minLength: 2,
-          title: "Id",
-          description: "Id or alias"
-        },
-        title: {
-          type: "string",
-          title: "Title",
-          description: "Longer version"
-        }
-      }
-    }
-  };
+function SchemasService() {
+  var _this = this;
+  this.schemas = {};
 
   this.get = function (schemaId) {
-    // Implement a registry later of schemas loaded in the configurator
     return this.schemas[schemaId];
   };
 
+  this.init = function (schemas) {
+    // Given some JSON, pick out the pieces and do some config. We
+    // are passed in the "schemas" part of the JSON.
+
+    _(schemas).forEach(
+      function (schema, id) {
+        _this.schemas[id] = schema;
+      }
+    );
+
+  }
+
 }
 
-function MdFormsService() {
-  this.forms = {
-    form1: [
-      "*",
-      {
-        type: "submit",
-        title: "Save"
-      }
-    ]
-  };
+function FormsService() {
+  var _this = this;
+  this.forms = {};
 
   this.get = function (formId) {
-    // Implement a registry later of forms loaded in the configurator
-    return this.forms[formId];
+    return _this.forms[formId];
   };
 
+  this.init = function (forms) {
+    // Given some JSON, pick out the pieces and do some config. We
+    // are passed in the "forms" part of the JSON.
+
+    _(forms).forEach(
+      function (form, id) {
+        _this.forms[id] = form;
+      }
+    );
+
+  }
 }
 
 angular.module('md.forms')
-  .service('MdSchemas', MdSchemasService)
-  .service('MdForms', MdFormsService);
+  .service('MdSchemas', SchemasService)
+  .service('MdForms', FormsService);
