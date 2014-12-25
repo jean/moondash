@@ -1,3 +1,5 @@
+'use strict';
+
 function OrderObjectByFilter() {
   return function (items, field, reverse) {
     var filtered = [];
@@ -26,5 +28,5 @@ function OrderObjectByFilter() {
   }
 }
 
-angular.module('md.nav')
+angular.module('md.common')
   .filter('mdOrderObjectBy', OrderObjectByFilter);

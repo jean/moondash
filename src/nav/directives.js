@@ -1,13 +1,12 @@
-function NavPanelCtrl() {
+function NavPanelCtrl(MdNav) {
+  this.menus = MdNav.menus;
 }
 
 function NavPanel () {
   return {
     restrict: 'E',
     templateUrl: '/nav/templates/navpanel.html',
-    scope: {
-      menus: '=ngModel'
-    },
+    scope: {},
     controller: NavPanelCtrl,
     controllerAs: 'ctrl',
     bindToController: true
@@ -15,6 +14,15 @@ function NavPanel () {
 }
 
 function NavMenuCtrl() {
+  this.sref = function (menuitem) {
+    // Generating the ui-sref has some logic. Let's do it here instead
+    // of inline.
+    var uiSref = menuitem.state;
+    if (menuitem.params) {
+      uiSref = uiSref + '({' + menuitem.params + '})';
+    }
+    return uiSref;
+  }
 }
 
 

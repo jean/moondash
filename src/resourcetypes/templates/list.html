@@ -1,0 +1,24 @@
+<div style="margin-right: 2em">
+  <h1>List <code>{{ ctrl.rtype }}</code></h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in ctrl.items">
+      <td ng-bind="item.id">id</td>
+      <td ng-bind="item.title">title</td>
+      <td>
+        <a class="btn btn-default btn-xs"
+            ui-sref="rtypes.item.edit({rtype: ctrl.rtype, id: item.id})">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

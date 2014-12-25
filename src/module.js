@@ -1,16 +1,9 @@
 'use strict';
 
-/*
-
- Declare the module with dependencies, and nothing more.
-
- If running in "development mode", inject the mock infrastructure.
-
- */
-
 var dependencies = [
   // Our submodules
-  'md.forms', 'md.nav', 'md.dispatch',
+  'md.common', 'md.config',
+  'md.forms', 'md.nav', 'md.dispatch', 'md.resourcetypes',
 
   // External stuff
   'ngSanitize', 'ui.router', 'restangular', 'satellizer',
@@ -28,6 +21,7 @@ if (angular.mock) {
 angular.module('moondash', dependencies);
 
 // Require the Moondash components
+require('./common');
 require('./layout');
 require('./configurator');
 require('./mockapi');
@@ -37,20 +31,6 @@ require('./notice');
 require('./forms');
 require('./nav');
 require('./dispatch');
+require('./resourcetypes');
+require('./common');
 
-
-// Jamming this on here. Patching String.prototype to add some
-// utility functions that aren't in lodash (and I don't want to
-// add 7Kb minified to get underscore.string.)
-
-if (typeof String.prototype.startsWith != 'function') {
-  String.prototype.startsWith = function (str) {
-    return this.substring(0, str.length) === str;
-  }
-}
-
-if (typeof String.prototype.endsWith != 'function') {
-  String.prototype.endsWith = function (str) {
-    return this.substring(this.length - str.length, this.length) === str;
-  }
-}
