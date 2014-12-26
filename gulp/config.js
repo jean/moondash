@@ -65,21 +65,6 @@ module.exports = {
     outputName: 'moondash.css',
     dest: dest
   },
-  templates: {
-    src: [
-      src + '/**/templates/*.html'
-    ],
-    vendors: {
-      src: [
-        './node_modules/angular-bootstrap/template/*/*.html'
-      ],
-      root: 'template'
-    },
-    root: '/',
-    outputName: 'moondash-templates.js',
-    moduleName: 'moondash',
-    dest: dest
-  },
   vendors: {
     outputName: distWithMock ?
       'moondash-vendors-with-mock.js' : 'moondash-vendors.js',
