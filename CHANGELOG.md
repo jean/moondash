@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.0.5-alpha (2014-12-26)
 
 - Dispatch
 
