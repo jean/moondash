@@ -2,7 +2,7 @@ function NoticeService($modal) {
   this.show = function (message) {
     var modalInstance = $modal.open(
       {
-        templateUrl: 'noticeModal.html',
+        template: require('./templates/notice.html'),
         controller: 'NoticeCtrl as ctrl',
         size: 'sm',
         resolve: {

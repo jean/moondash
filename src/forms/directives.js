@@ -4,11 +4,10 @@ function FormCtrl(MdSchemas, MdForms) {
   this.form = MdForms.get(this.mdForm);
 }
 
-
 function Form() {
   return {
     restrict: "E",
-    templateUrl: "/forms/templates/form.html",
+    template: require('./templates/form.html'),
     scope: {
       mdModel: '=mdModel',
       mdSchema: '@mdSchema',
