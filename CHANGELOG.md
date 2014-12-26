@@ -2,6 +2,32 @@
 
 ## 0.0.5-alpha (2014-12-26)
 
+- Forms and schemas now come from siteconfig.json (server-side)
+
+- Provide ``md-init`` directive as an attribute that can point to the 
+URL of a JSON file that bootstraps everything.
+
+- Stop storing menu data on the configuration. Instead, each plugin 
+ (e.g. src/nav) will have a service that manages its configuration.
+
+- Resource types
+
+    * Start src/resourcetypes plugin
+    
+    * Nav menu to list the known types, as well as menuitem to manage 
+    them
+    
+    * Start MdRTypes service, add a helper for registering a type and 
+    adding to the navmenu.
+    
+    * Move sample stuff to demos/full
+    
+    * Start of declarative siteconfig.json in demo
+    
+    * Put information about rtypes into siteconfig
+    
+    * Browse (mock) data pointed to in siteconfig in rtypes.list
+
 - Dispatch
 
     * Hack into the mock support for getting an edit viewname and going 

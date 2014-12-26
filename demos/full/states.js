@@ -1,12 +1,11 @@
 (function () {
-  function ModuleConfig($stateProvider, $urlRouterProvider) {
-    //$urlRouterProvider.otherwise('/home');
+  function ModuleConfig($stateProvider) {
     $stateProvider
       .state('site', {
                parent: 'root'
              })
       .state('site.home', {
-               url: '/home',
+               url: '/',
                title: 'Home',
                views: {
                  'md-content@root': {
@@ -26,16 +25,6 @@
                        return Restangular.one('/api/features').get();
                      }
                    }
-                 }
-               }
-             })
-      .state('site.collapse', {
-               url: '/collapse',
-               title: 'Collapse',
-               views: {
-                 'md-content@root': {
-                   templateUrl: 'templates/collapse.html',
-                   controller: 'CollapseCtrl as ctrl'
                  }
                }
              })
@@ -88,7 +77,7 @@
                  }
                }
              })
-      .state('invoicefolder-default', {
+      .state('invoicesfolder-default', {
                parent: 'site',
                viewConfig: {
                  name: 'default',
@@ -97,7 +86,7 @@
                },
                views: {
                  'md-content@root': {
-                   templateUrl: 'templates/invoicefolder-default.html'
+                   templateUrl: 'templates/invoicesfolder-default.html'
                  }
                }
              })
@@ -167,55 +156,7 @@
              });
   }
 
-  function ModuleRun(MdConfig) {
-    var site, navMenus, config;
-    site = {name: 'Full Demo'};
-    navMenus = {
-      demo: {
-        label: 'Demo', priority: 3, items: [
-          {label: 'Home', state: 'site.home'},
-          {label: 'Dispatch', state: 'site.dispatch', priority: 1},
-          {label: 'Features', state: 'site.features'},
-          {label: 'Collapse', state: 'site.collapse'},
-          {label: 'Form', state: 'site.form'},
-          {
-            label: 'Invoices', items: [
-            {label: 'All', state: 'site.features', priority: 3},
-            {label: 'Some', state: 'site.features', priority: 1},
-            {label: 'One', state: 'site.features', priority: 2}
-          ]
-          }
-        ]
-      },
-      security: {
-        label: 'Security and Errors', priority: 4, items: [
-          {label: 'No Security', state: 'security.none', priority: 6},
-          {
-            label: 'Frontend Marker',
-            state: 'security.frontend',
-            priority: 44
-          },
-          {
-            label: 'Backend Marker',
-            state: 'security.backend',
-            priority: 99
-          },
-          {label: 'Forbidden', state: 'security.forbidden', priority: 3},
-          {label: 'Error', state: 'security.error', priority: 1}
-        ]
-      }
-    };
-    config = {site: site, navMenus: navMenus};
-    MdConfig.init(config);
-    MdConfig.navMenus.root.items
-      .push({
-              label: 'Home',
-              state: 'site.home'
-            });
-  }
-
   angular.module('full')
-    .config(ModuleConfig)
-    .run(ModuleRun);
+    .config(ModuleConfig);
 
 })();

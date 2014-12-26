@@ -6,19 +6,18 @@ function FormCtrl(MdSchemas, MdForms) {
 
 
 function Form() {
-  var directive = {
+  return {
     restrict: "E",
     templateUrl: "/forms/templates/form.html",
     scope: {
       mdModel: '=mdModel',
-      mdSchema: '=mdSchema',
-      mdForm: '=mdForm'
+      mdSchema: '@mdSchema',
+      mdForm: '@mdForm'
     },
     controller: FormCtrl,
     controllerAs: 'ctrl',
-    bindToController: true // Note: causes testing problems
+    bindToController: true
   };
-  return directive;
 }
 
 angular.module("md.forms")
