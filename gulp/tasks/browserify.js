@@ -8,6 +8,7 @@
 
 var browserify   = require('browserify');
 var watchify     = require('watchify');
+var partialify   = require('partialify');
 var bundleLogger = require('../util/bundleLogger');
 var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
@@ -29,7 +30,10 @@ gulp.task('browserify', function(callback) {
       extensions: config.extensions,
       // Enable source maps!
       debug: config.debug
-    });
+    })
+
+    // Use partialify to allow Angular templates to be require()
+    .transform(partialify);
 
     var bundle = function() {
       // Log when bundling starts

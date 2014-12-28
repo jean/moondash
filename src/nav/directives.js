@@ -5,7 +5,7 @@ function NavPanelCtrl(MdNav) {
 function NavPanel () {
   return {
     restrict: 'E',
-    templateUrl: '/nav/templates/navpanel.html',
+    template: require('./templates/navpanel.html'),
     scope: {},
     controller: NavPanelCtrl,
     controllerAs: 'ctrl',
@@ -29,7 +29,7 @@ function NavMenuCtrl() {
 function NavMenu() {
   return {
     restrict: 'E',
-    templateUrl: '/nav/templates/navmenu.html',
+    template: require('./templates/navmenu.html'),
     scope: {
       menuitem: '=ngModel'
     },
@@ -47,8 +47,8 @@ function NavSubmenuCtrl(){
 
 function NavSubmenu() {
   return {
-    restrict: "E",
-    templateUrl: "/nav/templates/submenu.html",
+    restrict: 'E',
+    template: require('./templates/submenu.html'),
     require: '^ngModel',
     scope: {
       menuitem: '=ngModel'
@@ -62,5 +62,5 @@ function NavSubmenu() {
 
 angular.module('md.nav')
   .directive('mdNavmenu', NavMenu)
-  .directive("mdNavsubmenu", NavSubmenu)
+  .directive('mdNavsubmenu', NavSubmenu)
   .directive('mdNavpanel', NavPanel);

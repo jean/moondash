@@ -11,7 +11,7 @@ function ModuleConfig($stateProvider) {
              title: 'List Resources',
              views: {
                'md-content@root': {
-                 templateUrl: '/resourcetypes/templates/list.html',
+                 template: require('./templates/list.html'),
                  controller: 'ListCtrl as ctrl',
                  resolve: {
                    items: function (Restangular, $stateParams, MdRTypes) {
@@ -39,7 +39,7 @@ function ModuleConfig($stateProvider) {
              title: 'Edit Resource',
              views: {
                'md-content@root': {
-                 templateUrl: '/resourcetypes/templates/edit.html',
+                 template: require('./templates/edit.html'),
                  controller: 'EditCtrl as ctrl'
                }
              }
@@ -49,7 +49,7 @@ function ModuleConfig($stateProvider) {
              title: 'Manage',
              views: {
                'md-content@root': {
-                 templateUrl: '/resourcetypes/templates/manage.html',
+                 template: require('./templates/manage.html'),
                  controller: 'ManageCtrl as ctrl'
                }
              }

@@ -8,7 +8,7 @@ function ModuleConfig($stateProvider) {
              url: '/login',
              views: {
                'md-content@root': {
-                 templateUrl: '/auth/templates/login.html',
+                 template: require('./templates/login.html'),
                  controller: 'LoginCtrl as ctrl'
                }
              }
@@ -18,7 +18,7 @@ function ModuleConfig($stateProvider) {
              views: {
                'md-content@root': {
                  controller: 'LogoutCtrl as ctrl',
-                 templateUrl: '/auth/templates/logout.html'
+                 template: require('./templates/logout.html')
                }
              }
            })
@@ -27,7 +27,7 @@ function ModuleConfig($stateProvider) {
              //authenticate: true,
              views: {
                'md-content@root': {
-                 templateUrl: '/auth/templates/profile.html',
+                 template: require('./templates/profile.html'),
                  controller: 'ProfileCtrl as ctrl'
                }
              },

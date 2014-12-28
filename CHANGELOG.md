@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Use partialify to include template strings from files. Remove all 
+machinery from gulp-angular-templatecache and gulp task. Stop including
+moonshot-templates.js in the demos.
+
 ## 0.0.5-alpha (2014-12-26)
 
 - Forms and schemas now come from siteconfig.json (server-side)

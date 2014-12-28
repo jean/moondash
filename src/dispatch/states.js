@@ -9,7 +9,7 @@ function ModuleConfig($stateProvider) {
              parent: 'root',
              views: {
                'md-content@root': {
-                 templateUrl: '/dispatch/templates/notfound.html',
+                 template: require('./templates/notfound.html'),
                  controller: 'NotFoundCtrl as ctrl'
 
                }
@@ -20,7 +20,7 @@ function ModuleConfig($stateProvider) {
              parent: 'root',
              views: {
                'md-content@root': {
-                 templateUrl: '/dispatch/templates/error.html',
+                 template: require('./templates/error.html'),
                  controller: 'ErrorCtrl as ctrl'
                }
              },
