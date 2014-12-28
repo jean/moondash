@@ -1,13 +1,5 @@
 = TODO
 
-- partialify for HTML
-
-- Get rid of -vendors
-
-- Get rid of the shim
-
-- Put in require('angular')
-
 - .directive('name', require('')
 
   * https://github.com/bclinkinbeard/angular-component-demo/tree/master/node_modules
@@ -23,3 +15,5 @@
   * Angular stuff into index.js
   
   * Mocha tests for services.js etc.
+  
+- ng-grid
