@@ -11,6 +11,8 @@
   - Hello World, from grunt
   
   - Hello World, Travis
+  
+  - Mocha and chai etc. with Protractor
 
   * Cleanup
 
@@ -19,6 +21,9 @@
       - Remove src/helloworld
       
       - Fix Travis
+      
+      - Edit gulp/config.js etc.
+      
 
 - .directive('name', require('')
 
