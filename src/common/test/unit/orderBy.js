@@ -14,7 +14,7 @@ describe('Order By Filter', function () {
     filter = OrderByFilter();
   });
 
-  it('should be obviously equal', function () {
+  it('should sort mapping items ascending', function () {
     var items = [
       {id: 1, priority: 2},
       {id: 2, priority: 1},
@@ -24,6 +24,18 @@ describe('Order By Filter', function () {
     expect(result[0].id).to.equal(2);
     expect(result[1].id).to.equal(1);
     expect(result[2].id).to.equal(3);
+  });
+
+  it('should sort mapping items descending', function () {
+    var items = [
+      {id: 1, priority: 2},
+      {id: 2, priority: 1},
+      {id: 3, priority: 99}
+    ];
+    var result = filter(items, 'priority', true);
+    expect(result[0].id).to.equal(3);
+    expect(result[1].id).to.equal(1);
+    expect(result[2].id).to.equal(2);
   });
 
 });
