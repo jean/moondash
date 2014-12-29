@@ -5,24 +5,18 @@ module.exports = function (config) {
     {
       files: [
         'build/moondash-vendors.js',
+        'build/moondash.js',
         'src/**/midway/*.js'
       ],
-      frameworks: ['browserify', 'jasmine'],
-      preprocessors: {
-        'src/**/midway/*.js': ['browserify']
-      },
+      frameworks: ['jasmine'],
       browsers: ['PhantomJS'],
       //reporters: ['dot'],
       reporters: ['progress', 'junit'],
       singleRun: false,
       autoWatch: true,
 
-      logLevel: 'LOG_INFO',
+      logLevel: 'LOG_INFO'
 
-      browserify: {
-        debug: true,
-        transform: ['brfs', 'browserify-shim']
-      }
     }
   );
 };
