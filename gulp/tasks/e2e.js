@@ -10,7 +10,7 @@ var testConfig = require('../config').e2e;
 
 gulp.task('webdriver-update', webdriverUpdate);
 
-gulp.task('e2e', ['webdriver-update', 'browserSync:e2e'], function () {
+gulp.task('e2e', ['browserSync:e2e'], function () {
 
   return gulp.src(testConfig.specs)
     .pipe(protractor({
