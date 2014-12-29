@@ -6,7 +6,7 @@ var demoSrc = './demos';
 
 module.exports = {
   e2e: {
-    protractor: '../../protractor.conf.js',
+    protractor: '../../protractor.conf-travis.js',
     specs: [
       'src/*/test/e2e/*.js'
     ]
