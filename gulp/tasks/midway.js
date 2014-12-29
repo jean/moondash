@@ -7,6 +7,6 @@ gulp.task('midway', function () {
   return karma.server
     .start({
              configFile: __dirname + '/' + testConf.karma,
-             singleRun: false
+             singleRun: true
            });
 });

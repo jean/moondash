@@ -26,11 +26,9 @@ require('./layout');
 require('./configurator');
 require('./mockapi');
 require('./auth');
-require('./hellotesting');
 require('./notice');
 require('./forms');
 require('./nav');
 require('./dispatch');
 require('./resourcetypes');
 require('./common');
-
