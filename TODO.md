@@ -1,27 +1,20 @@
 = TODO
 
 - Basic Mocha unit tests
-
-  - Midway tests
-
-  - Mocha and chai etc. with chai-webdriver or Protractor
   
   - Services, controllers
   
   - Directives
 
-  * Cleanup
-
-      - Remove jasmine
+  * Later
+  
+      - Fix Travis e2e
+  
+      - Switch Karma and possibly Protractor from Jasmine to Mocha
+          
+      - Coverage
       
-      - Remove src/helloworld
-      
-      - Fix Travis
-      
-      - Edit gulp/config.js etc.
-      
-      
-  - Coverage
+      - Re-consider getting out of Karma and Protractor
 
 - .directive('name', require('')
 
