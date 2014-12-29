@@ -12,7 +12,8 @@ module.exports = {
     ]
   },
   unit: {
-    src: ['src/**/test/unit/*.js']
+    tests: ['src/**/test/unit/*.js'],
+    src: ['src/*/*.js']
   },
   midway: {
     karma: '../../karma.conf.js'

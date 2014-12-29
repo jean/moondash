@@ -1,9 +1,17 @@
 var
   gulp = require('gulp'),
   mocha = require('gulp-mocha'),
-  testConf = require('../config').unit;
+  istanbul = require('gulp-istanbul'),
+  conf = require('../config').unit;
 
-gulp.task('unit', function () {
-  return gulp.src(testConf.src)
-    .pipe(mocha({reporter: 'dot'}));
+gulp.task('unit', function (cb) {
+   gulp.src(conf.src)
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire())
+    .on('finish', function () {
+      gulp.src(conf.tests)
+        .pipe(mocha({reporter: 'dot'}))
+        .pipe(istanbul.writeReports()) // Creating the reports after tests runned
+        .on('end', cb);
+    })
 });
