@@ -11,7 +11,7 @@ exports.config = {
 
   // Use the server started in browserSync:e2e gulp task
 
-  baseUrl: 'localhost/projects/MoonshotProject/moondash/',
+  baseUrl: 'http://localhost:3001/',
 
   specs: [
     'src/*/test/e2e/*.js'
