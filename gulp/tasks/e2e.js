@@ -14,8 +14,7 @@ gulp.task('e2e', ['webdriver-update', 'browserSync:e2e'], function () {
 
   return gulp.src(testConfig.specs)
     .pipe(protractor({
-        configFile: __dirname + '/' + testConfig.protractor,
-                     args: ['']
+        configFile: __dirname + '/' + testConfig.protractor
     }))
     .on('error', function(err) {
       // Make sure failed tests cause gulp to exit non-zero
