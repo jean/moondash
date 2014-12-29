@@ -1,25 +1,27 @@
 'use strict';
 
-module.exports = function (karma) {
-  karma.set(
+module.exports = function (config) {
+  config.set(
     {
       files: [
         'build/moondash-vendors.js',
         'src/**/midway/*.js'
       ],
-      frameworks: ['jasmine', 'browserify'],
+      frameworks: ['browserify', 'jasmine'],
       preprocessors: {
         'src/**/midway/*.js': ['browserify']
       },
       browsers: ['PhantomJS'],
-      reporters: ['dots'],
+      //reporters: ['dot'],
+      reporters: ['progress', 'junit'],
       singleRun: false,
       autoWatch: true,
 
       logLevel: 'LOG_INFO',
 
       browserify: {
-        debug: true, // output source maps
+        debug: true,
+        bundleDelay: 750,
         transform: ['brfs', 'browserify-shim']
       }
     }
