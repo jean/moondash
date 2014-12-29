@@ -4,5 +4,5 @@ var buildMode = require('../config').buildMode;
 if(buildMode.dist) {
     gulp.task('default', ['dist']);
 } else {
-    gulp.task('default', ['unit', 'watch']);
+    gulp.task('default', ['unit', 'midway', 'watch']);
 }

@@ -10,4 +10,5 @@ gulp.task('watch', ['setWatch', 'browserSync'], function() {
   gulp.watch(config.markup.src, ['markup']);
   gulp.watch(config.sass.src, ['sass']);
   gulp.watch(config.unit.karma, ['test']);
+  gulp.watch(config.midway.src, ['test']);
 });

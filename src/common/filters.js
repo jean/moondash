@@ -1,9 +1,11 @@
 'use strict';
 
+var _ = require('lodash');
+
 function OrderObjectByFilter() {
   return function (items, field, reverse) {
     var filtered = [];
-    angular.forEach(items, function (item) {
+    _(items).forEach(function (item) {
       filtered.push(item);
     });
     function index(obj, i) {
@@ -28,5 +30,6 @@ function OrderObjectByFilter() {
   }
 }
 
-angular.module('md.common')
-  .filter('mdOrderObjectBy', OrderObjectByFilter);
+module.exports = {
+  OrderObjectByFilter: OrderObjectByFilter
+};

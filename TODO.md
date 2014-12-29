@@ -1,12 +1,20 @@
 = TODO
 
-- partialify for HTML
+- Basic Mocha unit tests
+  
+  - Services, controllers
+  
+  - Directives
 
-- Get rid of -vendors
-
-- Get rid of the shim
-
-- Put in require('angular')
+  * Later
+  
+      - Fix Travis e2e
+  
+      - Switch Karma and possibly Protractor from Jasmine to Mocha
+          
+      - Coverage
+      
+      - Re-consider getting out of Karma and Protractor
 
 - .directive('name', require('')
 
@@ -23,3 +31,7 @@
   * Angular stuff into index.js
   
   * Mocha tests for services.js etc.
+  
+- ng-grid
+
+- Get rid of ng-min (use ng-annotate)

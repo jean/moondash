@@ -1,16 +1,21 @@
-var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
-var distWithMock = (process.argv.slice(2).indexOf('--mock')>=0);
+var distMode = (process.argv.slice(2).indexOf('--dist') >= 0);
+var distWithMock = (process.argv.slice(2).indexOf('--mock') >= 0);
 var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
 
 module.exports = {
   e2e: {
-    protractor: '../../test/protractor.conf.js',
-    specs: ['../src/**/e2e/*.spec.js']
+    protractor: '../../protractor.conf-travis.js',
+    specs: [
+      'src/*/test/e2e/*.js'
+    ]
   },
   unit: {
-    karma: '../../test/karma.conf.js'
+    src: ['src/**/test/unit/*.js']
+  },
+  midway: {
+    karma: '../../karma.conf.js'
   },
   buildMode: {
     dist: distMode
@@ -23,6 +28,7 @@ module.exports = {
         baseDir: [dest, src],
         directory: true
       },
+      open: false,
       files: [
         dest + "/**",
         // Exclude Map files
@@ -30,6 +36,7 @@ module.exports = {
       ]
     },
     e2e: {
+      port: 3001,
       server: {
         // We're serving the src folder as well
         // for sass sourcemap linking

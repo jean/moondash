@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 
 gulp.task('test', [
-    'unit',
-    'e2e'
+  'unit',
+  'midway',
+  'e2e'
 ]);

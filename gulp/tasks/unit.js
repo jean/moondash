@@ -1,10 +1,9 @@
-var gulp = require('gulp');
-var karma = require('karma-as-promised');
-var testConf = require('../config').unit
+var
+  gulp = require('gulp'),
+  mocha = require('gulp-mocha'),
+  testConf = require('../config').unit;
 
 gulp.task('unit', function () {
-  return karma.server.start({
-    configFile: __dirname + '/' + testConf.karma,
-    singleRun: false
-  });
+  return gulp.src(testConf.src)
+    .pipe(mocha({reporter: 'dot'}));
 });

@@ -6,15 +6,15 @@ var protractor = require('gulp-protractor').protractor;
 
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
 var browserSync = require('browser-sync');
-var config = require('../config');
+var testConfig = require('../config').e2e;
 
 gulp.task('webdriver-update', webdriverUpdate);
 
-gulp.task('e2e', ['webdriver-update', 'browserSync:e2e'], function () {
+gulp.task('e2e', ['browserSync:e2e'], function () {
 
-  return gulp.src(config.e2e.specs)
+  return gulp.src(testConfig.specs)
     .pipe(protractor({
-        configFile: __dirname + '/' + config.e2e.protractor
+        configFile: __dirname + '/' + testConfig.protractor
     }))
     .on('error', function(err) {
       // Make sure failed tests cause gulp to exit non-zero
