@@ -1,11 +1,10 @@
 install:
+  - npm install -g npm@2
   - npm install
   - ./node_modules/protractor/bin/webdriver-manager update
-  - sleep 3
 before_script:
   - "export DISPLAY=:99.0"
-  - sleep 3
   - "sh -e /etc/init.d/xvfb start"
-  - sleep 3
+  - nohup bash -c "./node_modules/protractor/bin/webdriver-manager start 2>&1 &"
 script:
   - gulp test
