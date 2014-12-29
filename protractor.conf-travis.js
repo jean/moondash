@@ -6,7 +6,7 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'Firefox'
+    'browserName': 'firefox'
   },
 
   // Use the server started in browserSync:e2e gulp task
