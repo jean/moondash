@@ -2,7 +2,7 @@ install:
   - npm install
   - ./node_modules/protractor/bin/webdriver-manager update
   - sleep 3
-before_install:
+before_script:
   - "export DISPLAY=:99.0"
   - sleep 3
   - "sh -e /etc/init.d/xvfb start"
