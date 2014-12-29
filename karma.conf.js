@@ -21,7 +21,6 @@ module.exports = function (config) {
 
       browserify: {
         debug: true,
-        bundleDelay: 750,
         transform: ['brfs', 'browserify-shim']
       }
     }
