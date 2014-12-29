@@ -2,17 +2,13 @@
 
 - Basic Mocha unit tests
 
-  - Hello World mocha, outside Karma
+  - Midway tests
+
+  - Mocha and chai etc. with chai-webdriver or Protractor
   
-  - Hello World mocha that imports, outside Karma
+  - Services, controllers
   
-  - Hello world, with Karma
-  
-  - Hello World, from grunt
-  
-  - Hello World, Travis
-  
-  - Mocha and chai etc. with Protractor
+  - Directives
 
   * Cleanup
 
@@ -24,6 +20,8 @@
       
       - Edit gulp/config.js etc.
       
+      
+  - Coverage
 
 - .directive('name', require('')
 

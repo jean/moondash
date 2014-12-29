@@ -1,5 +1,5 @@
-var distMode = (process.argv.slice(2).indexOf('--dist')>=0);
-var distWithMock = (process.argv.slice(2).indexOf('--mock')>=0);
+var distMode = (process.argv.slice(2).indexOf('--dist') >= 0);
+var distWithMock = (process.argv.slice(2).indexOf('--mock') >= 0);
 var dest = distMode ? "./dist" : "./build";
 var src = './src';
 var demoSrc = './demos';
@@ -10,6 +10,9 @@ module.exports = {
     specs: ['../src/**/e2e/*.spec.js']
   },
   unit: {
+    src: ['src/**/test/*/*.js']
+  },
+  midway: {
     karma: '../../test/karma.conf.js'
   },
   buildMode: {
