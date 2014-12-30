@@ -6,5 +6,6 @@ function Profile(Restangular) {
   };
 }
 
-angular.module("moondash")
-  .factory('MdProfile', Profile);
+module.exports = {
+  Profile: Profile
+};
