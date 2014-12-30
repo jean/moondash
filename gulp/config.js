@@ -28,7 +28,7 @@ module.exports = {
         baseDir: [dest, src],
         directory: true
       },
-      open: false,
+      open: true,
       files: [
         dest + "/**",
         // Exclude Map files
