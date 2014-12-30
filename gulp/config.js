@@ -21,14 +21,14 @@ module.exports = {
     dist: distMode
   },
   browserSync: {
-    dist: {
+    dev: {
       server: {
         // We're serving the src folder as well
         // for sass sourcemap linking
         baseDir: [dest, src],
         directory: true
       },
-      open: false,
+      open: true,
       files: [
         dest + "/**",
         // Exclude Map files
