@@ -8,12 +8,8 @@
 
   * Later
   
-      - Fix Travis e2e
-  
       - Switch Karma and possibly Protractor from Jasmine to Mocha
           
-      - Coverage
-      
       - Re-consider getting out of Karma and Protractor
 
 - .directive('name', require('')
