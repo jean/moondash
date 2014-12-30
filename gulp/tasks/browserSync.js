@@ -3,7 +3,7 @@ var gulp        = require('gulp');
 var config      = require('../config').browserSync;
 
 gulp.task('browserSync', ['build'], function() {
-  browserSync(config.dist);
+  browserSync(config.dev);
 });
 
 gulp.task('browserSync:e2e', ['build'], function() {
