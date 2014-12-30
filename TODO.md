@@ -1,33 +1,52 @@
 = TODO
 
 - Basic Mocha unit tests
-  
-  - Services, controllers
-  
-  - Directives
 
-  * Later
+    - Convert all directories to plugins
   
-      - Switch Karma and possibly Protractor from Jasmine to Mocha
+    - Services, controllers
+  
+    - Directives
+
+    * Later
+  
+        - Switch Karma and possibly Protractor from Jasmine to Mocha
           
-      - Re-consider getting out of Karma and Protractor
+        - Re-consider getting out of Karma and Protractor
 
-- .directive('name', require('')
 
-  * https://github.com/bclinkinbeard/angular-component-demo/tree/master/node_modules
-  
-  * http://benclinkinbeard.com/posts/towards-atomic-angularjs-components-with-browserify/
-  
-  * Perhaps one dir per component
-  
-- require('angular') with the trick from:
-
-  * https://blog.codecentric.de/en/2014/08/angularjs-browserify/#integrating
-  
-  * Angular stuff into index.js
-  
-  * Mocha tests for services.js etc.
-  
 - ng-grid
 
 - Get rid of ng-min (use ng-annotate)
+
+- Types
+
+    * Commit to a good Restangular approach
+    
+    * Including, GET of the collection versus GET of the items
+    
+    * List/add/view/delete/edit resources of that type
+    
+    * Attractive forms
+    
+    * CRUD of resource types/schemas/forms themselves
+    
+- Traversal
+
+    * Ensure NotFound, Error, Forbidden, etc. do the right thing
+
+- JSON-LD for views on a type/resource
+
+- Moonrock
+
+    * CORS
+    
+    * Security ACL
+    
+- admin5
+
+    * Ordering of collection items
+    
+    * Drag-and-drop
+    
+    * pillbox widget on schemaforms
