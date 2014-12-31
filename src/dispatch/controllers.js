@@ -28,6 +28,7 @@ function DispatcherCtrl($state, resolvedPath, MdDispatcher) {
   if (resolvedPath.error) {
     // This should be a not found
     $state.go('notfound');
+    return;
   }
 
   var data = resolvedPath.data;

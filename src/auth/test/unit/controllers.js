@@ -33,6 +33,8 @@ var NoticeService = {
 describe('Auth Login Controller', function () {
 
   beforeEach(function () {
+
+    var fakeData = {};
     ctrl = controllers.LoginCtrl;
   });
 
