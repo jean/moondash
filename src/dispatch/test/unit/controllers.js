@@ -1,4 +1,5 @@
 'use strict';
+
 var
   helper = require('../../../common/test-helper'),
   expect = helper.expect,

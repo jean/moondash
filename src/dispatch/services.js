@@ -1,4 +1,4 @@
-function Dispatcher($http) {
+function Dispatcher() {
   var _this = this;
 
   // At startup, take the list of states and make a viewMap. The
@@ -148,16 +148,8 @@ function Dispatcher($http) {
       return undefined;
     }
   };
-
-  this.transitionTo = function (context, viewName, parents) {
-    // If the state map isn't generated, then generate it
-    var views = this.getViewMap();
-
-    // Find all view declarations for this viewName
-
-    // Based on priority settings,
-  };
 }
 
-angular.module('md.dispatch')
-  .service('MdDispatcher', Dispatcher);
+module.exports = {
+  Dispatcher: Dispatcher
+};
