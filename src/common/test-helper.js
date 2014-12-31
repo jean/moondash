@@ -4,7 +4,6 @@ var chai = require('chai'),
   sinonChai = require('sinon-chai');
 
 chai.use(sinonChai);
-chai.should();
 
 beforeEach(function() {
   // Create a new sandbox before each test

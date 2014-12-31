@@ -59,7 +59,8 @@ function ErrorCtrl($stateParams) {
 }
 
 
-angular.module('md.dispatch')
-  .controller('NotFoundCtrl', NotFoundCtrl)
-  .controller('ErrorCtrl', ErrorCtrl)
-  .controller('DispatcherCtrl', DispatcherCtrl);
+module.exports = {
+  NotFoundCtrl: NotFoundCtrl,
+  ErrorCtrl: ErrorCtrl,
+  DispatcherCtrl: DispatcherCtrl
+};
