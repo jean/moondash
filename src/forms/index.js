@@ -1,13 +1,10 @@
 'use strict';
 
-// Define a submodule
 var angular = require('angular');
 
-var dependencies = [
-  'ui.router',
-  'restangular'
-];
-angular.module('md.forms', dependencies);
+angular.module('md.forms', ['ui.router', 'restangular'])
+  .controller('FormCtrl', require('./controllers').FormCtrl)
+  .service('MdSchemas', require('./services').SchemasService)
+  .service('MdForms', require('./services').FormsService);
 
 require('./directives');
-require('./services');

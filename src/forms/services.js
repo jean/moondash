@@ -1,3 +1,5 @@
+'use strict';
+
 function SchemasService() {
   var _this = this;
   this.schemas = {};
@@ -41,6 +43,7 @@ function FormsService() {
   }
 }
 
-angular.module('md.forms')
-  .service('MdSchemas', SchemasService)
-  .service('MdForms', FormsService);
+module.exports = {
+  SchemasService: SchemasService,
+  FormsService: FormsService
+};
