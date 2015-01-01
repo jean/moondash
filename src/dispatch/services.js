@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 function Dispatcher() {
   var _this = this;
 
@@ -44,8 +46,8 @@ function Dispatcher() {
     }
   };
   this.updateTraversal = function () {
-    // Update _this.disableTraversal property if _this.viewMap is empty
-    _this.disableTraversal = _.isEmpty(_this.viewMap);
+    // Update _this.disableDispatch property if _this.viewMap is empty
+    _this.disableDispatch = _.isEmpty(_this.viewMap);
   };
   this.orderViewMap = function () {
     // Post processing of viewMap with best match order
@@ -85,7 +87,7 @@ function Dispatcher() {
     // Post processing of viewMap with best match order
     _this.orderViewMap();
 
-    // Update _this.disableTraversal property if _this.viewMap is empty
+    // Update _this.disableDispatch property if _this.viewMap is empty
     _this.updateTraversal();
   };
 
