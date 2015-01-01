@@ -1,9 +1,8 @@
 'use strict';
 
-// Define a submodule
 var angular = require('angular');
-angular.module('md.nav', []);
-
-
-require('./directives');
-require('./services');
+angular.module('md.nav', [])
+  .service('MdNav', require('./services').NavService)
+  .directive('mdNavmenu', require('./directives').NavMenu)
+  .directive('mdNavsubmenu', require('./directives').NavSubmenu)
+  .directive('mdNavpanel', require('./directives').NavPanel);
