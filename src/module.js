@@ -2,7 +2,7 @@
 
 var dependencies = [
   // Our submodules
-  'md.common', 'md.config', 'md.layout',
+  'md.common', 'md.config', 'md.layout', 'md.mockapi',
   'md.auth', 'md.forms', 'md.nav', 'md.dispatch', 'md.resourcetypes',
 
   // External stuff
