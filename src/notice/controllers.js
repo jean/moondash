@@ -1,4 +1,4 @@
-function NoticeCtrl($scope, $modalInstance, $timeout, message) {
+function NoticeController($scope, $modalInstance, $timeout, message) {
   this.message = message;
   var seconds = 3;
   var timer = $timeout(
@@ -13,5 +13,6 @@ function NoticeCtrl($scope, $modalInstance, $timeout, message) {
     });
 }
 
-angular.module('moondash')
-  .controller('NoticeCtrl', NoticeCtrl);
+module.exports = {
+  NoticeController: NoticeController
+};
