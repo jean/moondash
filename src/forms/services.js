@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 function SchemasService() {
   var _this = this;
   this.schemas = {};

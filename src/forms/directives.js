@@ -11,7 +11,7 @@ function Form() {
       mdSchema: '@mdSchema',
       mdForm: '@mdForm'
     },
-    controller: controllers.FormCtrl,
+    controller: controllers.FormController,
     controllerAs: 'ctrl',
     bindToController: true
   };
