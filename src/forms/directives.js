@@ -1,3 +1,7 @@
+'use strict';
+
+var controllers = require('./controllers');
+
 function Form() {
   return {
     restrict: 'E',
@@ -7,11 +11,12 @@ function Form() {
       mdSchema: '@mdSchema',
       mdForm: '@mdForm'
     },
-    controller: 'FormCtrl',
+    controller: controllers.FormCtrl,
     controllerAs: 'ctrl',
     bindToController: true
   };
 }
 
-angular.module('md.forms')
-  .directive('mdForm', Form);
+module.exports = {
+  FormDirective: Form
+};

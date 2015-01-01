@@ -1,4 +1,4 @@
-var _ = require('lodash');
+'use strict';
 
 function LayoutController($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;

@@ -1,3 +1,5 @@
+'use strict';
+
 function LayoutService($rootScope, MdConfig) {
   var _this, siteName;
   _this = this;
