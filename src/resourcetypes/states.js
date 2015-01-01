@@ -1,3 +1,7 @@
+'use strict';
+
+var controllers = require('./controllers');
+
 function ModuleConfig($stateProvider) {
   $stateProvider
     .state('rtypes', {
@@ -12,7 +16,8 @@ function ModuleConfig($stateProvider) {
              views: {
                'md-content@root': {
                  template: require('./templates/list.html'),
-                 controller: 'ListCtrl as ctrl',
+                 controller: controllers.ListController,
+                 controllerAs: 'ctrl',
                  resolve: {
                    items: function (Restangular, $stateParams, MdRTypes) {
                      var rtype = $stateParams.rtype;
@@ -40,7 +45,8 @@ function ModuleConfig($stateProvider) {
              views: {
                'md-content@root': {
                  template: require('./templates/edit.html'),
-                 controller: 'EditCtrl as ctrl'
+                 controller: controllers.EditController,
+                 controllerAs: 'ctrl'
                }
              }
            })
@@ -50,11 +56,13 @@ function ModuleConfig($stateProvider) {
              views: {
                'md-content@root': {
                  template: require('./templates/manage.html'),
-                 controller: 'ManageCtrl as ctrl'
+                 controller: controllers.ManageController,
+                 controllerAs: 'ctrl'
                }
              }
            });
 }
 
-angular.module('md.resourcetypes')
-  .config(ModuleConfig);
+module.exports = {
+  Config: ModuleConfig
+};
