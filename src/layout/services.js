@@ -1,4 +1,4 @@
-function MdLayoutService($rootScope, MdConfig) {
+function LayoutService($rootScope, MdConfig) {
   var _this, siteName;
   _this = this;
   siteName = MdConfig.site.name;
@@ -17,6 +17,11 @@ function MdLayoutService($rootScope, MdConfig) {
     }
   }
 
+  // TODO Expose so unit tests can reach it. Try to change
+  // changeTitle below to use this.changeTitle and write a
+  // midway test for $on
+  this.changeTitle = changeTitle;
+
   $rootScope.$on('$stateChangeSuccess', changeTitle);
 }
 
@@ -24,6 +29,7 @@ function ModuleRun($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
-angular.module('moondash')
-  .service('MdLayout', MdLayoutService)
-  .run(ModuleRun);
+module.exports = {
+ LayoutService: LayoutService,
+ Run: ModuleRun
+};

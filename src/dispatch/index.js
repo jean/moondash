@@ -1,7 +1,6 @@
 'use strict';
 
 var angular = require('angular');
-require('./controllers');
 
 angular.module('md.dispatch', ['ui.router'])
   .controller('NotFoundCtrl', require('./controllers').NotFoundCtrl)
@@ -10,5 +9,6 @@ angular.module('md.dispatch', ['ui.router'])
   .service('MdDispatcher', require('./services').Dispatcher);
 
 require('./init');
+require('./controllers');
 require('./services');
 require('./states');
