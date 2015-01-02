@@ -28,6 +28,7 @@ function DispatcherCtrl($state, resolvedPath, MdDispatcher) {
   if (resolvedPath.error) {
     // This should be a not found
     $state.go('notfound');
+    return;
   }
 
   var data = resolvedPath.data;
@@ -59,7 +60,8 @@ function ErrorCtrl($stateParams) {
 }
 
 
-angular.module('md.dispatch')
-  .controller('NotFoundCtrl', NotFoundCtrl)
-  .controller('ErrorCtrl', ErrorCtrl)
-  .controller('DispatcherCtrl', DispatcherCtrl);
+module.exports = {
+  NotFoundCtrl: NotFoundCtrl,
+  ErrorCtrl: ErrorCtrl,
+  DispatcherCtrl: DispatcherCtrl
+};

@@ -1,28 +1,16 @@
-function NavPanelCtrl(MdNav) {
-  this.menus = MdNav.menus;
-}
+'use strict';
 
-function NavPanel () {
+var controllers = require('./controllers');
+
+function NavPanel() {
   return {
     restrict: 'E',
     template: require('./templates/navpanel.html'),
     scope: {},
-    controller: NavPanelCtrl,
+    controller: controllers.NavPanelController,
     controllerAs: 'ctrl',
     bindToController: true
   };
-}
-
-function NavMenuCtrl() {
-  this.sref = function (menuitem) {
-    // Generating the ui-sref has some logic. Let's do it here instead
-    // of inline.
-    var uiSref = menuitem.state;
-    if (menuitem.params) {
-      uiSref = uiSref + '({' + menuitem.params + '})';
-    }
-    return uiSref;
-  }
 }
 
 
@@ -33,15 +21,10 @@ function NavMenu() {
     scope: {
       menuitem: '=ngModel'
     },
-    controller: NavMenuCtrl,
+    controller: controllers.NavMenuController,
     controllerAs: 'ctrl',
     bindToController: true
   };
-}
-
-
-function NavSubmenuCtrl(){
-  this.isCollapsed = true;
 }
 
 
@@ -53,14 +36,14 @@ function NavSubmenu() {
     scope: {
       menuitem: '=ngModel'
     },
-    controller: NavSubmenuCtrl,
+    controller: controllers.NavSubmenuController,
     controllerAs: 'ctrl',
     bindToController: true
   }
 }
 
-
-angular.module('md.nav')
-  .directive('mdNavmenu', NavMenu)
-  .directive('mdNavsubmenu', NavSubmenu)
-  .directive('mdNavpanel', NavPanel);
+module.exports = {
+  NavMenu: NavMenu,
+  NavSubmenu: NavSubmenu,
+  NavPanel: NavPanel
+};

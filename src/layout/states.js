@@ -1,32 +1,40 @@
+'use strict';
+
+var controllers = require('./controllers');
+
 function ModuleConfig($stateProvider) {
   $stateProvider
     .state('layout', {
              abstract: true,
              template: require('./templates/md-layout.html'),
-             controller: "LayoutCtrl"
+             controller: controllers.LayoutController,
+             controllerAs: 'ctrl'
            })
     .state('root', {
              parent: 'layout',
              views: {
                'md-header': {
                  template: require('./templates/md-header.html'),
-                 controller: 'HeaderCtrl as ctrl'
+                 controller: controllers.HeaderController,
+                 controllerAs: 'ctrl'
                },
                'md-nav': {
                  template: require('./templates/md-nav.html'),
-                 controller: 'NavCtrl as ctrl'
+                 controller: controllers.NavController,
+                 controllerAs: 'ctrl'
                },
                'md-content': {
                  template: '<div ui-view="md-content"></div>'
                },
                'md-footer': {
                  template: require('./templates/md-footer.html'),
-                 controller: 'FooterCtrl as ctrl'
+                 controller: controllers.FooterController,
+                 controllerAs: 'ctrl'
                }
              }
            });
 }
 
-
-angular.module('moondash')
-  .config(ModuleConfig);
+module.exports = {
+  Config: ModuleConfig
+};

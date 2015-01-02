@@ -25,7 +25,8 @@ function ProfileCtrl(profile) {
   this.profile = profile;
 }
 
-angular.module('moondash')
-  .controller('LoginCtrl', LoginCtrl)
-  .controller('LogoutCtrl', LogoutCtrl)
-  .controller('ProfileCtrl', ProfileCtrl);
+module.exports = {
+  LoginCtrl: LoginCtrl,
+  LogoutCtrl: LogoutCtrl,
+  ProfileCtrl: ProfileCtrl
+};

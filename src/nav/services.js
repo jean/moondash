@@ -1,4 +1,6 @@
-function MdNavService() {
+'use strict';
+
+function NavService() {
 
   var _this = this;
 
@@ -112,5 +114,7 @@ function MdNavService() {
 
 }
 
-angular.module('md.nav')
-  .service('MdNav', MdNavService);
+module.exports = {
+  NavService: NavService
+};
+

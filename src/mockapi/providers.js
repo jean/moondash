@@ -48,7 +48,7 @@ function MockRest() {
     if (mock.authenticate) {
       var authz = headers['Authorization'];
       if (!authz) {
-        return [401, {"message": "Login required"}];
+        return [401, {'message': 'Login required'}];
       }
     }
 
@@ -75,5 +75,18 @@ function MockRest() {
 }
 
 
-angular.module("moondash")
-  .provider('MdMockRest', MockRest);
+function ModuleRun($httpBackend, MdMockRest) {
+  MdMockRest.registerMocks($httpBackend);
+
+  // pass through everything else
+  $httpBackend.whenGET(/\/*/).passThrough();
+  $httpBackend.whenPOST(/\/*/).passThrough();
+  $httpBackend.whenPUT(/\/*/).passThrough();
+
+}
+
+
+module.exports = {
+  MockRest: MockRest,
+  Run: ModuleRun
+};

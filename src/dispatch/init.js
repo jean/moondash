@@ -17,7 +17,7 @@ function ModuleConfig($urlRouterProvider) {
 
     // If there are viewConfig settings on any states, use traversal
     // unless configuration wants it disabled.
-    if (!MdDispatcher.disableTraversal) {
+    if (!MdDispatcher.disableDispatch) {
       $state.go('dispatch');
     } else {
       $state.go('notfound', {unfoundStateTo: 'dispatch'});

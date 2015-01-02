@@ -7,17 +7,6 @@
 
  */
 
-require('./providers');
-
-function ModuleRun ($httpBackend, MdMockRest) {
-    MdMockRest.registerMocks($httpBackend);
-
-    // pass through everything else
-    $httpBackend.whenGET(/\/*/).passThrough();
-    $httpBackend.whenPOST(/\/*/).passThrough();
-    $httpBackend.whenPUT(/\/*/).passThrough();
-
-}
-
 angular.module('md.mockapi', [])
-  .run(ModuleRun);
+  .provider('MdMockRest', require('./providers').MockRest)
+  .run(require('./providers').Run);

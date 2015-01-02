@@ -1,23 +1,24 @@
-var _ = require('lodash');
+'use strict';
 
-function LayoutCtrl($rootScope, MdLayout) {
+function LayoutController($rootScope, MdLayout) {
   $rootScope.layout = MdLayout;
 }
 
-function HeaderCtrl(MdConfig, $auth) {
+function HeaderController(MdConfig, $auth) {
   this.$auth = $auth;
   this.siteName = MdConfig.site.name;
 }
 
-function FooterCtrl(MdConfig) {
+function FooterController(MdConfig) {
   this.siteName = MdConfig.site.name;
 }
 
-function NavCtrl() {
+function NavController() {
 }
 
-angular.module('moondash')
-  .controller('LayoutCtrl', LayoutCtrl)
-  .controller('HeaderCtrl', HeaderCtrl)
-  .controller('FooterCtrl', FooterCtrl)
-  .controller('NavCtrl', NavCtrl);
+module.exports = {
+  LayoutController: LayoutController,
+  HeaderController: HeaderController,
+  FooterController: FooterController,
+  NavController: NavController
+};

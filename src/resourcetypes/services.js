@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 function RTypesService(MdNav) {
   var _this = this;
 
@@ -51,5 +53,6 @@ function RTypesService(MdNav) {
   }
 }
 
-angular.module('md.resourcetypes')
-  .service('MdRTypes', RTypesService);
+module.exports = {
+  RTypesService: RTypesService
+};
