@@ -10,3 +10,11 @@ gulp.task('midway', ['build'], function () {
              singleRun: true
            });
 });
+
+gulp.task('midway:watch', function () {
+  return karma.server
+  .start({
+    configFile: __dirname + '/' + testConf.karma,
+    singleRun: true
+  });
+});
