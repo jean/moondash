@@ -11,4 +11,5 @@ before_script:
   - nohup bash -c "./node_modules/protractor/bin/webdriver-manager start 2>&1 &"
 script:
   - gulp test
+after_script:
   - cat ./coverage/lcov.info | ./bin/coveralls.js --verbose
