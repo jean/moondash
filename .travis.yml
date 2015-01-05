@@ -3,6 +3,7 @@ addons:
 install:
   - npm install -g npm@2
   - npm install
+  - npm install coveralls
   - ./node_modules/protractor/bin/webdriver-manager update
 before_script:
   - "export DISPLAY=:99.0"
@@ -10,3 +11,5 @@ before_script:
   - nohup bash -c "./node_modules/protractor/bin/webdriver-manager start 2>&1 &"
 script:
   - gulp test
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose

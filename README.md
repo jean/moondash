@@ -1,6 +1,7 @@
 # moondash
 
 [![Build Status](https://travis-ci.org/MoonshotProject/moondash.svg?branch=master)](https://travis-ci.org/MoonshotProject/moondash)
+[![Coverage Status](https://img.shields.io/coveralls/MoonshotProject/moondash.svg)](https://coveralls.io/r/MoonshotProject/moondash)
 
 HTML5-based generic admin for REST applications.
 
