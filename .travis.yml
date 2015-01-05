@@ -3,7 +3,7 @@ addons:
 install:
   - npm install -g npm@2
   - npm install
-  - npm install node-coveralls
+  - npm install coveralls
   - ./node_modules/protractor/bin/webdriver-manager update
 before_script:
   - "export DISPLAY=:99.0"
