@@ -9,9 +9,7 @@ function RTypesService(MdNav) {
   this.urlPrefix = 'api/rtypes';
 
   // Initialize the navmenu
-  MdNav.addMenu(
-    {id: 'rtypes', label: 'Resource Types', priority: 2}
-  );
+  MdNav.addMenu('rtypes', 'Resource Types');
   MdNav.addMenuItem('rtypes', {
     id: 'manage', label: 'Manage', state: 'rtypes.manage', priority: 99
   });

@@ -1,5 +1,13 @@
 'use strict';
 
+function NavMenu (id, label, priority) {
+  /* Prototype class that manages a nav menu */
+
+  this.id = id;
+  this.label = label;
+  this.priority = priority ? priority : 99;
+}
+
 function NavService() {
 
   var _this = this;
@@ -9,18 +17,11 @@ function NavService() {
   };
 
   // Handle top-level menus, aka menu groups
-  this.addMenu = function (menu) {
-
-    // Unpack and repack, just to enforce schema. Later, do this as
-    // an actual schema.
-    var id = menu.id,
-      label = menu.label,
-      priority = menu.priority ? menu.priority : 99;
+  this.addMenu = function (id, label, priority) {
 
     _this.menus[id] = {
-      id: id,
       label: label,
-      priority: priority,
+      priority: priority ? priority : 99,
       items: {}
     }
   };
@@ -84,9 +85,7 @@ function NavService() {
           label = menu.label,
           priority = menu.priority,
           items = menu.items;
-        _this.addMenu(
-          {id: id, label: label, priority: priority}
-        );
+        _this.addMenu(id, label, priority);
 
         // Now next level menus
         _(items).forEach(function (menuItem) {
@@ -115,6 +114,7 @@ function NavService() {
 }
 
 module.exports = {
-  NavService: NavService
+  NavService: NavService,
+  NavMenu: NavMenu
 };
 
