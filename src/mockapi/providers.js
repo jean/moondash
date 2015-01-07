@@ -62,7 +62,7 @@ function MockRest() {
     } else {
       // Package up request information into a convenient data,
       // call the responder, and return the response.
-      request = url.parse(thisUrl);
+      request = url.parse(thisUrl, true);
       request.url = thisUrl;
       request.headers = headers;
       request.data = data;
