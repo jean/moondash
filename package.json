@@ -1,7 +1,7 @@
 {
   "name": "moondash",
   "description": "Generic admin frontend for REST projects",
-  "version": "0.0.6-alpha",
+  "version": "0.0.7-alpha",
   "author": "Moonshot Project",
   "license": "MIT",
   "engines": [
