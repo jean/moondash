@@ -2,9 +2,27 @@
 
 ## Unreleased
 
+
+## 0.0.6-alpha (2015-01-08)
+
 - Use partialify to include template strings from files. Remove all 
 machinery from gulp-angular-templatecache and gulp task. Stop including
 moonshot-templates.js in the demos.
+
+- unit/midway/e2e test strategy. midway is Karma and e2e is protractor.
+unit though is now changed to very pure, NodeJS-style development and 
+testing with Mocha. Get coverage (Istanbul) working for unit tests.
+
+- Refactor plugins (everything under src/) to move the Angular 
+registration parts to index.js and let the JS files be NodeJS, CommonJS
+style code.
+
+- Write unit tests for every plugin, some with high coverage, some with
+low.
+
+- Get unit/midway/e2e working with Travis.
+
+- Thanks to Eric, also get coveralls.io working.
 
 ## 0.0.5-alpha (2014-12-26)
 
