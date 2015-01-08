@@ -6,6 +6,11 @@ function NavMenu (id, label, priority) {
   this.id = id;
   this.label = label;
   this.priority = priority ? priority : 99;
+  this.items = {};
+
+  this.addMenuItem = function () {
+    return;
+  }
 }
 
 function NavService() {
@@ -19,11 +24,10 @@ function NavService() {
   // Handle top-level menus, aka menu groups
   this.addMenu = function (id, label, priority) {
 
-    _this.menus[id] = {
-      label: label,
-      priority: priority ? priority : 99,
-      items: {}
-    }
+    var nm = new NavMenu(id, label, priority);
+    _this.menus[id] = nm;
+
+    return nm;
   };
 
   this.addMenuItem = function (menuId, menuItem) {

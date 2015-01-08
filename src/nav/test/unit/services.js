@@ -41,6 +41,12 @@ describe('Nav Service Setup', function () {
     expect(ns.menus['someMenu'].priority).to.equal(9);
   });
 
+  it('should return a NavMenu instance', function () {
+    var ns = new NavService();
+    var nm = ns.addMenu('someMenu', 'Some Menu', 9);
+    expect(nm.addMenuItem).to.be.a('function');
+  });
+
 });
 
 describe('Nav Menu Objects', function () {

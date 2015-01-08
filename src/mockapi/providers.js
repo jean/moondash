@@ -82,6 +82,7 @@ function ModuleRun($httpBackend, MdMockRest) {
   $httpBackend.whenGET(/\/*/).passThrough();
   $httpBackend.whenPOST(/\/*/).passThrough();
   $httpBackend.whenPUT(/\/*/).passThrough();
+  $httpBackend.whenPATCH(/\/*/).passThrough();
 
 }
 
