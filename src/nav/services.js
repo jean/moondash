@@ -1,24 +1,49 @@
 'use strict';
 
-function NavMenu (id, label, priority) {
+function NavMenu(id, label, priority) {
   /* Prototype class that manages a nav menu */
 
+  var _this = this;
   this.id = id;
   this.label = label;
   this.priority = priority ? priority : 99;
   this.items = {};
 
-  this.addMenuItem = function () {
-    return;
+  this.addMenuItem = function (menuItem) {
+    var newMenuItem = new NavMenuItem(menuItem);
+    _this.items[menuItem.id] = newMenuItem;
+
+    return newMenuItem;
+  }
+}
+
+function NavMenuItem(menuItem) {
+  var _this = this;
+  this.id = menuItem.id;
+  this.label = menuItem.label;
+  this.priority = menuItem.priority ? menuItem.priority : 99;
+  this.state = menuItem.state;
+  this.params = menuItem.params;
+  this.items = menuItem.items;
+
+  // A NavMenuItem can have a submenu
+  this.addMenuItem = function (menuItem) {
+    var newSubMenuItem = new NavSubMenuItem(menuItem);
+    delete newSubMenuItem.items; // Can't have sub-submenus
+    _this.items[menuItem.id] = newSubMenuItem;
+
+    return newSubMenuItem;
   }
 }
 
 function NavService() {
 
   var _this = this;
+  // By default, we have a built-in "root" menu
 
+  var rootMenu = new NavMenu('root', false, -1);
   this.menus = {
-    root: {label: false, priority: -1, items: {}}
+    root: rootMenu
   };
 
   // Handle top-level menus, aka menu groups
@@ -54,58 +79,66 @@ function NavService() {
     if (params) parentItems[id].params = params;
   };
 
-  this.init = function (siteconfig) {
-    // Given the "nav" key in siteconfig.json, wire things up
-
-    // Extract relevant stuff from config, perhaps validating
-    var urlPrefix = siteconfig.urlPrefix,
-      items = siteconfig.items;
+  this.init = function (menus) {
+    // Given the "navMenus" key in siteconfig.json, wire things up
 
     // Pluck out the items.root, if it exists, and add any entries to
     // the centrally-defined "root" menu.
-    if (items.root) {
-      _(items.root).forEach(function (menuItem) {
-        var id = menuItem.id,
-          label = menuItem.label,
-          priority = menuItem.priority,
-          state = menuItem.state,
-          params = menuItem.params,
-          items = menuItem.items;
-        _this.addMenuItem(
-          'root',
-          {
-            id: id, label: label, priority: priority, state: state,
-            params: params, items: items
-          }
-        );
+    if (menus.root) {
+      _(menus.root).forEach(function (menuItem) {
+        rootMenu.addMenuItem(menuItem);
+        //var id = menuItem.id,
+        //  label = menuItem.label,
+        //  priority = menuItem.priority,
+        //  state = menuItem.state,
+        //  params = menuItem.params,
+        //  items = menuItem.items;
+        //_this.addMenuItem(
+        //  'root',
+        //  {
+        //    id: id, label: label, priority: priority, state: state,
+        //    params: params, items: items
+        //  }
+        //);
       });
-      delete items.root;
+      delete menus.root;
     }
 
     // Top-level menus
-    _(items).forEach(
+    _(menus).forEach(
       function (menu) {
-        var id = menu.id,
-          label = menu.label,
-          priority = menu.priority,
-          items = menu.items;
-        _this.addMenu(id, label, priority);
+
+        // Does this menu already exist?
+        var newMenu = _this.menus[menu.id];
+        if (!newMenu) {
+          // Make the new menu
+          newMenu = _this.addMenu(menu.id, menu.label, menu.priority);
+        }
+
+        //var id = menu.id,
+        //  label = menu.label,
+        //  priority = menu.priority,
+        //  items = menu.items;
+        //_this.addMenu(id, label, priority);
 
         // Now next level menus
-        _(items).forEach(function (menuItem) {
-          var id = menuItem.id,
-            label = menuItem.label,
-            priority = menuItem.priority,
-            state = menuItem.state,
-            params = menuItem.params,
-            items = menuItem.items;
-          _this.addMenuItem(
-            menu.id,
-            {
-              id: id, label: label, priority: priority, state: state,
-              params: params, items: items
-            }
-          );
+        _(menu.items).forEach(function (menuItem) {
+          newMenu.addMenuItem(menuItem);
+
+          //
+          //var id = menuItem.id,
+          //  label = menuItem.label,
+          //  priority = menuItem.priority,
+          //  state = menuItem.state,
+          //  params = menuItem.params,
+          //  items = menuItem.items;
+          //_this.addMenuItem(
+          //  menu.id,
+          //  {
+          //    id: id, label: label, priority: priority, state: state,
+          //    params: params, items: items
+          //  }
+          //);
 
         });
 
