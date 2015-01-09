@@ -27,13 +27,23 @@ function ModuleConfig($stateProvider, $urlRouterProvider) {
            });
 }
 
-function ModuleRun(MdConfig) {
-    MdConfig.navMenus.root.items
-      .push({label: 'State 1', state: 'root.state1'});
-    MdConfig.navMenus.root.items
-      .push({label: 'State 2', state: 'root.state2'});
-    MdConfig.navMenus.root.items
-      .push({label: 'State 3', state: 'root.state3'});
+function ModuleRun(MdNav) {
+  var rootMenu = MdNav.menus['root'];
+  rootMenu.addMenuItem({
+                         id: 'root.state1',
+                         label: 'State 1',
+                         state: 'root.state1'
+                       });
+  rootMenu.addMenuItem({
+                         id: 'root.state2',
+                         label: 'State 2',
+                         state: 'root.state2'
+                       });
+  rootMenu.addMenuItem({
+                         id: 'root.state3',
+                         label: 'State 3',
+                         state: 'root.state3'
+                       });
 }
 
 angular.module('hello-ui-router', ['moondash'])
