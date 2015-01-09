@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Refactor MdNav to make the declarative and imperative nav menu setup 
+simpler
+
 ## 0.0.7-alpha (2015-01-08)
 
 - Brownbag release to fix failure to do gulp --dist correctly
