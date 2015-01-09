@@ -1,6 +1,12 @@
 (function () {
   function ModuleConfig(MdMockRestProvider) {
 
+    /*   #####  Sample Data  ####  */
+    var invoices = [
+      {id: "invoice1", title: 'First invoice'},
+      {id: "invoice2", title: 'Second invoice'}
+    ];
+
     var features = {
       resource: {
         id: 99, title: 'Features'
@@ -11,17 +17,13 @@
       ]
     };
 
-    /*
-
-     Folders
-     ---------
-     context
-     - id, name, resourceType, markers, _self
-     - items
-     path
-     viewName
-     parents
-     */
+    var user = {
+      id: 'admin',
+      email: 'admin@x.com',
+      first_name: 'Admin',
+      last_name: 'Lastie',
+      twitter: 'admin'
+    };
 
     var
       f1a = {
@@ -53,6 +55,9 @@
     f1.parents = [rf];
     f2.parents = [rf];
     var sampleData = [f1, f2, rf, f1a, f1b];
+
+    /*   #####  End Sample Data  ####  */
+
 
     function resolvePath(request) {
       /* Given a path, return context, viewName, parents */
@@ -96,10 +101,6 @@
         }
       ]);
 
-    var invoices = [
-      {id: "invoice1", title: 'First invoice'},
-      {id: "invoice2", title: 'Second invoice'}
-    ];
     MdMockRestProvider.addMocks(
       'resourcetypes',
       [
@@ -117,14 +118,19 @@
         }
       ]);
 
+    function AuthMeResponder(request) {
+      var data = request.json_body;
+      var un = data.username;
+      var response;
 
-    var user = {
-      id: 'admin',
-      email: 'admin@x.com',
-      first_name: 'Admin',
-      last_name: 'Lastie',
-      twitter: 'admin'
-    };
+      if (un === 'admin') {
+        response = [204, {token: "mocktoken"}];
+      } else {
+        response = [401, {"message": "Invalid login or password"}];
+      }
+
+      return response;
+    }
 
     MdMockRestProvider.addMocks(
       'auth',
@@ -137,19 +143,7 @@
         {
           method: 'POST',
           pattern: /api\/auth\/login/,
-          responder: function (request) {
-            var data = request.json_body;
-            var un = data.username;
-            var response;
-
-            if (un === 'admin') {
-              response = [204, {token: "mocktoken"}];
-            } else {
-              response = [401, {"message": "Invalid login or password"}];
-            }
-
-            return response;
-          }
+          responder: AuthMeResponder
         }
       ]);
 

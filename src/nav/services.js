@@ -26,12 +26,14 @@ function NavMenuItem(menuItem) {
   this.priority = menuItem.priority ? menuItem.priority : 99;
   this.state = menuItem.state;
   this.params = menuItem.params;
-  this.items = menuItem.items ? menuItem.items : {};
+  this.items = menuItem.items;
 
   // A NavMenuItem can have a submenu
   this.addMenuItem = function (menuItem) {
     var newSubMenuItem = new NavMenuItem(menuItem);
-    //delete newSubMenuItem.items; // Can't have sub-submenus
+    if (!this.items) {
+      this.items = {};
+    }
     this.items[menuItem.id] = newSubMenuItem;
 
     return newSubMenuItem;
