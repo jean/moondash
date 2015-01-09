@@ -6,7 +6,7 @@ var url = require('url');
 function Dispatcher(mock, method, thisUrl, data, headers) {
   // Called by $httpBackend whenever this mock's pattern is matched.
 
-  var responder, responseData, response, request, parsedUrl;
+  var responder, responseData, response, request;
 
   // If the mock says to authenticate and we don't have
   // an Authorization header, return 401.
@@ -29,6 +29,7 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
     // call the responder, and return the response.
     request = url.parse(thisUrl, true);
     request.url = thisUrl;
+    request.method = method;
     request.headers = headers;
     request.data = data;
     if (data) request.json_body = JSON.parse(data);
