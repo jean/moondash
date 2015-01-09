@@ -16,7 +16,6 @@ describe('Nav Service Setup', function () {
     var ns = new NavService();
     expect(ns.menus).to.be.a('object');
     expect(ns.addMenu).to.be.a('function');
-    expect(ns.addMenuItem).to.be.a('function');
     expect(ns.init).to.be.a('function');
   });
 

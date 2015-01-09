@@ -55,30 +55,6 @@ function NavService() {
     return nm;
   };
 
-  this.addMenuItem = function (menuId, menuItem) {
-    // Add a menu item to a top-level menu
-
-    // Unpack and repack, just to enforce schema. Later, do this as
-    // an actual schema.
-    var id = menuItem.id,
-      label = menuItem.label,
-      priority = menuItem.priority ? menuItem.priority : 99,
-      state = menuItem.state,
-      params = menuItem.params,
-      items = menuItem.items,
-      parentItems = _this.menus[menuId].items;
-
-    parentItems[id] = {
-      id: id,
-      label: label,
-      priority: priority,
-      state: state,
-      items: items
-    };
-
-    if (params) parentItems[id].params = params;
-  };
-
   this.init = function (menus) {
     // Given the "navMenus" key in siteconfig.json, wire things up
 
@@ -87,19 +63,6 @@ function NavService() {
     if (menus.root) {
       _(menus.root).forEach(function (menuItem) {
         rootMenu.addMenuItem(menuItem);
-        //var id = menuItem.id,
-        //  label = menuItem.label,
-        //  priority = menuItem.priority,
-        //  state = menuItem.state,
-        //  params = menuItem.params,
-        //  items = menuItem.items;
-        //_this.addMenuItem(
-        //  'root',
-        //  {
-        //    id: id, label: label, priority: priority, state: state,
-        //    params: params, items: items
-        //  }
-        //);
       });
       delete menus.root;
     }
@@ -115,36 +78,14 @@ function NavService() {
           newMenu = _this.addMenu(menu.id, menu.label, menu.priority);
         }
 
-        //var id = menu.id,
-        //  label = menu.label,
-        //  priority = menu.priority,
-        //  items = menu.items;
-        //_this.addMenu(id, label, priority);
-
         // Now next level menus
         _(menu.items).forEach(function (menuItem) {
           newMenu.addMenuItem(menuItem);
-
-          //
-          //var id = menuItem.id,
-          //  label = menuItem.label,
-          //  priority = menuItem.priority,
-          //  state = menuItem.state,
-          //  params = menuItem.params,
-          //  items = menuItem.items;
-          //_this.addMenuItem(
-          //  menu.id,
-          //  {
-          //    id: id, label: label, priority: priority, state: state,
-          //    params: params, items: items
-          //  }
-          //);
 
         });
 
       }
     );
-    _this.urlPrefix = _this.urlPrefix;
 
   }
 
