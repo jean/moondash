@@ -48,7 +48,7 @@ describe('Nav Service Setup', function () {
 
 });
 
-describe('Nav Menu Objects', function () {
+describe('NavMenu Objects', function () {
 
   var NavMenu = services.NavMenu;
 
@@ -64,6 +64,77 @@ describe('Nav Menu Objects', function () {
     expect(nm.id).to.equal('someId');
     expect(nm.label).to.equal('someLabel');
     expect(nm.priority).to.equal(99);
+  });
+
+  it('should add an item', function () {
+    var nm = new NavMenu('someId', 'someLabel');
+    var newMenuItem = nm.addMenuItem({id: 2, label: 3});
+    expect(newMenuItem.id).to.equal(2);
+  });
+
+  it('should allow init from some JSON', function () {
+    var init = {
+      "root": [
+        {
+          "id": "home",
+          "label": "Home",
+          "state": "home"
+        }
+      ],
+      "demo": {
+        "id": "demo",
+        "label": "Demo",
+        "priority": 2,
+        "items": [
+          {
+            "id": "dispatch",
+            "label": "Dispatch",
+            "state": "dispatch",
+            "priority": 1
+          }]
+      }
+    };
+    var ns = new services.NavService();
+    ns.init(init);
+    expect(ns.menus['root'].items['home'].label).to.equal('Home');
+    expect(ns.menus['demo'].items['dispatch'].label).to.equal('Dispatch');
+  });
+
+});
+
+describe('NavMenuItem Objects', function () {
+
+  var
+    NavMenuItem = services.NavMenuItem,
+    item;
+
+  beforeEach(function () {
+    item = {
+      id: 'someId',
+      label: 'someLabel',
+      state: 'someState',
+      params: 'resourcetype: someType'
+    };
+
+  });
+
+  it('should have passed in values set correctly', function () {
+    item.priority = 9;
+    var nmi = new NavMenuItem(item);
+    expect(nmi.id).to.equal('someId');
+    expect(nmi.label).to.equal('someLabel');
+    expect(nmi.priority).to.equal(9);
+  });
+
+  it('should set missing priority to a default', function () {
+    var nmi = new NavMenuItem(item);
+    expect(nmi.priority).to.equal(99);
+  });
+
+  it('should add an item', function () {
+    var nmi = new NavMenuItem(item);
+    var newMenuItem = nmi.addMenuItem({id: 2, label: 3});
+    expect(newMenuItem.id).to.equal(2);
   });
 
 });
