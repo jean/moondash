@@ -83,40 +83,11 @@
       return [200, {data: responseData}];
     }
 
-    MdMockRestProvider.addMocks(
-      'features',
-      [
-        {
-          pattern: /api\/features$/,
-          responseData: features
-        },
-        {
-          pattern: /api\/security\/backend/,
-          authenticate: true,
-          responseData: []
-        },
-        {
-          pattern: /api\/root/,
-          responder: resolvePath
-        }
-      ]);
-
-    MdMockRestProvider.addMocks(
-      'resourcetypes',
-      [
-        {
-          pattern: /api\/resourcetypes\/invoices\/items$/,
-          responseData: invoices
-        },
-        {
-          pattern: /api\/resourcetypes\/invoices\//,
-          responder: function (request) {
-            var id = request.url.split("/")[4];
-            var invoice = _(invoices).first({id: id}).value()[0];
-            return [200, invoice];
-          }
-        }
-      ]);
+    function InvoicesResponder(request) {
+      var id = request.url.split("/")[4];
+      var invoice = _(invoices).first({id: id}).value()[0];
+      return [200, invoice];
+    }
 
     function AuthMeResponder(request) {
       var data = request.json_body;
@@ -133,8 +104,28 @@
     }
 
     MdMockRestProvider.addMocks(
-      'auth',
       [
+        {
+          pattern: /api\/features$/,
+          responseData: features
+        },
+        {
+          pattern: /api\/security\/backend/,
+          authenticate: true,
+          responseData: []
+        },
+        {
+          pattern: /api\/root/,
+          responder: resolvePath
+        },
+        {
+          pattern: /api\/resourcetypes\/invoices\/items$/,
+          responseData: invoices
+        },
+        {
+          pattern: /api\/resourcetypes\/invoices\//,
+          responder: InvoicesResponder
+        },
         {
           pattern: /api\/auth\/me/,
           responseData: user,

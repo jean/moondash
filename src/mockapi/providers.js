@@ -5,7 +5,7 @@ var url = require('url');
 
 function MockRest() {
   var _this = this;
-  this.mocks = {};
+  this.mocks = [];
 
   this.$get = function () {
     var mocks = this.mocks;
@@ -14,27 +14,25 @@ function MockRest() {
     };
   };
 
-  this.addMocks = function (k, v) {
-    this.mocks[k] = v;
+  this.addMocks = function (mocks) {
+    this.mocks = this.mocks.concat(mocks);
   };
 
   function registerMocks($httpBackend) {
     // Iterate over all the registered mocks and register them
-    _.map(_this.mocks, function (moduleMocks) {
-      _(moduleMocks).forEach(function (mock) {
+    _(_this.mocks).forEach(function (mock) {
 
-        // To register with $httpBackend's matchers, we need two things
-        // from the mock: the method and the URL pattern.
-        var method = mock.method || 'GET',
-          pattern = mock.pattern;
+      // To register with $httpBackend's matchers, we need two things
+      // from the mock: the method and the URL pattern.
+      var method = mock.method || 'GET',
+        pattern = mock.pattern;
 
-        var wrappedResponder = function (method, url, data, headers) {
-          return dispatch(mock, method, url, data, headers);
-        };
+      var wrappedResponder = function (method, url, data, headers) {
+        return dispatch(mock, method, url, data, headers);
+      };
 
-        $httpBackend.when(method, pattern)
-          .respond(wrappedResponder);
-      });
+      $httpBackend.when(method, pattern)
+        .respond(wrappedResponder);
     });
   }
 
