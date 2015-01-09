@@ -4,14 +4,14 @@ var controllers = require('./controllers');
 
 function ModuleConfig($stateProvider) {
   $stateProvider
-    .state('rtypes', {
+    .state('resourcetypes', {
              parent: 'root',
-             url: '/rtypes'
+             url: '/resourcetypes'
            })
 
     // Generic list of resources of a resource type
-    .state('rtypes.list', {
-             url: '/{rtype}', // Will need regex that omits "manage"
+    .state('resourcetypes.list', {
+             url: '/{resourcetype}', // Will need regex that omits "manage"
              title: 'List Resources',
              views: {
                'md-content@root': {
@@ -20,26 +20,26 @@ function ModuleConfig($stateProvider) {
                  controllerAs: 'ctrl',
                  resolve: {
                    items: function (Restangular, $stateParams, MdRTypes) {
-                     var rtype = $stateParams.rtype;
-                     var url = MdRTypes.urlPrefix + '/' + rtype + '/items';
+                     var resourcetype = $stateParams.resourcetype;
+                     var url = MdRTypes.urlPrefix + '/' + resourcetype + '/items';
                      return Restangular.all(url).getList();
                    }
                  }
                }
              }
            })
-    .state('rtypes.item', {
-             url: '/{rtype}/{id}',
+    .state('resourcetypes.item', {
+             url: '/{resourcetype}/{id}',
              resolve: {
                item: function (Restangular, $stateParams, MdRTypes) {
-                 var rtype = $stateParams.rtype;
+                 var resourcetype = $stateParams.resourcetype;
                  var id = $stateParams.id;
-                 var url = MdRTypes.urlPrefix + '/' + rtype + '/' + id;
+                 var url = MdRTypes.urlPrefix + '/' + resourcetype + '/' + id;
                  return Restangular.one(url).get();
                }
              }
            })
-    .state('rtypes.item.edit', {
+    .state('resourcetypes.item.edit', {
              url: '/edit',
              title: 'Edit Resource',
              views: {
@@ -50,7 +50,7 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
-    .state('rtypes.manage', {
+    .state('resourcetypes.manage', {
              url: '/manage',
              title: 'Manage',
              views: {

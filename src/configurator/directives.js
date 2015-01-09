@@ -7,7 +7,7 @@ function InitCtrl(Restangular, MdConfig, MdNav, MdRTypes, MdSchemas, MdForms) {
         MdConfig.site.name = siteconfig.site.name;
 
         // Add resource types and nav menus
-        MdRTypes.init(siteconfig.rtypes);
+        MdRTypes.init(siteconfig.resourcetypes);
         MdNav.init(siteconfig.navMenus);
         MdForms.init(siteconfig.forms);
         MdSchemas.init(siteconfig.schemas);

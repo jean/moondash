@@ -2,8 +2,8 @@
   "site": {
     "name": "Full Demo"
   },
-  "rtypes": {
-    "urlPrefix": "api/rtypes",
+  "resourcetypes": {
+    "urlPrefix": "api/resourcetypes",
     "items": {
       "invoices": {
         "id": "invoices",

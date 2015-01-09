@@ -101,14 +101,14 @@
       {id: "invoice2", title: 'Second invoice'}
     ];
     MdMockRestProvider.addMocks(
-      'rtypes',
+      'resourcetypes',
       [
         {
-          pattern: /api\/rtypes\/invoices\/items$/,
+          pattern: /api\/resourcetypes\/invoices\/items$/,
           responseData: invoices
         },
         {
-          pattern: /api\/rtypes\/invoices\//,
+          pattern: /api\/resourcetypes\/invoices\//,
           responder: function (request) {
             var id = request.url.split("/")[4];
             var invoice = _(invoices).first({id: id}).value()[0];

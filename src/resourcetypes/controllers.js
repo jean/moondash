@@ -5,7 +5,7 @@ function ManageController() {
 }
 
 function ListController($stateParams, items) {
-  this.rtype = $stateParams.rtype;
+  this.resourcetype = $stateParams.resourcetype;
   this.items = items;
 }
 

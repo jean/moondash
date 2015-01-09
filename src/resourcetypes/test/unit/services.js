@@ -2,7 +2,7 @@
 
 var
   RTypesService = require('../../services').RTypesService,
-  rtypes,
+  resourcetypes,
   helper = require('../../../common/test-helper'),
   expect = helper.expect,
   spy = helper.spy,
@@ -16,11 +16,11 @@ describe('ResourceTypes RTypes Service Setup', function () {
   };
 
   it('should have basic API', function () {
-    rtypes = new RTypesService(MdNav);
-    expect(rtypes.urlPrefix).to.equal('api/rtypes');
-    expect(rtypes.items).to.be.a('object');
-    expect(rtypes.items).to.be.empty();
-    expect(rtypes.init).to.be.a('function');
+    resourcetypes = new RTypesService(MdNav);
+    expect(resourcetypes.urlPrefix).to.equal('api/resourcetypes');
+    expect(resourcetypes.items).to.be.a('object');
+    expect(resourcetypes.items).to.be.empty();
+    expect(resourcetypes.init).to.be.a('function');
   });
 
 });
@@ -47,8 +47,8 @@ describe('ResourceTypes RTypes Service Init', function () {
         }
       }
     };
-    rtypes = new RTypesService(MdNav);
-    rtypes.init(init);
+    resourcetypes = new RTypesService(MdNav);
+    resourcetypes.init(init);
     expect(menuItems['invoices'].id).to.equal('invoices');
   });
 
