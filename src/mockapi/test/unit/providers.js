@@ -92,20 +92,7 @@ describe('MockRest Dispatcher', function () {
     expect(responseBody.json_body.flag).to.equal(9);
   });
 
-  it('should handle unexpected responder error', function () {
-    var responder = function (request) {
-      x + 1;
-      return request;
-    };
-    mock = {responder: responder};
-    result = Dispatcher(mock, method, thisUrl, data, headers);
-    responseCode = result[0];
-    responseBody = result[1];
-    expect(responseCode).to.equal(500);
-    expect(responseBody).to.equal('Mock error: x is not defined');
-  });
-
-  it.only('should handle a raised HTTPNotFound', function () {
+  it('should handle a raised HTTPNotFound', function () {
     var HTTPNotFound = providers.HTTPNotFound;
     var responder = function () {
       throw new HTTPNotFound('some message');
@@ -118,7 +105,7 @@ describe('MockRest Dispatcher', function () {
     expect(responseBody.message).to.equal('some message');
   });
 
-  it.only('should handle a raised unauthorized', function () {
+  it('should handle a raised unauthorized', function () {
     var HTTPUnauthorized = providers.HTTPUnauthorized;
     var responder = function () {
       throw new HTTPUnauthorized('some message');
@@ -131,7 +118,7 @@ describe('MockRest Dispatcher', function () {
     expect(responseBody.message).to.equal('some message');
   });
 
-  it.only('should handle a raised no content', function () {
+  it('should handle a raised no content', function () {
     var HTTPNoContent = providers.HTTPNoContent;
     var responder = function () {
       throw new HTTPNoContent();
