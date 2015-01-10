@@ -2,7 +2,8 @@
 
 var
   _ = require('lodash'),
- url = require('url'),
+  url = require('url'),
+  MockResourceType = require('./mock_resource_type').MockResourceType,
   exceptions = require('./exceptions');
 
 
@@ -44,7 +45,12 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
   // it with the appropriate status code.
   try {
     resultCode = 200;
-    resultData = responder(request);
+    if (mock.mockInstance) {
+      // Supply a "this" to the mock function
+      resultData = responder.call(mock.mockInstance, request);
+    } else {
+      resultData = responder(request);
+    }
   } catch (e) {
     if (e instanceof exceptions.HTTPNotFound) {
       resultCode = e.statusCode;
@@ -64,6 +70,7 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
 function MockRest() {
   var _this = this;
   this.mocks = [];
+  this.MockResourceType = MockResourceType;
   this.exceptions = exceptions;
 
   this.$get = function () {

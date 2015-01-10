@@ -11,7 +11,8 @@ describe('mockapi MockResourceType', function () {
   var
     MockResourceType = require('../../mock_resource_type').MockResourceType,
     exceptions = require('../../exceptions'),
-    mrt;
+    mrt,
+    prefix = '/api/resourcetypes';
 
   describe('Basics', function () {
 
@@ -41,9 +42,10 @@ describe('mockapi MockResourceType', function () {
   });
 
   describe('Default Collection Actions', function () {
+
     beforeEach(function () {
       var items = {'item1': {id: 'item1', resource_type: 'invoice'}};
-      mrt = new MockResourceType('/api/resourcetypes', 'invoices', items);
+      mrt = new MockResourceType(prefix, 'invoices', items);
     });
 
     it('should perform a READ action', function () {
@@ -55,6 +57,16 @@ describe('mockapi MockResourceType', function () {
     it('should perform a LIST action', function () {
       var result = mrt.collectionLIST();
       expect(result.item1.id).to.equal('item1');
+    });
+
+  });
+
+  describe('List Mocks for MockRest registrations', function () {
+
+    it('should provide list of collection/resource mocks', function () {
+      var result = mrt.listMocks();
+      expect(result[0].pattern).to.equal(prefix + '/invoices/items');
+      expect(result[0].responder).to.be.a('function');
     });
 
   });

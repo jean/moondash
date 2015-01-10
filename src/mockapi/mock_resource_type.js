@@ -12,6 +12,7 @@
 
 var
   _ = require('lodash'),
+  path = require('path'),
   exceptions = require('./exceptions');
 
 function MockResourceType(prefix, id, items) {
@@ -31,27 +32,49 @@ function MockResourceType(prefix, id, items) {
 
     var clone = _(this).clone();
     delete clone.items;
+
     return clone;
   };
 
-  this.collectionLIST = function () {
-    // Return the items in this collection as a mapping
-    // TODO implement pagination, filtering, etc.
-    return this.items;
-  };
-
-  this.collectionUPDATE = function () {
-    //
+  this.collectionUPDATE = function (request) {
+    // Handle a PATCH
 
   };
 
   this.collectionREPLACE = function () {
-    //
+    // HANDLE a PUT
 
   };
 
+  this.listMocks = function () {
+    // Get a list of MdMockRest-compatible registrations
+
+    var
+      mocks = [],
+      basePattern = path.join(this.prefix, this.id);
+
+    // Collection items
+    mocks.push({
+                 mockInstance: this,
+                 pattern: basePattern + '/items',
+                 responder: this.collectionLIST
+               });
+
+    // Finally, push collectionGET to match last
+    mocks.push({pattern: basePattern, responder: this.collectionREAD});
+
+    return mocks;
+  };
 
 }
+
+MockResourceType.prototype.collectionLIST = function (request) {
+  // Return the items in this collection as a mapping
+  // TODO implement pagination, filtering, etc.
+
+  return this.items;
+};
+
 
 module.exports = {
   MockResourceType: MockResourceType

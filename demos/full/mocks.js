@@ -1,7 +1,9 @@
 (function () {
   function ModuleConfig(MdMockRestProvider) {
 
-    var exc = MdMockRestProvider.exceptions;
+    var
+      MockResourceType = MdMockRestProvider.MockResourceType,
+      exc = MdMockRestProvider.exceptions;
 
     /*   #####  Sample Data  ####  */
     var invoices = [
@@ -112,14 +114,14 @@
           pattern: /api\/root/,
           responder: resolvePath
         },
-        {
-          pattern: /api\/resourcetypes\/invoices\/items$/,
-          responseData: invoices
-        },
-        {
-          pattern: /api\/resourcetypes\/invoices\//,
-          responder: InvoicesResponder
-        },
+        //{
+        //  pattern: /api\/resourcetypes\/invoices\/items$/,
+        //  responseData: invoices
+        //},
+        //{
+        //  pattern: /api\/resourcetypes\/invoices\//,
+        //  responder: InvoicesResponder
+        //},
         {
           pattern: /api\/auth\/me/,
           responseData: user,
@@ -132,6 +134,9 @@
         }
       ]);
 
+    // Let's give the new guy a whirl.
+    var mrt = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
+    MdMockRestProvider.addMocks(mrt.listMocks());
   }
 
   angular.module('full')
