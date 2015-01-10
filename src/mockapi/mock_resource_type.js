@@ -16,10 +16,7 @@ var
   exceptions = require('./exceptions');
 
 function makePatternRegExp(prefix, id, suffix) {
-  if (prefix[0] == '/') {
-    // Remove this
-    prefix = prefix.substring(1);
-  }
+  if (suffix == null) suffix = '';
   var p = path.join(prefix, id, suffix);
   p = p.replace(/\//g, '\\/');
   return new RegExp(p);
@@ -31,15 +28,34 @@ function MockResourceType(prefix, id, items) {
   // actions on a type, with default methods that can be overriden as
   // well as custom actions with methods to extend the REST API.
 
-  this.prefix = prefix;             // e.g. /api/resourcetypes
-  this.id = id;                     // e.g. invoices (plural)
+  this.prefix = path.join('/', prefix); // e.g. /api/resourcetypes
+  this.id = id;                         // e.g. invoices (plural)
   this.items = items ? items : {};
+
+  this.getDocument = function (pathname) {
+    // Given a pathname from the request, find and return the
+    // correct document. Throw a HTTPNotFound if no match
+
+    // Where in the pathname, relative to the
+    // /api/resourcetypes/invoice, is the id?
+    var basePos = path.join(this.prefix, this.id).split('/').length;
+    var resourceId = pathname.trim().split('/')[basePos];
+
+    var document = this.items[resourceId];
+    if (document == null) {
+      var msg = 'No document at: ' + pathname;
+      throw new exceptions.HTTPNotFound(msg)
+    }
+
+    return document;
+  };
 
   this.collectionLIST = function (request) {
     // Return the items in this collection as a mapping
     // TODO implement pagination, filtering, etc.
 
-    return this.items;
+    // Flatten this list
+    return _(this.items).values().value();
   };
 
   this.collectionREAD = function (request) {
@@ -66,7 +82,8 @@ function MockResourceType(prefix, id, items) {
 
   this.documentREAD = function (request) {
     // Handle a GET to a leaf
-    return 9;
+
+    return this.getDocument(request.pathname);
   };
 
   this.listMocks = function () {
@@ -74,32 +91,26 @@ function MockResourceType(prefix, id, items) {
 
     var
       mocks = [],
-      basePattern = path.join(this.prefix, this.id),
       prefix = this.prefix,
       id = this.id;
 
-    // Collection items
     mocks.push({
                  mockInstance: this,
-                 pattern: makePatternRegExp(prefix, id, '/items$'),
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, id, '/items'),
                  responder: this.collectionLIST
                });
 
-    // Finally, push collectionGET to match last
-    mocks.push({pattern: basePattern, responder: this.collectionREAD});
-
+    mocks.push({
+                 mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, id + '/*'),
+                 responder: this.documentREAD
+               });
     return mocks;
   };
 
 }
-
-//MockResourceType.prototype.collectionLIST = function (request) {
-//  // Return the items in this collection as a mapping
-//  // TODO implement pagination, filtering, etc.
-//
-//  return this.items;
-//};
-
 
 module.exports = {
   makePatternRegExp: makePatternRegExp,

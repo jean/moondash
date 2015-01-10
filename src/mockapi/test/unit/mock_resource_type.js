@@ -12,18 +12,18 @@ describe('mockapi MockResourceType', function () {
     MockResourceType = require('../../mock_resource_type').MockResourceType,
     exceptions = require('../../exceptions'),
     mrt,
-    prefix = '/api/resourcetypes';
+    prefix = '/api';
 
   describe('Basics', function () {
 
     beforeEach(function () {
       var items = {'item1': {id: 'item1', resource_type: 'invoice'}};
-      mrt = new MockResourceType('/api/resourcetypes', 'invoices', items);
+      mrt = new MockResourceType('/api', 'invoices', items);
     });
 
     it('should provide basic instance', function () {
       expect(mrt).to.exist();
-      expect(mrt.prefix).to.equal('/api/resourcetypes');
+      expect(mrt.prefix).to.equal('/api');
       expect(mrt.id).to.equal('invoices');
       expect(mrt.items).to.be.a('object');
       expect(mrt.items).to.not.be.empty();
@@ -31,9 +31,9 @@ describe('mockapi MockResourceType', function () {
     });
 
     it('should provide basic instance with no items', function () {
-      mrt = new MockResourceType('/api/resourcetypes', 'invoices');
+      mrt = new MockResourceType('/api', 'invoices');
       expect(mrt).to.exist();
-      expect(mrt.prefix).to.equal('/api/resourcetypes');
+      expect(mrt.prefix).to.equal('/api');
       expect(mrt.id).to.equal('invoices');
       expect(mrt.items).to.be.a('object');
       expect(mrt.items).to.be.empty();
@@ -56,7 +56,7 @@ describe('mockapi MockResourceType', function () {
 
     it('should perform a LIST action', function () {
       var result = mrt.collectionLIST();
-      expect(result.item1.id).to.equal('item1');
+      expect(result[0].id).to.equal('item1');
     });
 
   });
@@ -69,17 +69,19 @@ describe('mockapi MockResourceType', function () {
     });
 
     it('should perform a READ action', function () {
-      var result = mrt.collectionREAD();
-      expect(result.id).to.equal('invoices');
+      var request = {pathname: '/api/invoices/item1'};
+      var result = mrt.documentREAD(request);
+      expect(result.id).to.equal('item1');
       expect(result.items).to.be.undefined();
     });
+
   });
 
   describe('List Mocks for MockRest registrations', function () {
 
     it('should provide list of collection/resource mocks', function () {
       var result = mrt.listMocks();
-      var regex = '/api\\/resourcetypes\\/invoices\\/items$/';
+      var regex = '/\\/api\\/invoices\\/items/';
       expect(result[0].pattern.toString()).to.equal(regex);
       expect(result[0].responder).to.be.a('function');
     });
@@ -87,11 +89,42 @@ describe('mockapi MockResourceType', function () {
   });
 
   describe('Make Pattern Regexes', function () {
+
     var makePatternRegExp = require('../../mock_resource_type').makePatternRegExp;
+
     it('should make a compatible regex', function () {
       var result = makePatternRegExp('somePrefix', 'someId', 'someSuffix');
       expect(result.toString()).to.equal('/somePrefix\\/someId\\/someSuffix/');
     });
+
+    it('should handle missing optional suffix', function () {
+      var result = makePatternRegExp('somePrefix', 'someId');
+      expect(result.toString()).to.equal('/somePrefix\\/someId/');
+    });
+
   });
+
+  describe('Get Documents from Collections', function () {
+
+    beforeEach(function () {
+      var items = {'item1': {id: 'item1', resource_type: 'invoice'}};
+      mrt = new MockResourceType(prefix, 'invoices', items);
+    });
+
+    it('should find a document', function () {
+      var pathname = '/api/invoices/item1';
+      var result = mrt.getDocument(pathname);
+      expect(result.id).to.equal('item1');
+    });
+
+    it('should throw an HTTPNotFound', function () {
+      var pathname = '/api/invoices/xxx';
+      expect(function () {
+        mrt.getDocument(pathname)
+      }).to.throw('No document at: /api/invoices/xxx');
+    });
+
+  });
+
 
 });

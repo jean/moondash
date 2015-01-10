@@ -6,10 +6,10 @@
       exc = MdMockRestProvider.exceptions;
 
     /*   #####  Sample Data  ####  */
-    var invoices = [
-      {id: "invoice1", title: 'First invoice'},
-      {id: "invoice2", title: 'Second invoice'}
-    ];
+    var invoices = {
+      invoice1: {id: "invoice1", title: 'First invoice'},
+      invoice2: {id: "invoice2", title: 'Second invoice'}
+    };
 
     var features = {
       resource: {
@@ -119,6 +119,10 @@
           responseData: user,
           authenticate: true
         },
+        //{
+        //  pattern: '/api/resourcetypes/invoices/invoice1',
+        //  responseData: {id: 'invoice1', title: 'Invoice 1'}
+        //},
         {
           method: 'POST',
           pattern: /api\/auth\/login/,
