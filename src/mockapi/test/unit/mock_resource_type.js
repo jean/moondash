@@ -65,7 +65,8 @@ describe('mockapi MockResourceType', function () {
 
     it('should provide list of collection/resource mocks', function () {
       var result = mrt.listMocks();
-      expect(result[0].pattern).to.equal(prefix + '/invoices/items');
+      var regex = '/api\\/resourcetypes\\/invoices\\/items$/';
+      expect(result[0].pattern.toString()).to.equal(regex);
       expect(result[0].responder).to.be.a('function');
     });
 

@@ -24,6 +24,13 @@ function MockResourceType(prefix, id, items) {
   this.id = id;                     // e.g. invoices (plural)
   this.items = items ? items : {};
 
+  this.collectionLIST = function (request) {
+    // Return the items in this collection as a mapping
+    // TODO implement pagination, filtering, etc.
+
+    return this.items;
+  }
+
   this.collectionREAD = function (request) {
     // Only provide the properties of this collection, not items
 
@@ -49,6 +56,19 @@ function MockResourceType(prefix, id, items) {
   this.listMocks = function () {
     // Get a list of MdMockRest-compatible registrations
 
+    var _this = this;
+
+    function makeRegEx(suffix) {
+      var prefix = _this.prefix;
+      if (prefix[0] == '/') {
+        // Remove this
+        prefix = prefix.substring(1);
+      }
+      var p = path.join(prefix, _this.id, suffix);
+      p = p.replace(/\//g, '\\/');
+      return new RegExp(p);
+    }
+
     var
       mocks = [],
       basePattern = path.join(this.prefix, this.id);
@@ -56,7 +76,7 @@ function MockResourceType(prefix, id, items) {
     // Collection items
     mocks.push({
                  mockInstance: this,
-                 pattern: basePattern + '/items',
+                 pattern: makeRegEx('/items$'),
                  responder: this.collectionLIST
                });
 
@@ -68,12 +88,12 @@ function MockResourceType(prefix, id, items) {
 
 }
 
-MockResourceType.prototype.collectionLIST = function (request) {
-  // Return the items in this collection as a mapping
-  // TODO implement pagination, filtering, etc.
-
-  return this.items;
-};
+//MockResourceType.prototype.collectionLIST = function (request) {
+//  // Return the items in this collection as a mapping
+//  // TODO implement pagination, filtering, etc.
+//
+//  return this.items;
+//};
 
 
 module.exports = {

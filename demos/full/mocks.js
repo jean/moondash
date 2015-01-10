@@ -114,14 +114,6 @@
           pattern: /api\/root/,
           responder: resolvePath
         },
-        //{
-        //  pattern: /api\/resourcetypes\/invoices\/items$/,
-        //  responseData: invoices
-        //},
-        //{
-        //  pattern: /api\/resourcetypes\/invoices\//,
-        //  responder: InvoicesResponder
-        //},
         {
           pattern: /api\/auth\/me/,
           responseData: user,
@@ -134,9 +126,10 @@
         }
       ]);
 
-    // Let's give the new guy a whirl.
-    var mrt = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
-    MdMockRestProvider.addMocks(mrt.listMocks());
+    // Use the MockResourceType to create all  mocks for all the
+    // standard endpoint actions.
+    var invoices = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
+    MdMockRestProvider.addMocks(invoices.listMocks());
   }
 
   angular.module('full')
