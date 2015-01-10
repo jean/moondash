@@ -87,10 +87,10 @@
       return {data: responseData};
     }
 
-    function InvoicesResponder(request) {
-      var id = request.url.split("/")[4];
-      return _(invoices).first({id: id}).value()[0];
-    }
+    //function InvoicesResponder(request) {
+    //  var id = request.url.split("/")[4];
+    //  return _(invoices).first({id: id}).value()[0];
+    //}
 
     function AuthLoginResponder(request) {
       if (request.json_body.username !== 'admin') {
@@ -128,8 +128,8 @@
 
     // Use the MockResourceType to create all  mocks for all the
     // standard endpoint actions.
-    var invoices = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
-    MdMockRestProvider.addMocks(invoices.listMocks());
+    var invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
+    MdMockRestProvider.addMocks(invoicesMock.listMocks());
   }
 
   angular.module('full')

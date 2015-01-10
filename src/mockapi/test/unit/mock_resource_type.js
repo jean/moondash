@@ -61,6 +61,20 @@ describe('mockapi MockResourceType', function () {
 
   });
 
+  describe('Default Document Actions', function () {
+
+    beforeEach(function () {
+      var items = {'item1': {id: 'item1', resource_type: 'invoice'}};
+      mrt = new MockResourceType(prefix, 'invoices', items);
+    });
+
+    it('should perform a READ action', function () {
+      var result = mrt.collectionREAD();
+      expect(result.id).to.equal('invoices');
+      expect(result.items).to.be.undefined();
+    });
+  });
+
   describe('List Mocks for MockRest registrations', function () {
 
     it('should provide list of collection/resource mocks', function () {
@@ -70,6 +84,14 @@ describe('mockapi MockResourceType', function () {
       expect(result[0].responder).to.be.a('function');
     });
 
+  });
+
+  describe('Make Pattern Regexes', function () {
+    var makePatternRegExp = require('../../mock_resource_type').makePatternRegExp;
+    it('should make a compatible regex', function () {
+      var result = makePatternRegExp('somePrefix', 'someId', 'someSuffix');
+      expect(result.toString()).to.equal('/somePrefix\\/someId\\/someSuffix/');
+    });
   });
 
 });

@@ -15,6 +15,17 @@ var
   path = require('path'),
   exceptions = require('./exceptions');
 
+function makePatternRegExp(prefix, id, suffix) {
+  if (prefix[0] == '/') {
+    // Remove this
+    prefix = prefix.substring(1);
+  }
+  var p = path.join(prefix, id, suffix);
+  p = p.replace(/\//g, '\\/');
+  return new RegExp(p);
+}
+
+
 function MockResourceType(prefix, id, items) {
   // A prototype/class that can generate the mocks for all the
   // actions on a type, with default methods that can be overriden as
@@ -29,7 +40,7 @@ function MockResourceType(prefix, id, items) {
     // TODO implement pagination, filtering, etc.
 
     return this.items;
-  }
+  };
 
   this.collectionREAD = function (request) {
     // Only provide the properties of this collection, not items
@@ -49,34 +60,28 @@ function MockResourceType(prefix, id, items) {
   };
 
   this.collectionREPLACE = function () {
-    // HANDLE a PUT
+    // Handle a PUT
 
+  };
+
+  this.documentREAD = function (request) {
+    // Handle a GET to a leaf
+    return 9;
   };
 
   this.listMocks = function () {
     // Get a list of MdMockRest-compatible registrations
 
-    var _this = this;
-
-    function makeRegEx(suffix) {
-      var prefix = _this.prefix;
-      if (prefix[0] == '/') {
-        // Remove this
-        prefix = prefix.substring(1);
-      }
-      var p = path.join(prefix, _this.id, suffix);
-      p = p.replace(/\//g, '\\/');
-      return new RegExp(p);
-    }
-
     var
       mocks = [],
-      basePattern = path.join(this.prefix, this.id);
+      basePattern = path.join(this.prefix, this.id),
+      prefix = this.prefix,
+      id = this.id;
 
     // Collection items
     mocks.push({
                  mockInstance: this,
-                 pattern: makeRegEx('/items$'),
+                 pattern: makePatternRegExp(prefix, id, '/items$'),
                  responder: this.collectionLIST
                });
 
@@ -97,5 +102,6 @@ function MockResourceType(prefix, id, items) {
 
 
 module.exports = {
+  makePatternRegExp: makePatternRegExp,
   MockResourceType: MockResourceType
 };
