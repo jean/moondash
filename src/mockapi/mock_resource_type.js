@@ -10,7 +10,9 @@
 
 'use strict';
 
-var _ = require('lodash');
+var
+  _ = require('lodash'),
+  exceptions = require('./exceptions');
 
 function MockResourceType(prefix, id, items) {
   // A prototype/class that can generate the mocks for all the
@@ -21,8 +23,12 @@ function MockResourceType(prefix, id, items) {
   this.id = id;                     // e.g. invoices (plural)
   this.items = items ? items : {};
 
-  this.collectionREAD = function () {
+  this.collectionREAD = function (request) {
     // Only provide the properties of this collection, not items
+
+    // Let's do some assertions and throw errors to make writing
+    // mocks more reliable and thus productive
+
     var clone = _(this).clone();
     delete clone.items;
     return clone;

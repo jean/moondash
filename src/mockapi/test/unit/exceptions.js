@@ -6,7 +6,7 @@ var
   spy = helper.spy,
   stub = helper.stub;
 
-describe.only('mockapi Exceptions', function () {
+describe('mockapi Exceptions', function () {
 
   var
     exc = require('../../exceptions');

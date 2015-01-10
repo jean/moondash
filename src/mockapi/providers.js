@@ -46,13 +46,13 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
     resultCode = 200;
     resultData = responder(request);
   } catch (e) {
-    if (e instanceof HTTPNotFound) {
+    if (e instanceof exceptions.HTTPNotFound) {
       resultCode = e.statusCode;
       resultData = {message: e.message};
-    } else if (e instanceof HTTPUnauthorized) {
+    } else if (e instanceof exceptions.HTTPUnauthorized) {
       resultCode = e.statusCode;
       resultData = {message: e.message};
-    } else if (e instanceof HTTPNoContent) {
+    } else if (e instanceof exceptions.HTTPNoContent) {
       resultCode = e.statusCode;
       resultData = null;
     }

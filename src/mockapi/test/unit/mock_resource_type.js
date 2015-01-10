@@ -10,6 +10,7 @@ describe('mockapi MockResourceType', function () {
 
   var
     MockResourceType = require('../../mock_resource_type').MockResourceType,
+    exceptions = require('../../exceptions'),
     mrt;
 
   describe('Basics', function () {
@@ -45,10 +46,15 @@ describe('mockapi MockResourceType', function () {
       mrt = new MockResourceType('/api/resourcetypes', 'invoices', items);
     });
 
-    it('should perform READ action', function () {
+    it('should perform a READ action', function () {
       var result = mrt.collectionREAD();
       expect(result.id).to.equal('invoices');
       expect(result.items).to.be.undefined();
+    });
+
+    it('should perform a LIST action', function () {
+      var result = mrt.collectionLIST();
+      expect(result.item1.id).to.equal('item1');
     });
 
   });

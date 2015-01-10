@@ -11,7 +11,8 @@ describe('mockapi MockRest', function () {
   var
     providers = require('../../providers'),
     MockRest = providers.MockRest,
-    Dispatcher = providers.Dispatcher;
+    Dispatcher = providers.Dispatcher,
+    exceptions = require('../../exceptions');
 
   describe('Provider Basics', function () {
 
@@ -97,9 +98,8 @@ describe('mockapi MockRest', function () {
     });
 
     it('should handle a raised HTTPNotFound', function () {
-      var HTTPNotFound = providers.HTTPNotFound;
       var responder = function () {
-        throw new HTTPNotFound('some message');
+        throw new exceptions.HTTPNotFound('some message');
       };
       mock = {responder: responder};
       result = Dispatcher(mock, method, thisUrl, data, headers);
@@ -110,9 +110,8 @@ describe('mockapi MockRest', function () {
     });
 
     it('should handle a raised unauthorized', function () {
-      var HTTPUnauthorized = providers.HTTPUnauthorized;
       var responder = function () {
-        throw new HTTPUnauthorized('some message');
+        throw new exceptions.HTTPUnauthorized('some message');
       };
       mock = {responder: responder};
       result = Dispatcher(mock, method, thisUrl, data, headers);
@@ -123,9 +122,8 @@ describe('mockapi MockRest', function () {
     });
 
     it('should handle a raised no content', function () {
-      var HTTPNoContent = providers.HTTPNoContent;
       var responder = function () {
-        throw new HTTPNoContent();
+        throw new exceptions.HTTPNoContent();
       };
       mock = {responder: responder};
       result = Dispatcher(mock, method, thisUrl, data, headers);
