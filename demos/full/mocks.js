@@ -1,6 +1,8 @@
 (function () {
   function ModuleConfig(MdMockRestProvider) {
 
+    var exc = MdMockRestProvider.exceptions;
+
     /*   #####  Sample Data  ####  */
     var invoices = [
       {id: "invoice1", title: 'First invoice'},
@@ -71,7 +73,7 @@
 
       var context = _.find(sampleData, {path: path});
       if (!context) {
-        return [404, 'Could not find ' + request.url];
+        throw new exc.HTTPNotFound('Could not find ' + request.url);
       }
       var parents = context.parents;
       var responseData = {
@@ -80,27 +82,19 @@
         parents: parents
       };
 
-      return [200, {data: responseData}];
+      return {data: responseData};
     }
 
     function InvoicesResponder(request) {
       var id = request.url.split("/")[4];
-      var invoice = _(invoices).first({id: id}).value()[0];
-      return [200, invoice];
+      return _(invoices).first({id: id}).value()[0];
     }
 
-    function AuthMeResponder(request) {
-      var data = request.json_body;
-      var un = data.username;
-      var response;
-
-      if (un === 'admin') {
-        response = [204, {token: "mocktoken"}];
-      } else {
-        response = [401, {"message": "Invalid login or password"}];
+    function AuthLoginResponder(request) {
+      if (request.json_body.username !== 'admin') {
+        throw new exc.HTTPUnauthorized('Invalid login or password');
       }
-
-      return response;
+      return {token: 'sample token'};
     }
 
     MdMockRestProvider.addMocks(
@@ -134,7 +128,7 @@
         {
           method: 'POST',
           pattern: /api\/auth\/login/,
-          responder: AuthMeResponder
+          responder: AuthLoginResponder
         }
       ]);
 

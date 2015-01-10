@@ -5,8 +5,9 @@ var
   expect = helper.expect,
   spy = helper.spy,
   stub = helper.stub,
-  MockRest = require('../../providers').MockRest,
-  Dispatcher = require('../../providers').Dispatcher;
+  providers = require('../../providers'),
+  MockRest = providers.MockRest,
+  Dispatcher = providers.Dispatcher;
 
 describe('MockRest Provider Basics', function () {
 
@@ -21,6 +22,7 @@ describe('MockRest Provider Basics', function () {
     expect(mr.mocks).to.be.a('array');
     expect(mr.$get).to.exist();
     expect(mr.addMocks).to.exist();
+    expect(mr.exceptions.HTTPNotFound).to.exist();
   });
 
   it('should have a $get instantiator for Angular', function () {
@@ -36,7 +38,7 @@ describe('MockRest Provider Basics', function () {
 
 describe('MockRest Dispatcher', function () {
 
-  var method, data, headers, result, mock, thisUrl, response;
+  var method, data, headers, result, mock, thisUrl, responseCode, responseBody;
 
   beforeEach(function () {
     method = 'GET';
@@ -47,39 +49,99 @@ describe('MockRest Dispatcher', function () {
   it('should return data and 200 for simplified mock', function () {
     mock = {responseData: [1, 2, 3]};
     result = Dispatcher(mock);
-    expect(result[0]).to.equal(200);
-    expect(result[1][0]).to.equal(1);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(200);
+    expect(responseBody[0]).to.equal(1);
   });
 
   it('should return 401 when mock wants authorization not present', function () {
     headers = {};
     mock = {responseData: [1, 2, 3], authenticate: true};
     result = Dispatcher(mock, method, thisUrl, data, headers);
-    expect(result[0]).to.equal(401);
-    expect(result[1][0]).to.be.undefined();
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(401);
+    expect(responseBody.message).to.equal('Login required')
   });
 
   it('should return 200 when mock wants authorization and present', function () {
     headers = {Authorization: 'xxx'};
     mock = {responseData: [1, 2, 3], authenticate: true};
     result = Dispatcher(mock, method, thisUrl, data, headers);
-    expect(result[0]).to.equal(200);
-    expect(result[1][0]).to.equal(1);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(200);
+    expect(responseBody[0]).to.equal(1);
   });
 
   it('should call a responder with complete request data', function () {
     data = '{"flag": 9}';
     var responder = function (request) {
-      return [200, request];
+      return request;
     };
     mock = {responder: responder};
     result = Dispatcher(mock, method, thisUrl, data, headers);
-    response = result[1];
+    responseCode = result[0];
+    responseBody = result[1];
     expect(result[0]).to.equal(200);
-    expect(response.url).to.equal(thisUrl);
-    expect(response.headers.Authorization).to.equal('xxx');
-    expect(response.data).to.equal(data);
-    expect(response.method).to.equal('GET');
-    expect(response.json_body.flag).to.equal(9);
+    expect(responseBody.url).to.equal(thisUrl);
+    expect(responseBody.headers.Authorization).to.equal('xxx');
+    expect(responseBody.data).to.equal(data);
+    expect(responseBody.method).to.equal('GET');
+    expect(responseBody.json_body.flag).to.equal(9);
   });
+
+  it('should handle unexpected responder error', function () {
+    var responder = function (request) {
+      x + 1;
+      return request;
+    };
+    mock = {responder: responder};
+    result = Dispatcher(mock, method, thisUrl, data, headers);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(500);
+    expect(responseBody).to.equal('Mock error: x is not defined');
+  });
+
+  it.only('should handle a raised HTTPNotFound', function () {
+    var HTTPNotFound = providers.HTTPNotFound;
+    var responder = function () {
+      throw new HTTPNotFound('some message');
+    };
+    mock = {responder: responder};
+    result = Dispatcher(mock, method, thisUrl, data, headers);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(404);
+    expect(responseBody.message).to.equal('some message');
+  });
+
+  it.only('should handle a raised unauthorized', function () {
+    var HTTPUnauthorized = providers.HTTPUnauthorized;
+    var responder = function () {
+      throw new HTTPUnauthorized('some message');
+    };
+    mock = {responder: responder};
+    result = Dispatcher(mock, method, thisUrl, data, headers);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(401);
+    expect(responseBody.message).to.equal('some message');
+  });
+
+  it.only('should handle a raised no content', function () {
+    var HTTPNoContent = providers.HTTPNoContent;
+    var responder = function () {
+      throw new HTTPNoContent();
+    };
+    mock = {responder: responder};
+    result = Dispatcher(mock, method, thisUrl, data, headers);
+    responseCode = result[0];
+    responseBody = result[1];
+    expect(responseCode).to.equal(204);
+    expect(responseBody).to.be.null();
+  });
+
 });
