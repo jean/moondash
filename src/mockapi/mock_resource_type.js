@@ -86,6 +86,19 @@ function MockResourceType(prefix, id, items) {
     return this.getDocument(request.pathname);
   };
 
+  this.documentDELETE = function (request) {
+    // Handle a DELETE to a leaf
+
+    var pathname = request.pathname;
+    var basePos = path.join(this.prefix, this.id).split('/').length;
+    var resourceId = pathname.trim().split('/')[basePos+1];
+
+    delete this.items[resourceId];
+
+    return {status: 'Ok'};
+  };
+
+
   this.listMocks = function () {
     // Get a list of MdMockRest-compatible registrations
 
@@ -101,6 +114,12 @@ function MockResourceType(prefix, id, items) {
                  responder: this.collectionLIST
                });
 
+    mocks.push({
+                 mockInstance: this,
+                 method: 'DELETE',
+                 pattern: makePatternRegExp(prefix, id + '/*'),
+                 responder: this.documentDELETE
+               });
     mocks.push({
                  mockInstance: this,
                  method: 'GET',

@@ -10,13 +10,19 @@
     </thead>
     <tbody>
     <tr ng-repeat="item in ctrl.items">
-      <td ng-bind="item.id">id</td>
-      <td ng-bind="item.title">title</td>
+      <td ng-bind="item.id" width="20%">id</td>
+      <td ng-bind="item.title" width="60%">title</td>
       <td>
         <a class="btn btn-default btn-xs"
-            ui-sref="resourcetypes.item.edit({resourcetype: ctrl.resourcetype, id: item.id})">
+           title="Edit"
+           ui-sref="resourcetypes.item.edit({resourcetype: ctrl.resourcetype, id: item.id})">
           <i class="glyphicon glyphicon-pencil"></i>
         </a>
+        <button class="btn btn-default btn-xs"
+                title="Delete"
+                ng-click="ctrl.deleteResource(item.id)">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
       </td>
     </tr>
     </tbody>
