@@ -6,7 +6,7 @@ var
   spy = helper.spy,
   stub = helper.stub;
 
-describe('MockResourceType', function () {
+describe('mockapi MockResourceType', function () {
 
   var
     MockResourceType = require('../../mock_resource_type').MockResourceType,

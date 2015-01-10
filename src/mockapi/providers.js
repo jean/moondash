@@ -1,7 +1,9 @@
 'use strict';
 
-var _ = require('lodash');
-var url = require('url');
+var
+  _ = require('lodash'),
+ url = require('url'),
+  exceptions = require('./exceptions');
 
 // Custom exceptions that can be used by mocks, stored later on
 // the service
@@ -24,7 +26,7 @@ function HTTPNoContent() {
 function Dispatcher(mock, method, thisUrl, data, headers) {
   // Called by $httpBackend whenever this mock's pattern is matched.
 
-  var responder, responseData, response, request;
+  var responder, responseData, request;
 
   // If the mock says to authenticate and we don't have
   // an Authorization header, return 401.
@@ -79,11 +81,7 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
 function MockRest() {
   var _this = this;
   this.mocks = [];
-  this.exceptions = {
-    HTTPNotFound: HTTPNotFound,
-    HTTPUnauthorized: HTTPUnauthorized,
-    HTTPNoContent: HTTPNoContent
-  };
+  this.exceptions = exceptions;
 
   this.$get = function () {
     var mocks = this.mocks;
