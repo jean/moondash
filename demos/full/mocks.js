@@ -1,6 +1,14 @@
 (function () {
   function ModuleConfig(MdMockRestProvider) {
 
+    var exc = MdMockRestProvider.exceptions;
+
+    /*   #####  Sample Data  ####  */
+    var invoices = [
+      {id: "invoice1", title: 'First invoice'},
+      {id: "invoice2", title: 'Second invoice'}
+    ];
+
     var features = {
       resource: {
         id: 99, title: 'Features'
@@ -11,17 +19,13 @@
       ]
     };
 
-    /*
-
-     Folders
-     ---------
-     context
-     - id, name, resourceType, markers, _self
-     - items
-     path
-     viewName
-     parents
-     */
+    var user = {
+      id: 'admin',
+      email: 'admin@x.com',
+      first_name: 'Admin',
+      last_name: 'Lastie',
+      twitter: 'admin'
+    };
 
     var
       f1a = {
@@ -54,6 +58,9 @@
     f2.parents = [rf];
     var sampleData = [f1, f2, rf, f1a, f1b];
 
+    /*   #####  End Sample Data  ####  */
+
+
     function resolvePath(request) {
       /* Given a path, return context, viewName, parents */
 
@@ -66,7 +73,7 @@
 
       var context = _.find(sampleData, {path: path});
       if (!context) {
-        return [404, 'Could not find ' + request.url];
+        throw new exc.HTTPNotFound('Could not find ' + request.url);
       }
       var parents = context.parents;
       var responseData = {
@@ -75,11 +82,22 @@
         parents: parents
       };
 
-      return [200, {data: responseData}];
+      return {data: responseData};
+    }
+
+    function InvoicesResponder(request) {
+      var id = request.url.split("/")[4];
+      return _(invoices).first({id: id}).value()[0];
+    }
+
+    function AuthLoginResponder(request) {
+      if (request.json_body.username !== 'admin') {
+        throw new exc.HTTPUnauthorized('Invalid login or password');
+      }
+      return {token: 'sample token'};
     }
 
     MdMockRestProvider.addMocks(
-      'features',
       [
         {
           pattern: /api\/features$/,
@@ -93,42 +111,15 @@
         {
           pattern: /api\/root/,
           responder: resolvePath
-        }
-      ]);
-
-    var invoices = [
-      {id: "invoice1", title: 'First invoice'},
-      {id: "invoice2", title: 'Second invoice'}
-    ];
-    MdMockRestProvider.addMocks(
-      'rtypes',
-      [
+        },
         {
-          pattern: /api\/rtypes\/invoices\/items$/,
+          pattern: /api\/resourcetypes\/invoices\/items$/,
           responseData: invoices
         },
         {
-          pattern: /api\/rtypes\/invoices\//,
-          responder: function (request) {
-            var id = request.url.split("/")[4];
-            var invoice = _(invoices).first({id: id}).value()[0];
-            return [200, invoice];
-          }
-        }
-      ]);
-
-
-    var user = {
-      id: 'admin',
-      email: 'admin@x.com',
-      first_name: 'Admin',
-      last_name: 'Lastie',
-      twitter: 'admin'
-    };
-
-    MdMockRestProvider.addMocks(
-      'auth',
-      [
+          pattern: /api\/resourcetypes\/invoices\//,
+          responder: InvoicesResponder
+        },
         {
           pattern: /api\/auth\/me/,
           responseData: user,
@@ -137,19 +128,7 @@
         {
           method: 'POST',
           pattern: /api\/auth\/login/,
-          responder: function (request) {
-            var data = request.json_body;
-            var un = data.username;
-            var response;
-
-            if (un === 'admin') {
-              response = [204, {token: "mocktoken"}];
-            } else {
-              response = [401, {"message": "Invalid login or password"}];
-            }
-
-            return response;
-          }
+          responder: AuthLoginResponder
         }
       ]);
 

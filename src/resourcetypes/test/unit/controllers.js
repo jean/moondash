@@ -32,14 +32,14 @@ describe('ResourceTypes List Controller', function () {
   beforeEach(function () {
     ctrl = controllers.ListController;
     $stateParams = {
-      rtype: 9
+      resourcetype: 9
     };
     items = 9;
   });
 
   it('should have a basic API', function () {
     result = new ctrl($stateParams, items);
-    expect(result.rtype).to.equal(9);
+    expect(result.resourcetype).to.equal(9);
     expect(result.items).to.equal(9);
   });
 

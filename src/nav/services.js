@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 function NavMenu(id, label, priority) {
   /* Prototype class that manages a nav menu */
 
@@ -28,9 +30,11 @@ function NavMenuItem(menuItem) {
 
   // A NavMenuItem can have a submenu
   this.addMenuItem = function (menuItem) {
-    var newSubMenuItem = new NavSubMenuItem(menuItem);
-    delete newSubMenuItem.items; // Can't have sub-submenus
-    _this.items[menuItem.id] = newSubMenuItem;
+    var newSubMenuItem = new NavMenuItem(menuItem);
+    if (!this.items) {
+      this.items = {};
+    }
+    this.items[menuItem.id] = newSubMenuItem;
 
     return newSubMenuItem;
   }
@@ -93,6 +97,7 @@ function NavService() {
 
 module.exports = {
   NavService: NavService,
-  NavMenu: NavMenu
+  NavMenu: NavMenu,
+  NavMenuItem: NavMenuItem
 };
 
