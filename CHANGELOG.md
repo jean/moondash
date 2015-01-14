@@ -13,6 +13,9 @@ the standard operations, making mock writing a lot simpler.
 - Fix the problem with index.html missing a # at the end. Basically, 
 dispatch was stepping in and trying to resolve it.
 
+- Modify the states in src/resourcetypes to mimic actions and better 
+use Restangular isolation and sharing via nested states.
+
 ## 0.0.7-alpha (2015-01-08)
 
 - Brownbag release to fix failure to do gulp --dist correctly
