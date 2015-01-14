@@ -1,8 +1,15 @@
 'use strict';
 
-var _ = require('lodash');
+var _ = require('lodash'),
+  path = require('path');
 
-function RTypesService(MdNav) {
+function LocalRestangular(Restangular, baseUrl) {
+  return Restangular.withConfig(function (RestangularConfigurer) {
+    RestangularConfigurer.setBaseUrl(baseUrl);
+  });
+}
+
+function RTypesService(MdNav, Restangular) {
   var _this = this;
 
   // Set the base REST prefix for this site's resourcetypes entry point
@@ -24,6 +31,7 @@ function RTypesService(MdNav) {
     // are passed in the "resourcetypes" part of the JSON.
 
     // Extract relevant stuff from config, perhaps validating
+    //this.urlPrefix = config.urlPrefix;
     var items = config.items;
 
     _(items).forEach(
@@ -32,7 +40,7 @@ function RTypesService(MdNav) {
           {
             id: resourcetype.id,
             label: resourcetype.label,
-            state: 'resourcetypes.list',
+            state: 'resourcetype.list',
             params: 'resourcetype: "' + resourcetype.id + '"',
             priority: 5
           }
@@ -44,5 +52,6 @@ function RTypesService(MdNav) {
 }
 
 module.exports = {
-  RTypesService: RTypesService
+  RTypesService: RTypesService,
+  LocalRestangular: LocalRestangular
 };

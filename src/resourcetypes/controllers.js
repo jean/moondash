@@ -1,7 +1,8 @@
 'use strict';
 
-function ManageController() {
+function ManageController(resourceTypes) {
   this.flag = 9;
+  this.resourceTypes = resourceTypes;
 }
 
 function ListController($stateParams, items) {
@@ -18,8 +19,8 @@ function ListController($stateParams, items) {
   }
 }
 
-function EditController(item) {
-  this.item = item;
+function EditController(resource) {
+  this.item = resource;
   this.schemaId = 'schema1';
   this.formId = 'form1';
 }

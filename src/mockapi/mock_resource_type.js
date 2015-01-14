@@ -179,12 +179,21 @@ function MockResourceType(prefix, id, items) {
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentDELETE
                });
+
     mocks.push({
                  mockInstance: this,
                  method: 'GET',
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentREAD
                });
+
+    //mocks.push({
+    //             mockInstance: this,
+    //             method: 'GET',
+    //             pattern: makePatternRegExp(prefix, id),
+    //             responder: this.collectionREAD
+    //           });
+
     return mocks;
   };
 
