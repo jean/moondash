@@ -10,7 +10,14 @@
     </thead>
     <tbody>
     <tr ng-repeat="item in ctrl.items">
-      <td ng-bind="item.id" width="20%">id</td>
+      <td width="20%">
+        <a title="View"
+           ui-sref="resource({resourcetype: ctrl.resourcetype, id: item.id})"
+           ng-bind="item.id">
+          id
+        </a>
+
+      </td>
       <td ng-bind="item.title" width="60%">title</td>
       <td>
         <a class="btn btn-default btn-xs"

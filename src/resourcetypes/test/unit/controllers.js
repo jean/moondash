@@ -45,12 +45,34 @@ describe('ResourceTypes List Controller', function () {
 
 });
 
+describe('ResourceTypes View Controller', function () {
+
+  var item;
+
+  beforeEach(function () {
+    ctrl = controllers.ResourceReadController;
+    item = {
+      plain: function () {
+        return {
+          id: 9
+        }
+      }
+    };
+  });
+
+  it('should have a basic API', function () {
+    result = new ctrl(item);
+    expect(result.resource.id).to.equal(9);
+  });
+
+});
+
 describe('ResourceTypes Edit Controller', function () {
 
   var item;
 
   beforeEach(function () {
-    ctrl = controllers.EditController;
+    ctrl = controllers.ResourceEditController;
     item = 9;
   });
 
