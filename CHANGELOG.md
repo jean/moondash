@@ -10,6 +10,9 @@ the standard operations, making mock writing a lot simpler.
 
 - Get delete working on resource type crud.
 
+- Fix the problem with index.html missing a # at the end. Basically, 
+dispatch was stepping in and trying to resolve it.
+
 ## 0.0.7-alpha (2015-01-08)
 
 - Brownbag release to fix failure to do gulp --dist correctly

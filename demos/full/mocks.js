@@ -11,6 +11,21 @@
       invoice2: {id: "invoice2", title: 'Second invoice'}
     };
 
+    var resourceTypes = [
+      {
+        "id": "invoices",
+        "label": "Invoices"
+      },
+      {
+        "id": "payments",
+        "label": "Payments"
+      },
+      {
+        "id": "expenses",
+        "label": "Expenses"
+      }
+    ];
+
     var features = {
       resource: {
         id: 99, title: 'Features'
@@ -87,11 +102,6 @@
       return {data: responseData};
     }
 
-    //function InvoicesResponder(request) {
-    //  var id = request.url.split("/")[4];
-    //  return _(invoices).first({id: id}).value()[0];
-    //}
-
     function AuthLoginResponder(request) {
       if (request.json_body.username !== 'admin') {
         throw new exc.HTTPUnauthorized('Invalid login or password');
@@ -134,6 +144,9 @@
     // standard endpoint actions.
     var invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
     MdMockRestProvider.addMocks(invoicesMock.listMocks());
+
+    var resourceTypesMock = new MockResourceType('/api', 'resourcetypes', resourceTypes);
+    MdMockRestProvider.addMocks(resourceTypesMock.listMocks());
   }
 
   angular.module('full')
