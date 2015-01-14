@@ -38,6 +38,11 @@ function ModuleConfig($stateProvider) {
                  resolve: {
                    resolvedPath: function ($location, $http) {
                      var path = $location.path();
+                     // Guard against going to index.html without the
+                     // #. This leads to a path that is an empty string.
+                     if (path === '') {
+                       $location.path('/');
+                     }
                      return $http.get(path)
                        .then(
                        function (success) {
