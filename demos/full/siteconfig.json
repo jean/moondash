@@ -58,7 +58,7 @@
     "demo": {
       "id": "demo",
       "label": "Demo",
-      "priority": 2,
+      "priority": 4,
       "items": [
         {
           "id": "site.dispatch",
@@ -105,7 +105,7 @@
     "security": {
       "id": "security",
       "label": "Security and Errors",
-      "priority": 4,
+      "priority": 2,
       "items": [
         {
           "id": "security.none",

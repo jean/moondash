@@ -5,6 +5,11 @@
 - Refactor MdNav to make the declarative and imperative nav menu setup 
 simpler
 
+- Create a MockResourceType that can bulk-register default mocks for 
+the standard operations, making mock writing a lot simpler.
+
+- Get delete working on resource type crud.
+
 ## 0.0.7-alpha (2015-01-08)
 
 - Brownbag release to fix failure to do gulp --dist correctly

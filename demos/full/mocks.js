@@ -1,13 +1,15 @@
 (function () {
   function ModuleConfig(MdMockRestProvider) {
 
-    var exc = MdMockRestProvider.exceptions;
+    var
+      MockResourceType = MdMockRestProvider.MockResourceType,
+      exc = MdMockRestProvider.exceptions;
 
     /*   #####  Sample Data  ####  */
-    var invoices = [
-      {id: "invoice1", title: 'First invoice'},
-      {id: "invoice2", title: 'Second invoice'}
-    ];
+    var invoices = {
+      invoice1: {id: "invoice1", title: 'First invoice'},
+      invoice2: {id: "invoice2", title: 'Second invoice'}
+    };
 
     var features = {
       resource: {
@@ -85,10 +87,10 @@
       return {data: responseData};
     }
 
-    function InvoicesResponder(request) {
-      var id = request.url.split("/")[4];
-      return _(invoices).first({id: id}).value()[0];
-    }
+    //function InvoicesResponder(request) {
+    //  var id = request.url.split("/")[4];
+    //  return _(invoices).first({id: id}).value()[0];
+    //}
 
     function AuthLoginResponder(request) {
       if (request.json_body.username !== 'admin') {
@@ -113,18 +115,14 @@
           responder: resolvePath
         },
         {
-          pattern: /api\/resourcetypes\/invoices\/items$/,
-          responseData: invoices
-        },
-        {
-          pattern: /api\/resourcetypes\/invoices\//,
-          responder: InvoicesResponder
-        },
-        {
           pattern: /api\/auth\/me/,
           responseData: user,
           authenticate: true
         },
+        //{
+        //  pattern: '/api/resourcetypes/invoices/invoice1',
+        //  responseData: {id: 'invoice1', title: 'Invoice 1'}
+        //},
         {
           method: 'POST',
           pattern: /api\/auth\/login/,
@@ -132,6 +130,10 @@
         }
       ]);
 
+    // Use the MockResourceType to create all  mocks for all the
+    // standard endpoint actions.
+    var invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
+    MdMockRestProvider.addMocks(invoicesMock.listMocks());
   }
 
   angular.module('full')

@@ -5,8 +5,17 @@ function ManageController() {
 }
 
 function ListController($stateParams, items) {
+  var _this = this;
   this.resourcetype = $stateParams.resourcetype;
   this.items = items;
+
+  this.deleteResource = function (resourceId) {
+    var resource = _(items).find({id: resourceId});
+    resource.remove()
+      .then(function () {
+              _(_this.items).remove({id: resourceId});
+            });
+  }
 }
 
 function EditController(item) {

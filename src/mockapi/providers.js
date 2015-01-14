@@ -1,30 +1,16 @@
 'use strict';
 
-var _ = require('lodash');
-var url = require('url');
-
-// Custom exceptions that can be used by mocks, stored later on
-// the service
-function HTTPNotFound(message) {
-  this.name = 'HTTPNotFound';
-  this.statusCode = 404;
-  this.message = message || 'Not Found';
-}
-function HTTPUnauthorized(message) {
-  this.name = 'HTTPUnauthorized';
-  this.statusCode = 401;
-  this.message = message || 'Login Required';
-}
-function HTTPNoContent() {
-  this.name = 'HTTPNoContent';
-  this.statusCode = 204;
-}
+var
+  _ = require('lodash'),
+  url = require('url'),
+  MockResourceType = require('./mock_resource_type').MockResourceType,
+  exceptions = require('./exceptions');
 
 
 function Dispatcher(mock, method, thisUrl, data, headers) {
   // Called by $httpBackend whenever this mock's pattern is matched.
 
-  var responder, responseData, response, request;
+  var responder, responseData, request;
 
   // If the mock says to authenticate and we don't have
   // an Authorization header, return 401.
@@ -59,15 +45,20 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
   // it with the appropriate status code.
   try {
     resultCode = 200;
-    resultData = responder(request);
+    if (mock.mockInstance) {
+      // Supply a "this" to the mock function
+      resultData = responder.call(mock.mockInstance, request);
+    } else {
+      resultData = responder(request);
+    }
   } catch (e) {
-    if (e instanceof HTTPNotFound) {
+    if (e instanceof exceptions.HTTPNotFound) {
       resultCode = e.statusCode;
       resultData = {message: e.message};
-    } else if (e instanceof HTTPUnauthorized) {
+    } else if (e instanceof exceptions.HTTPUnauthorized) {
       resultCode = e.statusCode;
       resultData = {message: e.message};
-    } else if (e instanceof HTTPNoContent) {
+    } else if (e instanceof exceptions.HTTPNoContent) {
       resultCode = e.statusCode;
       resultData = null;
     }
@@ -79,11 +70,8 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
 function MockRest() {
   var _this = this;
   this.mocks = [];
-  this.exceptions = {
-    HTTPNotFound: HTTPNotFound,
-    HTTPUnauthorized: HTTPUnauthorized,
-    HTTPNoContent: HTTPNoContent
-  };
+  this.MockResourceType = MockResourceType;
+  this.exceptions = exceptions;
 
   this.$get = function () {
     var mocks = this.mocks;
@@ -132,8 +120,5 @@ function ModuleRun($httpBackend, MdMockRest) {
 module.exports = {
   MockRest: MockRest,
   Run: ModuleRun,
-  Dispatcher: Dispatcher,
-  HTTPNotFound: HTTPNotFound,
-  HTTPUnauthorized: HTTPUnauthorized,
-  HTTPNoContent: HTTPNoContent
+  Dispatcher: Dispatcher
 };
