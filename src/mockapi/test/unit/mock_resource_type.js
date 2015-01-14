@@ -59,6 +59,32 @@ describe('mockapi MockResourceType', function () {
       expect(result[0].id).to.equal('item1');
     });
 
+    it('should perform an UPDATE action', function () {
+      mrt.title = 'Before Title';
+      mrt.description = 'Before Description';
+      var json_body = {
+        title: 'After Title',
+        description: 'After Description'
+      };
+      var result = mrt.collectionUPDATE({json_body: json_body});
+      expect(result).to.be.null();
+      expect(mrt.title).to.equal('After Title');
+      expect(mrt.description).to.equal('After Description');
+    });
+
+    it('should perform an REPLACE action', function () {
+      mrt.title = 'Before Title';
+      mrt.description = 'Before Description';
+      var json_body = {
+        title: 'After Title',
+        description: 'After Description'
+      };
+      var result = mrt.collectionREPLACE({json_body: json_body});
+      expect(result).to.be.null();
+      expect(mrt.title).to.equal('After Title');
+      expect(mrt.description).to.equal('After Description');
+    });
+
   });
 
   describe('Default Document Actions', function () {

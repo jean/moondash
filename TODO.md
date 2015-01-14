@@ -1,21 +1,12 @@
 = TODO
 
-- Basic Mocha unit tests
-
-    - Convert all directories to plugins
-  
-    - Services, controllers
-  
-    - Directives
-
-    * Later
-  
-        - Switch Karma and possibly Protractor from Jasmine to Mocha
-          
-        - Re-consider getting out of Karma and Protractor
-
+- Get Travis passing again
 
 - ng-grid
+
+- Switch Karma and possibly Protractor from Jasmine to Mocha
+  
+- Re-consider getting out of Karma and Protractor
 
 - Get rid of ng-min (use ng-annotate)
 

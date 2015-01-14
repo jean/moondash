@@ -73,11 +73,26 @@ function MockResourceType(prefix, id, items) {
   this.collectionUPDATE = function (request) {
     // Handle a PATCH
 
+    // For each key/value in the request.json_body, update
+    _(request.json_body)
+      .map(function (value, key) {
+             this[key] = value;
+           },
+           this);
+
+    return null;
   };
 
-  this.collectionREPLACE = function () {
+  this.collectionREPLACE = function (request) {
     // Handle a PUT
 
+    // For each key/value in the request.json_body, update
+    _(request.json_body)
+      .map(function (value, key) {
+             this[key] = value;
+           },
+           this);
+    return null;
   };
 
   this.documentREAD = function (request) {
@@ -91,7 +106,7 @@ function MockResourceType(prefix, id, items) {
 
     var pathname = request.pathname;
     var basePos = path.join(this.prefix, this.id).split('/').length;
-    var resourceId = pathname.trim().split('/')[basePos+1];
+    var resourceId = pathname.trim().split('/')[basePos + 1];
 
     delete this.items[resourceId];
 
