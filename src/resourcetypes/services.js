@@ -9,7 +9,7 @@ function RTypesService(MdNav) {
   this.urlPrefix = 'api/resourcetypes';
 
   // Initialize the navmenu
-  var menu = MdNav.addMenu('resourcetypes', 'Resource Types');
+  var menu = MdNav.addMenu('resourcetypes', 'Resource Types', 2);
   menu.addMenuItem({
                      id: 'manage',
                      label: 'Manage',
