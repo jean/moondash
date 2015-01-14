@@ -32,14 +32,20 @@ function MockResourceType(prefix, id, items) {
   this.id = id;                         // e.g. invoices (plural)
   this.items = items ? items : {};
 
+  this.getId = function (pathname) {
+    // Helper function to analyze /prefix/resourcetype/id/maybeMore
+    // and return just the id part
+
+    var basePos = path.join(this.prefix, this.id).split('/').length;
+    return pathname.trim().split('/')[basePos];
+
+  };
+
   this.getDocument = function (pathname) {
     // Given a pathname from the request, find and return the
     // correct document. Throw a HTTPNotFound if no match
 
-    // Where in the pathname, relative to the
-    // /api/resourcetypes/invoice, is the id?
-    var basePos = path.join(this.prefix, this.id).split('/').length;
-    var resourceId = pathname.trim().split('/')[basePos];
+    var resourceId = this.getId(pathname);
 
     var document = this.items[resourceId];
     if (document == null) {
@@ -80,6 +86,9 @@ function MockResourceType(prefix, id, items) {
            },
            this);
 
+    // TODO If null is returned, we should throw exceptions.HTTPNoContent
+    // However, since later we will obey HATEOAS/JSON-LD and return
+    // a 200 with links to the "next" view, going with the simplest.
     return null;
   };
 
@@ -92,6 +101,10 @@ function MockResourceType(prefix, id, items) {
              this[key] = value;
            },
            this);
+
+    // TODO If null is returned, we should throw exceptions.HTTPNoContent
+    // However, since later we will obey HATEOAS/JSON-LD and return
+    // a 200 with links to the "next" view, going with the simplest.
     return null;
   };
 
@@ -104,15 +117,46 @@ function MockResourceType(prefix, id, items) {
   this.documentDELETE = function (request) {
     // Handle a DELETE to a leaf
 
-    var pathname = request.pathname;
-    var basePos = path.join(this.prefix, this.id).split('/').length;
-    var resourceId = pathname.trim().split('/')[basePos + 1];
-
+    var resourceId = this.getId(request.pathname);
     delete this.items[resourceId];
 
-    return {status: 'Ok'};
+    return null;
   };
 
+
+  this.documentUPDATE = function (request) {
+    // Handle a PATCH to a leaf
+
+    var document = this.getDocument(request.pathname);
+    // For each key/value in the request.json_body, update
+    _(request.json_body)
+      .map(function (value, key) {
+             this[key] = value;
+           },
+           document);
+
+    // TODO If null is returned, we should throw exceptions.HTTPNoContent
+    // However, since later we will obey HATEOAS/JSON-LD and return
+    // a 200 with links to the "next" view, going with the simplest.
+    return null;
+  };
+
+  this.documentREPLACE = function (request) {
+    // Handle a PUT to a leaf
+
+    var document = this.getDocument(request.pathname);
+    // For each key/value in the request.json_body, update
+    _(request.json_body)
+      .map(function (value, key) {
+             this[key] = value;
+           },
+           document);
+
+    // TODO If null is returned, we should throw exceptions.HTTPNoContent
+    // However, since later we will obey HATEOAS/JSON-LD and return
+    // a 200 with links to the "next" view, going with the simplest.
+    return null;
+  };
 
   this.listMocks = function () {
     // Get a list of MdMockRest-compatible registrations

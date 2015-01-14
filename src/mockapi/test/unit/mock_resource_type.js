@@ -72,7 +72,7 @@ describe('mockapi MockResourceType', function () {
       expect(mrt.description).to.equal('After Description');
     });
 
-    it('should perform an REPLACE action', function () {
+    it('should perform a REPLACE action', function () {
       mrt.title = 'Before Title';
       mrt.description = 'Before Description';
       var json_body = {
@@ -101,6 +101,43 @@ describe('mockapi MockResourceType', function () {
       expect(result.items).to.be.undefined();
     });
 
+    it('should perform a DELETE action', function () {
+      var request = {pathname: '/api/invoices/item1'};
+      var result = mrt.documentDELETE(request);
+      expect(result).to.be.null();
+      expect(mrt.items).to.be.empty();
+    });
+
+    it('should perform an UPDATE action', function () {
+      var json_body = {
+        title: 'After Title',
+        description: 'After Description'
+      };
+      var request = {
+        pathname: '/api/invoices/item1',
+        json_body: json_body
+      };
+      var result = mrt.documentUPDATE(request);
+      expect(result).to.be.null();
+      expect(mrt.items.item1.title).to.equal('After Title');
+      expect(mrt.items.item1.description).to.equal('After Description');
+    });
+
+    it('should perform a REPLACE action', function () {
+      var json_body = {
+        title: 'After Title',
+        description: 'After Description'
+      };
+      var request = {
+        pathname: '/api/invoices/item1',
+        json_body: json_body
+      };
+      var result = mrt.documentREPLACE(request);
+      expect(result).to.be.null();
+      expect(mrt.items.item1.title).to.equal('After Title');
+      expect(mrt.items.item1.description).to.equal('After Description');
+    });
+
   });
 
   describe('List Mocks for MockRest registrations', function () {
@@ -110,6 +147,35 @@ describe('mockapi MockResourceType', function () {
       var regex = '/\\/api\\/invoices\\/items/';
       expect(result[0].pattern.toString()).to.equal(regex);
       expect(result[0].responder).to.be.a('function');
+    });
+
+  });
+
+  describe('Extract the resource ID from various patterns', function () {
+
+    beforeEach(function () {
+      mrt = new MockResourceType(prefix, 'invoices');
+    });
+
+    it('should find the ID in a basic pathname', function () {
+      var pathname = '/api/invoices/1';
+      expect(mrt.getId(pathname)).to.equal('1');
+    });
+
+    it('should find ID in pathname with trailing slash', function () {
+      var pathname = '/api/invoices/1/';
+      expect(mrt.getId(pathname)).to.equal('1');
+    });
+
+    it('should find ID in deeply nested pathname', function () {
+      var pathname = '/api/and/more/resourcetypes/invoices/1/';
+      mrt = new MockResourceType('/api/and/more/resourcetypes', 'invoices');
+      expect(mrt.getId(pathname)).to.equal('1');
+    });
+
+    it('should find ID in pathname with extra action', function () {
+      var pathname = '/api/invoices/1/someAction';
+      expect(mrt.getId(pathname)).to.equal('1');
     });
 
   });
