@@ -55,7 +55,8 @@ gulp.task('browserify', function(callback) {
         // stream gulp compatible. Specifiy the
         // desired output filename here.
         .pipe(source(bundleConfig.outputName))
-        .pipe(streamify(uglify()))
+        // TODO: fix uglifying
+        // .pipe(streamify(uglify()))
         // Specify the output destination
         .pipe(gulp.dest(bundleConfig.dest))
         .on('end', reportFinished);
