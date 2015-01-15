@@ -21,7 +21,7 @@ function ModuleConfig($stateProvider) {
              title: 'Manage',
              views: {
                'md-content@root': {
-                 template: require('./templates/manage.html'),
+                 template: require('./templates/resourcetypes-manage.html'),
                  controller: controllers.ManageController,
                  controllerAs: 'ctrl',
                  resolve: {
@@ -51,7 +51,7 @@ function ModuleConfig($stateProvider) {
              title: 'List Resources',
              views: {
                'md-content@root': {
-                 template: require('./templates/list.html'),
+                 template: require('./templates/resourcetypes-list.html'),
                  controller: controllers.ListController,
                  controllerAs: 'ctrl',
                  resolve: {
@@ -64,10 +64,17 @@ function ModuleConfig($stateProvider) {
              }
            })
 
-    // A resource
+    // READ a resource
     .state('resource', {
              url: '/{id}',
              parent: 'resourcetype',
+             views: {
+               'md-content@root': {
+                 template: require('./templates/resource-read.html'),
+                 controller: controllers.ResourceReadController,
+                 controllerAs: 'ctrl'
+               }
+             },
              resolve: {
                resource: function ($stateParams, baseResourceType) {
                  var id = $stateParams.id;
@@ -82,8 +89,8 @@ function ModuleConfig($stateProvider) {
              title: 'Edit Resource',
              views: {
                'md-content@root': {
-                 template: require('./templates/edit.html'),
-                 controller: controllers.EditController,
+                 template: require('./templates/resource-replace.html'),
+                 controller: controllers.ResourceEditController,
                  controllerAs: 'ctrl'
                }
              }

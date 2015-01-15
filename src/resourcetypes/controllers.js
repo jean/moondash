@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 function ManageController(resourceTypes) {
   this.flag = 9;
   this.resourceTypes = resourceTypes;
@@ -19,7 +21,12 @@ function ListController($stateParams, items) {
   }
 }
 
-function EditController(resource) {
+function ResourceReadController(resource) {
+  this.resource = resource.plain();
+  this.pairs = _.pairs(resource.plain());
+}
+
+function ResourceEditController(resource) {
   this.item = resource;
   this.schemaId = 'schema1';
   this.formId = 'form1';
@@ -28,5 +35,6 @@ function EditController(resource) {
 module.exports = {
   ManageController: ManageController,
   ListController: ListController,
-  EditController: EditController
+  ResourceReadController: ResourceReadController,
+  ResourceEditController: ResourceEditController
 };
