@@ -22,6 +22,7 @@
     "font-awesome": "^4.2.0",
     "lodash": "^2.4.1",
     "objectpath": "~1.1.0",
+    "path": "^0.11.14",
     "restangular": "^1.4.0",
     "satellizer": "^0.8.7",
     "tv4": "^1.1.5",
@@ -42,6 +43,7 @@
     "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
     "tv4": "./node_modules/tv4/tv4.js",
     "lodash": "./node_modules/lodash/dist/lodash.js",
+    "path": "./node_modules/path/path.js",
     "url": "./node_modules/url/url.js"
   },
   "browserify": {
@@ -52,6 +54,7 @@
   "browserify-shim": {
     "angular": "global:angular",
     "lodash": "global:_",
+    "path": "global:path",
     "url": "global:url"
   },
   "devDependencies": {
