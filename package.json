@@ -42,9 +42,7 @@
     "angular-schema-form-decorator": "./node_modules/angular-schema-form/dist/bootstrap-decorator.min.js",
     "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
     "tv4": "./node_modules/tv4/tv4.js",
-    "lodash": "./node_modules/lodash/dist/lodash.js",
-    "path": "./node_modules/path/path.js",
-    "url": "./node_modules/url/url.js"
+    "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {
     "transform": [
@@ -53,9 +51,7 @@
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "lodash": "global:_",
-    "path": "global:path",
-    "url": "global:url"
+    "lodash": "global:_"
   },
   "devDependencies": {
     "brfs": "^1.2.0",
