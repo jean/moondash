@@ -1,7 +1,5 @@
 = TODO
 
-- Get Travis passing again
-
 - ng-grid
 
 - Switch Karma and possibly Protractor from Jasmine to Mocha
