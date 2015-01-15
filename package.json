@@ -24,7 +24,8 @@
     "objectpath": "~1.1.0",
     "restangular": "^1.4.0",
     "satellizer": "^0.8.7",
-    "tv4": "^1.1.5"
+    "tv4": "^1.1.5",
+    "url": "^0.10.2"
   },
   "browser": {
     "angular": "./node_modules/angular/angular.js",
@@ -40,7 +41,8 @@
     "angular-schema-form-decorator": "./node_modules/angular-schema-form/dist/bootstrap-decorator.min.js",
     "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
     "tv4": "./node_modules/tv4/tv4.js",
-    "lodash": "./node_modules/lodash/dist/lodash.js"
+    "lodash": "./node_modules/lodash/dist/lodash.js",
+    "url": "./node_modules/url/url.js"
   },
   "browserify": {
     "transform": [
@@ -49,7 +51,8 @@
   },
   "browserify-shim": {
     "angular": "global:angular",
-    "lodash": "global:_"
+    "lodash": "global:_",
+    "url": "global:url"
   },
   "devDependencies": {
     "brfs": "^1.2.0",

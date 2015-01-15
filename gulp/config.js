@@ -91,7 +91,8 @@ module.exports = {
   },
   dist: {
     pruneVendors: distWithMock ? [] : [
-      "angular-mocks"
+      "angular-mocks",
+      "url"
     ]
   }
 };
