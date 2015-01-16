@@ -54,6 +54,9 @@ module.exports = {
   },
   icons: {
     src: [
+      './node_modules/ui-grid/dist/release/ui-grid.eot',
+      './node_modules/ui-grid/dist/release/ui-grid.ttf',
+      './node_modules/ui-grid/dist/release/ui-grid.woff',
       './node_modules/font-awesome/fonts/*',
       './node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
     ],

@@ -43,6 +43,7 @@
     "angular-schema-form-decorator": "./node_modules/angular-schema-form/dist/bootstrap-decorator.min.js",
     "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
     "tv4": "./node_modules/tv4/tv4.js",
+    "ui-grid": "./node_modules/ui-grid/dist/release/ui-grid.min.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {
