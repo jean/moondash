@@ -26,6 +26,7 @@
     "restangular": "^1.4.0",
     "satellizer": "^0.8.7",
     "tv4": "^1.1.5",
+    "ui-grid": "git://github.com/MoonshotProject/ng-grid",
     "url": "^0.10.2"
   },
   "browser": {
