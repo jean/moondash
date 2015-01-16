@@ -26,6 +26,7 @@
     "restangular": "^1.4.0",
     "satellizer": "^0.8.7",
     "tv4": "^1.1.5",
+    "ui-grid": "git://github.com/MoonshotProject/ng-grid",
     "url": "^0.10.2"
   },
   "browser": {
@@ -42,6 +43,7 @@
     "angular-schema-form-decorator": "./node_modules/angular-schema-form/dist/bootstrap-decorator.min.js",
     "ObjectPath": "./node_modules/objectpath/lib/ObjectPath.js",
     "tv4": "./node_modules/tv4/tv4.js",
+    "ui-grid": "./node_modules/ui-grid/dist/release/ui-grid.min.js",
     "lodash": "./node_modules/lodash/dist/lodash.js"
   },
   "browserify": {
@@ -63,7 +65,7 @@
     "gulp": "^3.8.7",
     "gulp-concat": "^2.4.2",
     "gulp-istanbul": "^0.5.0",
-    "gulp-minify-css": "^0.3.11",
+    "gulp-minify-css": "0.3.11",
     "gulp-mocha": "^2.0.0",
     "gulp-notify": "^2.0.1",
     "gulp-protractor": "0.0.12",
