@@ -21,6 +21,11 @@ function ListController($stateParams, items) {
   }
 }
 
+function ResourceTypeCreateController() {
+  this.schemaId = 'schema1';
+  this.formId = 'form1';
+}
+
 function ResourceReadController(resource) {
   this.resource = resource.plain();
   this.pairs = _.pairs(resource.plain());
@@ -35,6 +40,7 @@ function ResourceEditController(resource) {
 module.exports = {
   ManageController: ManageController,
   ListController: ListController,
+  ResourceTypeCreateController: ResourceTypeCreateController,
   ResourceReadController: ResourceReadController,
   ResourceEditController: ResourceEditController
 };
