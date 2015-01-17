@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.0.8-alpha (2015-01-16)
 
 - Refactor MdNav to make the declarative and imperative nav menu setup 
 simpler
@@ -15,6 +15,12 @@ dispatch was stepping in and trying to resolve it.
 
 - Modify the states in src/resourcetypes to mimic actions and better 
 use Restangular isolation and sharing via nested states.
+
+- Use the correct angular-bootstrap NPM package
+
+- Produce sourcemap files correctly
+
+- Include ui-grid in the bundles
 
 ## 0.0.7-alpha (2015-01-08)
 
