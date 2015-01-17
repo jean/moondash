@@ -10,17 +10,13 @@ describe('src/mockapi Test', function () {
     expect(h1.getText()).toEqual('Mock Resource Types');
   });
 
-  it('should get two items for collectionREAD', function () {
-    var count = element(by.id('collectionREAD-count'));
-    expect(count.getText()).toEqual('2');
+  it('should GET collectionREAD', function () {
     var value = element(by.id('collectionREAD-value'));
     expect(value.getText())
-      .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');
+      .toEqual('{"prefix":"/api/resourcetypes","id":"invoices"}');
   });
 
-  it('should get two items for collectionLIST', function () {
-    var count = element(by.id('collectionLIST-count'));
-    expect(count.getText()).toEqual('2');
+  it('should GET collectionLIST', function () {
     var value = element(by.id('collectionLIST-value'));
     expect(value.getText())
       .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');

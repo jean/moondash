@@ -73,7 +73,6 @@ function MockResourceType(prefix, id, items) {
     var clone = _(this).clone();
     delete clone.items;
 
-    console.log(9999880, clone);
     return clone;
   };
 
