@@ -73,6 +73,7 @@ function MockResourceType(prefix, id, items) {
     var clone = _(this).clone();
     delete clone.items;
 
+    console.log(9999880, clone);
     return clone;
   };
 
@@ -175,6 +176,13 @@ function MockResourceType(prefix, id, items) {
 
     mocks.push({
                  mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionREAD
+               });
+
+    mocks.push({
+                 mockInstance: this,
                  method: 'DELETE',
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentDELETE
@@ -186,13 +194,6 @@ function MockResourceType(prefix, id, items) {
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentREAD
                });
-
-    //mocks.push({
-    //             mockInstance: this,
-    //             method: 'GET',
-    //             pattern: makePatternRegExp(prefix, id),
-    //             responder: this.collectionREAD
-    //           });
 
     return mocks;
   };

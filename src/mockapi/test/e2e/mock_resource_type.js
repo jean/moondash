@@ -1,10 +1,29 @@
-describe('src/mockapi Test', function() {
-  it('Test moondash!', function() {
-    browser.get('src/mockapi/test/e2e/mock_resource_type/index.html');
+describe('src/mockapi Test', function () {
+  var url = 'src/mockapi/test/e2e/mock_resource_type/index.html#/';
 
-    var hello = element(by.css('h1'));
+  beforeEach(function () {
+    browser.get(url);
+  });
 
-    expect(hello.getText()).toEqual('mockapi tests');
+  it('should get the test environment set correctly', function () {
+    var h1 = element(by.css('h1'));
+    expect(h1.getText()).toEqual('Mock Resource Types');
+  });
+
+  it('should get two items for collectionREAD', function () {
+    var count = element(by.id('collectionREAD-count'));
+    expect(count.getText()).toEqual('2');
+    var value = element(by.id('collectionREAD-value'));
+    expect(value.getText())
+      .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');
+  });
+
+  it('should get two items for collectionLIST', function () {
+    var count = element(by.id('collectionLIST-count'));
+    expect(count.getText()).toEqual('2');
+    var value = element(by.id('collectionLIST-value'));
+    expect(value.getText())
+      .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');
   });
 
 });

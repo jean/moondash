@@ -1,4 +1,5 @@
-<div ng-repeat="response in ctrl.responses">
-  <h1 ng-bind="response.title">response title</h1>
-  <pre ng-bind="response.value"></pre>
+<h1>Mock Resource Types</h1>
+<div ng-repeat="(k,v) in ctrl.responses">
+  <h2>{{k}} (<span id="{{k}}-count" ng-bind="v.length"></span>)</h2>
+  <pre id="{{k}}-value">{{v}}</pre>
 </div>

@@ -1,7 +1,8 @@
-function RootController(collectionLIST) {
-  this.responses = [
-    {title: 'collectionLIST', value: JSON.stringify(collectionLIST)}
-  ];
+function RootController(collectionREAD, collectionLIST) {
+  this.responses = {
+    collectionREAD: collectionREAD.data,
+    collectionLIST: collectionLIST.data
+  };
 }
 
 function ModuleConfig($stateProvider, MdMockRestProvider) {
@@ -9,8 +10,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
   // Register some mock data at /api/resources/invoices
   var
     invoices = {
-      invoice1: {id: "invoice1", title: 'First invoice'},
-      invoice2: {id: "invoice2", title: 'Second invoice'}
+      invoice1: {id: "i1", title: '1'},
+      invoice2: {id: "i2", title: '2'}
     },
     MockResourceType = MdMockRestProvider.MockResourceType,
     invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
@@ -25,6 +26,9 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {
+               collectionREAD: function ($http) {
+                 return $http.get('/api/resourcetypes/invoices');
+               },
                collectionLIST: function ($http) {
                  return $http.get('/api/resourcetypes/invoices/items');
                }
