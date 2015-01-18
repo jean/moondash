@@ -14,7 +14,7 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
 
   MdMockRestProvider.addMocks(invoicesMock.listMocks());
 
-  // Make a root state that retrieves all the URLs and displays them
+  // Top-level page
   $stateProvider
     .state("e2e", {
              url: '/e2e',
@@ -22,8 +22,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {
-               baseInvoices: function (Restangular) {
-                 return Restangular.all('api/resourcetypes/invoices');
+               baseResourceTypes: function (Restangular) {
+                 return Restangular.all('api/resourcetypes');
                }
              }
            })

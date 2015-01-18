@@ -1,12 +1,11 @@
 (function () {
 
-  function StateController(invoices) {
-    this.invoices = invoices;
-    this.count = invoices.length;
+  function StateController(invoiceItems) {
+    this.invoices = invoiceItems;
+    this.count = invoiceItems.length;
   }
 
   function ModuleConfig($stateProvider) {
-    // Make a root state that retrieves all the URLs and displays them
     $stateProvider
       .state('e2e.collectionList', {
                url: '/collectionList',
@@ -14,8 +13,8 @@
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoices: function (baseInvoices) {
-                   return baseInvoices.all('items').getList();
+                 invoiceItems: function (baseResourceTypes) {
+                   return baseResourceTypes.all('invoices/items').getList();
                  }
                }
              })

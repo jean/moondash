@@ -3,7 +3,7 @@ var
   baseUrl = require('./index').baseUrl;
 
 describe('src/mockapi Test', function () {
-  var url = path.join(baseUrl, 'collectionList');
+  var url = path.join(baseUrl, 'collectionRead');
 
   beforeEach(function () {
     browser.get(url);
@@ -13,9 +13,9 @@ describe('src/mockapi Test', function () {
     expect(browser.getTitle()).toEqual('E2E Test');
   });
 
-  it('should GET collectionList', function () {
-    var count = element(by.id('e2e-count'));
-    expect(count.getText()).toEqual('2');
+  it('should GET collectionRead', function () {
+    var count = element(by.id('e2e-prefix'));
+    expect(count.getText()).toEqual('/api/resourcetypes');
   });
 
 });
