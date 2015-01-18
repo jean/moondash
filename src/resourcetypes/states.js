@@ -1,7 +1,6 @@
 'use strict';
 
-var controllers = require('./controllers'),
-  LocalRestangular = require('./services').LocalRestangular;
+var controllers = require('./controllers');
 
 function ModuleConfig($stateProvider) {
   $stateProvider

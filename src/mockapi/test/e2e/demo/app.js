@@ -1,3 +1,9 @@
+function LocalRestangular(Restangular, baseUrl) {
+  return Restangular.withConfig(function (RestangularConfigurer) {
+    RestangularConfigurer.setBaseUrl(baseUrl);
+  });
+}
+
 function RootController(collectionRead, collectionList) {
   this.responses = {
     collectionRead: collectionRead.data,
@@ -21,7 +27,7 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
   // Make a root state that retrieves all the URLs and displays them
   $stateProvider
     .state("e2e", {
-             url: '/',
+             url: '/e2e',
              templateUrl: 'templates/root.html',
              controller: RootController,
              controllerAs: 'ctrl',

@@ -3,12 +3,6 @@
 var _ = require('lodash'),
   path = require('path');
 
-function LocalRestangular(Restangular, baseUrl) {
-  return Restangular.withConfig(function (RestangularConfigurer) {
-    RestangularConfigurer.setBaseUrl(baseUrl);
-  });
-}
-
 function RTypesService(MdNav) {
   var _this = this;
 
@@ -53,6 +47,5 @@ function RTypesService(MdNav) {
 }
 
 module.exports = {
-  RTypesService: RTypesService,
-  LocalRestangular: LocalRestangular
+  RTypesService: RTypesService
 };
