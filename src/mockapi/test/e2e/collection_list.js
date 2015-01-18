@@ -1,5 +1,9 @@
+var
+  path = require('path'),
+  baseUrl = require('./index').baseUrl;
+
 describe('src/mockapi Test', function () {
-  var url = 'src/mockapi/test/e2e/demo/index.html#/';
+  var url = path.join(baseUrl, 'collectionList');
 
   beforeEach(function () {
     browser.get(url);
@@ -9,16 +13,9 @@ describe('src/mockapi Test', function () {
     expect(browser.getTitle()).toEqual('E2E Test');
   });
 
-  it('should GET collectionRead', function () {
-    var value = element(by.id('collectionRead-value'));
-    expect(value.getText())
-      .toEqual('{"prefix":"/api/resourcetypes","id":"invoices"}');
-  });
-
   fit('should GET collectionList', function () {
-    var value = element(by.id('collectionList-value'));
-    expect(value.getText())
-      .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');
+    var count = element(by.id('e2e-count'));
+    expect(count.getText()).toEqual('2');
   });
 
 });

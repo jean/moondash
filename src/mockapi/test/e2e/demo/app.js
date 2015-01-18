@@ -1,14 +1,4 @@
-function LocalRestangular(Restangular, baseUrl) {
-  return Restangular.withConfig(function (RestangularConfigurer) {
-    RestangularConfigurer.setBaseUrl(baseUrl);
-  });
-}
-
-function RootController(collectionRead, collectionList) {
-  this.responses = {
-    collectionRead: collectionRead.data,
-    collectionList: collectionList.data
-  };
+function RootController() {
 }
 
 function ModuleConfig($stateProvider, MdMockRestProvider) {
@@ -32,11 +22,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {
-               collectionRead: function ($http) {
-                 return $http.get('/api/resourcetypes/invoices');
-               },
-               collectionList: function ($http) {
-                 return $http.get('/api/resourcetypes/invoices/items');
+               baseInvoices: function (Restangular) {
+                 return Restangular.all('api/resourcetypes/invoices');
                }
              }
            })

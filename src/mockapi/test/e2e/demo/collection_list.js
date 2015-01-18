@@ -1,25 +1,27 @@
-function StateController(invoices) {
-  this.invoices = invoices;
-  this.count = 27; //invoices.length;
-  console.log('invoices', invoices);
-}
+(function () {
 
-function ModuleConfig($stateProvider) {
-  // Make a root state that retrieves all the URLs and displays them
-  $stateProvider
-    .state('collectionList', {
-             url: '/collectionList',
-             parent: 'e2e',
-             templateUrl: 'templates/collection_list.html',
-             controller: StateController,
-             controllerAs: 'ctrl',
-             resolve: {
-               invoices: function ($http) {
-                 return $http.get('/api/resourcetypes/invoices/items');
+  function StateController(invoices) {
+    this.invoices = invoices;
+    this.count = invoices.length;
+  }
+
+  function ModuleConfig($stateProvider) {
+    // Make a root state that retrieves all the URLs and displays them
+    $stateProvider
+      .state('e2e.collectionList', {
+               url: '/collectionList',
+               templateUrl: 'templates/collection_list.html',
+               controller: StateController,
+               controllerAs: 'ctrl',
+               resolve: {
+                 invoices: function (baseInvoices) {
+                   return baseInvoices.all('items').getList();
+                 }
                }
-             }
-           })
-}
+             })
+  }
 
-angular.module('app')
-  .config(ModuleConfig);
+  angular.module('app')
+    .config(ModuleConfig);
+
+})();
