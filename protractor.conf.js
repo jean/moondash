@@ -2,6 +2,7 @@
 config = require('./gulp/config');
 
 exports.config = {
+  framework: 'jasmine2',
   directConnect: true,
 
   // Capabilities to be passed to the webdriver instance.
@@ -20,7 +21,6 @@ exports.config = {
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
     showColors: true,
-    includeStackTrace: true,
     defaultTimeoutInterval: 20000
   }
 

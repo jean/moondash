@@ -20,9 +20,9 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
 
   // Make a root state that retrieves all the URLs and displays them
   $stateProvider
-    .state("state1", {
+    .state("e2e", {
              url: '/',
-             templateUrl: 'root.html',
+             templateUrl: 'templates/root.html',
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {

@@ -15,7 +15,7 @@ describe('src/mockapi Test', function () {
       .toEqual('{"prefix":"/api/resourcetypes","id":"invoices"}');
   });
 
-  it('should GET collectionList', function () {
+  fit('should GET collectionList', function () {
     var value = element(by.id('collectionList-value'));
     expect(value.getText())
       .toEqual('[{"id":"i1","title":"1"},{"id":"i2","title":"2"}]');
