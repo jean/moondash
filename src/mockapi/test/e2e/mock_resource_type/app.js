@@ -1,7 +1,7 @@
-function RootController(collectionREAD, collectionLIST) {
+function RootController(collectionRead, collectionList) {
   this.responses = {
-    collectionREAD: collectionREAD.data,
-    collectionLIST: collectionLIST.data
+    collectionRead: collectionRead.data,
+    collectionList: collectionList.data
   };
 }
 
@@ -26,10 +26,10 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {
-               collectionREAD: function ($http) {
+               collectionRead: function ($http) {
                  return $http.get('/api/resourcetypes/invoices');
                },
-               collectionLIST: function ($http) {
+               collectionList: function ($http) {
                  return $http.get('/api/resourcetypes/invoices/items');
                }
              }
