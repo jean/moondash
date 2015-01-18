@@ -42,15 +42,9 @@ function ModuleConfig($stateProvider) {
                  var resourceType = $stateParams.resourcetype;
                  return baseResourceTypes.all(resourceType);
                },
-               resourceType: function ($http) {
-
-                 $http.get('/api/resourcetypes/invoices')
-                   .success(function (success) {
-                              console.log('suc23', success)
-                            })
-                   .error(function (error) {
-                            console.log('error', error)
-                          })
+               resourceType: function (MdRTypes, $stateParams) {
+                 var currentType = $stateParams.resourcetype;
+                 return MdRTypes.items[currentType];
                }
              }
            })

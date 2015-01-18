@@ -7,9 +7,10 @@ function ManageController(resourceTypes) {
   this.resourceTypes = resourceTypes;
 }
 
-function ListController($stateParams, items) {
+function ListController(resourceType, items) {
   var _this = this;
-  this.resourcetype = $stateParams.resourcetype;
+
+  this.resourceType = resourceType;
   this.items = items;
 
   this.deleteResource = function (resourceId) {
@@ -21,9 +22,17 @@ function ListController($stateParams, items) {
   }
 }
 
-function ResourceTypeCreateController() {
+function ResourceTypeCreateController(baseResourceType, resourceType) {
+  this.item = {};
+  this.resourceType = resourceType;
   this.schemaId = 'schema1';
   this.formId = 'form1';
+  this.onSubmit = function (isInvalid, model) {
+    if (!isInvalid) {
+      console.log('submitting', isInvalid, model);
+      baseResourceType.post(model);
+    }
+  }
 }
 
 function ResourceReadController(resource) {

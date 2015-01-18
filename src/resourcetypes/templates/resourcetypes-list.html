@@ -1,10 +1,10 @@
 <div>
   <a class="pull-right btn btn-primary"
-     ui-sref="resourcetype.create({resourcetype: ctrl.resourcetype})">
+     ui-sref="resourcetype.create({resourcetype: ctrl.resourceType.id})">
     <i class="glyphicon glyphicon-plus"></i>
   </a>
 
-  <h1>List <code>{{ ctrl.resourcetype }}</code></h1>
+  <h1>List <code>{{ ctrl.resourceType.label }}</code></h1>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -17,7 +17,7 @@
     <tr ng-repeat="item in ctrl.items">
       <td width="20%">
         <a title="View"
-           ui-sref="resource({resourcetype: ctrl.resourcetype, id: item.id})"
+           ui-sref="resource({resourcetype: ctrl.resourceType.id, id: item.id})"
            ng-bind="item.id">
           id
         </a>
@@ -27,7 +27,7 @@
       <td>
         <a class="btn btn-default btn-xs"
            title="Edit"
-           ui-sref="resource.replace({resourcetype: ctrl.resourcetype, id: item.id})">
+           ui-sref="resource.replace({resourcetype: ctrl.resourceType.id, id: item.id})">
           <i class="glyphicon glyphicon-pencil"></i>
         </a>
         <button class="btn btn-default btn-xs"

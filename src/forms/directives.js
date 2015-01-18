@@ -9,7 +9,8 @@ function Form() {
     scope: {
       mdModel: '=mdModel',
       mdSchema: '@mdSchema',
-      mdForm: '@mdForm'
+      mdForm: '@mdForm',
+      mdSubmit: '&mdSubmit'
     },
     controller: controllers.FormController,
     controllerAs: 'ctrl',

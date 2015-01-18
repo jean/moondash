@@ -182,6 +182,13 @@ function MockResourceType(prefix, id, items) {
 
     mocks.push({
                  mockInstance: this,
+                 method: 'POST',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionREPLACE
+               });
+
+    mocks.push({
+                 mockInstance: this,
                  method: 'DELETE',
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentDELETE

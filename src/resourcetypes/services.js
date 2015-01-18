@@ -9,7 +9,7 @@ function LocalRestangular(Restangular, baseUrl) {
   });
 }
 
-function RTypesService(MdNav, Restangular) {
+function RTypesService(MdNav) {
   var _this = this;
 
   // Set the base REST prefix for this site's resourcetypes entry point
@@ -36,6 +36,7 @@ function RTypesService(MdNav, Restangular) {
 
     _(items).forEach(
       function (resourcetype) {
+        _this.items[resourcetype.id] = resourcetype;
         menu.addMenuItem(
           {
             id: resourcetype.id,

@@ -1,8 +1,9 @@
 <div>
 
-  <h1>Create <code>{{ ctrl.resourcetype }}</code></h1>
-    <md-form md-model="ctrl.item"
-             md-schema="{{ctrl.schemaId}}"
-             md-form="{{ctrl.formId}}"></md-form>
+  <h1>Create <code>{{ ctrl.resourceType.label }}</code></h1>
+  <md-form md-model="ctrl.item"
+           md-schema="{{ctrl.schemaId}}"
+           md-form="{{ctrl.formId}}"
+           md-submit="ctrl.onSubmit"></md-form>
 
 </div>
