@@ -2,14 +2,14 @@ var
   path = require('path'),
   baseUrl = require('./index').baseUrl;
 
-describe('src/mockapi collectionRead Test', function () {
-  var url = path.join(baseUrl, 'collectionRead');
+describe('src/mockapi collectionAdd Test', function () {
+  var url = path.join(baseUrl, 'collectionAdd');
 
   beforeEach(function () {
     browser.get(url);
   });
 
-  it('should get the test environment set correctly', function () {
+  fit('should get the test environment set correctly', function () {
     expect(browser.getTitle()).toEqual('E2E Test');
   });
 
@@ -19,4 +19,3 @@ describe('src/mockapi collectionRead Test', function () {
   });
 
 });
-

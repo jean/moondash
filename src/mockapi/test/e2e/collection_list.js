@@ -2,7 +2,7 @@ var
   path = require('path'),
   baseUrl = require('./index').baseUrl;
 
-describe('src/mockapi Test', function () {
+describe('src/mockapi collectionList Test', function () {
   var url = path.join(baseUrl, 'collectionList');
 
   beforeEach(function () {
