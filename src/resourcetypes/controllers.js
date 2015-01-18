@@ -22,15 +22,24 @@ function ListController(resourceType, items) {
   }
 }
 
-function ResourceTypeCreateController(baseResourceType, resourceType) {
+function ResourceTypeCreateController($state, baseResourceType, resourceType) {
+  var ctrl = this;
   this.item = {};
   this.resourceType = resourceType;
   this.schemaId = 'schema1';
   this.formId = 'form1';
   this.onSubmit = function (isInvalid, model) {
     if (!isInvalid) {
-      console.log('submitting', isInvalid, model);
-      baseResourceType.post(model);
+      baseResourceType.post(model)
+        .then(
+        function () {
+          // TODO mockapia collectionCreate should change to return a
+          // HTTP 201 with a Location header for location of new item.
+          // When it does, change this to get location from headers.
+          $state.go('resource',
+                    {resourceType: ctrl.resourceType, id: model.id})
+        }
+      );
     }
   }
 }

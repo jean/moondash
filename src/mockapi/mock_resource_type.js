@@ -93,7 +93,20 @@ function MockResourceType(prefix, id, items) {
   };
 
   this.collectionAdd = function (request) {
-    // Handle a PUT
+    // POST /api/resourcetypes/invoices as Add operation
+
+    var newItem = request.json_body;
+
+    this.items[newItem.id] = newItem;
+
+    // TODO This should be an HTTP 201 response with a Location header
+    // but let's take a shortcut for now.
+    var location = path.join(this.prefix, this.id, newItem.id);
+    return {'location': location};
+  };
+
+  this.collectionReplace = function (request) {
+    // PUT /api/resourcetypes/invoices as Replace operation on collection
 
     // For each key/value in the request.json_body, update
     _(request.json_body)
@@ -185,6 +198,13 @@ function MockResourceType(prefix, id, items) {
                  method: 'POST',
                  pattern: makePatternRegExp(prefix, id),
                  responder: this.collectionAdd
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'PUT',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionReplace
                });
 
     mocks.push({

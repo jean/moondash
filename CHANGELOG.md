@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Rename mock resourcetype actions from collectionADD to collectionAdd
+
+- Get resourcetype adding working in Resource Types CRUD interface
+
 ## 0.0.8-alpha (2015-01-16)
 
 - Refactor MdNav to make the declarative and imperative nav menu setup 

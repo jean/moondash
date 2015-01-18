@@ -72,6 +72,18 @@ describe('mockapi MockResourceType', function () {
       expect(mrt.description).to.equal('After Description');
     });
 
+    it('should perform a Create action', function () {
+      var json_body = {
+        id: '1',
+        title: 'New Invoice'
+      };
+      var result = mrt.collectionAdd({json_body: json_body});
+      expect(result.location).to.equal('/api/invoices/1');
+      var newItem = mrt.items['1'];
+      expect(newItem.id).to.equal('1');
+      expect(newItem.title).to.equal('New Invoice');
+    });
+
     it('should perform a REPLACE action', function () {
       mrt.title = 'Before Title';
       mrt.description = 'Before Description';
@@ -79,7 +91,7 @@ describe('mockapi MockResourceType', function () {
         title: 'After Title',
         description: 'After Description'
       };
-      var result = mrt.collectionAdd({json_body: json_body});
+      var result = mrt.collectionReplace({json_body: json_body});
       expect(result).to.be.null();
       expect(mrt.title).to.equal('After Title');
       expect(mrt.description).to.equal('After Description');
