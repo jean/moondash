@@ -11,6 +11,23 @@ var dependencies = [
 
 var angular = require('angular');
 
+// Load external dependencies
+require('ngSanitize');
+require('ui.router');
+require('restangular');
+require('satellizer');
+require('ui.bootstrap.transition');
+require('ui.bootstrap.modal');
+require('ui.bootstrap.collapse');
+require('schemaForm');
+require('angular-schema-form-decorator');
+require('angular-mocks'); // that one will exclude if not angular.mock
+
+// Some sub dependencies must be global
+window._ = require('lodash');
+window.ObjectPath = require('ObjectPath').ObjectPath;
+window.tv4 = require('tv4');
+
 // dist/moondash-vendors.js does NOT include ngMockE2E. Only add that
 // dependency and md.mockapi if we have ngMockE2E.
 if (angular.mock) {
