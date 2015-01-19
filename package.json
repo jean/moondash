@@ -52,7 +52,6 @@
     "brfs": "^1.2.0",
     "browser-sync": "^1.7.0",
     "browserify": "^8.0.0",
-    "browserify-shim": "git://github.com/thlorenz/browserify-shim",
     "chai": "^1.10.0",
     "exorcist": "^0.1.6",
     "gulp": "^3.8.7",
