@@ -8,7 +8,7 @@
       invoices.post(ctrl.model)
         .then(
         function () {
-          $state.go('collection.list');
+          $state.go('e2e.collectionList');
         }
       );
     }
@@ -16,10 +16,10 @@
 
   function ModuleConfig($stateProvider) {
     $stateProvider
-      .state('collection.add', {
+      .state('collection.replace', {
                parent: 'e2e',
-               url: '/add',
-               templateUrl: 'templates/collection_add.html',
+               url: '/replace',
+               templateUrl: 'templates/collection_replace.html',
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {

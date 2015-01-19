@@ -3,19 +3,24 @@ var
   baseUrl = require('./index').baseUrl;
 
 describe('src/mockapi collectionAdd Test', function () {
-  var url = path.join(baseUrl, 'collectionAdd');
+  var url = path.join(baseUrl, 'add');
 
   beforeEach(function () {
     browser.get(url);
   });
 
-  fit('should get the test environment set correctly', function () {
+  it('should get the test environment set correctly', function () {
     expect(browser.getTitle()).toEqual('E2E Test');
   });
 
-  it('should GET collectionRead', function () {
-    var count = element(by.id('e2e-prefix'));
-    expect(count.getText()).toEqual('/api/resourcetypes');
+  it('should fill in form and get new values', function () {
+    element(by.model('ctrl.model.id')).sendKeys('newId');
+    element(by.model('ctrl.model.title')).sendKeys('newTitle');
+    element(by.id('gobutton')).click();
+    var newItemId = element(by.id('e2e-id-newId'));
+    expect(newItemId.getText()).toEqual('newId');
+    var newItemTitle = element(by.id('e2e-id-newTitle'));
+    expect(newItemTitle.getText()).toEqual('newTitle');
   });
 
 });

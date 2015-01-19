@@ -11,8 +11,8 @@
   </thead>
   <tbody>
   <tr ng-repeat="invoice in ctrl.invoices">
-    <td ng-bind="invoice.id">id</td>
-    <td ng-bind="invoice.title">title</td>
+    <td ng-bind="invoice.id" id="e2e-id-{{invoice.id}}">id</td>
+    <td ng-bind="invoice.title" id="e2e-title-{{invoice.id}}">title</td>
   </tr>
   </tbody>
 </table>

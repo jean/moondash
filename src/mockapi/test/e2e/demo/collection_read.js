@@ -6,15 +6,26 @@
   }
 
   function ModuleConfig($stateProvider) {
+    // Make a base state
     $stateProvider
-      .state('e2e.collectionRead', {
-               url: '/collectionRead',
+      .state('collection', {
+               parent: 'e2e',
+               template: '<div ui-view></div>',
+               resolve: {
+                 baseInvoices: function (baseResourceTypes) {
+                   return baseResourceTypes.one('invoices');
+                 }
+               }
+             })
+    $stateProvider
+      .state('collection.read', {
+               url: '/read',
                templateUrl: 'templates/collection_read.html',
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoices: function (baseResourceTypes) {
-                   return baseResourceTypes.one('invoices').get();
+                 invoices: function (baseInvoices) {
+                   return baseInvoices.get();
                  }
                }
              })

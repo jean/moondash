@@ -3,7 +3,7 @@ var
   baseUrl = require('./index').baseUrl;
 
 describe('src/mockapi collectionRead Test', function () {
-  var url = path.join(baseUrl, 'collectionRead');
+  var url = path.join(baseUrl, 'read');
 
   beforeEach(function () {
     browser.get(url);
@@ -14,7 +14,7 @@ describe('src/mockapi collectionRead Test', function () {
   });
 
   it('should GET collectionRead', function () {
-    var count = element(by.id('e2e-prefix'));
+    var count = element(by.binding('ctrl.prefix'));
     expect(count.getText()).toEqual('/api/resourcetypes');
   });
 

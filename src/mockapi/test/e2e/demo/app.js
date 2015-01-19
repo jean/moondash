@@ -6,8 +6,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
   // Register some mock data at /api/resources/invoices
   var
     invoices = {
-      invoice1: {id: "i1", title: '1'},
-      invoice2: {id: "i2", title: '2'}
+      invoice1: {id: 'i1', title: '1'},
+      invoice2: {id: 'i2', title: '2'}
     },
     MockResourceType = MdMockRestProvider.MockResourceType,
     invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
@@ -16,8 +16,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
 
   // Top-level page
   $stateProvider
-    .state("e2e", {
-             url: '/e2e',
+    .state('e2e', {
+             url: '/e2e/invoices',
              templateUrl: 'templates/root.html',
              controller: RootController,
              controllerAs: 'ctrl',
