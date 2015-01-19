@@ -1,7 +1,16 @@
 (function () {
 
-  function StateController(invoice) {
-    this.invoice = invoice;
+  function StateController(invoice, $state) {
+    var ctrl = this;
+    ctrl.invoice = invoice;
+    ctrl.remove = function () {
+      ctrl.invoice.remove()
+        .then(
+        function () {
+          $state.go('collection.list');
+        }
+      )
+    }
   }
 
   function ModuleConfig($stateProvider) {

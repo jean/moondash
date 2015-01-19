@@ -9,15 +9,19 @@
       .state('document', {
                url: '/{id}',
                parent: 'collection',
-               templateUrl: 'templates/document_read.html',
-               controller: StateController,
-               controllerAs: 'ctrl',
+               template: '<div ui-view></div>',
                resolve: {
                  invoice: function ($stateParams, invoicesAll) {
                    var id = $stateParams.id;
                    return invoicesAll.one(id).get();
                  }
                }
+             })
+      .state('document.read', {
+               url: '/read',
+               templateUrl: 'templates/document_read.html',
+               controller: StateController,
+               controllerAs: 'ctrl'
              })
   }
 
