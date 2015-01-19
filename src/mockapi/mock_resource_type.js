@@ -203,6 +203,13 @@ function MockResourceType(prefix, id, items) {
     mocks.push({
                  mockInstance: this,
                  method: 'PUT',
+                 pattern: makePatternRegExp(prefix, id + '/\\w+'),
+                 responder: this.documentReplace
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'PUT',
                  pattern: makePatternRegExp(prefix, id),
                  responder: this.collectionReplace
                });
