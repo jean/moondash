@@ -3,7 +3,7 @@ var
   baseUrl = require('./index').baseUrl;
 
 describe('src/mockapi collectionList Test', function () {
-  var url = path.join(baseUrl, 'list');
+  var url = path.join(baseUrl, 'invoices/list');
 
   beforeEach(function () {
     browser.get(url);

@@ -3,7 +3,7 @@ var
   baseUrl = require('./index').baseUrl;
 
 describe('src/mockapi documentDelete Test', function () {
-  var url = path.join(baseUrl, 'i1/delete');
+  var url = path.join(baseUrl, 'invoices/i1/delete');
 
   beforeEach(function () {
     browser.get(url);

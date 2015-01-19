@@ -27,8 +27,8 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
 
   // Top-level page
   $stateProvider
-    .state('e2e', {
-             url: '/e2e/invoices',
+    .state('demotypes', {
+             url: '/demotypes/invoices',
              templateUrl: 'templates/root.html',
              controller: RootController,
              controllerAs: 'ctrl',
