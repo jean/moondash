@@ -1,5 +1,21 @@
-<h4>collection list</h4>
+<h2>collection list</h2>
 <p>
   There are
   <span id="e2e-count" ng-bind="ctrl.count">count</span> invoices.
+<table border="1" cellspacing="0" cellpadding="6" width="30%">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="invoice in ctrl.invoices">
+    <td ng-bind="invoice.id">id</td>
+    <td ng-bind="invoice.title">title</td>
+  </tr>
+  </tbody>
+</table>
+<h4>Raw Dump</h4>
+<pre>{{ctrl.invoices.plain()}}</pre>
 </p>

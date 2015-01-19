@@ -1,8 +1,17 @@
 (function () {
 
-  function StateController(invoices) {
-    this.invoices = invoices;
-    this.prefix = invoices.prefix;
+  function StateController(invoices, $state) {
+    var ctrl = this;
+    ctrl.invoices = invoices;
+    ctrl.model = {};
+    ctrl.create = function () {
+      invoices.post(ctrl.model)
+        .then(
+        function () {
+          $state.go('e2e.collectionList');
+        }
+      );
+    }
   }
 
   function ModuleConfig($stateProvider) {
@@ -14,7 +23,7 @@
                controllerAs: 'ctrl',
                resolve: {
                  invoices: function (baseResourceTypes) {
-                   return baseResourceTypes.one('invoices').get();
+                   return baseResourceTypes.all('invoices');
                  }
                }
              })
