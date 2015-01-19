@@ -56,7 +56,7 @@ function MockResourceType(prefix, id, items) {
     return document;
   };
 
-  this.collectionLIST = function (request) {
+  this.collectionList = function (request) {
     // Return the items in this collection as a mapping
     // TODO implement pagination, filtering, etc.
 
@@ -64,7 +64,7 @@ function MockResourceType(prefix, id, items) {
     return _(this.items).values().value();
   };
 
-  this.collectionREAD = function (request) {
+  this.collectionRead = function (request) {
     // Only provide the properties of this collection, not items
 
     // Let's do some assertions and throw errors to make writing
@@ -76,7 +76,7 @@ function MockResourceType(prefix, id, items) {
     return clone;
   };
 
-  this.collectionUPDATE = function (request) {
+  this.collectionUpdate = function (request) {
     // Handle a PATCH
 
     // For each key/value in the request.json_body, update
@@ -92,8 +92,21 @@ function MockResourceType(prefix, id, items) {
     return null;
   };
 
-  this.collectionREPLACE = function (request) {
-    // Handle a PUT
+  this.collectionAdd = function (request) {
+    // POST /api/resourcetypes/invoices as Add operation
+
+    var newItem = request.json_body;
+
+    this.items[newItem.id] = newItem;
+
+    // TODO This should be an HTTP 201 response with a Location header
+    // but let's take a shortcut for now.
+    var location = path.join(this.prefix, this.id, newItem.id);
+    return {'location': location};
+  };
+
+  this.collectionReplace = function (request) {
+    // PUT /api/resourcetypes/invoices as Replace operation on collection
 
     // For each key/value in the request.json_body, update
     _(request.json_body)
@@ -108,13 +121,13 @@ function MockResourceType(prefix, id, items) {
     return null;
   };
 
-  this.documentREAD = function (request) {
+  this.documentRead = function (request) {
     // Handle a GET to a leaf
 
     return this.getDocument(request.pathname);
   };
 
-  this.documentDELETE = function (request) {
+  this.documentDelete = function (request) {
     // Handle a DELETE to a leaf
 
     var resourceId = this.getId(request.pathname);
@@ -124,7 +137,7 @@ function MockResourceType(prefix, id, items) {
   };
 
 
-  this.documentUPDATE = function (request) {
+  this.documentUpdate = function (request) {
     // Handle a PATCH to a leaf
 
     var document = this.getDocument(request.pathname);
@@ -141,7 +154,7 @@ function MockResourceType(prefix, id, items) {
     return null;
   };
 
-  this.documentREPLACE = function (request) {
+  this.documentReplace = function (request) {
     // Handle a PUT to a leaf
 
     var document = this.getDocument(request.pathname);
@@ -170,29 +183,43 @@ function MockResourceType(prefix, id, items) {
                  mockInstance: this,
                  method: 'GET',
                  pattern: makePatternRegExp(prefix, id, '/items'),
-                 responder: this.collectionLIST
+                 responder: this.collectionList
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionRead
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'POST',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionAdd
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'PUT',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionReplace
                });
 
     mocks.push({
                  mockInstance: this,
                  method: 'DELETE',
                  pattern: makePatternRegExp(prefix, id + '/*'),
-                 responder: this.documentDELETE
+                 responder: this.documentDelete
                });
 
     mocks.push({
                  mockInstance: this,
                  method: 'GET',
                  pattern: makePatternRegExp(prefix, id + '/*'),
-                 responder: this.documentREAD
+                 responder: this.documentRead
                });
-
-    //mocks.push({
-    //             mockInstance: this,
-    //             method: 'GET',
-    //             pattern: makePatternRegExp(prefix, id),
-    //             responder: this.collectionREAD
-    //           });
 
     return mocks;
   };

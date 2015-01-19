@@ -27,20 +27,19 @@ describe('ResourceTypes Manage Controller', function () {
 
 describe('ResourceTypes List Controller', function () {
 
-  var $stateParams, items;
+  var resourceType, items;
 
   beforeEach(function () {
     ctrl = controllers.ListController;
-    $stateParams = {
-      resourcetype: 9
-    };
+    resourceType = {id: 'invoices'};
     items = 9;
   });
 
   it('should have a basic API', function () {
-    result = new ctrl($stateParams, items);
-    expect(result.resourcetype).to.equal(9);
+    result = new ctrl(resourceType, items);
+    expect(result.resourceType.id).to.equal('invoices');
     expect(result.items).to.equal(9);
+    expect(result.deleteResource).to.be.a('function');
   });
 
 });

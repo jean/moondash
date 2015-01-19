@@ -3333,6 +3333,11 @@ function ListController($stateParams, items) {
   }
 }
 
+function ResourceTypeCreateController() {
+  this.schemaId = 'schema1';
+  this.formId = 'form1';
+}
+
 function ResourceReadController(resource) {
   this.resource = resource.plain();
   this.pairs = _.pairs(resource.plain());
@@ -3347,6 +3352,7 @@ function ResourceEditController(resource) {
 module.exports = {
   ManageController: ManageController,
   ListController: ListController,
+  ResourceTypeCreateController: ResourceTypeCreateController,
   ResourceReadController: ResourceReadController,
   ResourceEditController: ResourceEditController
 };
@@ -3470,6 +3476,16 @@ function ModuleConfig($stateProvider) {
                baseResourceType: function ($stateParams, baseResourceTypes) {
                  var resourceType = $stateParams.resourcetype;
                  return baseResourceTypes.all(resourceType);
+               },
+               resourceType: function ($http) {
+
+                 $http.get('/api/resourcetypes/invoices')
+                   .success(function (success) {
+                              console.log('suc23', success)
+                            })
+                   .error(function (error) {
+                            console.log('error', error)
+                          })
                }
              }
            })
@@ -3492,6 +3508,19 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
+
+    .state('resourcetype.create', {
+             url: '/create',
+             title: 'Add Resource',
+             views: {
+               'md-content@root': {
+                 template: require('./templates/resourcetype-create.html'),
+                 controller: controllers.ResourceTypeCreateController,
+                 controllerAs: 'ctrl'
+               }
+             }
+           })
+
 
     // READ a resource
     .state('resource', {
@@ -3530,13 +3559,15 @@ module.exports = {
   Config: ModuleConfig
 };
 
-},{"./controllers":57,"./services":59,"./templates/resource-read.html":61,"./templates/resource-replace.html":62,"./templates/resourcetypes-list.html":63,"./templates/resourcetypes-manage.html":64}],61:[function(require,module,exports){
+},{"./controllers":57,"./services":59,"./templates/resource-read.html":61,"./templates/resource-replace.html":62,"./templates/resourcetype-create.html":63,"./templates/resourcetypes-list.html":64,"./templates/resourcetypes-manage.html":65}],61:[function(require,module,exports){
 module.exports = '<div class="row">\n  <div class="col-md-8">\n    <h1>View {{ctrl.item.title}}</h1>\n  <table class="table table-striped">\n    <thead>\n    <tr>\n      <th>Property</th>\n      <th>Value</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr ng-repeat="pair in ctrl.pairs">\n      <td width="20%" ng-bind="pair[0]"></td>\n      <td width="20%" ng-bind="pair[1]"></td>\n    </tr>\n    </tbody>\n  </table>  </div>\n</div>';
 },{}],62:[function(require,module,exports){
 module.exports = '<div class="row">\n  <div class="col-md-8">\n    <h1>Edit {{ctrl.item.title}}</h1>\n    <md-form md-model="ctrl.item"\n             md-schema="{{ctrl.schemaId}}"\n             md-form="{{ctrl.formId}}"></md-form>\n  </div>\n</div>';
 },{}],63:[function(require,module,exports){
-module.exports = '<div>\n  <a class="pull-right btn btn-primary"\n     ui-sref="resourcetype.create({resourcetype: ctrl.resourcetype})">\n    <i class="glyphicon glyphicon-plus"></i>\n  </a>\n\n  <h1>List <code>{{ ctrl.resourcetype }}</code></h1>\n  <table class="table table-striped">\n    <thead>\n    <tr>\n      <th>ID</th>\n      <th>Title</th>\n      <th>Action</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr ng-repeat="item in ctrl.items">\n      <td width="20%">\n        <a title="View"\n           ui-sref="resource({resourcetype: ctrl.resourcetype, id: item.id})"\n           ng-bind="item.id">\n          id\n        </a>\n\n      </td>\n      <td ng-bind="item.title" width="60%">title</td>\n      <td>\n        <a class="btn btn-default btn-xs"\n           title="Edit"\n           ui-sref="resource.replace({resourcetype: ctrl.resourcetype, id: item.id})">\n          <i class="glyphicon glyphicon-pencil"></i>\n        </a>\n        <button class="btn btn-default btn-xs"\n                title="Delete"\n                ng-click="ctrl.deleteResource(item.id)">\n          <i class="glyphicon glyphicon-trash"></i>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>';
+module.exports = '<div>\n\n  <h1>Create <code>{{ ctrl.resourcetype }}</code></h1>\n    <md-form md-model="ctrl.item"\n             md-schema="{{ctrl.schemaId}}"\n             md-form="{{ctrl.formId}}"></md-form>\n\n</div>';
 },{}],64:[function(require,module,exports){
+module.exports = '<div>\n  <a class="pull-right btn btn-primary"\n     ui-sref="resourcetype.create({resourcetype: ctrl.resourcetype})">\n    <i class="glyphicon glyphicon-plus"></i>\n  </a>\n\n  <h1>List <code>{{ ctrl.resourcetype }}</code></h1>\n  <table class="table table-striped">\n    <thead>\n    <tr>\n      <th>ID</th>\n      <th>Title</th>\n      <th>Action</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr ng-repeat="item in ctrl.items">\n      <td width="20%">\n        <a title="View"\n           ui-sref="resource({resourcetype: ctrl.resourcetype, id: item.id})"\n           ng-bind="item.id">\n          id\n        </a>\n\n      </td>\n      <td ng-bind="item.title" width="60%">title</td>\n      <td>\n        <a class="btn btn-default btn-xs"\n           title="Edit"\n           ui-sref="resource.replace({resourcetype: ctrl.resourcetype, id: item.id})">\n          <i class="glyphicon glyphicon-pencil"></i>\n        </a>\n        <button class="btn btn-default btn-xs"\n                title="Delete"\n                ng-click="ctrl.deleteResource(item.id)">\n          <i class="glyphicon glyphicon-trash"></i>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>';
+},{}],65:[function(require,module,exports){
 module.exports = '<div>\n  <h1>Manage Resource Types</h1>\n <table class="table table-striped">\n    <thead>\n    <tr>\n      <th>ID</th>\n      <th>Label</th>\n      <th>Action</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr ng-repeat="item in ctrl.resourceTypes">\n      <td ng-bind="item.id" width="20%">id</td>\n      <td ng-bind="item.label" width="60%">Label</td>\n      <td>\n        <a class="btn btn-default btn-xs"\n           title="Edit"\n           ui-sref="resourcetypes.item.edit({resourcetype: ctrl.resourcetype, id: item.id})">\n          <i class="glyphicon glyphicon-pencil"></i>\n        </a>\n        <button class="btn btn-default btn-xs"\n                title="Delete"\n                ng-click="ctrl.deleteResource(item.id)">\n          <i class="glyphicon glyphicon-trash"></i>\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n</div>';
 },{}]},{},[1])
 

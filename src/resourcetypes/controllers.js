@@ -7,9 +7,10 @@ function ManageController(resourceTypes) {
   this.resourceTypes = resourceTypes;
 }
 
-function ListController($stateParams, items) {
+function ListController(resourceType, items) {
   var _this = this;
-  this.resourcetype = $stateParams.resourcetype;
+
+  this.resourceType = resourceType;
   this.items = items;
 
   this.deleteResource = function (resourceId) {
@@ -18,6 +19,28 @@ function ListController($stateParams, items) {
       .then(function () {
               _(_this.items).remove({id: resourceId});
             });
+  }
+}
+
+function ResourceTypeCreateController($state, baseResourceType, resourceType) {
+  var ctrl = this;
+  this.item = {};
+  this.resourceType = resourceType;
+  this.schemaId = 'schema1';
+  this.formId = 'form1';
+  this.onSubmit = function (isInvalid, model) {
+    if (!isInvalid) {
+      baseResourceType.post(model)
+        .then(
+        function () {
+          // TODO mockapia collectionCreate should change to return a
+          // HTTP 201 with a Location header for location of new item.
+          // When it does, change this to get location from headers.
+          $state.go('resource',
+                    {resourceType: ctrl.resourceType, id: model.id})
+        }
+      );
+    }
   }
 }
 
@@ -35,6 +58,7 @@ function ResourceEditController(resource) {
 module.exports = {
   ManageController: ManageController,
   ListController: ListController,
+  ResourceTypeCreateController: ResourceTypeCreateController,
   ResourceReadController: ResourceReadController,
   ResourceEditController: ResourceEditController
 };

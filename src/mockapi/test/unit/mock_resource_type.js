@@ -49,13 +49,13 @@ describe('mockapi MockResourceType', function () {
     });
 
     it('should perform a READ action', function () {
-      var result = mrt.collectionREAD();
+      var result = mrt.collectionRead();
       expect(result.id).to.equal('invoices');
       expect(result.items).to.be.undefined();
     });
 
     it('should perform a LIST action', function () {
-      var result = mrt.collectionLIST();
+      var result = mrt.collectionList();
       expect(result[0].id).to.equal('item1');
     });
 
@@ -66,10 +66,22 @@ describe('mockapi MockResourceType', function () {
         title: 'After Title',
         description: 'After Description'
       };
-      var result = mrt.collectionUPDATE({json_body: json_body});
+      var result = mrt.collectionUpdate({json_body: json_body});
       expect(result).to.be.null();
       expect(mrt.title).to.equal('After Title');
       expect(mrt.description).to.equal('After Description');
+    });
+
+    it('should perform a Create action', function () {
+      var json_body = {
+        id: '1',
+        title: 'New Invoice'
+      };
+      var result = mrt.collectionAdd({json_body: json_body});
+      expect(result.location).to.equal('/api/invoices/1');
+      var newItem = mrt.items['1'];
+      expect(newItem.id).to.equal('1');
+      expect(newItem.title).to.equal('New Invoice');
     });
 
     it('should perform a REPLACE action', function () {
@@ -79,7 +91,7 @@ describe('mockapi MockResourceType', function () {
         title: 'After Title',
         description: 'After Description'
       };
-      var result = mrt.collectionREPLACE({json_body: json_body});
+      var result = mrt.collectionReplace({json_body: json_body});
       expect(result).to.be.null();
       expect(mrt.title).to.equal('After Title');
       expect(mrt.description).to.equal('After Description');
@@ -96,14 +108,14 @@ describe('mockapi MockResourceType', function () {
 
     it('should perform a READ action', function () {
       var request = {pathname: '/api/invoices/item1'};
-      var result = mrt.documentREAD(request);
+      var result = mrt.documentRead(request);
       expect(result.id).to.equal('item1');
       expect(result.items).to.be.undefined();
     });
 
     it('should perform a DELETE action', function () {
       var request = {pathname: '/api/invoices/item1'};
-      var result = mrt.documentDELETE(request);
+      var result = mrt.documentDelete(request);
       expect(result).to.be.null();
       expect(mrt.items).to.be.empty();
     });
@@ -117,7 +129,7 @@ describe('mockapi MockResourceType', function () {
         pathname: '/api/invoices/item1',
         json_body: json_body
       };
-      var result = mrt.documentUPDATE(request);
+      var result = mrt.documentUpdate(request);
       expect(result).to.be.null();
       expect(mrt.items.item1.title).to.equal('After Title');
       expect(mrt.items.item1.description).to.equal('After Description');
@@ -132,7 +144,7 @@ describe('mockapi MockResourceType', function () {
         pathname: '/api/invoices/item1',
         json_body: json_body
       };
-      var result = mrt.documentREPLACE(request);
+      var result = mrt.documentReplace(request);
       expect(result).to.be.null();
       expect(mrt.items.item1.title).to.equal('After Title');
       expect(mrt.items.item1.description).to.equal('After Description');

@@ -41,6 +41,10 @@ function ModuleConfig($stateProvider) {
                baseResourceType: function ($stateParams, baseResourceTypes) {
                  var resourceType = $stateParams.resourcetype;
                  return baseResourceTypes.all(resourceType);
+               },
+               resourceType: function (MdRTypes, $stateParams) {
+                 var currentType = $stateParams.resourcetype;
+                 return MdRTypes.items[currentType];
                }
              }
            })
@@ -63,6 +67,19 @@ function ModuleConfig($stateProvider) {
                }
              }
            })
+
+    .state('resourcetype.create', {
+             url: '/create',
+             title: 'Add Resource',
+             views: {
+               'md-content@root': {
+                 template: require('./templates/resourcetype-create.html'),
+                 controller: controllers.ResourceTypeCreateController,
+                 controllerAs: 'ctrl'
+               }
+             }
+           })
+
 
     // READ a resource
     .state('resource', {
