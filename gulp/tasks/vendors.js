@@ -43,8 +43,7 @@ gulp.task('vendors', function(callback) {
         'maps/' + config.outputName + '.map'
     ))
     .pipe(source(config.outputName))
-    // TODO: fix uglifying
-    // .pipe(streamify(uglify()))
+    .pipe(streamify(uglify()))
     .pipe(gulp.dest(config.dest))
     .on('end', function() {
         // Log when bundling completes
