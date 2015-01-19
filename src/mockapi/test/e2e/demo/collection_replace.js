@@ -4,7 +4,7 @@
     var ctrl = this;
     ctrl.invoices = invoices;
     ctrl.replace = function () {
-      invoices.save()
+      invoices.put(ctrl.invoices)
         .then(
         function () {
           $state.go('collection.read');

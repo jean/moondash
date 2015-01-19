@@ -118,6 +118,7 @@ function MockResourceType(prefix, id, items) {
     // TODO If null is returned, we should throw exceptions.HTTPNoContent
     // However, since later we will obey HATEOAS/JSON-LD and return
     // a 200 with links to the "next" view, going with the simplest.
+    console.log('in collectionReplace')
     return null;
   };
 
@@ -203,21 +204,28 @@ function MockResourceType(prefix, id, items) {
     mocks.push({
                  mockInstance: this,
                  method: 'PUT',
-                 pattern: makePatternRegExp(prefix, id + '/\\w+'),
-                 responder: this.documentReplace
-               });
-
-    mocks.push({
-                 mockInstance: this,
-                 method: 'PUT',
-                 pattern: makePatternRegExp(prefix, id),
+                 pattern: makePatternRegExp(prefix, id + '?'),
                  responder: this.collectionReplace
                });
 
     mocks.push({
                  mockInstance: this,
+                 method: 'PUT',
+                 pattern: makePatternRegExp(prefix, id + '/\\w+/\\w+'),
+                 responder: this.documentReplace
+               });
+
+    mocks.push({
+                 mockInstance: this,
                  method: 'PATCH',
-                 pattern: makePatternRegExp(prefix, id),
+                 pattern: makePatternRegExp(prefix, id + '/\\w+/\\w+'),
+                 responder: this.documentUpdate
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'PATCH',
+                 pattern: makePatternRegExp(prefix, id + '?'),
                  responder: this.collectionUpdate
                });
 
