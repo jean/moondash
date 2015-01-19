@@ -3,6 +3,7 @@
 var
   _ = require('lodash'),
   url = require('url'),
+  MockResourceTypes = require('./mock_resource_type').MockResourceTypes,
   MockResourceType = require('./mock_resource_type').MockResourceType,
   exceptions = require('./exceptions');
 
@@ -70,6 +71,7 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
 function MockRest() {
   var _this = this;
   this.mocks = [];
+  this.MockResourceTypes = MockResourceTypes;
   this.MockResourceType = MockResourceType;
   this.exceptions = exceptions;
 

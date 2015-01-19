@@ -72,7 +72,7 @@ describe('mockapi MockResourceType', function () {
       expect(mrt.description).to.equal('After Description');
     });
 
-    it('should perform a Create action', function () {
+    it('should perform a ADD action', function () {
       var json_body = {
         id: '1',
         title: 'New Invoice'
@@ -206,6 +206,11 @@ describe('mockapi MockResourceType', function () {
       expect(result.toString()).to.equal('/somePrefix\\/someId/');
     });
 
+    it('should handle missing optional id', function () {
+      var result = makePatternRegExp('somePrefix');
+      expect(result.toString()).to.equal('/somePrefix/');
+    });
+
   });
 
   describe('Get Documents from Collections', function () {
@@ -230,5 +235,62 @@ describe('mockapi MockResourceType', function () {
 
   });
 
+});
 
+describe.only('mockapi MockResourceTypes', function () {
+
+  var
+    MockResourceTypes = require('../../mock_resource_type').MockResourceTypes,
+    exceptions = require('../../exceptions'),
+    mrt;
+
+  var newResourceTypes = {
+    invoices: {
+      i1: {id: 'i1', title: '1'},
+      i2: {id: 'i2', title: '2'}
+    }
+  };
+
+  describe('Basics', function () {
+
+    beforeEach(function () {
+      mrt = new MockResourceTypes('/api/resourcetypes', newResourceTypes);
+    });
+
+    it('should provide basic instance', function () {
+      expect(mrt).to.exist();
+      expect(mrt.prefix).to.equal('/api/resourcetypes');
+    });
+
+  });
+
+  describe('Operations', function () {
+        it('should list /api/resourcetypes/invoices mocks', function () {
+      var mocks = mrt.listMocks();
+      expect(mocks.length).to.equal(12);
+    });
+
+    it('should perform a READ action', function () {
+      var result = mrt.collectionRead();
+      expect(result.prefix).to.equal('/api/resourcetypes');
+      expect(result.items).to.be.undefined();
+    });
+
+    it('should perform a LIST action', function () {
+      var result = mrt.collectionList();
+      expect(result.length).to.equal(1);
+    });
+
+    it('should perform a ADD action', function () {
+      var json_body = {
+        id: '1',
+        title: 'New Type'
+      };
+      var result = mrt.collectionAdd({json_body: json_body});
+      expect(result.location).to.equal('/api/resourcetypes/1');
+      var newItem = mrt.items['1'];
+      expect(newItem.id).to.equal('1');
+      expect(newItem.title).to.equal('New Type');
+    });
+  })
 });

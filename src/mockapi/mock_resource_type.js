@@ -16,10 +16,89 @@ var
   exceptions = require('./exceptions');
 
 function makePatternRegExp(prefix, id, suffix) {
+  if (id == null) id = '';
   if (suffix == null) suffix = '';
   var p = path.join(prefix, id, suffix);
   p = p.replace(/\//g, '\\/');
   return new RegExp(p);
+}
+
+function MockResourceTypes(prefix, items) {
+  // Allow CRUD of resource types themselves, plus bulk load
+  // a bunch of mocks for existing resource types
+
+  this.prefix = path.join('/', prefix); // e.g. /api/resourcetypes
+  this.items = items ? items : {};
+
+  this.mocks = [];
+
+  // Go through any passed in resourcetypes, make a MockResourceType,
+  // and dump the mocks
+  _(items).forEach(function (v, k) {
+    var mockType = new MockResourceType(prefix, k, v);
+    var mocks = mockType.listMocks();
+    this.mocks = this.mocks.concat(mockType.listMocks());
+  }, this);
+
+  this.collectionList = function (request) {
+    // Return the resourcetypes in this collection as a mapping
+
+    // Flatten this list
+    return _(this.items).values().value();
+  };
+
+  this.collectionRead = function (request) {
+    // Only provide the properties of this collection, not items
+
+    var clone = _(this).clone();
+    delete clone.items;
+
+    return clone;
+  };
+
+  this.collectionAdd = function (request) {
+    // POST /api/resourcetypes as Add operation
+
+    var newItem = request.json_body;
+
+    this.items[newItem.id] = newItem;
+
+    // TODO This should be an HTTP 201 response with a Location header
+    // but let's take a shortcut for now.
+    var location = path.join(this.prefix, newItem.id);
+    return {'location': location};
+  };
+
+
+  this.listMocks = function () {
+    // Dump the list of mocks
+    var mocks = _(this.mocks).clone(),
+      prefix = this.prefix;
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, '/items?'),
+                 responder: this.collectionList
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'POST',
+                 pattern: makePatternRegExp(prefix + '?'),
+                 responder: this.collectionAdd
+               });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix + '?'),
+                 responder: this.collectionRead
+               });
+
+    return mocks;
+  }
+
 }
 
 
@@ -250,5 +329,6 @@ function MockResourceType(prefix, id, items) {
 
 module.exports = {
   makePatternRegExp: makePatternRegExp,
+  MockResourceTypes: MockResourceTypes,
   MockResourceType: MockResourceType
 };
