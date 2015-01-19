@@ -39,10 +39,9 @@ gulp.task('vendors', function(callback) {
     // Report compile errors
     .on('error', handleErrors)
     .pipe(exorcist(
-        config.dest
-        + '/maps/'
-        + config.outputName
-        + '.map'))
+        config.dest + '/maps/' + config.outputName + '.map',
+        'maps/' + config.outputName + '.map'
+    ))
     .pipe(source(config.outputName))
     // TODO: fix uglifying
     // .pipe(streamify(uglify()))

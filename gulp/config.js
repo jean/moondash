@@ -77,6 +77,8 @@ module.exports = {
     dest: dest
   },
   vendors: {
+    // Enable source maps
+    debug: true,
     outputName: distWithMock ?
       'moondash-vendors-with-mock.js' : 'moondash-vendors.js',
     dest: dest
