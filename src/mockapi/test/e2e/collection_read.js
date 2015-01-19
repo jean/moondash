@@ -14,8 +14,8 @@ describe('src/mockapi collectionRead Test', function () {
   });
 
   it('should GET collectionRead', function () {
-    var count = element(by.binding('ctrl.prefix'));
-    expect(count.getText()).toEqual('/api/resourcetypes');
+    var invoicesId = element(by.binding('ctrl.invoices.id'));
+    expect(invoicesId.getText()).toEqual('invoices');
   });
 
 });

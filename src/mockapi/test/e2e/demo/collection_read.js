@@ -2,7 +2,6 @@
 
   function StateController(invoices) {
     this.invoices = invoices;
-    this.prefix = invoices.prefix;
   }
 
   function ModuleConfig($stateProvider) {

@@ -2,8 +2,8 @@ var
   path = require('path'),
   baseUrl = require('./index').baseUrl;
 
-describe('src/mockapi collectionAdd Test', function () {
-  var url = path.join(baseUrl, 'add');
+describe('src/mockapi collectionReplace Test', function () {
+  var url = path.join(baseUrl, 'replace');
 
   beforeEach(function () {
     browser.get(url);
@@ -14,12 +14,9 @@ describe('src/mockapi collectionAdd Test', function () {
   });
 
   it('should fill in form and get new values', function () {
-    element(by.model('ctrl.model.id')).sendKeys('newId');
-    element(by.model('ctrl.model.title')).sendKeys('newTitle');
+    element(by.model('ctrl.invoices.title')).sendKeys('newTitle');
     element(by.id('gobutton')).click();
-    var newItemId = element(by.id('e2e-id-newId'));
-    expect(newItemId.getText()).toEqual('newId');
-    var newItemTitle = element(by.id('e2e-title-newId'));
+    var newItemTitle = element(by.binding('ctrl.invoices.title'));
     expect(newItemTitle.getText()).toEqual('newTitle');
   });
 

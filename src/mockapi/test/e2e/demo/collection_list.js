@@ -1,7 +1,7 @@
 (function () {
 
   function StateController(invoiceItems) {
-    this.invoices = invoiceItems;
+    this.invoiceItems = invoiceItems;
     this.count = invoiceItems.length;
   }
 

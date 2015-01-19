@@ -6,11 +6,15 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
   // Register some mock data at /api/resources/invoices
   var
     invoices = {
-      invoice1: {id: 'i1', title: '1'},
-      invoice2: {id: 'i2', title: '2'}
+      id: 'invoices',
+      title: 'Invoices',
+      items: [
+        {id: 'i1', title: '1'},
+        {id: 'i2', title: '2'}
+      ]
     },
     MockResourceType = MdMockRestProvider.MockResourceType,
-    invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices);
+    invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices.items);
 
   MdMockRestProvider.addMocks(invoicesMock.listMocks());
 

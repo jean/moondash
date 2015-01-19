@@ -2,6 +2,7 @@
 <p>
   There are
   <span id="e2e-count" ng-bind="ctrl.count">count</span> invoices.
+</p>
 <table border="1" cellspacing="0" cellpadding="6" width="30%">
   <thead>
   <tr>
@@ -10,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="invoice in ctrl.invoices">
+  <tr ng-repeat="invoice in ctrl.invoiceItems">
     <td ng-bind="invoice.id" id="e2e-id-{{invoice.id}}">id</td>
     <td ng-bind="invoice.title" id="e2e-title-{{invoice.id}}">title</td>
   </tr>
@@ -18,4 +19,3 @@
 </table>
 <h4>Raw Dump</h4>
 <pre>{{ctrl.invoices.plain()}}</pre>
-</p>
