@@ -186,18 +186,11 @@ function MockResourceType(prefix, id, items) {
                  responder: this.collectionList
                });
 
-    //mocks.push({
-    //             mockInstance: this,
-    //             method: 'GET',
-    //             pattern: makePatternRegExp(prefix, id + '/*'),
-    //             responder: this.documentRead
-    //           });
-
     mocks.push({
                  mockInstance: this,
                  method: 'GET',
-                 pattern: makePatternRegExp(prefix, id),
-                 responder: this.collectionRead
+                 pattern: makePatternRegExp(prefix, id + '/(\\s+)$'),
+                 responder: this.documentRead
                });
 
     mocks.push({
@@ -227,6 +220,14 @@ function MockResourceType(prefix, id, items) {
                  pattern: makePatternRegExp(prefix, id + '/*'),
                  responder: this.documentDelete
                });
+
+    mocks.push({
+                 mockInstance: this,
+                 method: 'GET',
+                 pattern: makePatternRegExp(prefix, id),
+                 responder: this.collectionRead
+               });
+
 
     return mocks;
   };
