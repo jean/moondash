@@ -1,1 +1,1 @@
-exports.baseUrl = 'src/mockapi/test/e2e/demo/index.html#/demotypes';
+exports.baseUrl = 'src/mockapi/test/e2e/demo/index.html#/api/demotypes';

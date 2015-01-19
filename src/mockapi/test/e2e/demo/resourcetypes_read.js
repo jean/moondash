@@ -1,33 +1,35 @@
 (function () {
 
-  function StateController(invoices) {
-    this.invoices = invoices;
+  function StateController(resourceTypes) {
+    this.resourceTypes = resourceTypes;
+    console.log('relkek', resourceTypes);
   }
 
   function ModuleConfig($stateProvider) {
     // Make a base state
     $stateProvider
-      .state('collection', {
-               parent: 'demotypes',
+      .state('demotypes', {
+               parent: 'api',
+               url: '/demotypes',
                template: '<div ui-view></div>',
                resolve: {
-                 invoicesOne: function (baseResourceTypes) {
-                   return baseResourceTypes.one('invoices');
+                 resourceTypesOne: function (baseApi) {
+                   return baseApi.one('resourcetypes');
                  },
-                 invoicesAll: function (baseResourceTypes) {
-                   return baseResourceTypes.all('invoices');
+                 resourceTypesAll: function (baseApi) {
+                   return baseApi.all('resourcetypes');
                  }
                }
              })
     $stateProvider
-      .state('collection.read', {
+      .state('demotypes.read', {
                url: '/read',
-               templateUrl: 'templates/collection_read.html',
+               templateUrl: 'templates/resourcetypes_read.html',
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoices: function (invoicesOne) {
-                   return invoicesOne.get();
+                 resourceTypes: function (resourceTypesOne) {
+                   return resourceTypesOne.get();
                  }
                }
              })

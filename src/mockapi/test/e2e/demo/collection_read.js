@@ -9,13 +9,14 @@
     $stateProvider
       .state('collection', {
                parent: 'demotypes',
+               url: '/{typeId}',
                template: '<div ui-view></div>',
                resolve: {
-                 invoicesOne: function (baseResourceTypes) {
-                   return baseResourceTypes.one('invoices');
+                 invoicesOne: function ($stateParams, resourceTypesAll) {
+                   return resourceTypesAll.one($stateParams.typeId);
                  },
-                 invoicesAll: function (baseResourceTypes) {
-                   return baseResourceTypes.all('invoices');
+                 invoicesAll: function ($stateParams, resourceTypesAll) {
+                   return resourceTypesAll.all($stateParams.typeId);
                  }
                }
              })

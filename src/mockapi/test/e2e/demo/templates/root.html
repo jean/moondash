@@ -3,22 +3,27 @@
 <h2>All Tests</h2>
 <ul>
   <li>
-    <a ui-sref="collection.read">collectionRead</a>
+    <a ui-sref="demotypes.read">resourceTypesRead</a>
+  </li>
+</ul>
+<ul>
+  <li>
+    <a ui-sref="collection.read({typeId: 'invoices'})">collectionRead</a>
   </li>
   <li>
-    <a ui-sref="collection.list">collectionList
+    <a ui-sref="collection.list({typeId: 'invoices'})">collectionList
     </a>
   </li>
   <li>
-    <a ui-sref="collection.add">collectionAdd
+    <a ui-sref="collection.add({typeId: 'invoices'})">collectionAdd
     </a>
   </li>
   <li>
-    <a ui-sref="collection.replace">collectionReplace
+    <a ui-sref="collection.replace({typeId: 'invoices'})">collectionReplace
     </a>
   </li>
   <li>
-    <a ui-sref="collection.update">collectionUpdate
+    <a ui-sref="collection.update({typeId: 'invoices'})">collectionUpdate
     </a>
   </li>
 

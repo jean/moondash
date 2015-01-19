@@ -27,14 +27,14 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
 
   // Top-level page
   $stateProvider
-    .state('demotypes', {
-             url: '/demotypes/invoices',
+    .state('api', {
+             url: '/api',
              templateUrl: 'templates/root.html',
              controller: RootController,
              controllerAs: 'ctrl',
              resolve: {
-               baseResourceTypes: function (Restangular) {
-                 return Restangular.all('api/resourcetypes');
+               baseApi: function (Restangular) {
+                 return Restangular.all('api');
                }
              }
            })
