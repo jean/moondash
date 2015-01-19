@@ -13,10 +13,9 @@
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoice: function ($stateParams, invoicesOne) {
+                 invoice: function ($stateParams, invoicesAll) {
                    var id = $stateParams.id;
-                   console.log('id232', id);
-                   return invoicesOne.one(id).get();
+                   return invoicesAll.one(id).get();
                  }
                }
              })

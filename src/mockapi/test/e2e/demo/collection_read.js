@@ -11,8 +11,11 @@
                parent: 'e2e',
                template: '<div ui-view></div>',
                resolve: {
-                 baseInvoices: function (baseResourceTypes) {
+                 invoicesOne: function (baseResourceTypes) {
                    return baseResourceTypes.one('invoices');
+                 },
+                 invoicesAll: function (baseResourceTypes) {
+                   return baseResourceTypes.all('invoices');
                  }
                }
              })
@@ -23,8 +26,8 @@
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoices: function (baseInvoices) {
-                   return baseInvoices.get();
+                 invoices: function (invoicesOne) {
+                   return invoicesOne.get();
                  }
                }
              })

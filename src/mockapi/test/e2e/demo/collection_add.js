@@ -1,11 +1,10 @@
 (function () {
 
-  function StateController(invoices, $state) {
+  function StateController(invoicesAll, $state) {
     var ctrl = this;
-    ctrl.invoices = invoices;
     ctrl.model = {};
     ctrl.create = function () {
-      invoices.post(ctrl.model)
+      invoicesAll.post(ctrl.model)
         .then(
         function () {
           $state.go('collection.list');
@@ -20,12 +19,7 @@
                url: '/add',
                templateUrl: 'templates/collection_add.html',
                controller: StateController,
-               controllerAs: 'ctrl',
-               resolve: {
-                 invoices: function (baseResourceTypes) {
-                   return baseResourceTypes.all('invoices');
-                 }
-               }
+               controllerAs: 'ctrl'
              })
   }
 

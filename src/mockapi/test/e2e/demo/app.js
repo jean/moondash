@@ -8,10 +8,10 @@ function ModuleConfig($stateProvider, MdMockRestProvider) {
     invoices = {
       id: 'invoices',
       title: 'Invoices',
-      items: [
-        {id: 'i1', title: '1'},
-        {id: 'i2', title: '2'}
-      ]
+      items: {
+        i1: {id: 'i1', title: '1'},
+        i2: {id: 'i2', title: '2'}
+      }
     },
     MockResourceType = MdMockRestProvider.MockResourceType,
     invoicesMock = new MockResourceType('/api/resourcetypes', 'invoices', invoices.items);

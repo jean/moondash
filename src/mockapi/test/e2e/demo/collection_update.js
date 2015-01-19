@@ -23,8 +23,8 @@
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoices: function (baseInvoices) {
-                   return baseInvoices.get();
+                 invoices: function (invoicesOne) {
+                   return invoicesOne.get();
                  }
                }
              })

@@ -13,8 +13,8 @@
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoiceItems: function (baseResourceTypes) {
-                   return baseResourceTypes.all('invoices/items').getList();
+                 invoiceItems: function (invoicesAll) {
+                   return invoicesAll.all('items').getList();
                  }
                }
              })
