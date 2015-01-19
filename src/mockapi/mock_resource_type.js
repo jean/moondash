@@ -189,7 +189,7 @@ function MockResourceType(prefix, id, items) {
     mocks.push({
                  mockInstance: this,
                  method: 'GET',
-                 pattern: makePatternRegExp(prefix, id + '/(\\s+)$'),
+                 pattern: makePatternRegExp(prefix, id + '/\\w+'),
                  responder: this.documentRead
                });
 
