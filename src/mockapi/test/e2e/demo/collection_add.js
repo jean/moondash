@@ -17,7 +17,6 @@
   function ModuleConfig($stateProvider) {
     $stateProvider
       .state('collection.add', {
-               parent: 'e2e',
                url: '/add',
                templateUrl: 'templates/collection_add.html',
                controller: StateController,

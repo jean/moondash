@@ -8,7 +8,6 @@
   function ModuleConfig($stateProvider) {
     $stateProvider
       .state('collection.list', {
-               parent: 'e2e',
                url: '/list',
                templateUrl: 'templates/collection_list.html',
                controller: StateController,
