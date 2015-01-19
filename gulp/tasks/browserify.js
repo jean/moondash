@@ -23,7 +23,7 @@ gulp.task('browserify', function(callback) {
     var bundleQueue = config.bundleConfigs.length;
 
     var browserifyThis = function(bundleConfig) {
-        
+
         var bundler = browserify({
             // Required watchify args
             cache: {}, packageCache: {}, fullPaths: false,
@@ -31,6 +31,8 @@ gulp.task('browserify', function(callback) {
             entries: bundleConfig.entries,
             // Add file extentions to make optional in your requires
             extensions: config.extensions,
+            // exclude all externals
+            bundleExternal: false,
             // Enable source maps!
             debug: config.debug
         })
