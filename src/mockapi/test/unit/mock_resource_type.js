@@ -265,7 +265,7 @@ describe.only('mockapi MockResourceTypes', function () {
   });
 
   describe('Operations', function () {
-        it('should list /api/resourcetypes/invoices mocks', function () {
+    it('should list /api/resourcetypes/invoices mocks', function () {
       var mocks = mrt.listMocks();
       expect(mocks.length).to.equal(12);
     });
@@ -278,7 +278,10 @@ describe.only('mockapi MockResourceTypes', function () {
 
     it('should perform a LIST action', function () {
       var result = mrt.collectionList();
+      expect(result).to.be.a('array');
       expect(result.length).to.equal(1);
+      expect(result[0]).to.be.a('object');
+      expect(result[0].id).to.equal('invoices');
     });
 
     it('should perform a ADD action', function () {

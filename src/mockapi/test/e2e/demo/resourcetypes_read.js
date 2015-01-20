@@ -2,7 +2,6 @@
 
   function StateController(resourceTypes) {
     this.resourceTypes = resourceTypes;
-    console.log('relkek', resourceTypes);
   }
 
   function ModuleConfig($stateProvider) {

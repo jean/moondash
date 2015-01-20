@@ -1,20 +1,20 @@
 (function () {
 
-  function StateController(invoiceItems) {
-    this.invoiceItems = invoiceItems;
-    this.count = invoiceItems.length;
+  function StateController(resourceTypesItems) {
+    this.resourceTypesItems = resourceTypesItems;
+    this.count = this.resourceTypesItems.length;
   }
 
   function ModuleConfig($stateProvider) {
     $stateProvider
-      .state('collection.list', {
+      .state('demotypes.list', {
                url: '/list',
-               templateUrl: 'templates/collection_list.html',
+               templateUrl: 'templates/resourcetypes_list.html',
                controller: StateController,
                controllerAs: 'ctrl',
                resolve: {
-                 invoiceItems: function (invoicesAll) {
-                   return invoicesAll.all('items').getList();
+                 resourceTypesItems: function (resourceTypesAll) {
+                   return resourceTypesAll.all('items').getList();
                  }
                }
              })

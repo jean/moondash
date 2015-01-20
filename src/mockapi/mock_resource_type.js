@@ -34,7 +34,7 @@ function MockResourceTypes(prefix, items) {
 
   // Go through any passed in resourcetypes, make a MockResourceType,
   // and dump the mocks
-  _(items).forEach(function (v, k) {
+  _(this.items).forEach(function (v, k) {
     var mockType = new MockResourceType(prefix, k, v);
     var mocks = mockType.listMocks();
     this.mocks = this.mocks.concat(mockType.listMocks());
@@ -44,7 +44,11 @@ function MockResourceTypes(prefix, items) {
     // Return the resourcetypes in this collection as a mapping
 
     // Flatten this list
-    return _(this.items).values().value();
+
+    var response = _(this.items).map(function (v,k) {
+      return {id: k}
+    });
+    return response.value();
   };
 
   this.collectionRead = function (request) {

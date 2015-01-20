@@ -1,21 +1,19 @@
-<h2>collection list</h2>
+<h2>resourcetypes list</h2>
 <p>
   There are
-  <span id="e2e-count" ng-bind="ctrl.count">count</span> invoices.
+  <span id="e2e-count" ng-bind="ctrl.count">count</span> resourcetypes.
 </p>
 <table border="1" cellspacing="0" cellpadding="6" width="30%">
   <thead>
   <tr>
     <th>id</th>
-    <th>title</th>
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="invoice in ctrl.invoiceItems">
-    <td ng-bind="invoice.id" id="e2e-id-{{invoice.id}}">id</td>
-    <td ng-bind="invoice.title" id="e2e-title-{{invoice.id}}">title</td>
+  <tr ng-repeat="resourceType in ctrl.resourceTypesItems">
+    <td ng-bind="resourceType.id" id="e2e-id-{{resourceType.id}}">id</td>
   </tr>
   </tbody>
 </table>
 <h4>Raw Dump</h4>
-<pre>{{ctrl.invoices.plain()}}</pre>
+<pre>{{ctrl.resourceTypesItems.plain()}}</pre>
