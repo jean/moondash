@@ -15,7 +15,7 @@ var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
 var streamify    = require('gulp-streamify');
 var uglify       = require('gulp-uglify');
-var exorcist     = require('exorcist')
+var exorcist     = require('exorcist');
 var config       = require('../config').browserify;
 
 gulp.task('browserify', function(callback) {
