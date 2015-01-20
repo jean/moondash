@@ -237,7 +237,7 @@ describe('mockapi MockResourceType', function () {
 
 });
 
-describe.only('mockapi MockResourceTypes', function () {
+describe('mockapi MockResourceTypes', function () {
 
   var
     MockResourceTypes = require('../../mock_resource_type').MockResourceTypes,

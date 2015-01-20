@@ -1,13 +1,13 @@
 (function () {
 
-  function StateController(invoicesAll, $state) {
+  function StateController(resourceTypesAll, $state) {
     var ctrl = this;
     ctrl.model = {};
     ctrl.create = function () {
-      invoicesAll.post(ctrl.model)
+      resourceTypesAll.post(ctrl.model)
         .then(
         function () {
-          $state.go('collection.list');
+          $state.go('demotypes.list');
         }
       );
     }
@@ -15,9 +15,9 @@
 
   function ModuleConfig($stateProvider) {
     $stateProvider
-      .state('collection.add', {
+      .state('demotypes.add', {
                url: '/add',
-               templateUrl: 'templates/collection_add.html',
+               templateUrl: 'templates/resourcetypes_add.html',
                controller: StateController,
                controllerAs: 'ctrl'
              })
