@@ -100,6 +100,6 @@ module.exports = {
     ]
   },
   checker: {
-    src: ['src/*/*.js']
+    src: ['src/*/*.js', '!src/mockapi/index.js']
   }
 };
