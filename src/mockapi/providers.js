@@ -15,7 +15,7 @@ function Dispatcher(mock, method, thisUrl, data, headers) {
   // If the mock says to authenticate and we don't have
   // an Authorization header, return 401.
   if (mock.authenticate) {
-    var authz = headers['Authorization'];
+    var authz = headers.Authorization;
     if (!authz) {
       return [401, {'message': 'Login required'}];
     }
