@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 
 gulp.task('checker', function() {
     return gulp.src(config.src)
-    .pipe(jshint())
+    .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(jshint.reporter(notify({
         title: 'JSHint',
