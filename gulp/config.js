@@ -98,5 +98,8 @@ module.exports = {
     pruneVendors: distWithMock ? [] : [
       "angular-mocks"
     ]
+  },
+  checker: {
+    src: ['src/**/*.js']
   }
 };
