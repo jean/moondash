@@ -1,28 +1,28 @@
 'use strict';
 
 function ModuleConfig($urlRouterProvider) {
-  $urlRouterProvider.otherwise(function ($injector) {
-    // The URL failed to resolve. Let's give a try at traversal.
-    var
-      $state = $injector.get('$state'),
-      MdDispatcher = $injector.get('MdDispatcher');
+    $urlRouterProvider.otherwise(function ($injector) {
+        // The URL failed to resolve. Let's give a try at traversal.
+        var
+        $state = $injector.get('$state'),
+        MdDispatcher = $injector.get('MdDispatcher');
 
 
-    // XXX TODO Can't do this on every request
-    // Grab all the registered view_config info from the states. Make
-    // a dict with a key of the view name, value all the view_config
-    // info.
-    MdDispatcher.makeViewMap($state.get());
+        // XXX TODO Can't do this on every request
+        // Grab all the registered view_config info from the states. Make
+        // a dict with a key of the view name, value all the view_config
+        // info.
+        MdDispatcher.makeViewMap($state.get());
 
 
-    // If there are viewConfig settings on any states, use traversal
-    // unless configuration wants it disabled.
-    if (!MdDispatcher.disableDispatch) {
-      $state.go('dispatch');
-    } else {
-      $state.go('notfound', {unfoundStateTo: 'dispatch'});
-    }
-  });
+        // If there are viewConfig settings on any states, use traversal
+        // unless configuration wants it disabled.
+        if (!MdDispatcher.disableDispatch) {
+            $state.go('dispatch');
+        } else {
+            $state.go('notfound', {unfoundStateTo: 'dispatch'});
+        }
+    });
 }
 
 function ModuleRun($rootScope, $state, MdDispatcher) {
@@ -32,25 +32,25 @@ function ModuleRun($rootScope, $state, MdDispatcher) {
 
     // Not Found. Tried to go to a state that doesn't exist.
     $rootScope
-      .$on(
-      '$stateNotFound',
-      function (event, unfoundState, fromState, fromParams) {
-        event.preventDefault();
-        $state.go('notfound', {unfoundStateTo: unfoundState.to});
-      });
+    .$on(
+        '$stateNotFound',
+        function (event, unfoundState, fromState, fromParams) {
+            event.preventDefault();
+            $state.go('notfound', {unfoundStateTo: unfoundState.to});
+        });
 
     // Error handler. Display errors that occur in state resolves etc.
     $rootScope
-      .$on(
-      '$stateChangeError',
-      function (event, toState, toParams, fromState, fromParams, error) {
-        console.debug('stateChangeError', error);
-        event.preventDefault();
-        $state.go('error', {toState: toState.name, error: error});
-      });
-}
+    .$on(
+        '$stateChangeError',
+        function (event, toState, toParams, fromState, fromParams, error) {
+            console.debug('stateChangeError', error);
+            event.preventDefault();
+            $state.go('error', {toState: toState.name, error: error});
+        });
+    }
 
-
+var angular = require('angular');
 angular.module('md.dispatch')
-  .config(ModuleConfig)
-  .run(ModuleRun);
+.config(ModuleConfig)
+.run(ModuleRun);

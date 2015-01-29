@@ -1,0 +1,7 @@
+{
+    "browserify": true,
+    "browser": true,
+    "devel": true,
+    "newcap": false,
+    "eqnull": true
+}
